@@ -1,0 +1,15 @@
+@CHARSET "EUC-KR";
+#userPic {
+	width: 200px;
+	height: 200px;
+}
+#panelinfo{
+	border-color: #a3a3a3;
+}
+#panelhead{
+	background-color: #f5f5f5;
+	border-color: #a3a3a3;
+}
+.panel-footer a{
+	margin-left: 85%;
+}

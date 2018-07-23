@@ -8,6 +8,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>registration</title>
+<style type="text/css">
+#userImg{
+	width: 110px;
+	height: 110px;
+}
+</style>
 </head>
 <body>
 	<div class="wrapper row1">
@@ -26,9 +32,9 @@
 				<div class="form-group">
 					<label class="col-sm-3 control-label">프로필사진</label>
 					<div class="col-sm-6">
-						<img src="" id="img" style="width: 100px"> <input
-							type="file" name="img"
-							onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])"
+						<img class="img-circle" src="" id="userImg" style="width: 100px"> <input
+							type="file" name="userImg"
+							onchange="document.getElementById('userImg').src = window.URL.createObjectURL(this.files[0])"
 							accept="image/*">
 					</div>
 				</div>
@@ -155,7 +161,7 @@
 				</div>
 				<div class="form-group">
 					<label class="col-md-3 control-label"></label>
-					<label class="col-md-1 control-label" style="font-size: 9pt;">선호인원</label>
+					<label class="col-md-1 control-label" style="font-size: 8pt;">선호인원</label>
 					<div class="col-md-4">
 						<div class="checkbox">
 								<label><input type="checkbox" name="interest" value="small"/>소규모(4명미만)</label>

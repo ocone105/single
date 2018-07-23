@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="/single/common/styles/member/update.css" rel="stylesheet">
 <title>registration</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 			<div class="page-header">
 				<h1>
-					회원정보수정 <small>horizontal form</small>
+					회원정보수정
 				</h1>
 			</div>
 			<form class="form-horizontal">
@@ -28,10 +29,9 @@
 				<div class="form-group">
 					<label class="col-sm-3 control-label">프로필사진</label>
 					<div class="col-sm-6">
-						<img src="" id="img" style="width: 100px"> <input
-							type="file" name="img"
-							onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])"
-							accept="image/*">
+						<img class="img-circle" src="/single/images/irene.png" id="userImg"> 
+						<input type="file" name="img" 
+						onchange="document.getElementById('userImg').src = window.URL.createObjectURL(this.files[0])" accept="image/*">
 					</div>
 				</div>
 
@@ -157,7 +157,7 @@
 				</div>
 				<div class="form-group">
 					<label class="col-md-3 control-label"></label>
-					<label class="col-md-1 control-label" style="font-size: 9pt;">선호인원</label>
+					<label class="col-md-1 control-label" id="fcount">선호인원</label>
 					<div class="col-md-4">
 						<div class="checkbox">
 								<label><input type="checkbox" name="interest" value="small"/>소규모(4명미만)</label>
