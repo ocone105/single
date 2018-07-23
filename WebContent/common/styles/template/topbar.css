@@ -1,0 +1,13 @@
+@CHARSET "EUC-KR";
+	#logoheader{
+		float: left;
+	}
+	#loginheader{
+		margin-top: 5px;
+		margin-right: 50px;
+		float: right;
+	}
+	#logo{
+		width: 100px;
+		height: 100px;
+	}

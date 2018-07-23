@@ -1,0 +1,49 @@
+@CHARSET "EUC-KR";
+/* 떠다니는 메뉴 (Floating Menu) */
+#floatingbtn1, #floatingbtn2{
+	width: 75px;
+	height: 30px;
+	font-size: 8pt;
+	text-align: center;
+}
+#profile{
+	width: 100px;
+}
+#floatdiv {
+	position: fixed;
+	_position: absolute;
+	_z-index: -1;
+	width: 200px; /* 가로폭 조절*/
+	overflow: hidden;
+	right: 43%;
+	top: 30%; /* 이미지 높이 조절 */
+	background-color: transparent;
+	margin-right: -530px; /* 좌우측 여백 조절 */
+	padding: 0;
+}
+
+#floatdiv ul {
+	list-style: none;
+}
+
+#floatdiv li {
+	margin-top: 10px;
+	margin-bottom: 2px;
+	text-align: center;
+}
+
+#floatdiv a {
+	color: #5D5D5D;
+	border: 0;
+	text-decoration: none;
+	display: block;
+}
+
+#floatdiv a:hover, #floatdiv .menu {
+	background-color: #5D5D5D;
+	color: #fff;
+}
+
+#floatdiv .menu, #floatdiv .last {
+	margin-bottom: 0px;
+}
