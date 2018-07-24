@@ -4,16 +4,11 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="/single/common/styles/registration/registration.css" rel="stylesheet">
 <title>registration</title>
-<style type="text/css">
-#userImg{
-	width: 110px;
-	height: 110px;
-}
-</style>
 </head>
 <body>
 	<div class="wrapper row1">
@@ -31,8 +26,8 @@
 				<!-- 회원사진 -->
 				<div class="form-group">
 					<label class="col-sm-3 control-label">프로필사진</label>
-					<div class="col-sm-6">
-						<img class="img-circle" src="" id="userImg" style="width: 100px"> <input
+					<div class="col-sm-9">
+						<img class="img-circle" src="" id="userImg"> <input
 							type="file" name="userImg"
 							onchange="document.getElementById('userImg').src = window.URL.createObjectURL(this.files[0])"
 							accept="image/*">
@@ -42,10 +37,13 @@
 				<!-- 아이디 -->
 				<div class="form-group">
 					<label class="col-sm-3 control-label">아이디</label>
-					<div class="col-sm-6">
+					<span class="col-sm-4">
 						<input class="form-control" name="id" id="id" type="text"
 							placeholder="ID">
-					</div>
+					</span>
+					<span class="col-sm-2">
+						<button class="btn" type="button">중복확인</button>
+					</span>
 				</div>
 
 				<!-- 비밀번호 -->
@@ -155,21 +153,13 @@
 							<label> <input type="checkbox" name="interest" value="food"/>음식</label> 
 							<label> <input type="checkbox" name="interest" value="buy"/>공동구매</label>
 							<label> <input type="checkbox" name="interest" value="event"/>축제</label>
-							<label> <input type="checkbox" name="interest" value="culture"/>문화생활</label>
+							<label> <input type="checkbox" name="interest" value="movie"/>영화</label>
+							<label> <input type="checkbox" name="interest" value="musical"/>뮤지컬</label>
+							<label> <input type="checkbox" name="interest" value="exhibition "/>전시회</label>
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-md-3 control-label"></label>
-					<label class="col-md-1 control-label" style="font-size: 8pt;">선호인원</label>
-					<div class="col-md-4">
-						<div class="checkbox">
-								<label><input type="checkbox" name="interest" value="small"/>소규모(4명미만)</label>
-							<label><input type="checkbox" name="interest" value="big"/>대규모(4명이상)</label>
-						</div>
-					</div>
-				</div>
-
+				
 				<div class="form-group">
 					<label class="col-sm-3 control-label">휴대폰번호</label>
 					<div class="col-sm-6">
@@ -201,10 +191,11 @@
 				<div class="form-group">
 					<div class="col-sm-12 text-center">
 						<button class="btn btn-primary" type="submit">회원가입</button>
-						<button class="btn btn-danger" type="button">가입취소</button>
+						<button class="btn btn-danger" type="reset">가입취소</button>
 					</div>
 				</div>
 			</form>
+		</div>
 		</div>
 		<div class="wrapper row3">
 			<jsp:include page="/pages/template/Footer.jsp" />
