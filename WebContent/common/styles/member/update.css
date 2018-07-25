@@ -1,0 +1,17 @@
+@CHARSET "EUC-KR";
+#userImg{
+	width: 150px;
+	height: 150px;
+	
+}
+#fcount{
+	font-size: 8pt;
+}
+.info {
+	font-size: 15pt;
+	color: #666666;
+}
+#fileinput{
+	margin: auto;
+	width: 150px;
+}
