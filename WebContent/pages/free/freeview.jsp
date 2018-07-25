@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- free Ãß°¡ -->
-<link rel='stylesheet' id='kboard-skin-thumbnail-css'
+<link rel='stylesheet' id='kboard-skin-thumbnail-css' 
 	href='/single/common/styles/free/thumbnail.css?ver=5.3.9' type='text/css'
 	media='all' />
 <!-- -------------------------------- -->

@@ -44,7 +44,7 @@
 	            <li><a href="/single/pages/free/freeview_recom.jsp">추천</a></li>
 	          </ul>
 	        </li>
-	        <li><a href="/single/pages/vs/vsTxt.jsp">vs게시판</a></li>
+	        <li><a href="/single/pages/vs/vsview.jsp">vs게시판</a></li>
 	        <li><a href="/single/pages/point/pointmarketview.jsp">포인트마켓</a></li>
 	      </ul>
 	    </nav>
