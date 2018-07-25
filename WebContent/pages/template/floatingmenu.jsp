@@ -17,7 +17,7 @@
 		<ul>
 			<li>
 				<input id="floatingbtn1" type="button" value="雀盔沥焊" class="btn" onclick="location.href='/single/pages/member/memberinfo.jsp'">
-				<input id="floatingbtn2" type="button" value="模备包府" class="btn" onclick="location.href='/single/pages/friends/friendsViewTest.jsp'">
+				<input id="floatingbtn2" type="button" value="模备包府" class="btn" onclick="location.href='/single/pages/friends/friendsview.jsp'">
 			</li>
 		</ul>
 		<ul>
