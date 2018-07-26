@@ -1,4 +1,4 @@
-package mate.fw;
+package fw;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

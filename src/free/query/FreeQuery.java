@@ -15,10 +15,10 @@ public class FreeQuery {
 	public static final String READ_POST
 	= "select * from fr_board where fr_no=?";	// 글 읽기
 	
-	public static final String LIST_POST_ALL
+	public static final String SELECT_POST_ALL
 	= "select fr_no, fr_title, me_id, fr_date, fr_hits from fr_board";		// 전체 게시글 목록 읽기
 	
-	public static final String LIST_POST_CTG
+	public static final String SELECT_POST_CTG
 	= "select fr_no, fr_title, me_id, fr_date, fr_hits from fr_board where fr_ctg=?";		// 카테고리별 게시글 목록 읽기
 	
 	
@@ -31,6 +31,9 @@ public class FreeQuery {
 	
 	public static final String DELETE_CMT 
 	= "delete from fr_cmt where fr_cmt_no=?";		// 댓글 삭제
+	
+	public static final String SELECT_CMT_LIST
+	= "select fr_cmt_txt, fr_cmt_date, me_id from fr_cmt where fr_no=?";		// 댓글 읽기
 }
 
 

@@ -9,21 +9,18 @@ import java.util.ArrayList;
 
 import free.dao.FreeCmtDAO;
 import free.dao.FreeCmtDAOImpl;
-import free.dao.FreeDAO;
-import free.dao.FreeDAOImpl;
 import free.dto.FreeCmtDTO;
-import free.dto.FreeDTO;
 
-public class FreeServiceImpl implements FreeService {
+public class FreeCmtServiceImpl implements FreeCmtService {
 
 	@Override
-	public int insert(FreeDTO post) {
+	public int insert(FreeCmtDTO cmt) {
 		int result = 0;
-		FreeDAO dao = new FreeDAOImpl();
+		FreeCmtDAO dao = new FreeCmtDAOImpl();
 		Connection con = null;
 		try {
 			con = getConnect();
-			result = dao.insert(post, con);
+			result = dao.insert(cmt, con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -33,13 +30,13 @@ public class FreeServiceImpl implements FreeService {
 	}
 
 	@Override
-	public int update(FreeDTO post) {
+	public int update(FreeCmtDTO cmt) {
 		int result = 0;
-		FreeDAO dao = new FreeDAOImpl();
+		FreeCmtDAO dao = new FreeCmtDAOImpl();
 		Connection con = null;
 		try {
 			con = getConnect();
-			result = dao.update(post, con);
+			result = dao.update(cmt, con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -49,13 +46,13 @@ public class FreeServiceImpl implements FreeService {
 	}
 
 	@Override
-	public int delete(int fr_no) {
+	public int delete(int fr_cmt_no) {
 		int result = 0;
-		FreeDAO dao = new FreeDAOImpl();
+		FreeCmtDAO dao = new FreeCmtDAOImpl();
 		Connection con = null;
 		try {
 			con = getConnect();
-			result = dao.delete(fr_no, con);
+			result = dao.delete(fr_cmt_no, con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -65,35 +62,19 @@ public class FreeServiceImpl implements FreeService {
 	}
 
 	@Override
-	public FreeDTO read(int fr_no) {
-		FreeDTO post = null;
-		FreeDAO dao = new FreeDAOImpl();
+	public ArrayList<FreeCmtDTO> getCmtList(int fr_no) {
+		ArrayList<FreeCmtDTO> cmplist = null;
+		FreeCmtDAO dao = new FreeCmtDAOImpl();
 		Connection con = null;
 		try {
 			con = getConnect();
-			post = dao.read(fr_no, con);
+			cmplist = dao.getCmtList(fr_no, con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(con);
 		}
-		return post;
-	}
-
-	@Override
-	public ArrayList<FreeDTO> getPostList() {
-		ArrayList<FreeDTO> postlist = null;
-		FreeDAO dao = new FreeDAOImpl();
-		Connection con = null;
-		try {
-			con = getConnect();
-			postlist = dao.getPostList(con);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(con);
-		}
-		return postlist;
+		return cmplist;
 	}
 
 }
