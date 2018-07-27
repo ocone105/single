@@ -70,6 +70,7 @@ blockquote, q{display:block; padding:8px 10px; color:#979797; background-color:#
 blockquote::before, q::before{content:'� '; font-size:26px;}
 blockquote::after, q::after{content:' �'; font-size:26px; line-height:0;}
 
+#container{font-family: 고딕; width: 70%}
 #header, #shout, #container, #copyright{margin:0 auto; font-size:10pt;}
 
 /* ----------------------------------------------Header------------------------------------- */

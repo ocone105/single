@@ -29,7 +29,6 @@
     <header id="header">
 	    <div id="hgroup">
 	      <h1><a href="/single/pages/mainview.jsp">Singlesingle</a></h1>
-	      <h2>Free Website Template</h2>
 	    </div>
 		<nav id="topnav">
 	      <ul class="topnav clear">
