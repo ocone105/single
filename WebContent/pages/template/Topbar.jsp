@@ -12,9 +12,10 @@
 	<link rel="stylesheet" href="/single/common/styles/layout.css" type="text/css" media="all">
 	<link rel="stylesheet" href="/single/common/styles/mediaqueries.css" type="text/css" media="all">
 	<link rel="stylesheet" href="/single/common/styles/template/topbar.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="/single/common/scripts/jquery.min.js"></script>
-	<script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
+	<script src="/single/common/scripts/jquery-mobilemenu.min.js"></script> -->
+	
 </head>
 <body>
 <div id="logoheader" style="height:20px">
@@ -33,7 +34,6 @@
 		<nav id="topnav">
 	      <ul class="topnav clear">
 	        <li class="active"><a href="/single/pages/mainview.jsp">Home</a></li>
-	        <li><a href="/single/pages/intro/introview.jsp">소개</a></li>
 	        <li><a href="/single/pages/mate/mate_mainview.jsp">메이트</a></li>
 	        <li><a href="/single/pages/local/localview.jsp">지역행사</a></li>
 	        <li><a href="/single/pages/free/freeview.jsp">자유게시판</a>
@@ -44,7 +44,7 @@
 	            <li><a href="/single/pages/free/freeview_recom.jsp">추천</a></li>
 	          </ul>
 	        </li>
-	        <li><a href="/single/pages/vs/vsTxt.jsp">vs게시판</a></li>
+	        <li><a href="/single/pages/vs/vsview.jsp">vs게시판</a></li>
 	        <li><a href="/single/pages/point/pointmarketview.jsp">포인트마켓</a></li>
 	      </ul>
 	    </nav>

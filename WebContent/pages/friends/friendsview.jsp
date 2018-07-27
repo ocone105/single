@@ -3,31 +3,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=EUC-KR" >
-<title>Insert title here</title>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript"
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<meta charset=EUC-KR" >
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<!-- top -->
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
+
 	<div class="wrapper row2">
 		<div id="container">
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
-			<h1>친구목록</h1>
+			<jsp:include page="/pages/friends/friendsmenu.jsp"/>
+			
 			<p align="center">Friends List</p>
 			<ul class="w3-ul w3-card-4">
 
-				<li class="w3-bar"><span
-					onclick="this.parentElement.style.display='none'"
+				<li class="w3-bar"><span onclick="this.parentElement.style.display='none'"
 					class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
 					<img src="/single/images/irene.png"
 					class="w3-bar-item w3-circle w3-hide-small" style="width: 85px">
@@ -95,12 +92,12 @@
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">Close</button>
 						</div>
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	<div class="wrapper row3">
 		<jsp:include page="/pages/template/Footer.jsp" />
 	</div>

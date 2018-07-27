@@ -10,13 +10,25 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/single/common/styles/main/main.css" media="screen">
+<link rel="stylesheet" href="/single/common/styles/main/main.css"
+	media="screen">
 </head>
 
 <body>
 	<!-- top -->
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
+		<section id="shout" class="clear">
+			<figure>
+				<figcaption>
+					<h1>Single...</h1>
+					<p>메이트....어쩌구저쩌구</p>
+				</figcaption>
+				<div>
+					<img src="/single/images/demo/410x440.gif" alt="">
+				</div>
+			</figure>
+		</section>
 	</div>
 
 	<!-- content -->
@@ -71,7 +83,7 @@
 			</div>
 
 			<!-- main content -->
-			<hr/>
+			<hr />
 			<div>
 				<div class="col-sm-6">
 					<div class="panel panel-primary" style="border-color: #edeef1;">
@@ -208,7 +220,7 @@
 					</div>
 				</div>
 			</div>
-			<hr/>
+			<hr />
 
 			<div id="homepage">
 				<section id="latest_work" class="clear">
