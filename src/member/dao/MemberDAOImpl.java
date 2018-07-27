@@ -1,6 +1,6 @@
 package member.dao;
 
-import static member.fw.DBUtil.close;
+import static fw.DBUtil.close;
 import static member.query.MemberQuery.USER_INSERT;
 
 import java.sql.Connection;

@@ -1,6 +1,6 @@
 package vs.dao;
 
-import static vs.fw.DBUtil.close;
+import static fw.DBUtil.close;
 import static vs.query.VsQuery.*;
 
 import java.sql.Connection;

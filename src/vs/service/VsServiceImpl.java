@@ -1,7 +1,7 @@
 package vs.service;
 
-import static vs.fw.DBUtil.close;
-import static vs.fw.DBUtil.getConnect;
+import static fw.DBUtil.close;
+import static fw.DBUtil.getConnect;
 
 import java.sql.Connection;
 import java.sql.SQLException;
