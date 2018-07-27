@@ -39,7 +39,6 @@ $(document).ready(function(){
 		}
 	});
 });
-
 </script>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />

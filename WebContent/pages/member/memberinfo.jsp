@@ -97,6 +97,15 @@
 									<div class="col-xs-6">
 										<hr />
 										<div>
+											<label class="info">성별</label>
+										</div>
+										<p>남녀</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<hr />
+										<div>
 											<label class="info">전화번호</label>
 										</div>
 										<p>010-0000-0000</p>
@@ -115,18 +124,18 @@
 									<div class="col-xs-6">
 										<hr />
 										<div>
-											<label class="info">Email</label>
+											<label class="info">비상연락설정</label>
 										</div>
-										<p>info@support.com</p>
+										<p> 켬or끔 </p>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-xs-6">
 										<hr />
 										<div>
-											<label class="info">비상연락설정</label>
+											<label class="info">Email</label>
 										</div>
-										<p> 켬or끔 </p>
+										<p>info@support.com</p>
 									</div>
 								</div>
 								<div class="form-group">
