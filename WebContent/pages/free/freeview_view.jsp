@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@page import="free.dto.FreeDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,10 +17,10 @@
 <link rel='stylesheet' id='kboard-skin-thumbnail-css'
 	href='/single/common/styles/free/thumbnail.css?ver=5.3.9' type='text/css'
 	media='all' />
-
 <link rel='stylesheet' id='kboard-comments-skin-default-css'
 	href='/single/common/styles/free/comments.css?ver=4.4.4' type='text/css'
 	media='all' />
+<% FreeDTO post =(FreeDTO) request.getAttribute("post"); %>
 
 <!-- -------------------------------- -->
 
@@ -42,27 +43,27 @@
 					<div class="kboard-document-wrap" itemscope
 						itemtype="http://schema.org/Article">
 						<div class="kboard-title" itemprop="name">
-							<h1>공지사항을 읽어주세요.</h1>
+							<h1><%=post.getFr_title() %></h1>
 						</div>
 
 						<div class="kboard-detail">
 							<div class="detail-attr detail-writer">
 								<div class="detail-name">작성자</div>
-								<div class="detail-value">admin</div>
+								<div class="detail-value"><%=post.getMe_id()%></div>
 							</div>
 							<div class="detail-attr detail-date">
 								<div class="detail-name">작성일</div>
-								<div class="detail-value">2017-07-21 12:56</div>
+								<div class="detail-value"><%=post.getFr_date()%></div>
 							</div>
 							<div class="detail-attr detail-view">
 								<div class="detail-name">조회</div>
-								<div class="detail-value">27</div>
+								<div class="detail-value"><%=post.getFr_hits()%></div>
 							</div>
 						</div>
 
 						<div class="kboard-content" itemprop="description">
 							<div class="content-view">
-								<p style="text-align: center;">공지사항을 잘 읽어주세요.</p>
+								<p style="text-align: center;"><%=post.getFr_txt()%></p>
 							</div>
 						</div>
 

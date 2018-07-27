@@ -25,13 +25,13 @@ public class PostListServlet extends HttpServlet {
 		FreeService service = new FreeServiceImpl();
 		ArrayList<FreeDTO> postlist = service.getPostList();
 
-		System.out.println("서블릿" + postlist);
+		//System.out.println("목록 서블릿" + postlist);
 
 		// 2.데이터공유
 		req.setAttribute("postlist", postlist);
 
 		// 3.요청재지정
-		RequestDispatcher rd = req.getRequestDispatcher("/single/pages/free/freeview.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/single/pages/free/freeview.jsp");	// 경로변경필요
 		rd.forward(req, res);
 	}
 }

@@ -90,8 +90,9 @@ public class FreeDAOImpl implements FreeDAO {
 		while (rs.next()) {
 			post = new FreeDTO(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getString(5));
 			postlist.add(post);
+			System.out.println("dao ¤·¤·¤·¤·: "+post);
 		}
-		System.out.println("fr_post ArraListÀÇ °¹¼ö: " + postlist.size());
+		System.out.println("fr_post ArrayListÀÇ °¹¼ö: " + postlist.size());
 
 		return postlist;
 	}
