@@ -8,98 +8,194 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>registration</title>
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
 <link href="/single/common/styles/registration/bootstrap.min.css"
 	rel="stylesheet">
+<link href="/single/common/styles/member/info.css" rel="stylesheet">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style type="text/css">
+.info {
+	font-size: 15pt;
+	color: #666666;
+}
+</style>
 </head>
 <body>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
 	<div class="wrapper row2">
-		<div id="container">
-			<!-- 플로팅배너 -->
+		<div id="container" class="container bootstrap snippet">
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 			<div class="page-header">
 				<h1>회원정보</h1>
 			</div>
-			<form class="form-horizontal" action="infoupdate.jsp">
-				<!-- 회원사진 -->
-				<div class="form-group">
-					<label class="col-sm-3 control-label">프로필사진</label>
-					<div class="col-sm-6">
-						<img src="" id="img" style="width: 100px">
+			<div class="row">
+				<div class="col-sm-10">
+					<h1>User ID</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<!--left col-->
+					<div class="text-center">
+						<img src="/single/images/irene.png" class="avatar img-circle img-thumbnail">
 					</div>
-				</div>
+					<hr/>
+					<br>
 
-				<!-- 아이디 -->
-				<div class="form-group">
-					<label class="col-sm-3 control-label">아이디</label>
-					<div class="col-sm-6">ID</div>
-				</div>
+					<ul class="list-group">
+						<li class="list-group-item text-muted">소모임<i
+							class="fa fa-dashboard fa-1x"></i></li>
+						<li class="list-group-item text-right"><span
+							class="pull-left"><strong><a href="">구로1동</a></strong></span>5</li>
+						<li class="list-group-item text-right"><span
+							class="pull-left"><strong><a href="">양파나눔</a></strong></span>3</li>
+						<li class="list-group-item text-right"><span
+							class="pull-left"><strong><a href="">축제</a></strong></span>7</li>
+					</ul>
 
-				<!-- 이름 -->
-				<div class="form-group">
-					<label class="col-sm-3 control-label">성명</label>
-					<div class="col-sm-6">성명</div>
-				</div>
-
-				<!-- 생년월일 -->
-				<div class="form-group">
-					<label class="col-sm-3 control-label">생년월일</label>
-					<div class="col-sm-6">2000/01/01</div>
-				</div>
-
-				<!-- 성별 -->
-				<div class="form-group">
-					<label class="col-md-3 control-label">성별</label>
-					<div class="col-md-6">성별</div>
-				</div>
-
-				<!-- 전화번호 -->
-				<div class="form-group">
-					<label class="col-sm-3 control-label">전화번호</label>
-					<div class="col-sm-6">010-0000-000</div>
-				</div>
-
-				<!-- 비상연락처 -->
-				<div class="form-group">
-					<label class="col-sm-3 control-label">비상연락처</label>
-					<div class="col-sm-6">010-0000-000</div>
-				</div>
-
-				<!-- 비상연락 선택 -->
-				<div class="form-group">
-					<label class="col-md-3 control-label">비상연락설정</label>
-					<div class="col-md-6">비상연락설정</div>
-				</div>
-
-				<!-- 이메일 -->
-				<div class="form-group">
-					<label class="col-sm-3 control-label">이메일</label>
-					<div class="col-sm-6">이메일</div>
-				</div>
-
-				<!-- 주소 -->
-				<div class="form-group">
-					<label class="col-sm-3 control-label">주소</label>
-					<div class="col-sm-6">주소</div>
-				</div>
-
-				<!-- 성향 -->
-				<div class="form-group">
-					<label class="col-md-3 control-label">성향</label>
-					<div class="col-md-6"><label>관심사</label>선택한것들</div>
-					<div class="col-md-6"><label>선호인원</label>선호인원</div>
-				</div>
-				
-				<div class="form-group">
-					<div class="col-sm-6 text-center">
-						<button class="btn btn-primary" type="submit">수정</button>
+					<div class="panel panel-default">
+						<div class="panel-heading">Social Media</div>
+						<div class="panel-body">
+							<i class="fa fa-facebook fa-2x"></i> <i
+								class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i>
+							<i class="fa fa-pinterest fa-2x"></i> <i
+								class="fa fa-google-plus fa-2x"></i>
+						</div>
 					</div>
+
 				</div>
-			</form>
+				<!--/col-3-->
+				<div class="col-sm-9">
+					<div class="tab-content">
+						<div class="tab-pane active" id="home">
+							<hr>
+							<form class="form" action="##" method="post"
+								id="registrationForm">
+								<div class="form-group">
+									<div class="col-xs-6">
+										<div>
+											<label class="info">성명</label>
+										</div>
+										<p>아이린</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<div>
+											<label class="info">생년월일</label>
+										</div>
+										<p>2000/01/01</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<hr />
+										<div>
+											<label class="info">전화번호</label>
+										</div>
+										<p>010-0000-0000</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<hr />
+										<div>
+											<label class="info">비상연락처</label>
+										</div>
+										<p> 010-1111-1111 </p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<hr />
+										<div>
+											<label class="info">Email</label>
+										</div>
+										<p>info@support.com</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<hr />
+										<div>
+											<label class="info">비상연락설정</label>
+										</div>
+										<p> 켬or끔 </p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<hr />
+										<div>
+											<label class="info">포인트</label>
+										</div>
+										<p>1000</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<hr />
+										<div>
+											<label class="info">누적포인트</label>
+										</div>
+										<p>2000</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<hr />
+										<div>
+											<label class="info">회원등급</label>
+										</div>
+										<p>등급이름</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<hr />
+										<div>
+											<label class="info">성향</label>
+										</div>
+										<p> 성향나열하고 </p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<hr />
+										<div>
+											<label class="info">블랙리스트신고횟수</label>
+										</div>
+										<p>10블랙리스트되면블랙리스트인지아닌지</p>
+									</div>
+								</div>
+							<hr>
+						
+							<div class="form-group">
+								<div class="col-xs-12">
+									<br>
+									<a href="/single/pages/member/infoupdate.jsp" class="btn btn-danger pull-right"><i class="glyphicon glyphicon-remove">회원탈퇴</i></a>
+									<a href="/single/pages/member/infoupdate.jsp" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-edit">회원정보수정</i></a>
+								</div>
+							</div>
+						</form>
+
+					</div>
+					<!--/tab-pane-->
+				</div>
+				<!--/tab-content-->
+
+			</div>
+			<!--/col-9-->
 		</div>
+		<!--/row-->
 	</div>
+
 	<div class="wrapper row3">
 		<jsp:include page="/pages/template/Footer.jsp" />
 	</div>
