@@ -37,10 +37,8 @@ $(document).ready(function(){
 			   lat = 33.450701; // 위도
 		       lon = 126.570667; // 경도
 		}
-		
 	});
 });
-
 
 </script>
 	<div class="wrapper row1">
