@@ -27,7 +27,7 @@ public class VsInsertServlet extends HttpServlet {
 		String me_id = "ocean";
 		
 		VsService service = new VsServiceImpl();
-		VsDTO post = new VsDTO(vs_title, vs_optionA, vs_optionB, vs_txt);
+		VsDTO post = new VsDTO(vs_title, vs_optionA, vs_optionB, vs_txt, me_id);
 		System.out.println(post);
 		int result = service.insert_vs(post);
 		System.out.println(vs_title);

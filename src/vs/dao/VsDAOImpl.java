@@ -13,6 +13,7 @@ public class VsDAOImpl implements VsDAO {
 
 	@Override
 	public int insert_vs(VsDTO post, Connection con) throws SQLException {
+		System.out.println("VsDAOø‰√ª");
 		int result = 0;
 		PreparedStatement ptmt = con.prepareStatement(VS_INSERT);
 		ptmt.setString(1, post.getCh_title());
@@ -22,6 +23,7 @@ public class VsDAOImpl implements VsDAO {
 		ptmt.setString(5, post.getMe_id());
 		
 		result = ptmt.executeUpdate();
+		System.out.println(result);
 		close(ptmt);
 		return result;
 	}

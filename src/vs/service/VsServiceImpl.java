@@ -14,6 +14,7 @@ public class VsServiceImpl implements VsService {
 
 	@Override
 	public int insert_vs(VsDTO post) {
+		System.out.println("VsServiceø‰√ª");
 		int result = 0;
 		Connection con = null;		
 		VsDAO dao = new VsDAOImpl();	

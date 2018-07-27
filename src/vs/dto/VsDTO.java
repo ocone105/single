@@ -14,12 +14,13 @@ public class VsDTO {
 	public VsDTO(){}
 
 	// 삽입용
-	public VsDTO(String ch_title, String ch_optionA, String ch_optionB, String ch_txt) {
+	public VsDTO(String ch_title, String ch_optionA, String ch_optionB, String ch_txt, String me_id) {
 		super();
 		this.ch_title = ch_title;
 		this.ch_optionA = ch_optionA;
 		this.ch_optionB = ch_optionB;
 		this.ch_txt = ch_txt;
+		this.me_id = me_id;
 	}
 
 	// 조회용
