@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@page import="free.dto.FreeDTO"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +9,14 @@
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- free 추가 -->
-<link rel='stylesheet' id='kboard-skin-thumbnail-css' 
-	href='/single/common/styles/free/thumbnail.css?ver=5.3.9' type='text/css'
-	media='all' />
+<link rel='stylesheet' id='kboard-skin-thumbnail-css'
+	href='/single/common/styles/free/thumbnail.css?ver=5.3.9'
+	type='text/css' media='all' />
+<%
+	ArrayList<FreeDTO> postlist = (ArrayList<FreeDTO>) request.getAttribute("postlist");
+	int size = postlist.size();
+%>
+
 <!-- -------------------------------- -->
 <script src="/single/common/scripts/jquery.min.js"></script>
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
@@ -49,7 +56,11 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="kboard-list-notice">
+							<%
+								for (int i = 0; i < size; i++) {
+									FreeDTO post = postlist.get(i);
+							%>
+							<!-- 							<tr class="kboard-list-notice">
 								<td class="kboard-list-uid">공지사항</td>
 
 								<td class="kboard-list-title"><a href="freeview_view.jsp">
@@ -67,27 +78,31 @@
 								<td class="kboard-list-user">admin</td>
 								<td class="kboard-list-date">2018.07.21</td>
 								<td class="kboard-list-view">26</td>
-							</tr>
+							</tr> -->
 
 							<tr class="">
-								<td class="kboard-list-uid">1</td>
+								<td class="kboard-list-uid"><%=post.getFr_no()%></td>
 
-								<td class="kboard-list-title"><a href="#">
+								<td class="kboard-list-title"><a
+									href="/single/fr/read.do?id=<%=post.getFr_no()%>">
 										<div class="kboard-thumbnail-cut-strings">
-											안녕하세요. <span class="kboard-comments-count"></span>
+											<%=post.getFr_title()%>
+											<span class="kboard-comments-count"></span>
 										</div>
-								</a>
-									<div class="kboard-mobile-contents">
-										<span class="contents-item kboard-user">blur</span> <span
-											class="contents-separator kboard-date">|</span> <span
-											class="contents-item kboard-date">2018.07.21</span> <span
-											class="contents-separator kboard-view">|</span> <span
-											class="contents-item kboard-view">조회 7</span>
-									</div></td>
-								<td class="kboard-list-user">blur</td>
-								<td class="kboard-list-date">2018.07.21</td>
-								<td class="kboard-list-view">7</td>
+								</a> <%-- 필요없는거같음..아마									<div class="kboard-mobile-contents">
+										<span class="contents-item kboard-user"><%=post.getMe_id() %></span> 
+										<span class="contents-separator kboard-date">|</span> 
+										<span class="contents-item kboard-date"><%=post.getFr_date() %></span> 
+										<span class="contents-separator kboard-view">|</span> 
+										<span class="contents-item kboard-view"><%=post.getFr_hits() %></span>
+									</div> --%></td>
+								<td class="kboard-list-user"><%=post.getMe_id()%></td>
+								<td class="kboard-list-date"><%=post.getFr_date()%></td>
+								<td class="kboard-list-view"><%=post.getFr_hits()%></td>
 							</tr>
+							<%
+								}
+							%>
 
 						</tbody>
 					</table>

@@ -16,7 +16,7 @@ public class FreeQuery {
 	= "select * from fr_board where fr_no=?";	// 글 읽기
 	
 	public static final String SELECT_POST_ALL
-	= "select fr_no, fr_title, me_id, fr_date, fr_hits from fr_board";		// 전체 게시글 목록 읽기
+	= "select fr_no, fr_title, fr_date, fr_hits, me_id from fr_board";		// 전체 게시글 목록 읽기
 	
 	public static final String SELECT_POST_CTG
 	= "select fr_no, fr_title, me_id, fr_date, fr_hits from fr_board where fr_ctg=?";		// 카테고리별 게시글 목록 읽기
@@ -38,10 +38,11 @@ public class FreeQuery {
 
 
 /*
+
 create table fr_board(
 fr_no number,
 fr_title varchar2(100),
-fr_txt varchar2(1000),
+fr_txt varchar2(4000),
 fr_ctg varchar2(30)	,
 fr_date date,
 fr_hits number,	
@@ -50,10 +51,15 @@ me_id varchar2(30)	);
 
 create table fr_cmt(
 fr_cmt_no number,
-fr_cmt_txt varchar2(500),
+fr_cmt_txt varchar2(1000),
 fr_cmt_date date,
 fr_no number,
 me_id varchar2(30));
+
+
+create sequence fr_seq;
+create sequence fr_cmt_seq;
+
 
 http://seinarin.tistory.com/1?category=452459 참고
 */

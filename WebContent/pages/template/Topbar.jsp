@@ -36,7 +36,7 @@
 	        <li class="active"><a href="/single/pages/mainview.jsp">Home</a></li>
 	        <li><a href="/single/pages/mate/mate_mainview.jsp">메이트</a></li>
 	        <li><a href="/single/pages/local/localview.jsp">지역행사</a></li>
-	        <li><a href="/single/pages/free/freeview.jsp">자유게시판</a>
+	        <li><a href="/single/fr/list.do">자유게시판</a>
 	          <ul>
 	            <li><a href="/single/pages/free/freeview_free.jsp">자유</a></li>
 	            <li><a href="/single/pages/free/freeview_tip.jsp">정보</a></li>

@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import free.dto.FreeCmtDTO;
 import free.dto.FreeDTO;
 
 public class FreeDAOImpl implements FreeDAO {
