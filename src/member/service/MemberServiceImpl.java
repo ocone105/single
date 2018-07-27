@@ -1,7 +1,7 @@
 package member.service;
 
-import static member.fw.DBUtil.close;
-import static member.fw.DBUtil.getConnect;
+import static fw.DBUtil.close;
+import static fw.DBUtil.getConnect;
 
 import java.sql.Connection;
 import java.sql.SQLException;
