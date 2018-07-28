@@ -59,11 +59,9 @@
 		<ul>
 			<li><a href="" target="_self">±¸·Î1µ¿</a></li>
 		</ul>
-		
 		<ul>
 			<li><img src="/single/images/demo/imgr.gif"/>
 		</ul>
-		
 		</div>
 	</div>
 
