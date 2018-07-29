@@ -34,7 +34,7 @@
 	      <ul class="topnav clear">
 	        <li class="active"><a href="/single/pages/mainview.jsp">Home</a></li>
 	        <li><a href="/single/pages/intro/introview.jsp">소개</a></li>
-	        <li><a href="/single/pages/mate/mate_mainview.jsp">메이트</a></li>
+	        <li><a href="/single/mt_list.do">메이트</a></li>
 	        <li><a href="/single/pages/local/localview.jsp">지역행사</a></li>
 	        <li><a href="/single/pages/free/freeview.jsp">자유게시판</a>
 	          <ul>
@@ -45,7 +45,7 @@
 	          </ul>
 	        </li>
 	        <li><a href="/single/pages/vs/vsview.jsp">vs게시판</a></li>
-	        <li><a href="/single/pages/point/pointmarketview.jsp">포인트마켓</a></li>
+	        <li><a href="/single/PointList.do">포인트마켓</a></li>
 	      </ul>
 	    </nav>
       </header>

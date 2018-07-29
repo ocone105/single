@@ -4,7 +4,9 @@ import static fw.DBUtil.*;
 import static mate.query.MateQuery.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import mate.dto.MateDTO;
 
@@ -27,6 +29,40 @@ public class MateDAOImpl implements MateDAO {
 		result = ptmt.executeUpdate();
 		close(ptmt);
 		return result;
+	}
+
+	@Override
+	public ArrayList<MateDTO> group(Connection con) throws SQLException {
+		ArrayList<MateDTO> dtolist = new ArrayList<MateDTO>();
+		MateDTO dto = null;
+		
+		PreparedStatement ptmt = null;
+		ptmt = con.prepareStatement(MATE_LIST);
+		
+		ResultSet rs = ptmt.executeQuery();
+		while(rs.next()){
+			dto = new MateDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), 
+					rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10), rs.getString(11), rs.getString(12));
+			dtolist.add(dto);
+		}
+		close(ptmt);
+		return dtolist;
+	}
+
+	@Override
+	public MateDTO read_mt(int mt_no, Connection con) throws SQLException {
+		MateDTO dto = null;
+		PreparedStatement ptmt = null;
+		ptmt = con.prepareStatement(MATE_READ);
+		ptmt.setInt(1, mt_no);
+		
+		ResultSet rs = ptmt.executeQuery();
+		while(rs.next()){
+			dto = new MateDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), 
+					rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10), rs.getString(11), rs.getString(12));
+		}
+		close(con);
+		return dto;
 	}
 
 }

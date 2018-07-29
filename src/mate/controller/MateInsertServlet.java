@@ -39,6 +39,7 @@ public class MateInsertServlet extends HttpServlet {
 		}else{
 			msg= "입력실패";
 		}
+		System.out.println(msg);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/pages/mate/mate_mainview.jsp");
 		rd.forward(request, response);

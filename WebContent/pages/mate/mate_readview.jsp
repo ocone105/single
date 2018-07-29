@@ -1,17 +1,19 @@
+<%@page import="mate.dto.MateDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/single/common/styles/layout.css"
-	type="text/css" media="all">
-<link rel="stylesheet" href="/single/common/styles/mediaqueries.css"
-	type="text/css" media="all">
-<script src="/single/common/scripts/jquery.min.js"></script>
-<script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
+	<title>Insert title here</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/single/common/styles/layout.css"
+		type="text/css" media="all">
+	<link rel="stylesheet" href="/single/common/styles/mediaqueries.css"
+		type="text/css" media="all">
+		
+	<script src="/single/common/scripts/jquery.min.js"></script>
+	<script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
 </head>
 <body>
 	<div class="wrapper row1">
@@ -22,11 +24,30 @@
 			<!-- 플로팅배너 -->
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 			<!-- content body -->
+			
+			<% MateDTO dto = (MateDTO)request.getAttribute("dto"); %>
 			<h1>소모임이름</h1>
 			<footer class="more">
 				<a href="#">참여하기 &raquo;</a>
 			</footer>
+
 			<hr />
+			<!-- 작성정보 -->
+			<table border="1">
+					<tr>
+						<td><%=dto.getMt_ctg() %></td>
+						<td colspan="3"><%=dto.getMt_title() %></td>
+					</tr>
+					<tr>
+						<td><%=dto.getMe_id() %></td>
+						<td><%=dto.getMt_hits() %></td>
+						<td colspan="2"><%=dto.getMt_date() %></td>
+					</tr>
+					<tr>
+						<td colspan="4"><%=dto.getMt_txt() %></td>
+					</tr>
+			</table>
+
 			<section id="portfolio" class="clear">
 				<ul>
 					<li>
