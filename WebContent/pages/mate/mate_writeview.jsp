@@ -23,7 +23,8 @@
 			<!-- ################################################################################################ -->
 			<h1>소모임만들기</h1>
 			<hr/>
-			<form action="" method="post">
+			<form action="/single/mt_insert.do" method="post">
+				<input type="hidden" value="test" name="me_id"/>
 				<table border="1">
 					<tr>
 						<td>소모임이름</td>
@@ -60,6 +61,10 @@
 					<tr>
 						<td>이미지</td>
 						<td><input type="file" name="mt_img"></td>
+					</tr>
+					<tr>
+						<td>첨부파일</td>
+						<td><input type="file" name="mt_file"></td>
 					</tr>
 					<tr>
 						<td>내용</td>

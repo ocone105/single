@@ -28,34 +28,18 @@ public class MateDTO {
 */
 	
 	
-	public MateDTO(String mt_title, String mt_txt, String mt_date, int mt_hits, String mt_file, String mt_map,
-			String mt_ctg, int mt_cnt, String me_id, String mt_img, String mt_particpant) {
+	//insert¿ë
+	public MateDTO(String mt_title, String mt_txt, String mt_file, String mt_map, String mt_ctg, int mt_cnt,
+			String me_id, String mt_img) {
+		super();
 		this.mt_title = mt_title;
 		this.mt_txt = mt_txt;
-		this.mt_date = mt_date;
-		this.mt_hits = mt_hits;
 		this.mt_file = mt_file;
 		this.mt_map = mt_map;
 		this.mt_ctg = mt_ctg;
 		this.mt_cnt = mt_cnt;
 		this.me_id = me_id;
 		this.mt_img = mt_img;
-		this.mt_particpant = mt_particpant;
-	}
-	public MateDTO(int mt_no, String mt_title, String mt_txt, String mt_date, int mt_hits, String mt_file,
-			String mt_map, String mt_ctg, int mt_cnt, String me_id, String mt_img, String mt_particpant) {
-		this.mt_no = mt_no;
-		this.mt_title = mt_title;
-		this.mt_txt = mt_txt;
-		this.mt_date = mt_date;
-		this.mt_hits = mt_hits;
-		this.mt_file = mt_file;
-		this.mt_map = mt_map;
-		this.mt_ctg = mt_ctg;
-		this.mt_cnt = mt_cnt;
-		this.me_id = me_id;
-		this.mt_img = mt_img;
-		this.mt_particpant = mt_particpant;
 	}
 	public MateDTO() {
 	}
