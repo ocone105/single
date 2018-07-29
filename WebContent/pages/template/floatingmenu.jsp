@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -12,6 +13,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
+<% MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<div id="floatdiv">
 		<div>
 			<ul>
@@ -20,8 +22,7 @@
 			</ul>
 			<ul>
 				<li><input id="floatingbtn1" type="button" value="雀盔沥焊"
-					class="btn"
-					onclick="location.href='/single/pages/member/memberinfo.jsp'">
+					class="btn" onclick="location.href='/single/memberinfo.do?action=READ'">
 					<input id="floatingbtn2" type="button" value="模备包府" class="btn"
 					onclick="location.href='/single/pages/friends/friendsViewTest.jsp'">
 				</li>

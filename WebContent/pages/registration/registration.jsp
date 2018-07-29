@@ -13,33 +13,29 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/single/common/scripts/member/register.js"></script>
-</head>
-<body>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ebf7b2f2c5987b5f48041fd7c1490397"></script>
-<script>
-$(document).ready(function(){
-	$(".gardenimg").on("click",function(){
+<script language="javascript">
+	/* $(document).ready(function(){
+	$("#joinbtn").on("click",function(){
 		// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 		var lat = "";
 		var lon = "";
 		if (navigator.geolocation) {
-		    
 		    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
 		    navigator.geolocation.getCurrentPosition(function(position) {
-		        
 		        lat = position.coords.latitude; // 위도
 		        lon = position.coords.longitude; // 경도
-		        
-		       // var locPosition = new daum.maps.LatLng(lat, lon);
+		        alert(lat);
 		      });
-		    
 		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 			   lat = 33.450701; // 위도
 		       lon = 126.570667; // 경도
 		}
 	});
-});
+}); */
 </script>
+</head>
+<body>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
@@ -50,7 +46,8 @@ $(document).ready(function(){
 					회원가입 <small>horizontal form</small>
 				</h1>
 			</div>
-			<form class="form-horizontal" action="/single/memberinsert.do" method="POST" name="myform">
+			<form class="form-horizontal" action="/single/memberinsert.do" method="POST" name="myform" 
+			enctype="multipart/form-data">
 				<!-- 회원사진 -->
 				<div class="form-group">
 					<label class="col-sm-3 control-label">프로필사진</label>
@@ -65,31 +62,30 @@ $(document).ready(function(){
 				<!-- 아이디 -->
 				<div class="form-group">
 					<label class="col-sm-3 control-label">아이디</label>
-					<span class="col-sm-4">
-						<input class="form-control" name="me_id" id="me_id" type="text"
-							placeholder="ID">
-					</span>
-					<span class="col-sm-2">
-						<button class="btn" type="button">중복확인</button>
-					</span>
+					<div class="col-sm-6">
+						<input class="form-control" name="me_id" id="me_id" type="text" maxlength="12"
+							placeholder="ID" onkeyup="IdCheck()">
+						<p class="help-block" id="idChk">12자이내</p>
+					</div>
+					
 				</div>
 
 				<!-- 비밀번호 -->
 				<div class="form-group">
 					<label class="col-sm-3 control-label">비밀번호</label>
 					<div class="col-sm-6">
-						<input class="form-control" name="me_pwd" id="me_pwd" type="password"
+						<input class="form-control" name="me_pwd" id="me_pwd" type="password" maxlength="15"
 							placeholder="Password">
-						<p class="help-block">숫자, 특수문자 포함 8자 이상</p>
+						<p class="help-block">15자이내</p>
 					</div>
 				</div>
 				<!-- 비밀번호확인 -->
 				<div class="form-group">
 					<label class="col-sm-3 control-label">비밀번호 확인</label>
 					<div class="col-sm-6">
-						<input class="form-control" name="pwdChk" id="pwdChk"
+						<input class="form-control" name="pwdChk" id="pwdChk" maxlength="15"
 							type="password" placeholder="Password Check">
-						<p class="help-block">비밀번호를 한번 더 입력해주세요.</p>
+						<p class="help-block" id="pwMsg">비밀번호를 한번 더 입력해주세요.</p>
 					</div>
 				</div>
 
@@ -126,8 +122,9 @@ $(document).ready(function(){
 				<div class="form-group">
 					<label class="col-sm-3 control-label">전화번호</label>
 					<div class="col-sm-6">
-						<input class="form-control" name="me_phone" id="me_phone" type="text"
+						<input class="form-control" name="me_phone" maxlength="13" id="me_phone" type="text"
 							placeholder="010-0000-0000">
+						<p class="help-block">-없이입력해주세요.</p>
 					</div>
 				</div>
 
@@ -135,8 +132,9 @@ $(document).ready(function(){
 				<div class="form-group">
 					<label class="col-sm-3 control-label">비상연락처</label>
 					<div class="col-sm-6">
-						<input class="form-control" name="me_telnum" id="me_telnum" type="text"
+						<input class="form-control" name="me_telnum" maxlength="13" id="me_telnum" type="text"
 							placeholder="010-0000-0000">
+						<p class="help-block">-없이입력해주세요.</p>
 					</div>
 				</div>
 
@@ -145,8 +143,8 @@ $(document).ready(function(){
 					<label class="col-md-3 control-label">비상연락설정</label>
 					<div class="col-md-6">
 						<div class="radio">
-							<label> <input type="radio" name="me_telchk" value="T" checked/>켬
-							</label> <label> <input type="radio" name="me_telchk" value="F" />끔
+							<label> <input type="radio" name="me_telchk" value="켬" checked/>켬
+							</label> <label> <input type="radio" name="me_telchk" value="끔" />끔
 							</label>
 						</div>
 					</div>
@@ -157,7 +155,7 @@ $(document).ready(function(){
 					<label class="col-sm-3 control-label">이메일</label>
 					<div class="col-sm-6">
 						<input class="form-control" name="me_email" id="me_email" type="email"
-							placeholder="이메일">
+							placeholder="single@single.com">
 					</div>
 				</div>
 

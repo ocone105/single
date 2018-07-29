@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="/single/common/styles/main/main.css"
 	media="screen">
 </head>
-
 <body>
 	<!-- top -->
 	<div class="wrapper row1">

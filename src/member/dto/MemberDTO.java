@@ -67,7 +67,20 @@ public class MemberDTO {
 		this.me_loc = me_loc;
 	}
 
-	
+	//회원정보수정용
+	public MemberDTO(String me_id, String me_pwd, String me_phone, String me_telnum, String me_telchk, String me_email,
+			String me_addr, String me_character, String me_img) {
+		super();
+		this.me_id = me_id;
+		this.me_pwd = me_pwd;
+		this.me_phone = me_phone;
+		this.me_telnum = me_telnum;
+		this.me_telchk = me_telchk;
+		this.me_email = me_email;
+		this.me_addr = me_addr;
+		this.me_character = me_character;
+		this.me_img = me_img;
+	}
 
 	@Override
 	public String toString() {
