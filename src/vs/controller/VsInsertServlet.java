@@ -44,11 +44,7 @@ public class VsInsertServlet extends HttpServlet {
 		System.out.println(msg);
 		
 		request.setAttribute("post", post);
-		// request.setAttribute("msg", msg);
 		
 		response.sendRedirect("/single/vs/vs_read.do");
-		
-		// RequestDispatcher rd = request.getRequestDispatcher("/vs/vs_read.do");
-		// rd.forward(request, response);
 	}
 }

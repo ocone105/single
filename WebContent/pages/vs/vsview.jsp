@@ -17,8 +17,18 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(".btnA").on("click", function(){
-				alert("btn click");
+				var vs_no = $(this).attr("id");
+				alert(vs_no);
+				document.getElementById("A").value = vs_no;
+				count = 1;
+				document.myform.submit();
 			});
+			$(".btnB").on("click", function(){
+				var vs_no = $(this).attr("id");
+				alert(vs_no);
+			});
+			
+			
 		});
 	
 	</script>
@@ -30,80 +40,52 @@
 	</div>
 
 	<div class="wrapper row2">
-		
-		<div class="container" style="width: 50%">
+
+		<div id="container">
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 
-			<form>
-				<div class="row">
-					<h2 style="text-align: center">날마다 새벽 5시에 출근해서 저녁 10시에 퇴근하는데
-						계속 다녀야되나요?</h2>
-					<h4 style="text-align: center">(집이랑 회사 도보 10분 연봉 3억)</h4>
-					<div class="vl">
-						<span class="vl-innertext">VS</span>
+			<a href="/single/pages/vs/vspost.jsp">글쓰기</a> 
+			<%
+				ArrayList<VsDTO> posts = (ArrayList<VsDTO>) request.getAttribute("posts");
+				System.out.println("게시글" + posts);
+
+				int size = posts.size();
+				for (int i = 0; i < size; i++) {
+					VsDTO post = posts.get(i);
+			%>
+			<div id="post">
+				<form action="/single/vs/vote.do" method="get" id="myform">
+					<div class="row">
+						<h2 style="text-align: center"><%=post.getVs_title()%></h2>
+						<h4 style="text-align: center"><%=post.getVs_txt()%></h4>
+						<div class="vl">
+							<span class="vl-innertext">VS</span>
+						</div>
+						<div class="col" style="text-align: center">
+							<button class="btnA" id="A<%=post.getVs_no()%>"><%=post.getVs_optionA()%></button>
+							<input type="hidden" name="A" id="A">
+						</div>
+						<div class="col" style="text-align: center">
+							<button class="btnB" id="B<%=post.getVs_no()%>"><%=post.getVs_optionB()%></button>
+						</div>
 					</div>
-					<div class="col" style="text-align: center">
-						<button class="btnA">퇴사하기</button>
-					</div>
-					<div class="col" style="text-align: center">
-						<button class="btnB">계속 다니기</button>
-					</div>
+				</form>
+				<br> <br>
+				<div id="bar">
+					<jsp:include page="/pages/vs/bar.jsp" />
 				</div>
-			</form>
-			<br> <br>
-			<div class="bar">
-				<jsp:include page="/pages/vs/bar.jsp" />
-			</div>
 
-			<div class="bottom-container">
-				<a href="/single/pages/vs/vspost.jsp">글쓰기</a>
-				<a href="/single/pages/vs/vscmt.jsp">댓글보기</a>
-			</div>
-		</div>
-		
-		<!-- #################################################################### -->
-		
-		<% 
-			ArrayList<VsDTO> posts = (ArrayList<VsDTO>) request.getAttribute("posts");
-			System.out.println("게시글"+posts);
-
-			int size = posts.size();
-			for (int i = 0; i < size; i++) {
-				VsDTO post = posts.get(i);
-		%>
-		<div class="container" style="width: 50%">
-			<jsp:include page="/pages/template/floatingmenu.jsp" />
-
-			<form>
-				<div class="row">
-					<h2 style="text-align: center"><%=post.getCh_title() %></h2>
-					<h4 style="text-align: center"><%=post.getCh_txt() %></h4>
-					<div class="vl">
-						<span class="vl-innertext">VS</span>
-					</div>
-					<div class="col" style="text-align: center">
-						<button class="btnA" onclick=""><%=post.getCh_optionA() %></button>
-					</div>
-					<div class="col" style="text-align: center">
-						<button class="btnB"><%=post.getCh_optionB() %></button>
-					</div>
+				<div class="bottom-container">
+					<a href="/single/pages/vs/vscmt.jsp">댓글보기</a>
 				</div>
-			</form>
-			<br> <br>
-			<div class="bar">
-				<jsp:include page="/pages/vs/bar.jsp" />
 			</div>
 
-			<div class="bottom-container">
-				<a href="/single/pages/vs/vspost.jsp">글쓰기</a>
-				<a href="/single/pages/vs/vscmt.jsp">댓글보기</a>
-			</div>
+			<%
+				}
+			%>
 		</div>
-		<%} %>
-		
 	</div>
 
-		
 	<!-- Copyright -->
 	<div class="wrapper row3">
 		<jsp:include page="/pages/template/Footer.jsp" />
