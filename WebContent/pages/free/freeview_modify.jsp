@@ -70,7 +70,6 @@
 							class="field-name">카테고리</span></label>
 						<div class="attr-value">
 							<select id="ctg" name="ctg" class="">
-								<option value="">카테고리 선택</option>
 								<option value="자유">자유</option>
 								<option value="정보">정보</option>
 								<option value="후기">후기</option>
@@ -99,11 +98,10 @@
 
 					<!-- 첨부파일 시작 -->
 					<div class="kboard-attr-row kboard-attr-attach attach-1">
-						<label class="attr-name" for="kboard-input-file1"><span
-							class="field-name">첨부파일</span></label>
+						<label class="attr-name" for="kboard-input-file1">
+						<span class="field-name">첨부파일</span></label>
 						<div class="attr-value">
-							<input type="file" id="kboard-input-file1"
-								name="kboard_attach_file1">
+							<input type="file" id="attach" name="attach">
 						</div>
 					</div>
 					<!-- 첨부파일 끝 -->

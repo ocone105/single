@@ -63,7 +63,6 @@
 						<span class="field-name">카테고리</span></label>
 						<div class="attr-value">
 							<select id="ctg" name="ctg" class="">
-								<option value="">카테고리 선택</option>
 								<option value="자유">자유</option>
 								<option value="정보">정보</option>
 								<option value="후기">후기</option>

@@ -1,12 +1,18 @@
 package free.controller;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import free.dto.FreeDTO;
 import free.service.FreeService;
@@ -18,27 +24,39 @@ public class PostUpdateServlet extends HttpServlet {
 		System.out.println("게시글 수정 서블릿 요청 성공");
 		req.setCharacterEncoding("euc-kr");
 
-		// 1. 클라이언트의 요청정보 추출
-		String title = req.getParameter("title");
-		String txt = req.getParameter("txt");
-		String ctg = req.getParameter("ctg");
-		int no = Integer.parseInt(req.getParameter("no"));
+		// 파일 업로드 
+		String saveFolder = "/pages/free/upload";
+		String encType = "euc-kr";
+		int size = 5*1024*1024;
+		String realpath = "";
 
-		// 2. 비지니스 메소드 호출
-		FreeDTO post = new FreeDTO(no, title, txt, ctg);
-		System.out.println(post);
+		ServletContext context = getServletContext();
+		realpath = context.getRealPath(saveFolder);
+		System.out.println("realpath: "+realpath);
+	
+		MultipartRequest multipart 
+		= new MultipartRequest(req, realpath, size, encType, new DefaultFileRenamePolicy());
+		
+		// 클라이언트의 요청정보 추출
+		String title = multipart.getParameter("title");
+		String txt = multipart.getParameter("txt");
+		String ctg = multipart.getParameter("ctg");
+		int no = Integer.parseInt(multipart.getParameter("no"));
+		
+		String fr_img = "";
+		Enumeration<String> files = multipart.getFileNames();
+		while(files.hasMoreElements()){ 
+			String file = files.nextElement(); 
+			fr_img = multipart.getFilesystemName(file); 
+		}
 
+		// 비지니스 메소드 호출
+		FreeDTO post = new FreeDTO(no, title, txt, ctg, fr_img);
 		FreeService service = new FreeServiceImpl();
 		int result = service.update(post);
 
-		// 4. 요청재지정 - forward
-		String view = "";
-		if (result >= 1) {
-			view = "/single/fr/list.do";
-		} else {
-			// view = "/serverweb/emp/read.do?id=" + id + "&action=UPDATE";
-		}
-		res.sendRedirect(view);
+		// 요청재지정
+		res.sendRedirect("/single/pages/free/freeview_modify.jsp");
 
 	}
 }

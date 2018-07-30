@@ -22,6 +22,7 @@
 	media='all' />
 <% FreeDTO post =(FreeDTO) request.getAttribute("post"); %>
 
+</script>
 <!-- -------------------------------- -->
 
 
@@ -156,7 +157,7 @@
 
 					<div class="right">
 						<a href="/single/fr/update.do?no=<%=post.getFr_no()%>" class="kboard-thumbnail-button-small">글수정</a> 
-							<a href="/single/fr/delete.do" class="kboard-thumbnail-button-small"
+							<a href="/single/fr/delete.do?no=<%=post.getFr_no()%>" class="kboard-thumbnail-button-small"
 							onclick="return confirm('삭제 하시겠습니까?');">글삭제</a>
 					</div>
 				</div>
@@ -256,9 +257,9 @@
 				<!-- 검색폼 시작 -->
 				<div class="kboard-search">
 					<form id="kboard-search-form-1" method="get" action="#">
-						<input type="hidden" name="mod" value="list"><input
-							type="hidden" name="pageid" value="1"> <select
-							name="target">
+						<input type="hidden" name="mod" value="list">
+						<input type="hidden" name="pageid" value="1"> 
+						<select name="target">
 							<option value="">전체</option>
 							<option value="title">제목</option>
 							<option value="content">내용</option>

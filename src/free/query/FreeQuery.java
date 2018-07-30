@@ -7,7 +7,7 @@ public class FreeQuery {
 	
 	public static final String UPDATE_POST
 	= "update fr_board "
-			+ "set fr_title=?, fr_txt=?, fr_ctg=? where fr_no=?";	// 글 수정
+			+ "set fr_title=?, fr_txt=?, fr_ctg=?, fr_img=? where fr_no=?";	// 글 수정
 	
 	public static final String DELETE_POST 
 	= "delete from fr_board where fr_no=?";	// 글 삭제
