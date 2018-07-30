@@ -16,10 +16,10 @@
 
 	<div class="wrapper row2">
 
-		<div class="container">
+		<div class="container" style="width: 50%">
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 
-			<form action="/single/vs_insert.do" method="POST" name="myform">
+			<form action="/single/vs/vs_insert.do" method="POST" name="myform">
 				<div class="row">
 					<div class="col-25">
 						<label for="title">Title</label>

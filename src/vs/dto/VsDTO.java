@@ -1,5 +1,7 @@
 package vs.dto;
 
+import java.sql.Date;
+
 public class VsDTO {
 	
 	int ch_no;			// 글번호
@@ -9,7 +11,7 @@ public class VsDTO {
 	String ch_txt;		// 글내용
 	String me_id;		// 작성자ID
 	int ch_hits;		// 조회수
-	String ch_date;		// 작성일
+	Date ch_date;		// 작성일
 	
 	public VsDTO(){}
 
@@ -25,7 +27,7 @@ public class VsDTO {
 
 	// 조회용
 	public VsDTO(int ch_no, String ch_title, String ch_optionA, String ch_optionB, String ch_txt, String me_id,
-			int ch_hits, String ch_date) {
+			int ch_hits, Date ch_date) {
 		super();
 		this.ch_no = ch_no;
 		this.ch_title = ch_title;
@@ -100,11 +102,11 @@ public class VsDTO {
 		this.ch_hits = ch_hits;
 	}
 
-	public String getCh_date() {
+	public Date getCh_date() {
 		return ch_date;
 	}
 
-	public void setCh_date(String ch_date) {
+	public void setCh_date(Date ch_date) {
 		this.ch_date = ch_date;
 	}
 	

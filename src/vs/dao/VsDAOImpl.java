@@ -5,17 +5,19 @@ import static vs.query.VsQuery.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import vs.dto.VsDTO;
 
 public class VsDAOImpl implements VsDAO {
 
 	@Override
-	public int insert_vs(VsDTO post, Connection con) throws SQLException {
+	public int insert(VsDTO post, Connection con) throws SQLException {
 		System.out.println("VsDAO요청");
 		int result = 0;
-		PreparedStatement ptmt = con.prepareStatement(VS_INSERT);
+		PreparedStatement ptmt = con.prepareStatement(INSERT_POST);
 		ptmt.setString(1, post.getCh_title());
 		ptmt.setString(2, post.getCh_optionA());
 		ptmt.setString(3, post.getCh_optionB());
@@ -28,4 +30,19 @@ public class VsDAOImpl implements VsDAO {
 		return result;
 	}
 
+	@Override
+	public ArrayList<VsDTO> read(Connection con) throws SQLException {
+		System.out.println("VsDAO요청");
+		ArrayList<VsDTO> posts = new ArrayList<VsDTO>();
+		VsDTO post = null;
+		PreparedStatement ptmt = con.prepareStatement(READ_POSTS);
+		ResultSet rs = ptmt.executeQuery();
+		while (rs.next()) {
+			post = new VsDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getDate(8));
+			posts.add(post);
+		}
+		close(rs);
+		close(ptmt);
+		return posts;
+	}
 }

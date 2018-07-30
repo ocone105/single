@@ -34,6 +34,8 @@ figure {
 	width: 0%;
 	animation: expand 1.5s ease forwards;
 	float: center;
+		margin: 0px auto;
+	
 }
 .row + .row .chart {
 	animation-delay: .2s;

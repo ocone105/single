@@ -17,8 +17,8 @@
 
 			<div class="row">
 				<div class="chart">
-					<span class="block" title="Option A"> <span class="value">70%</span></span>
-					<span class="block" title="Option B"> <span class="value">30%</span></span>
+					<span class="block" title="Option A"> <span class="value">50%</span></span>
+					<span class="block" title="Option B"> <span class="value">50%</span></span>
 				</div>
 			</div>
 
