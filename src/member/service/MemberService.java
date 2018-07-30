@@ -7,4 +7,5 @@ public interface MemberService {
 	MemberDTO getLoginUser(String id, String pass);
 	MemberDTO getUserInfo(String id);
 	int memberupdate(MemberDTO user);
+	int memberwithdrawal(String id);
 }

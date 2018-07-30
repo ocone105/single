@@ -30,9 +30,15 @@ public class LoginServlet extends HttpServlet {
 		
 		String url = "";
 		if(loginUser!=null){//로그인성공
-			HttpSession ses = request.getSession();
-			ses.setAttribute("loginUser", loginUser);
+			if(loginUser.getMe_state().equals("t")){
+				HttpSession ses = request.getSession();
+				ses.setAttribute("loginUser", loginUser);
+			}else if(loginUser.getMe_state().equals("f")){//탈퇴한회원
+				
+			}
+			
 		}else{//로그인실패
+			
 		}
 		url = "/pages/mainview.jsp";
 		

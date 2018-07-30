@@ -10,4 +10,5 @@ public interface MemberDAO {
 	MemberDTO getLoginUser(String id, String pass, Connection con) throws SQLException;
 	MemberDTO getUserInfo(String id, Connection con) throws SQLException;
 	int memberupdate(MemberDTO user, Connection con) throws SQLException;
+	int memberwithdrawal(String id, Connection con) throws SQLException;
 }

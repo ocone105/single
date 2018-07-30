@@ -101,4 +101,17 @@ public class MemberDAOImpl implements MemberDAO{
 		
 		return result;
 	}
+
+	@Override
+	public int memberwithdrawal(String id, Connection con) throws SQLException {
+		int result = 0;
+		PreparedStatement ptmt = con.prepareStatement(USER_WITHDRAWAL);
+		
+		ptmt.setString(1, id);
+
+		result = ptmt.executeUpdate();
+		close(ptmt);
+		
+		return result;
+	}
 }

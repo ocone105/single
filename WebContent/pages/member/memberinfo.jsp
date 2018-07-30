@@ -9,14 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>registration</title>
-<link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<link href="/single/common/styles/registration/bootstrap.min.css"
-	rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="/single/common/styles/registration/bootstrap.min.css" rel="stylesheet">
 <link href="/single/common/styles/member/info.css" rel="stylesheet">
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
@@ -195,7 +191,7 @@
 							<div class="form-group">
 								<div class="col-xs-12">
 									<br>
-									<a href="/single/pages/member/infoupdate.jsp" class="btn btn-danger pull-right"><i class="glyphicon glyphicon-remove">È¸¿øÅ»Åð</i></a>
+									<a href="/single/pages/member/withdrawal.jsp" class="btn btn-danger pull-right"><i class="glyphicon glyphicon-remove">È¸¿øÅ»Åð</i></a>
 									<a href="/single/memberinfo.do?action=UPDATE" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-edit">È¸¿øÁ¤º¸¼öÁ¤</i></a>
 								</div>
 							</div>

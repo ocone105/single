@@ -79,4 +79,19 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public int memberwithdrawal(String id) {
+		int result=0;
+		MemberDAO dao = new MemberDAOImpl();
+		Connection con = null;
+		try{
+			con = getConnect();
+			result = dao.memberwithdrawal(id, con);
+			}catch(SQLException e){
+				e.printStackTrace();
+			}finally{
+				close(con);
+			}
+		return result;
+	}
 }

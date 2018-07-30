@@ -14,5 +14,7 @@ public class MemberQuery {
 				+ "me_telnum=?, me_telchk=?, me_email=?, "
 				+ "me_addr=?, me_character=?, me_img=? "
 				+ "where me_id=?";
+	public static final String USER_WITHDRAWAL
+				="update member set me_state='f' where me_id=?";
 
 }

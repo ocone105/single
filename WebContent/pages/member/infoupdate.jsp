@@ -9,12 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>registration</title>
-<link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link href="/single/common/styles/member/info.css" rel="stylesheet">
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="/single/common/styles/member/update.css" rel="stylesheet">
 <script src="/single/common/scripts/member/member.js"></script>
@@ -156,7 +153,6 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="col-xs-12">
 										<button class="btn btn-primary pull-right" type="submit" id="updatebtn"><i class="glyphicon glyphicon-edit">회원정보수정</i></button>
 									</div>
 								</div>
