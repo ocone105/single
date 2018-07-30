@@ -24,21 +24,33 @@ public class PostListServlet extends HttpServlet {
 		String action = req.getParameter("action");
 		String view="";
 		
+		FreeService service = new FreeServiceImpl();
+		ArrayList<FreeDTO> postlist = null;
+		
 		if(action.equals("free")){
 			view = "/pages/free/freeview_free.jsp";
+			postlist = service.getCtgList("자유");
+
 		}else if(action.equals("tip")){
 			view = "/pages/free/freeview_tip.jsp";
+			postlist = service.getCtgList("정보");
+
 		}else if(action.equals("review")){
 			view = "/pages/free/freeview_review.jsp";
+			postlist = service.getCtgList("후기");
+
 		}else if(action.equals("recom")){
 			view = "/pages/free/freeview_recom.jsp";
+			postlist = service.getCtgList("추천");
+
 		}else if(action.equals("all")){
 			view = "/pages/free/freeview.jsp";
+			postlist = service.getPostList();
 		}
 
 		// 1.비지니스 메소드 호출
-		FreeService service = new FreeServiceImpl();
-		ArrayList<FreeDTO> postlist = service.getPostList();
+		//FreeService service = new FreeServiceImpl();
+		//ArrayList<FreeDTO> postlist = service.getPostList();
 
 		// 2.데이터공유
 		req.setAttribute("postlist", postlist);

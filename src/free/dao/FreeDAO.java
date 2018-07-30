@@ -18,6 +18,6 @@ public interface FreeDAO {
 
 	ArrayList<FreeDTO> getPostList(Connection con) throws SQLException;	// 게시글 전체 목록
 	
-	ArrayList<FreeDTO> getCtgList(Connection con) throws SQLException;		// 게시글 카테고리별 목록
+	ArrayList<FreeDTO> getCtgList(String fr_ctg, Connection con) throws SQLException;		// 게시글 카테고리별 목록
 
 }
