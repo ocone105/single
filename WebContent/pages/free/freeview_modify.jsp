@@ -39,7 +39,7 @@
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 
 			<div id="kboard-thumbnail-editor">
-				<form class="kboard-form" method="post" action="#"
+				<form class="kboard-form" method="post" action="/single/fr/update.do"
 					enctype="multipart/form-data"
 					onsubmit="return kboard_editor_execute(this);">
 					<input type="hidden" id="kboard-editor-execute-nonce"
@@ -55,6 +55,8 @@
 						name="member_display" value=""> <input type="hidden"
 						name="date" value=""> <input type="hidden" name="user_id"
 						value="0">
+						
+						<input type="hidden" name="no" value="<%=post.getFr_no()%>">	 
 
 					<div class="kboard-attr-row kboard-attr-title required">
 						<label class="attr-name" for="title"><span
@@ -108,7 +110,7 @@
 
 					<div class="kboard-control">
 						<div class="left">
-							<a href="/single/fr/list.do" class="kboard-thumbnail-button-small">돌아가기</a>
+							<a href="/single/fr/list.do?action=all" class="kboard-thumbnail-button-small">돌아가기</a>
 						</div>
 						<div class="right">
 							<button type="submit" class="kboard-thumbnail-button-small">저장하기</button>

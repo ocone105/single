@@ -24,7 +24,13 @@ public class PostReadServlet extends HttpServlet {
 
 		// 1. 클라이언트의 요청정보 추출
 		int no = Integer.parseInt(req.getParameter("no"));
-
+		String action = req.getParameter("action");
+		String view="";
+		if(action.equals("modify")){
+			view = "/pages/free/freeview_modify.jsp";
+		}else{
+			view = "/pages/free/freeview_read.jsp";
+		}
 		// 2. 비지니스 메소드 호출
 		FreeService service = new FreeServiceImpl();
 		FreeDTO post = service.read(no);
@@ -33,7 +39,7 @@ public class PostReadServlet extends HttpServlet {
 		req.setAttribute("post", post);
 
 		// 4. 요청재지정
-		RequestDispatcher rd = req.getRequestDispatcher("/pages/free/freeview_read.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher(view);
 		rd.forward(req, res);
 	}
 }

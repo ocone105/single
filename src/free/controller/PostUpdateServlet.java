@@ -56,7 +56,7 @@ public class PostUpdateServlet extends HttpServlet {
 		int result = service.update(post);
 
 		// 요청재지정
-		res.sendRedirect("/single/pages/free/freeview_modify.jsp");
+		res.sendRedirect("/single/fr/list.do?action=all");
 
 	}
 }

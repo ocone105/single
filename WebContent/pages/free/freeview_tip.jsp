@@ -91,7 +91,7 @@
 								<td class="kboard-list-uid"><%=post.getFr_no()%></td>
 
 								<td class="kboard-list-title"><a
-									href="/single/fr/read.do?no=<%=post.getFr_no()%>">
+									href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=read">
 										<div class="kboard-thumbnail-cut-strings">
 											<%=post.getFr_title()%>
 											<span class="kboard-comments-count"></span>

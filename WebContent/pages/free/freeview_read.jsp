@@ -156,7 +156,7 @@
 					</div>
 
 					<div class="right">
-						<a href="/single/pages/free/freeview_modify.jsp?no=<%=post.getFr_no()%>" class="kboard-thumbnail-button-small">글수정</a> 
+						<a href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=modify" class="kboard-thumbnail-button-small">글수정</a> 
 							<a href="/single/fr/delete.do?no=<%=post.getFr_no()%>" class="kboard-thumbnail-button-small"
 							onclick="return confirm('삭제 하시겠습니까?');">글삭제</a>
 					</div>

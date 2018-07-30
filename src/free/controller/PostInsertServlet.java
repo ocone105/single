@@ -52,7 +52,6 @@ public class PostInsertServlet extends HttpServlet {
 
 		// 비지니스 메소드 호출
 		FreeDTO post = new FreeDTO(title, txt, ctg, fr_img);
-		//System.out.println("게시글 등록 서블릿: " + post);
 		FreeService service = new FreeServiceImpl();
 		int result = service.insert(post);
 

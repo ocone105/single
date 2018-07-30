@@ -47,8 +47,7 @@
 						<li><a href="/single/fr/list.do?action=all">전체</a></li>
 						<li><a href="/single/fr/list.do?action=free">자유</a></li>
 						<li><a href="/single/fr/list.do?action=tip">정보</a></li>
-						<li class="kboard-category-selected"><a
-							href="/single/fr/list.do?action=review">후기</a></li>
+						<li class="kboard-category-selected"><a href="/single/fr/list.do?action=review">후기</a></li>
 						<li><a href="/single/fr/list.do?action=recom">추천</a></li>
 					</ul>
 				</div>
@@ -94,7 +93,7 @@
 								<td class="kboard-list-uid"><%=post.getFr_no()%></td>
 
 								<td class="kboard-list-title"><a
-									href="/single/fr/read.do?no=<%=post.getFr_no()%>">
+									href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=read">
 										<div class="kboard-thumbnail-cut-strings">
 											<%=post.getFr_title()%>
 											<span class="kboard-comments-count"></span>
