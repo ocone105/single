@@ -73,11 +73,11 @@ public class MemberInsertServlet extends HttpServlet {
 		if(me_img==null){
 			me_img = "basicUser.png";
 		}
-		//String lat = request.getParameter("lat");
-		//String lon = request.getParameter("lon");
-		//System.out.println(lat);
-		//System.out.println(lon);
-		String me_loc = "위치";
+		//위치처리
+		String me_loc = "";
+		String lat = multipart.getParameter("lat");
+		String lon = multipart.getParameter("lon");
+		me_loc = lat+","+lon;
 		
 		MemberService service = new MemberServiceImpl();
 		MemberDTO user = new MemberDTO(me_id, me_pwd, me_name, new Date(me_birth), me_gender, me_phone, me_telnum, me_telchk, me_email, me_addr, me_character, me_img, me_loc);

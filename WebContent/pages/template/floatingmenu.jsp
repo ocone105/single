@@ -18,7 +18,7 @@
 		<div>
 			<ul>
 				<li><img id="profile" class="img-circle"
-					src="/single/images/demo/150x150.gif" /></li>
+					src="/single/upload/<%=loginUser.getMe_img() %>" /></li>
 			</ul>
 			<ul>
 				<li><input id="floatingbtn1" type="button" value="회원정보"
@@ -28,8 +28,8 @@
 				</li>
 			</ul>
 			<ul>
-				<li>포인트:100</li>
-				<li>등급: ***</li>
+				<li>포인트: <%=loginUser.getMe_point() %></li>
+				<li>등급:	<%=loginUser.getMe_grade() %></li>
 			</ul>
 
 			<!-- 소모임 -->

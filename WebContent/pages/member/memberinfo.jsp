@@ -200,12 +200,10 @@
 								</div>
 							</div>
 						</form>
-
 					</div>
 					<!--/tab-pane-->
 				</div>
 				<!--/tab-content-->
-
 			</div>
 			<!--/col-9-->
 		</div>

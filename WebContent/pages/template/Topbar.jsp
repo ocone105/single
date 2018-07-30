@@ -16,23 +16,12 @@
 <link rel="stylesheet" href="/single/common/styles/mediaqueries.css"
 	type="text/css" media="all">
 <link rel="stylesheet" href="/single/common/styles/template/topbar.css">
-<style type="text/css">
-#login {
-	background-color: transparent;
-	width: 50px;
-	height: 30px;
-	font-size: 8pt;
-}
-</style>
-<script type="text/javascript">
-
-</script>
 </head>
-<body>
+<body id="topbody">
 	<%
 		MemberDTO loginUser = (MemberDTO) session.getAttribute("loginUser");
 	%>
-	<div id="logoheader" style="height: 20px">
+	<div id="logoheader">
 		<img src="/single/images/logo.png" id="logo" />
 	</div>
 	<form name="login" action="/single/login.do" method="post">
@@ -40,25 +29,25 @@
 			<%
 				if (loginUser == null) {
 			%>
-			<span>ID</span> <span><input name="id" placeholder="ID"
-				type="text"></span> <span>PW</span> <span><input name="pass"
-				placeholder="Password" type="password" /></span>
-			<button class="btn" type="submit" id="login">|login|</button>
-			<a href="/single/pages/registration/registration.jsp">|Join|</a>
+			<span class="idpw">ID</span>
+			<span><input class="idpwtext" name="id" type="text"></span> 
+			<span class="idpw">PW</span> 
+			<span><input class="idpwtext"name="pass" type="password" /></span>
+			<button class="btn" type="submit" id="loginbtn">|login|</button>
+			<button class="btn" type="button" id="joinbtn" onclick="location.href='/single/pages/registration/registration.jsp'">|Join|</button>
 			<%
 				} else {
 			%>
-			<a href="/single/logout.do">|Logout|</a>
+			<button class="btn" type="button" id="logoutbtn" onclick="location.href='/single/logout.do'">|Logout|</button>
 			<%
 				}
 			%>
 		</div>
 	</form>
+	<br/>
 	<header id="header">
 		<div id="hgroup">
-			<h1>
-				<a href="/single/pages/mainview.jsp">Singlesingle</a>
-			</h1>
+			<a href="/single/pages/mainview.jsp" id="singleHeader">Singlesingle</a>
 		</div>
 		<nav id="topnav">
 			<ul class="topnav clear">

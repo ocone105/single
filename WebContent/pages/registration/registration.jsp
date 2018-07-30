@@ -14,26 +14,6 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/single/common/scripts/member/register.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ebf7b2f2c5987b5f48041fd7c1490397"></script>
-<script language="javascript">
-	/* $(document).ready(function(){
-	$("#joinbtn").on("click",function(){
-		// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-		var lat = "";
-		var lon = "";
-		if (navigator.geolocation) {
-		    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-		    navigator.geolocation.getCurrentPosition(function(position) {
-		        lat = position.coords.latitude; // 위도
-		        lon = position.coords.longitude; // 경도
-		        alert(lat);
-		      });
-		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-			   lat = 33.450701; // 위도
-		       lon = 126.570667; // 경도
-		}
-	});
-}); */
-</script>
 </head>
 <body>
 	<div class="wrapper row1">
@@ -58,57 +38,55 @@
 							accept="image/*">
 					</div>
 				</div>
-
 				<!-- 아이디 -->
 				<div class="form-group">
-					<label class="col-sm-3 control-label">아이디</label>
+					<label class="col-sm-3 control-label">아이디*</label>
 					<div class="col-sm-6">
 						<input class="form-control" name="me_id" id="me_id" type="text" maxlength="12"
-							placeholder="ID" onkeyup="IdCheck()">
+							placeholder="ID" onkeyup="IdCheck()" required>
 						<p class="help-block" id="idChk">12자이내</p>
 					</div>
 					
 				</div>
-
 				<!-- 비밀번호 -->
 				<div class="form-group">
-					<label class="col-sm-3 control-label">비밀번호</label>
+					<label class="col-sm-3 control-label">비밀번호*</label>
 					<div class="col-sm-6">
 						<input class="form-control" name="me_pwd" id="me_pwd" type="password" maxlength="15"
-							placeholder="Password">
+							placeholder="Password" required>
 						<p class="help-block">15자이내</p>
 					</div>
 				</div>
 				<!-- 비밀번호확인 -->
 				<div class="form-group">
-					<label class="col-sm-3 control-label">비밀번호 확인</label>
+					<label class="col-sm-3 control-label">비밀번호 확인*</label>
 					<div class="col-sm-6">
 						<input class="form-control" name="pwdChk" id="pwdChk" maxlength="15"
-							type="password" placeholder="Password Check">
+							type="password" placeholder="Password Check" required>
 						<p class="help-block" id="pwMsg">비밀번호를 한번 더 입력해주세요.</p>
 					</div>
 				</div>
 
 				<!-- 이름 -->
 				<div class="form-group">
-					<label class="col-sm-3 control-label">성명</label>
+					<label class="col-sm-3 control-label">성명*</label>
 					<div class="col-sm-6">
 						<input class="form-control" name="me_name" id="me_name" type="text"
-							placeholder="Name">
+							placeholder="Name" required>
 					</div>
 				</div>
 
 				<!-- 생년월일 -->
 				<div class="form-group">
-					<label class="col-sm-3 control-label">생년월일</label>
+					<label class="col-sm-3 control-label">생년월일*</label>
 					<div class="col-sm-6">
-						<p><input class="form-control" type="text" id="datepicker" name="me_birth" ></p>
+						<p><input class="form-control" type="text" id="datepicker" name="me_birth" required ></p>
 					</div>
 				</div>
 
 				<!-- 성별 -->
 				<div class="form-group">
-					<label class="col-md-3 control-label">성별</label>
+					<label class="col-md-3 control-label">성별*</label>
 					<div class="col-md-6">
 						<div class="radio">
 							<label> <input type="radio" name="me_gender" value="male" checked/>남자</label> 
@@ -120,27 +98,27 @@
 
 				<!-- 전화번호 -->
 				<div class="form-group">
-					<label class="col-sm-3 control-label">전화번호</label>
+					<label class="col-sm-3 control-label">전화번호*</label>
 					<div class="col-sm-6">
 						<input class="form-control" name="me_phone" maxlength="13" id="me_phone" type="text"
-							placeholder="010-0000-0000">
+							placeholder="010-0000-0000" required>
 						<p class="help-block">-없이입력해주세요.</p>
 					</div>
 				</div>
 
 				<!-- 비상연락처 -->
 				<div class="form-group">
-					<label class="col-sm-3 control-label">비상연락처</label>
+					<label class="col-sm-3 control-label">비상연락처*</label>
 					<div class="col-sm-6">
 						<input class="form-control" name="me_telnum" maxlength="13" id="me_telnum" type="text"
-							placeholder="010-0000-0000">
+							placeholder="010-0000-0000" required>
 						<p class="help-block">-없이입력해주세요.</p>
 					</div>
 				</div>
 
 				<!-- 비상연락 선택 -->
 				<div class="form-group">
-					<label class="col-md-3 control-label">비상연락설정</label>
+					<label class="col-md-3 control-label">비상연락설정*</label>
 					<div class="col-md-6">
 						<div class="radio">
 							<label> <input type="radio" name="me_telchk" value="켬" checked/>켬
@@ -152,10 +130,10 @@
 
 				<!-- 이메일 -->
 				<div class="form-group">
-					<label class="col-sm-3 control-label">이메일</label>
+					<label class="col-sm-3 control-label">이메일*</label>
 					<div class="col-sm-6">
 						<input class="form-control" name="me_email" id="me_email" type="email"
-							placeholder="single@single.com">
+							placeholder="single@single.com" required>
 					</div>
 				</div>
 
@@ -165,6 +143,8 @@
 					<div class="col-sm-6">
 						<input class="form-control" name="me_addr" id="me_addr" type="text"
 							placeholder="주소">
+						<input type="hidden" name="lat" id="lat"/>
+						<input type="hidden" name="lon" id="lon"/>
 					</div>
 				</div>
 
@@ -215,7 +195,7 @@
 
 				<div class="form-group">
 					<div class="col-sm-12 text-center">
-						<button class="btn btn-primary" type="submit" id="joinbtn">회원가입</button>
+						<button class="btn btn-primary" type="button" id="BtnJoin">회원가입</button>
 						<button class="btn btn-danger" type="reset">가입취소</button>
 					</div>
 				</div>

@@ -75,6 +75,30 @@ $(document).ready(function () {
 	   });
 });
 
+
+//위치정보
+$(document).ready(function(){
+	$("#BtnJoin").on("click",function(){
+		// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+		if (navigator.geolocation) {
+		    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+		    navigator.geolocation.getCurrentPosition(function(position) {
+		        lat = position.coords.latitude; // 위도
+		        lon = position.coords.longitude; // 경도
+		       	document.getElementById("lat").value = lat;
+		       	document.getElementById("lon").value = lon;
+		       	document.myform.submit();
+		      });
+		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+			   	lat = 33.450701; // 위도
+		       	lon = 126.570667; // 경도
+		    	document.getElementById("lat").value = lat;
+		       	document.getElementById("lon").value = lon;
+		       	document.myform.submit();
+		}
+	});
+});
+
 //아이디 중복확인
 var xhr
 function IdCheck() {

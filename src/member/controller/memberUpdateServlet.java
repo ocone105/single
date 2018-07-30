@@ -89,6 +89,11 @@ public class memberUpdateServlet extends HttpServlet {
 		MemberDTO user = new MemberDTO(me_id, me_pwd, me_phone, me_telnum, me_telchk, me_email, me_addr, me_character, me_img);
 		int result = service.memberupdate(user);
 		
+		if(result>=1){
+			MemberDTO updateloginUser = service.getUserInfo(me_id);
+			ses.setAttribute("loginUser", updateloginUser);
+		}
+		
 		response.sendRedirect("/single/memberinfo.do");
 	}
 }

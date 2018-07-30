@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -14,6 +15,7 @@
 	media="screen">
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<!-- top -->
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
@@ -34,7 +36,9 @@
 	<div class="wrapper row2">
 		<div id="container">
 			<!-- 플로팅배너 -->
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 				<!-- Wrapper for slides -->
 				<ol class="carousel-indicators">
