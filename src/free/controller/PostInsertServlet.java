@@ -57,6 +57,6 @@ public class PostInsertServlet extends HttpServlet {
 		int result = service.insert(post);
 
 		// 요청재지정
-		res.sendRedirect("/single/fr/list.do");
+		res.sendRedirect("/single/fr/list.do?action=all");
 	}
 }

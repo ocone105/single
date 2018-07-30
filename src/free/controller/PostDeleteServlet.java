@@ -36,6 +36,6 @@ public class PostDeleteServlet extends HttpServlet {
 		}
 
 		// 요청재지정
-		res.sendRedirect("/single/fr/list.do");
+		res.sendRedirect("/single/fr/list.do?action=all");
 	}
 }
