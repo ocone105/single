@@ -20,18 +20,16 @@ public class CmtInsertServlet extends HttpServlet {
 
 		// 클라이언트의 요청정보 추출
 		String cmt_txt = req.getParameter("cmt");
-		String fr_no = req.getParameter("no");
-		int no = Integer.parseInt(fr_no);
+		int no = Integer.parseInt(req.getParameter("no"));
 		// String me_id = req.getParameter("id");
 
 		// 비지니스 메소드 호출
 		FreeCmtDTO cmt = new FreeCmtDTO(cmt_txt, no);
-
 		System.out.println("댓글 등록 서블릿: " + cmt);
 		FreeCmtService service = new FreeCmtServiceImpl();
 		int result = service.insert(cmt);
 
 		// 요청재지정
-		res.sendRedirect("/single/fr/list.do");
+		res.sendRedirect("/pages/free/freeview_read.jsp");
 	}
 }

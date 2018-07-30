@@ -37,6 +37,12 @@ public class FreeQuery {
 	
 	public static final String SELECT_CMT_LIST
 	= "select fr_cmt_txt, fr_cmt_date, me_id from fr_cmt where fr_no=?";		// ´ñ±Û ÀÐ±â
+	
+	public static final String COUNT_CMT
+	= "select count(fr_cmt_no) from fr_cmt where fr_no=?";		// ´ñ±Û °¹¼ö
+	
+	public static final String REPORT_USER
+	= "update member set me_black=? where me_id=?"; 		// °Ô½Ã±Û ½Å°í
 }
 
 

@@ -75,10 +75,8 @@
 						<div class="kboard-document-action">
 
 							<div class="right">
-								<button type="button"
-									class="kboard-button-action kboard-button-print"
-									onclick="kboard_document_print('index9da7.html?action=kboard_document_print&amp;uid=1851')"
-									title="신고">신고</button>
+								<a href="#" class="kboard-button-action kboard-button-print"
+									onclick="return confirm('신고 하시겠습니까?');">신고</a>
 							</div>
 						</div>
 
@@ -89,12 +87,12 @@
 							<div class="kboard-comments-wrap">
 
 								<div class="comments-header">
-									<div class="comments-count">
-										전체 <span class="comments-total-count">1</span>
+									<div class="comments-count"> 전체 <span class="comments-total-count">1</span>
 									</div>
 
 									<hr>
 								</div>
+								
 								<!-- 댓글 리스트 시작 -->
 								<div class="comments-list">
 									<ul>
@@ -102,16 +100,12 @@
 											class="kboard-comments-item" data-username="sdasd"
 											data-created="20170207223240">
 											<div class="comments-list-username" itemprop="author">
-												<img
-													src="https://secure.gravatar.com/avatar/?s=24&amp;d=mm&amp;r=g" 
-													width="24" height="24" alt="sdasd"
+												<img src="https://secure.gravatar.com/avatar/?s=24&amp;d=mm&amp;r=g" width="24" height="24"
 													class="avatar avatar-24 wp-user-avatar wp-user-avatar-24 photo avatar-default" />
 												sdasd
 											</div>
-											<div class="comments-list-create" itemprop="dateCreated">2017-07-21
-												22:32</div>
-											<div class="comments-list-content" itemprop="description">
-												네</div>
+											<div class="comments-list-create" itemprop="dateCreated">2017-07-21 22:32</div>
+											<div class="comments-list-content" itemprop="description"> 네</div>
 
 											<div class="comments-list-controller">
 												<div class="left">
