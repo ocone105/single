@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@page import="free.dto.FreeDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,9 @@
 <link rel='stylesheet' id='kboard-editor-media-css'
 	href='/single/common/styles/free/editor.css?ver=5.3.9' type='text/css'
 	media='all' />
+	
+<% FreeDTO post =(FreeDTO) request.getAttribute("post"); %>
+	
 <!-- -------------------------------- -->
 
 <script src="/single/common/scripts/jquery.min.js"></script>
@@ -57,7 +61,7 @@
 							class="field-name">제목</span> <span class="attr-required-text">*</span></label>
 						<div class="attr-value">
 							<input type="text" id="title" name="title" class="required"
-								value="공지사항을 읽어주세요.">
+								value="<%=post.getFr_title() %>">
 						</div>
 					</div>
 
@@ -65,7 +69,7 @@
 						<label class="attr-name" for="category1"><span
 							class="field-name">카테고리</span></label>
 						<div class="attr-value">
-							<select id="category1" name="category1" class="">
+							<select id="ctg" name="ctg" class="">
 								<option value="">카테고리 선택</option>
 								<option value="자유">자유</option>
 								<option value="정보">정보</option>
@@ -86,7 +90,7 @@
 									class="wp-editor-container">
 
 									<textarea class="wp-editor-area" style="height: 400px"
-										cols="40" name="kboard_content" id="kboard_content">공지사항을 잘 읽어주세요.</textarea>
+										cols="40" name="txt" id="txt"><%=post.getFr_txt() %></textarea>
 								</div>
 							</div>
 
@@ -106,7 +110,7 @@
 
 					<div class="kboard-control">
 						<div class="left">
-							<a href="freeview.jsp" class="kboard-thumbnail-button-small">돌아가기</a>
+							<a href="/single/fr/list.do" class="kboard-thumbnail-button-small">돌아가기</a>
 						</div>
 						<div class="right">
 							<button type="submit" class="kboard-thumbnail-button-small">저장하기</button>

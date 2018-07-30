@@ -22,7 +22,8 @@ public class FreeDAOImpl implements FreeDAO {
 		ptmt.setString(1, post.getFr_title());
 		ptmt.setString(2, post.getFr_txt());
 		ptmt.setString(3, post.getFr_ctg());
-
+		ptmt.setString(4, post.getFr_img());
+		
 		result = ptmt.executeUpdate();
 
 		close(ptmt);

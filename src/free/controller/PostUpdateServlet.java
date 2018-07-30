@@ -22,9 +22,10 @@ public class PostUpdateServlet extends HttpServlet {
 		String title = req.getParameter("title");
 		String txt = req.getParameter("txt");
 		String ctg = req.getParameter("ctg");
+		int no = Integer.parseInt(req.getParameter("no"));
 
 		// 2. 비지니스 메소드 호출
-		FreeDTO post = new FreeDTO(title, txt, ctg);
+		FreeDTO post = new FreeDTO(no, title, txt, ctg);
 		System.out.println(post);
 
 		FreeService service = new FreeServiceImpl();

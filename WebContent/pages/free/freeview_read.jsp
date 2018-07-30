@@ -63,7 +63,11 @@
 
 						<div class="kboard-content" itemprop="description">
 							<div class="content-view">
-								<p style="text-align: center;"><%=post.getFr_txt()%></p>
+								<p style="text-align: center;">
+								<% if(post.getFr_img() != null){ %>
+								<img src="/single/pages/free/upload/<%= post.getFr_img() %>"/><br/>
+								<%} %>
+								<%=post.getFr_txt()%></p>
 							</div>
 						</div>
 
@@ -127,8 +131,8 @@
 								<!-- 댓글 입력 폼 시작 -->
 								<form id="kboard-comments-form-1851" method="post" action="#"
 									onsubmit="return kboard_comments_execute(this);">
-									<input type="hidden" name="content_uid" value="1851"> <input
-										type="hidden" name="member_uid" value="0">
+									<input type="hidden" name="content_uid" value="1851"> 
+									<input type="hidden" name="member_uid" value="0">
 
 									<div class="kboard-comments-form">
 										<input type="hidden" id="kboard-comments-execute-nonce"
@@ -151,9 +155,8 @@
 					</div>
 
 					<div class="right">
-						<a href="freeview_modify.jsp"
-							class="kboard-thumbnail-button-small">글수정</a> <a href="#"
-							class="kboard-thumbnail-button-small"
+						<a href="/single/fr/update.do?no=<%=post.getFr_no()%>" class="kboard-thumbnail-button-small">글수정</a> 
+							<a href="/single/fr/delete.do" class="kboard-thumbnail-button-small"
 							onclick="return confirm('삭제 하시겠습니까?');">글삭제</a>
 					</div>
 				</div>
@@ -186,7 +189,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="kboard-list-notice">
+<!-- 							<tr class="kboard-list-notice">
 								<td class="kboard-list-uid">공지사항</td>
 
 								<td class="kboard-list-title"><a href="freeview_view.jsp">
@@ -204,7 +207,7 @@
 								<td class="kboard-list-user">admin</td>
 								<td class="kboard-list-date">2018.07.21</td>
 								<td class="kboard-list-view">26</td>
-							</tr>
+							</tr> -->
 
 							<tr class="">
 								<td class="kboard-list-uid">1</td>
@@ -268,7 +271,7 @@
 
 				<!-- 버튼 시작 -->
 				<div class="kboard-control">
-					<a href="freeview_write.jsp"
+					<a href="/single/pages/free/freeview_write.jsp"
 						class="kboard-thumbnail-button-small">글쓰기</a>
 				</div>
 				<!-- 버튼 끝 -->

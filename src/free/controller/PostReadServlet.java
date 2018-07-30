@@ -33,7 +33,7 @@ public class PostReadServlet extends HttpServlet {
 		req.setAttribute("post", post);
 
 		// 4. 요청재지정
-		RequestDispatcher rd = req.getRequestDispatcher("/single/pages/free/freeview_view.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/pages/free/freeview_read.jsp");
 		rd.forward(req, res);
 	}
 }

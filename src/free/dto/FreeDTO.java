@@ -16,13 +16,31 @@ public class FreeDTO {
 	public FreeDTO() {
 		
 	}
+
+	// 게시글 업데이트용 (로그인 전)
+	public FreeDTO(int fr_no, String fr_title, String fr_txt, String fr_ctg) {
+		super();
+		this.fr_no = fr_no;
+		this.fr_title = fr_title;
+		this.fr_txt = fr_txt;
+		this.fr_ctg = fr_ctg;
+	}
 	
-	// 게시글 등록용(로그인 전)
+	// 게시글 등록용(로그인, 첨부파일 전)
 	public FreeDTO(String fr_title, String fr_txt, String fr_ctg) {
 		super();
 		this.fr_title = fr_title;
 		this.fr_txt = fr_txt;
 		this.fr_ctg = fr_ctg;
+	}
+	
+	// 게시글 등록용(로그인 전)
+	public FreeDTO(String fr_title, String fr_txt, String fr_ctg, String fr_img) {
+		super();
+		this.fr_title = fr_title;
+		this.fr_txt = fr_txt;
+		this.fr_ctg = fr_ctg;
+		this.fr_img = fr_img;
 	}
 
 	// 게시글 목록용 (카테고리 필요..?함???)

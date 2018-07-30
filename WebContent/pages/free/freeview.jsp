@@ -84,18 +84,12 @@
 								<td class="kboard-list-uid"><%=post.getFr_no()%></td>
 
 								<td class="kboard-list-title"><a
-									href="/single/fr/read.do?id=<%=post.getFr_no()%>">
+									href="/single/fr/read.do?no=<%=post.getFr_no()%>">
 										<div class="kboard-thumbnail-cut-strings">
 											<%=post.getFr_title()%>
 											<span class="kboard-comments-count"></span>
 										</div>
-								</a> <%-- 필요없는거같음..아마									<div class="kboard-mobile-contents">
-										<span class="contents-item kboard-user"><%=post.getMe_id() %></span> 
-										<span class="contents-separator kboard-date">|</span> 
-										<span class="contents-item kboard-date"><%=post.getFr_date() %></span> 
-										<span class="contents-separator kboard-view">|</span> 
-										<span class="contents-item kboard-view"><%=post.getFr_hits() %></span>
-									</div> --%></td>
+								</a> </td>
 								<td class="kboard-list-user"><%=post.getMe_id()%></td>
 								<td class="kboard-list-date"><%=post.getFr_date()%></td>
 								<td class="kboard-list-view"><%=post.getFr_hits()%></td>
@@ -146,7 +140,7 @@
 
 				<!-- 버튼 시작 -->
 				<div class="kboard-control">
-					<a href="freeview_write.jsp" class="kboard-thumbnail-button-small">글쓰기</a>
+					<a href="/single/pages/free/freeview_write.jsp" class="kboard-thumbnail-button-small">글쓰기</a>
 				</div>
 				<!-- 버튼 끝 -->
 				<!-- ########################################################################################## -->

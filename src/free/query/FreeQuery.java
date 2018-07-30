@@ -3,7 +3,7 @@ package free.query;
 public class FreeQuery {
 
 	public static final String INSERT_POST 
-	= "insert into fr_board values(fr_seq.nextval, ?, ?, ?, sysdate, 0, 'image', 'testid')";	//글 작성
+	= "insert into fr_board values(fr_seq.nextval, ?, ?, ?, sysdate, 0, ?, 'testid')";	//글 작성 ~ 로그인 전
 	
 	public static final String UPDATE_POST
 	= "update fr_board "
@@ -16,7 +16,7 @@ public class FreeQuery {
 	= "select * from fr_board where fr_no=?";	// 글 읽기
 	
 	public static final String SELECT_POST_ALL
-	= "select fr_no, fr_title, fr_date, fr_hits, me_id from fr_board";		// 전체 게시글 목록 읽기
+	= "select fr_no, fr_title, fr_date, fr_hits, me_id from fr_board order by fr_no desc";		// 전체 게시글 목록 읽기
 	
 	public static final String SELECT_POST_CTG
 	= "select fr_no, fr_title, me_id, fr_date, fr_hits from fr_board where fr_ctg=?";		// 카테고리별 게시글 목록 읽기
