@@ -64,18 +64,27 @@ public class FreeDAOImpl implements FreeDAO {
 	@Override
 	public FreeDTO read(int fr_no, Connection con) throws SQLException {
 		FreeDTO post = null;
+		int result = 0;
+
 		PreparedStatement ptmt = con.prepareStatement(READ_POST);
+		PreparedStatement ptmt2 = con.prepareStatement(READ_POST_HITS);
 
 		ptmt.setInt(1, fr_no);
 		ResultSet rs = ptmt.executeQuery();
 
 		if (rs.next()) {
-			System.out.println("게시글 읽기");
 			post = new FreeDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5),
-					rs.getInt(6), rs.getString(7), rs.getString(8));
+					rs.getInt(6)+1, rs.getString(7), rs.getString(8));
 		}
-		System.out.println("게시글 읽기 dao: " + post);
+		
+		ptmt2.setInt(1,post.getFr_hits());
+		ptmt2.setInt(2, fr_no);
+		result = ptmt2.executeUpdate();
+
+		//System.out.println("게시글 읽기 dao: " + post);
 		close(ptmt);
+		close(ptmt2);
+
 		return post;
 	}
 

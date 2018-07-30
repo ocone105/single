@@ -15,6 +15,9 @@ public class FreeQuery {
 	public static final String READ_POST
 	= "select * from fr_board where fr_no=?";	// 글 읽기
 	
+	public static final String READ_POST_HITS
+	= "update fr_board set fr_hits = ? where fr_no=?";	// 글 읽기 + 조회수 증가
+	
 	public static final String SELECT_POST_ALL
 	= "select fr_no, fr_title, fr_date, fr_hits, me_id from fr_board order by fr_no desc";		// 전체 게시글 목록 읽기
 	
