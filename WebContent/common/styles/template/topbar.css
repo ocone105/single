@@ -1,13 +1,38 @@
 @CHARSET "EUC-KR";
-	#logoheader{
-		float: left;
-	}
-	#loginheader{
-		margin-top: 5px;
-		margin-right: 50px;
-		float: right;
-	}
-	#logo{
-		width: 100px;
-		height: 100px;
-	}
+#topbody{
+	font-family: °íµñ;
+}
+#singleHeader{
+	font-size: 45pt;
+	font-weight: bold;
+}
+#loginbtn, #joinbtn, #logoutbtn {
+	background-color: transparent;
+	text-align: center;
+	width: 60px;
+	height: 30px;
+	font-size: 12pt;
+}
+#logoheader {
+	float: left;
+	height: 20px;
+}
+#loginheader {
+	margin-top: 5px;
+	margin-right: 50px;
+	float: right;
+}
+#logo {
+	width: 100px;
+	height: 100px;
+}
+.idpw{
+	font-size: 12pt;
+	width: 130px;
+	height: 28px;
+}
+.idpwtext{
+	font-size: 10pt;
+	width: 100px;
+	height: 23px;
+}

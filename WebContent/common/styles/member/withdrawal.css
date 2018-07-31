@@ -1,0 +1,7 @@
+@CHARSET "EUC-KR";
+em{
+	color: orange;
+}
+.page-header h1{
+	font-size: 30pt;
+}
