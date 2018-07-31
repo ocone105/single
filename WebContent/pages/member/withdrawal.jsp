@@ -12,7 +12,7 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="/single/common/styles/member/withdrawal.css" rel="stylesheet">
-<script src="/single/common/scripts/member/member.js"></script>
+<script src="/single/common/scripts/member/withdrawal.js"></script>
 </head>
 <body>
 <div class="wrapper row1">
@@ -24,7 +24,8 @@
 		<div class="page-header">
 				<h1>회원탈퇴</h1>
 		</div>
-		<form class="form-horizontal" action="/single/memberwithdrawal.do" method="get" name="myform">
+		<form class="form-horizontal" action="/single/memberwithdrawal.do" method="get" name="myform" 
+		onsubmit="return agreeCheck()">
 			<div>
 				<h2>탈퇴 안내</h2>
 				<h3>회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요.</h3>
@@ -35,7 +36,7 @@
 				<p> 2. 탈퇴 후에도 게시판형 서비스에 등록한 게시물 및 댓글은 그대로 남아 있습니다.</p>
 				<p> 삭제를 원하는 게시글및 댓글이 있다면 <em>반드시 탈퇴 전 삭제하시기 바랍니다.</em></p>
 				<p> 탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수 있는 방법이 없어, 게시글을 임의로 삭제해드릴 수 없습니다. </p>
-				<input type="checkbox" id="dropoutAgree" name="dropoutAgree" >
+				<input type="checkbox" id="dropoutAgree" name="dropoutAgree" value="agree">
 				<label for="dropoutAgree"><strong>안내 사항을 모두 확인하였으며, 이에 동의합니다.</strong></label>
 			</div>
 		<button class="btn btn-danger pull-right" type="submit" id="updatebtn"><i class="glyphicon glyphicon-remove">회원탈퇴</i></button>

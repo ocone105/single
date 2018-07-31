@@ -13,6 +13,17 @@
 <link rel="stylesheet" href="/single/common/styles/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="/single/common/styles/mediaqueries.css" type="text/css" media="all">
 <link rel="stylesheet" href="/single/common/styles/template/topbar.css">
+<script type="text/javascript">
+function loginCheck(){
+    if(!document.myform.id.value){
+        alert("아이디를 입력해주세요.");
+       	return false;
+    }else if(!document.myform.pass.value){
+    	alert("비밀번호를 입력해주세요.");
+       	return false;
+    }
+}
+</script>
 </head>
 <body id="topbody">
 	<%
@@ -21,15 +32,15 @@
 	<div id="logoheader">
 		<img src="/single/images/logo.png" id="logo" />
 	</div>
-	<form name="login" action="/single/login.do" method="post">
+	<form name="login" action="/single/login.do" method="post" onsubmit="return loginCheck()">
 		<div id="loginheader">
 			<%
 				if (loginUser == null) {
 			%>
 			<span class="idpw">ID</span>
-			<span><input class="idpwtext" name="id" type="text"></span> 
+			<span><input class="idpwtext" name="id" id="id" type="text"></span> 
 			<span class="idpw">PW</span> 
-			<span><input class="idpwtext"name="pass" type="password" /></span>
+			<span><input class="idpwtext" name="pass" id="pass" type="password" /></span>
 			<button class="btn" type="submit" id="loginbtn">|login|</button>
 			<button class="btn" type="button" id="joinbtn" onclick="location.href='/single/pages/registration/registration.jsp'">|Join|</button>
 			<%
