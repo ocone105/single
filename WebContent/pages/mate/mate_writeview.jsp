@@ -62,6 +62,10 @@
 						<td><input type="file" name="mt_img"></td>
 					</tr>
 					<tr>
+						<td>첨부파일</td>
+						<td><input type="file" name="mt_file"></td>
+					</tr>
+					<tr>
 						<td>내용</td>
 						<td><textarea name="mt_txt" cols="100" rows="8"></textarea></td>
 					</tr>

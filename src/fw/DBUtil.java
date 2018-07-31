@@ -1,4 +1,4 @@
-package vs.fw;
+package fw;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,7 +25,7 @@ public class DBUtil {
 	//2. DB서버 연결 - 커넥션설정
 	public static Connection getConnect(){
 		Connection con = null;
-		String url = "jdbc:oracle:thin:@211.42.204.20:1521:xe";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "single";
 		String password = "single";
 		try{
@@ -71,3 +71,14 @@ public class DBUtil {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+

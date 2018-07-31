@@ -3,6 +3,7 @@ package vs.controller;
 import java.io.IOException;
 import java.sql.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,7 @@ import vs.dto.VsDTO;
 import vs.service.VsService;
 import vs.service.VsServiceImpl;
 
-@WebServlet(name = "vs_insert", urlPatterns = { "/vs_insert.do" })
+@WebServlet(name = "vs_insert", urlPatterns = { "/vs/vs_insert.do" })
 public class VsInsertServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +30,7 @@ public class VsInsertServlet extends HttpServlet {
 		VsService service = new VsServiceImpl();
 		VsDTO post = new VsDTO(vs_title, vs_optionA, vs_optionB, vs_txt, me_id);
 		System.out.println(post);
-		int result = service.insert_vs(post);
+		int result = service.insert(post);
 		System.out.println(vs_title);
 		System.out.println(vs_optionA);
 		System.out.println(vs_optionB);
@@ -42,8 +43,8 @@ public class VsInsertServlet extends HttpServlet {
 		}
 		System.out.println(msg);
 		
-		// req.setAttribute("msg", msg);
+		request.setAttribute("post", post);
 		
+		response.sendRedirect("/single/vs/vs_read.do");
 	}
-
 }
