@@ -1,3 +1,6 @@
+<%@page import="member.dto.MemberDTO"%>
+<%@page import="mate.dto.MateDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -8,17 +11,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/single/common/styles/layout.css" type="text/css" media="all">
 <link rel="stylesheet" href="/single/common/styles/mediaqueries.css" type="text/css" media="all">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 <script src="/single/common/scripts/jquery.min.js"></script>
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
 	<div class="wrapper row2">
 		<div id="container">
 			<!-- 플로팅배너 -->
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<!-- map body -->
 			<div>
 				<button>
@@ -28,7 +36,7 @@
 					<a>위치바꾸기</a>
 				</button>
 				<footer class="more">
-					<a href="mate_writeview.jsp">소모임 만들기 &raquo;</a>
+					<a href="/single/pages/mate/mate_writeview.jsp">소모임 만들기 &raquo;</a>
 				</footer>
 			</div>
 			<div id="map" style="width: 100%; height: 400px;"></div>
@@ -48,18 +56,24 @@
 
 			<hr />
 			<!-- content body -->
-
+			<% ArrayList<MateDTO> dtolist = (ArrayList<MateDTO>)request.getAttribute("dtolist");
+				int size = dtolist.size();
+			%>
 			<section id="portfolio" class="clear">
 				<ul>
+				<% for(int i = 0; i<size; i++){
+					%>
 					<li>
 						<article>
 							<figure>
-								<a href="/single/pages/mate/mate_groupview.jsp"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>1번 소모임</figcaption>
+								<a href="/single/mt_read.do?mt_no=<%=dtolist.get(i).getMt_no() %>"><img src="<%=dtolist.get(i).getMt_img() %>" 
+								alt="<%=dtolist.get(i).getMt_img() %>"></a>
+								<figcaption><%=dtolist.get(i).getMt_title() %></figcaption>
 							</figure>
 						</article>
 					</li>
-					<li>
+						<% }%>
+<!-- 					<li>
 						<article>
 							<figure>
 								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
@@ -82,7 +96,7 @@
 								<figcaption>4번 소모임</figcaption>
 							</figure>
 						</article>
-					</li>
+					</li> -->
 
 				</ul>
 			</section>

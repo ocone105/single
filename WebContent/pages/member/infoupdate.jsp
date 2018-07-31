@@ -17,13 +17,16 @@
 <script src="/single/common/scripts/member/member.js"></script>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 <% MemberDTO user = (MemberDTO)request.getAttribute("user"); %>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
 	<div class="wrapper row2">
 		<div id="container" class="container bootstrap snippet">
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<div class="page-header">
 				<h1>회원정보</h1>
 			</div>

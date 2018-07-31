@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
@@ -9,17 +10,19 @@
 	<link rel="stylesheet" href="/single/common/styles/vs/vspost.css">
 </head>
 <body>
-
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
 
 	<div class="wrapper row2">
 
-		<div class="container">
+		<div class="container" style="width: 50%">
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 
-			<form action="/single/vs_insert.do" method="POST" name="myform">
+			<form action="/single/vs/vs_insert.do" method="POST" name="myform">
 				<div class="row">
 					<div class="col-25">
 						<label for="title">Title</label>

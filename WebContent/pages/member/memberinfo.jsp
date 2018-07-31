@@ -16,6 +16,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 <%
 	MemberDTO user = (MemberDTO)request.getAttribute("user");
 %>
@@ -24,7 +25,9 @@
 	</div>
 	<div class="wrapper row2">
 		<div id="container" class="container bootstrap snippet">
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<div class="page-header">
 				<h1>회원정보</h1>
 			</div>

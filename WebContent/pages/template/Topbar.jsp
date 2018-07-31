@@ -9,9 +9,6 @@
 <title>singlesingle</title>
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="/single/common/styles/layout.css" type="text/css" media="all">
-<link rel="stylesheet" href="/single/common/styles/mediaqueries.css" type="text/css" media="all">
 <link rel="stylesheet" href="/single/common/styles/template/topbar.css">
 <script type="text/javascript">
 function loginCheck(){
@@ -60,7 +57,7 @@ function loginCheck(){
 		<nav id="topnav">
 			<ul class="topnav clear">
 				<li class="active"><a href="/single/pages/mainview.jsp">Home</a></li>
-				<li><a href="/single/pages/mate/mate_mainview.jsp">메이트</a></li>
+				<li><a href="/single/mt_list.do">메이트</a></li>
 				<li><a href="/single/pages/local/localview.jsp">지역행사</a></li>
 				<li><a href="/single/pages/free/freeview.jsp">자유게시판</a>
 					<ul>
@@ -69,8 +66,8 @@ function loginCheck(){
 						<li><a href="/single/pages/free/freeview_review.jsp">후기</a></li>
 						<li><a href="/single/pages/free/freeview_recom.jsp">추천</a></li>
 					</ul></li>
-				<li><a href="/single/pages/vs/vsview.jsp">vs게시판</a></li>
-				<li><a href="/single/pages/point/pointmarketview.jsp">포인트마켓</a></li>
+				<li><a href="/single/vs/vs_read.do">vs게시판</a></li>
+				<li><a href="/single/PointList.do">포인트마켓</a></li>
 			</ul>
 		</nav>
 	</header>

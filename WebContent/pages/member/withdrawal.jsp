@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -15,12 +16,15 @@
 <script src="/single/common/scripts/member/withdrawal.js"></script>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 <div class="wrapper row1">
 	<jsp:include page="/pages/template/Topbar.jsp" />
 </div>
 <div class="wrapper row2">
 	<div id="container" class="container bootstrap snippet">
-		<%-- <jsp:include page="/pages/template/floatingmenu.jsp" /> --%>
+		<%if(loginUser!=null){ %>
+			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 		<div class="page-header">
 				<h1>È¸¿øÅ»Åð</h1>
 		</div>

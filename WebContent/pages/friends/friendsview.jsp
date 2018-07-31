@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -11,6 +12,7 @@
 	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<!-- top -->
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
@@ -18,7 +20,9 @@
 
 	<div class="wrapper row2">
 		<div id="container">
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<jsp:include page="/pages/friends/friendsmenu.jsp"/>
 			
 			<p align="center">Friends List</p>
