@@ -55,9 +55,10 @@ function loginCheck(){
 			<a href="/single/pages/mainview.jsp" id="singleHeader">Singlesingle</a>
 		</div>
 		<nav id="topnav">
+<<<<<<< HEAD
 			<ul class="topnav clear">
 				<li class="active"><a href="/single/pages/mainview.jsp">Home</a></li>
-				<li><a href="/single/pages/mate/mate_mainview.jsp">메이트</a></li>
+				<li><a href="/single/mt_list.do">메이트</a></li>
 				<li><a href="/single/pages/local/localview.jsp">지역행사</a></li>
 				<li><a href="/single/pages/free/freeview.jsp">자유게시판</a>
 					<ul>
@@ -67,7 +68,7 @@ function loginCheck(){
 						<li><a href="/single/pages/free/freeview_recom.jsp">추천</a></li>
 					</ul></li>
 				<li><a href="/single/vs/vs_read.do">vs게시판</a></li>
-				<li><a href="/single/pages/point/pointmarketview.jsp">포인트마켓</a></li>
+				<li><a href="/single/PointList.do">포인트마켓</a></li>
 			</ul>
 		</nav>
 	</header>

@@ -1,3 +1,5 @@
+<%@page import="mate.dto.MateDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -28,7 +30,7 @@
 					<a>위치바꾸기</a>
 				</button>
 				<footer class="more">
-					<a href="mate_writeview.jsp">소모임 만들기 &raquo;</a>
+					<a href="/single/pages/mate/mate_writeview.jsp">소모임 만들기 &raquo;</a>
 				</footer>
 			</div>
 			<div id="map" style="width: 100%; height: 400px;"></div>
@@ -48,18 +50,24 @@
 
 			<hr />
 			<!-- content body -->
-
+			<% ArrayList<MateDTO> dtolist = (ArrayList<MateDTO>)request.getAttribute("dtolist");
+				int size = dtolist.size();
+			%>
 			<section id="portfolio" class="clear">
 				<ul>
+				<% for(int i = 0; i<size; i++){
+					%>
 					<li>
 						<article>
 							<figure>
-								<a href="/single/pages/mate/mate_groupview.jsp"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>1번 소모임</figcaption>
+								<a href="/single/mt_read.do?mt_no=<%=dtolist.get(i).getMt_no() %>"><img src="<%=dtolist.get(i).getMt_img() %>" 
+								alt="<%=dtolist.get(i).getMt_img() %>"></a>
+								<figcaption><%=dtolist.get(i).getMt_title() %></figcaption>
 							</figure>
 						</article>
 					</li>
-					<li>
+						<% }%>
+<!-- 					<li>
 						<article>
 							<figure>
 								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
@@ -82,7 +90,7 @@
 								<figcaption>4번 소모임</figcaption>
 							</figure>
 						</article>
-					</li>
+					</li> -->
 
 				</ul>
 			</section>
