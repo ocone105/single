@@ -14,7 +14,7 @@ import vs.dto.VsDTO;
 public class VsDAOImpl implements VsDAO {
 
 	@Override
-	public int insert(VsDTO post, Connection con) throws SQLException {
+	public int insert(VsDTO post, Connection con) throws SQLException {	// vs게시글 작성
 		System.out.println("VsDAO요청");
 		int result = 0;
 		PreparedStatement ptmt = con.prepareStatement(INSERT_POST);
@@ -31,7 +31,7 @@ public class VsDAOImpl implements VsDAO {
 	}
 
 	@Override
-	public ArrayList<VsDTO> read(Connection con) throws SQLException {
+	public ArrayList<VsDTO> read(Connection con) throws SQLException {	// vs게시글 목록
 		System.out.println("VsDAO요청");
 		ArrayList<VsDTO> posts = new ArrayList<VsDTO>();
 		VsDTO post = null;
@@ -44,5 +44,27 @@ public class VsDAOImpl implements VsDAO {
 		close(rs);
 		close(ptmt);
 		return posts;
+	}
+
+	@Override
+	public int update(int vs_no, Connection con) throws SQLException {	// 투표수 업데이트
+		System.out.println("VsDAO요청");
+		int result = 0;
+		/*if(column.equals("name")){
+			sql = UPDATE_OPTA;
+		}else if(column.equals("addr")){
+			sql = UPDATE_OPTB;
+		}*/
+		PreparedStatement ptmt = con.prepareStatement(INSERT_POST);
+/*		ptmt.setString(1, post.getVs_title());
+		ptmt.setString(2, post.getVs_optionA());
+		ptmt.setString(3, post.getVs_optionB());
+		ptmt.setString(4, post.getVs_txt());
+		ptmt.setString(5, post.getMe_id());*/
+		
+		result = ptmt.executeUpdate();
+		System.out.println(result);
+		close(ptmt);
+		return result;
 	}
 }

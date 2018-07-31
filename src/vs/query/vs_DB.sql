@@ -21,3 +21,8 @@ me_id varchar2(30),
 vs_hitsA number,
 vs_hitsB number,
 vs_date date);
+
+
+update VS_BOARD
+set vs_hitsA = vs_hitsA+1
+where vs_no='53';

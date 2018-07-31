@@ -14,7 +14,7 @@ import vs.dto.VsDTO;
 public class VsServiceImpl implements VsService {
 
 	@Override
-	public int insert(VsDTO post) {
+	public int insert(VsDTO post) {	// vs게시글 작성
 		System.out.println("VsService요청");
 		int result = 0;
 		Connection con = null;		
@@ -31,7 +31,7 @@ public class VsServiceImpl implements VsService {
 	}
 
 	@Override
-	public ArrayList<VsDTO> read() {
+	public ArrayList<VsDTO> read() {	// vs게시글 목록
 		System.out.println("VsService요청");
 		ArrayList<VsDTO> posts = null;
 		VsDAO dao = new VsDAOImpl();
@@ -47,4 +47,20 @@ public class VsServiceImpl implements VsService {
 		return posts;
 	}
 
+	@Override
+	public int update(int vs_no) {	// 투표수 업데이트
+		System.out.println("VsService요청");
+		int result = 0;
+		Connection con = null;		
+		VsDAO dao = new VsDAOImpl();	
+		try {
+			con = getConnect();
+			result = dao.update(vs_no, con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(con);
+		}
+		return result;
+	}
 }

@@ -14,26 +14,35 @@ import vs.dto.VsDTO;
 import vs.service.VsService;
 import vs.service.VsServiceImpl;
 
-@WebServlet(name = "vs_read", urlPatterns = { "/vs/vs_read.do" })
-public class VsReadServlet extends HttpServlet {
-	
+@WebServlet(name = "select", urlPatterns = { "/vs/select.do" })
+public class SelectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
 		System.out.println("Servlet요청성공");
+		
+		String A = request.getParameter("A");
+		String B = request.getParameter("B");
+		int vs_no = 0;
+		System.out.println("A"+A);
+		System.out.println("B"+B);
 
+		if(A!=null){
+			vs_no = Integer.parseInt(A);
+		} else if(B!=null){ 
+			vs_no = Integer.parseInt(B);
+		} else{
+			System.out.println("vs_no 없음");
+		}
+		System.out.println(vs_no);
+
+		String option = "A";
 		// 2. 비지니스 메소드 호출
 		VsService service = new VsServiceImpl();
-		ArrayList<VsDTO> posts = service.read();
+		// int result = service.update(vs_no, option);
 
 		// 3. 데이터공유
-		request.setAttribute("posts", posts);
-		
-		for (int i = 0; i < posts.size(); i++) {
-			System.out.println(posts.get(i));
-		}
 
 		// 4. 요청재지정
-		RequestDispatcher rd = request.getRequestDispatcher("/pages/vs/vsview.jsp");
-		rd.forward(request, response);
+		response.sendRedirect("/single/vs/vs_read.do");
 	}
 }

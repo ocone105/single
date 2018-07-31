@@ -17,15 +17,16 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(".btnA").on("click", function(){
-				var vs_no = $(this).attr("id");
+				vs_no = $(this).attr("id");
 				alert(vs_no);
 				document.getElementById("A").value = vs_no;
-				count = 1;
 				document.myform.submit();
 			});
 			$(".btnB").on("click", function(){
-				var vs_no = $(this).attr("id");
-				alert(vs_no);
+				vs_no = $(this).attr("id");
+				alert("B"+vs_no);
+				document.getElementById("B").value = vs_no;
+				document.myform.submit();
 			});
 			
 			
@@ -54,7 +55,7 @@
 					VsDTO post = posts.get(i);
 			%>
 			<div id="post">
-				<form action="/single/vs/vote.do" method="get" id="myform">
+				<form action="/single/vs/select.do" id="myform">
 					<div class="row">
 						<h2 style="text-align: center"><%=post.getVs_title()%></h2>
 						<h4 style="text-align: center"><%=post.getVs_txt()%></h4>
@@ -62,11 +63,12 @@
 							<span class="vl-innertext">VS</span>
 						</div>
 						<div class="col" style="text-align: center">
-							<button class="btnA" id="A<%=post.getVs_no()%>"><%=post.getVs_optionA()%></button>
+							<button class="btnA" id="<%=post.getVs_no()%>"><%=post.getVs_optionA()%></button>
 							<input type="hidden" name="A" id="A">
 						</div>
 						<div class="col" style="text-align: center">
-							<button class="btnB" id="B<%=post.getVs_no()%>"><%=post.getVs_optionB()%></button>
+							<button class="btnB" id="<%=post.getVs_no()%>"><%=post.getVs_optionB()%></button>
+							<input type="hidden" name="B" id="B">
 						</div>
 					</div>
 				</form>
@@ -79,7 +81,6 @@
 					<a href="/single/pages/vs/vscmt.jsp">´ñ±Ûº¸±â</a>
 				</div>
 			</div>
-
 			<%
 				}
 			%>
@@ -90,6 +91,5 @@
 	<div class="wrapper row3">
 		<jsp:include page="/pages/template/Footer.jsp" />
 	</div>
-
 </body>
 </html>
