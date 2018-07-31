@@ -1,26 +1,21 @@
 package mate.service;
 
-<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.SQLException;
-=======
 import static fw.DBUtil.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
->>>>>>> refs/remotes/origin/khj
 
 import mate.dao.MateDAO;
 import mate.dao.MateDAOImpl;
 import mate.dto.MateDTO;
-import static fw.DBUtil.*;
 
 public class MateServiceImpl implements MateService {
 	@Override
 	public int insert_mt(MateDTO dto) {
 		int result = 0;
-<<<<<<< HEAD
 		Connection con = null;
 		con = getConnect();
 		MateDAO dao = new MateDAOImpl();
@@ -31,19 +26,7 @@ public class MateServiceImpl implements MateService {
 		}finally{
 			close(con);
 		}
-=======
-		MateDAO dao = new MateDAOImpl();
-		Connection con = null;
-		try {
-			con = getConnect();
-			result = dao.insert_mt(dto, con);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally{
-			close(con);
-		}
-		
->>>>>>> refs/remotes/origin/khj
+
 		return result;
 	}
 

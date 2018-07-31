@@ -1,7 +1,6 @@
 package point.service;
 
-import static fw.DBUtil.close;
-import static fw.DBUtil.getConnect;
+import static fw.DBUtil.*;
 
 import java.sql.Connection;
 import java.sql.SQLException;
