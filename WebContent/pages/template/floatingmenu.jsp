@@ -42,26 +42,6 @@
 				<li><img src="/single/images/demo/imgr.gif" />
 			</ul>
 
-		<ul>
-			<li><img id="profile" class="img-circle" src="/single/images/demo/150x150.gif"/></li>
-		</ul>
-		<ul>
-			<li>
-				<input id="floatingbtn1" type="button" value="회원정보" class="btn" onclick="location.href='/single/pages/member/memberinfo.jsp'">
-				<input id="floatingbtn2" type="button" value="친구관리" class="btn" onclick="location.href='/single/pages/friends/friendsview.jsp'">
-			</li>
-		</ul>
-		<ul>
-			<li>포인트:100	 등급: ***</li>
-		</ul>
-		
-		<!-- 소모임 -->
-		<ul>
-			<li><a href="" target="_self">구로1동</a></li>
-		</ul>
-		<ul>
-			<li><img src="/single/images/demo/imgr.gif"/>
-		</ul>
 		</div>
 	</div>
 
