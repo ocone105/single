@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -7,13 +8,20 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
 	<!-- content -->
 	<div class="wrapper row2">
 		<div id="container">
+			<%
+				if (loginUser != null) {
+			%>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%
+				}
+			%>
 			<!-- content body -->
 			<form action="/single/PointInsert.do" method="post">
 				<table border="1">
@@ -29,7 +37,8 @@
 					</tr>
 					<tr>
 						<td>공개여부</td>
-						<td>공개<input type="radio" name="po_state" value="1"/>비공개<input type="radio" name="po_state" value="2"/></td>
+						<td>공개<input type="radio" name="po_state" value="1" />비공개<input
+							type="radio" name="po_state" value="2" /></td>
 					</tr>
 					<tr>
 						<td>이미지</td>
@@ -44,7 +53,7 @@
 					<a href="#">취소</a>
 				</footer>
 				<footer class="more">
-					<input type="submit" value="등록"> 
+					<input type="submit" value="등록">
 				</footer>
 			</form>
 			<!-- ####################################################################################################### -->

@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@page import="mate.dto.MateDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -14,13 +15,16 @@
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
 	<div class="wrapper row2">
 		<div id="container">
 			<!-- 플로팅배너 -->
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<!-- map body -->
 			<div>
 				<button>

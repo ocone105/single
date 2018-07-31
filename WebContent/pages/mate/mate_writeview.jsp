@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -14,12 +15,15 @@
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
 	<div class="wrapper row2">
 		<div id="container">
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<!-- ################################################################################################ -->
 			<h1>소모임만들기</h1>
 			<hr/>
