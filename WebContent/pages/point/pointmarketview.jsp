@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -7,13 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
 	<!-- content -->
 	<div class="wrapper row2">
 		<div id="container">
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<!-- content body -->
 			<section id="portfolio" class="clear">
 				<ul>

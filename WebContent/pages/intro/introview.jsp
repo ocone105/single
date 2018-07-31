@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -14,6 +15,8 @@
 <script src="../common/scripts/jquery-mobilemenu.min.js"></script>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
+
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
@@ -21,8 +24,9 @@
 	<div class="wrapper row2">
 		<div id="container">
 			<!-- 플로팅배너 -->
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
-
+			<%} %>
 			<h1>Headline 1 Colour and Size</h1>
 			<h2>Headline 2 Colour and Size</h2>
 			<h3>Headline 3 Colour and Size</h3>

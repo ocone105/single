@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@page import="vs.dto.VsDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
@@ -35,7 +36,7 @@
 	</script>
 </head>
 <body>
-
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
@@ -43,7 +44,9 @@
 	<div class="wrapper row2">
 
 		<div id="container">
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 
 			<a href="/single/pages/vs/vspost.jsp">±Û¾²±â</a> 
 			<%

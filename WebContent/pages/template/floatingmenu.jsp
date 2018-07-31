@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -5,30 +6,25 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="/single/common/styles/template/floatingmenu.css" type="text/css"
-	media="all">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
+<% MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<div id="floatdiv">
 		<div>
 			<ul>
 				<li><img id="profile" class="img-circle"
-					src="/single/images/demo/150x150.gif" /></li>
+					src="/single/upload/<%=loginUser.getMe_img() %>" /></li>
 			</ul>
 			<ul>
 				<li><input id="floatingbtn1" type="button" value="회원정보"
-					class="btn"
-					onclick="location.href='/single/pages/member/memberinfo.jsp'">
+					class="btn" onclick="location.href='/single/memberinfo.do?action=READ'">
 					<input id="floatingbtn2" type="button" value="친구관리" class="btn"
 					onclick="location.href='/single/pages/friends/friendsViewTest.jsp'">
 				</li>
 			</ul>
 			<ul>
-				<li>포인트:100</li>
-				<li>등급: ***</li>
+				<li>포인트: <%=loginUser.getMe_point() %></li>
+				<li>등급:	<%=loginUser.getMe_grade() %></li>
 			</ul>
 
 			<!-- 소모임 -->
@@ -44,7 +40,5 @@
 
 		</div>
 	</div>
-
-
 </body>
 </html>

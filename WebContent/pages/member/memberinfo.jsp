@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -8,42 +9,38 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>registration</title>
-<link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<link href="/single/common/styles/registration/bootstrap.min.css"
-	rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="/single/common/styles/registration/bootstrap.min.css" rel="stylesheet">
 <link href="/single/common/styles/member/info.css" rel="stylesheet">
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<style type="text/css">
-.info {
-	font-size: 15pt;
-	color: #666666;
-}
-</style>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
+<%
+	MemberDTO user = (MemberDTO)request.getAttribute("user");
+%>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
 	<div class="wrapper row2">
 		<div id="container" class="container bootstrap snippet">
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<div class="page-header">
 				<h1>회원정보</h1>
 			</div>
 			<div class="row">
 				<div class="col-sm-10">
-					<h1>User ID</h1>
+					<h1><%=user.getMe_id() %></h1>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-3">
 					<!--left col-->
 					<div class="text-center">
-						<img src="/single/images/irene.png" class="avatar img-circle img-thumbnail">
+						<img src="/single/upload/<%=user.getMe_img() %>" class="avatar img-circle img-thumbnail">
 					</div>
 					<hr/>
 					<br>
@@ -82,7 +79,7 @@
 										<div>
 											<label class="info">성명</label>
 										</div>
-										<p>아이린</p>
+										<p><%=user.getMe_name() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -90,7 +87,16 @@
 										<div>
 											<label class="info">생년월일</label>
 										</div>
-										<p>2000/01/01</p>
+										<p><%=user.getMe_birth() %></p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<hr />
+										<div>
+											<label class="info">성별</label>
+										</div>
+										<p><%=user.getMe_gender() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -99,7 +105,7 @@
 										<div>
 											<label class="info">전화번호</label>
 										</div>
-										<p>010-0000-0000</p>
+										<p><%=user.getMe_phone() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -108,16 +114,7 @@
 										<div>
 											<label class="info">비상연락처</label>
 										</div>
-										<p> 010-1111-1111 </p>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-xs-6">
-										<hr />
-										<div>
-											<label class="info">Email</label>
-										</div>
-										<p>info@support.com</p>
+										<p><%=user.getMe_telnum() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -126,7 +123,25 @@
 										<div>
 											<label class="info">비상연락설정</label>
 										</div>
-										<p> 켬or끔 </p>
+										<p><%=user.getMe_telchk() %></p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<hr />
+										<div>
+											<label class="info">Email</label>
+										</div>
+										<p><%=user.getMe_email() %></p>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<hr />
+										<div>
+											<label class="info">주소</label>
+										</div>
+										<p><%=user.getMe_addr() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -135,7 +150,7 @@
 										<div>
 											<label class="info">포인트</label>
 										</div>
-										<p>1000</p>
+										<p><%=user.getMe_point() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -144,7 +159,7 @@
 										<div>
 											<label class="info">누적포인트</label>
 										</div>
-										<p>2000</p>
+										<p><%=user.getMe_points() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -153,7 +168,7 @@
 										<div>
 											<label class="info">회원등급</label>
 										</div>
-										<p>등급이름</p>
+										<p><%=user.getMe_grade() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -162,7 +177,7 @@
 										<div>
 											<label class="info">성향</label>
 										</div>
-										<p> 성향나열하고 </p>
+										<p><%=user.getMe_character() %> </p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -171,7 +186,7 @@
 										<div>
 											<label class="info">블랙리스트신고횟수</label>
 										</div>
-										<p>10블랙리스트되면블랙리스트인지아닌지</p>
+										<p><%=user.getMe_black() %></p>
 									</div>
 								</div>
 							<hr>
@@ -179,23 +194,21 @@
 							<div class="form-group">
 								<div class="col-xs-12">
 									<br>
-									<a href="/single/pages/member/infoupdate.jsp" class="btn btn-danger pull-right"><i class="glyphicon glyphicon-remove">회원탈퇴</i></a>
-									<a href="/single/pages/member/infoupdate.jsp" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-edit">회원정보수정</i></a>
+									<a href="/single/pages/member/withdrawal.jsp" class="btn btn-danger pull-right"><i class="glyphicon glyphicon-remove">회원탈퇴</i></a>
+									<a href="/single/memberinfo.do?action=UPDATE" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-edit">회원정보수정</i></a>
 								</div>
 							</div>
 						</form>
-
 					</div>
 					<!--/tab-pane-->
 				</div>
 				<!--/tab-content-->
-
 			</div>
 			<!--/col-9-->
 		</div>
 		<!--/row-->
 	</div>
-
+</div>
 	<div class="wrapper row3">
 		<jsp:include page="/pages/template/Footer.jsp" />
 	</div>
