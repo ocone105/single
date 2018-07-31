@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Single Single</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- free 추가 -->
 <link rel='stylesheet' id='kboard-skin-thumbnail-css'
@@ -16,6 +16,7 @@
 	ArrayList<FreeDTO> postlist = (ArrayList<FreeDTO>) request.getAttribute("postlist");
 	int size = postlist.size();
 %>
+<link rel="shortcut icon" href="/single/images/favicon.ico">
 
 <!-- -------------------------------- -->
 <script src="/single/common/scripts/jquery.min.js"></script>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Single Single</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/single/common/styles/layout.css"
 	type="text/css" media="all">
@@ -12,6 +12,7 @@
 	type="text/css" media="all">
 
 <!-- hs 추가 -->
+<link rel="shortcut icon" href="/single/images/favicon.ico">
 
 <link rel='stylesheet' id='kboard-skin-thumbnail-css'
 	href='/single/common/styles/free/thumbnail.css?ver=5.3.9' type='text/css'
