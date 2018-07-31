@@ -23,6 +23,33 @@
 	media='all' />
 <% FreeDTO post =(FreeDTO) request.getAttribute("post"); %>
 
+<script type="text/javascript">
+// 댓글 등록
+function writeCmt()
+{
+    var form = document.getElementById("write_cmt");
+    
+    var postno = form.postno.value;
+    //var id = form.comment_id.value
+    var content = form.cmt.value;
+    
+    if(!content)
+    {
+        alert("내용을 입력하세요.");
+        return false;
+    }
+    else
+    {    
+        var param="no="+postno+"&cmt="+content;
+            
+        httpRequest = getXMLHttpRequest();
+        httpRequest.onreadystatechange = checkFunc;
+        httpRequest.open("POST", "CommentWriteAction.co", true);    
+        httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=EUC-KR'); 
+        httpRequest.send(param);
+    }
+}
+
 </script>
 <!-- -------------------------------- -->
 
@@ -124,18 +151,14 @@
 									</ul>
 
 								</div>
+								
 								<!-- 댓글 입력 폼 시작 -->
-								<form id="kboard-comments-form-1851" method="post" action="#"
-									onsubmit="return kboard_comments_execute(this);">
-									<input type="hidden" name="content_uid" value="1851"> 
-									<input type="hidden" name="member_uid" value="0">
-
+								<form id="write_cmt" method="post" action="/single/fr/cmtinsert.do?no=<%=post.getFr_no()%>"
+									onsubmit="writeCmt()">
+									<input name="postno" type="hidden" value="<%=post.getFr_no()%>">
 									<div class="kboard-comments-form">
-										<input type="hidden" id="kboard-comments-execute-nonce"
-											name="kboard-comments-execute-nonce" value="40281f978e" /><input
-											type="hidden" name="_wp_http_referer" value="#" />
 										<div class="comments-field">
-											<textarea name="comment_content" placeholder="댓글을 입력하세요."
+											<textarea name="cmt" placeholder="댓글을 입력하세요."
 												onfocus="kboard_comments_field_show()" required></textarea>
 										</div>
 

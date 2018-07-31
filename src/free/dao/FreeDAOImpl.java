@@ -16,7 +16,7 @@ public class FreeDAOImpl implements FreeDAO {
 	@Override
 	public int insert(FreeDTO post, Connection con) throws SQLException {
 		int result = 0;
-		System.out.println("게시글 등록 dao: " + post);
+		//System.out.println("게시글 등록 dao: " + post);
 
 		PreparedStatement ptmt = con.prepareStatement(INSERT_POST);
 		ptmt.setString(1, post.getFr_title());
@@ -33,7 +33,7 @@ public class FreeDAOImpl implements FreeDAO {
 	@Override
 	public int update(FreeDTO post, Connection con) throws SQLException {
 		int result = 0;
-		System.out.println("게시글 수정 dao: " + post);
+		//System.out.println("게시글 수정 dao: " + post);
 
 		PreparedStatement ptmt = con.prepareStatement(UPDATE_POST);
 		ptmt.setString(1, post.getFr_title());
@@ -51,7 +51,7 @@ public class FreeDAOImpl implements FreeDAO {
 	@Override
 	public int delete(int fr_no, Connection con) throws SQLException {
 		int result = 0;
-		System.out.println("게시글 삭제 dao: " + fr_no);
+		//System.out.println("게시글 삭제 dao: " + fr_no);
 
 		PreparedStatement ptmt = con.prepareStatement(DELETE_POST);
 		ptmt.setInt(1, fr_no);
@@ -94,7 +94,7 @@ public class FreeDAOImpl implements FreeDAO {
 		ArrayList<FreeDTO> postlist = new ArrayList<FreeDTO>();
 
 		FreeDTO post = null;
-		System.out.println("게시글 목록 dao요청");
+		//System.out.println("게시글 목록 dao요청");
 		PreparedStatement ptmt = con.prepareStatement(SELECT_POST_ALL);
 		ResultSet rs = ptmt.executeQuery();
 
@@ -102,7 +102,7 @@ public class FreeDAOImpl implements FreeDAO {
 			post = new FreeDTO(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getString(5));
 			postlist.add(post);
 		}
-		System.out.println("fr_post ArrayList의 갯수: " + postlist.size());
+		//System.out.println("fr_post ArrayList의 갯수: " + postlist.size());
 
 		return postlist;
 	}
@@ -112,7 +112,7 @@ public class FreeDAOImpl implements FreeDAO {
 		ArrayList<FreeDTO> postlist = new ArrayList<FreeDTO>();
 
 		FreeDTO post = null;
-		System.out.println("게시글 카테고리별 목록 dao요청");
+		//System.out.println("게시글 카테고리별 목록 dao요청");
 		PreparedStatement ptmt = con.prepareStatement(SELECT_POST_CTG);
 		ptmt.setString(1, fr_ctg);
 		ResultSet rs = ptmt.executeQuery();
@@ -120,9 +120,9 @@ public class FreeDAOImpl implements FreeDAO {
 		while (rs.next()) {
 			post = new FreeDTO(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getString(5));
 			postlist.add(post);
-			System.out.println("dao 카테고리별: "+post);
+			//System.out.println("dao 카테고리별: "+post);
 		}
-		System.out.println("카테고리별 post ArrayList의 갯수: " + postlist.size());
+		//System.out.println("카테고리별 post ArrayList의 갯수: " + postlist.size());
 
 		return postlist;
 	}

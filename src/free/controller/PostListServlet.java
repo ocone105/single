@@ -18,7 +18,7 @@ import free.service.FreeServiceImpl;
 public class PostListServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		System.out.println("postlist 서블릿 요청 성공");
+		//System.out.println("postlist 서블릿 요청 성공");
 		req.setCharacterEncoding("euc-kr");
 		
 		String action = req.getParameter("action");
@@ -47,10 +47,6 @@ public class PostListServlet extends HttpServlet {
 			view = "/pages/free/freeview.jsp";
 			postlist = service.getPostList();
 		}
-
-		// 1.비지니스 메소드 호출
-		//FreeService service = new FreeServiceImpl();
-		//ArrayList<FreeDTO> postlist = service.getPostList();
 
 		// 2.데이터공유
 		req.setAttribute("postlist", postlist);

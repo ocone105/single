@@ -30,6 +30,6 @@ public class CmtInsertServlet extends HttpServlet {
 		int result = service.insert(cmt);
 
 		// 요청재지정
-		res.sendRedirect("/pages/free/freeview_read.jsp");
+		//res.sendRedirect("/fr/read.do");
 	}
 }
