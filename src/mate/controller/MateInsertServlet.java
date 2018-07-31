@@ -15,9 +15,7 @@ import mate.service.MateServiceImpl;
 
 @WebServlet(name = "mt_insert", urlPatterns = { "/mt_insert.do" })
 public class MateInsertServlet extends HttpServlet {
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("euc-kr");
 		String me_id = request.getParameter("me_id");
 		String mt_title = request.getParameter("mt_title");
@@ -41,7 +39,7 @@ public class MateInsertServlet extends HttpServlet {
 		}
 		System.out.println(msg);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/pages/mate/mate_mainview.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/mt_list.do");
 		rd.forward(request, response);
 	
 		

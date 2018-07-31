@@ -60,6 +60,23 @@ public class MateServiceImpl implements MateService {
 		}
 		return dto;
 	}
+
+	@Override
+	public int update_hits(int mt_no) {
+		int result = 0;
+		MateDAO dao = new MateDAOImpl();
+		Connection con = null;
+		try {
+			con = getConnect();
+			result = dao.update_hits(mt_no, con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(con);
+		}
+		
+		return result;
+	}
 	
 	
 

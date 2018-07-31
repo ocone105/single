@@ -30,8 +30,11 @@ public class MateListServlet extends HttpServlet {
 		request.setAttribute("dtolist", dtolist);
 		RequestDispatcher rd = request.getRequestDispatcher("/pages/mate/mate_mainview.jsp");
 		rd.forward(request, response);
-		
 	
 	}
-
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
 }

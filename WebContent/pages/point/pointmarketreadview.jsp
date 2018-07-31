@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/single/common/styles/mate/model.css">
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
@@ -36,7 +37,13 @@
 						<td><%=dto.getPo_txt() %></td>
 					</tr>
 				</table>
+				<button class="submitbtn">교환하기</button>
+				<input type="hidden" value="<%=dto.getPo_pt() %>" name="po_pt">
 			</form>
+			<!-- <footer class="more">
+				<a href="/single/pages/point/pointmarketwriteview.jsp">교환하기
+					&raquo;</a>
+			</footer> -->
 			<!-- ####################################################################################################### -->
 			<!-- ####################################################################################################### -->
 			<!-- / content body -->

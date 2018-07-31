@@ -19,7 +19,8 @@ import point.service.PointServiceImpl;
 @WebServlet(name = "PointList", urlPatterns = { "/PointList.do" })
 public class PointListServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	
 		
 		request.setCharacterEncoding("euc-kr");
@@ -35,6 +36,9 @@ public class PointListServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/pages/point/pointmarketview.jsp");
 		rd.forward(request, response);
 	}
-
-
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+			doGet(request, response);
+	}
 }

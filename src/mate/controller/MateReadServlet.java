@@ -19,8 +19,10 @@ public class MateReadServlet extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");	
 		
 		int mt_no = Integer.parseInt(request.getParameter("mt_no"));
+		int result = 0;
 		MateDTO dto = null;
 		MateService service = new MateServiceImpl();
+		result = service.update_hits(mt_no);
 		dto = service.read_mt(mt_no);
 		System.out.println(dto);
 		request.setAttribute("dto", dto);

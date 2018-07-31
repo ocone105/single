@@ -28,7 +28,7 @@
 			<% MateDTO dto = (MateDTO)request.getAttribute("dto"); %>
 			<h1>소모임이름</h1>
 			<footer class="more">
-				<a href="#">참여하기 &raquo;</a>
+				<a href="/single/mt_join.do?me_id=test1">참여하기 &raquo;</a>
 			</footer>
 
 			<hr />

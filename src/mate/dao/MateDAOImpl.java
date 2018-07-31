@@ -45,6 +45,7 @@ public class MateDAOImpl implements MateDAO {
 					rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10), rs.getString(11), rs.getString(12));
 			dtolist.add(dto);
 		}
+		close(rs);
 		close(ptmt);
 		return dtolist;
 	}
@@ -61,8 +62,19 @@ public class MateDAOImpl implements MateDAO {
 			dto = new MateDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), 
 					rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10), rs.getString(11), rs.getString(12));
 		}
+		close(rs);
 		close(con);
 		return dto;
+	}
+
+	@Override
+	public int update_hits(int mt_no, Connection con) throws SQLException {
+		int result = 0;
+		PreparedStatement ptmt = con.prepareStatement(MATE_UPDATE_HITS);
+		ptmt.setInt(1, mt_no);
+		result = ptmt.executeUpdate();
+		close(ptmt);
+		return result;
 	}
 
 }

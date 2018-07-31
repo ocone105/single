@@ -41,7 +41,7 @@ public class PointInsertServlet extends HttpServlet {
 		System.out.println(msg);
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/pages/point/pointmarketview.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/PointList.do");
 		rd.forward(request, response);
 		
 	

@@ -7,4 +7,6 @@ public class MateQuery {
 			"select * from mate_board order by mt_no desc";
 	public static final String MATE_READ =
 			"select * from mate_board where mt_no = ?";
+	public static final String MATE_UPDATE_HITS = 
+			"update mate_board set mt_hits = nvl(mt_hits, 0)+1 where mt_no = ?";
 }
