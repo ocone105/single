@@ -62,7 +62,7 @@
 					<li>
 						<article>
 							<figure>
-								<a href="/single/mt_read.do?mt_no=<%=dtolist.get(i).getMt_no() %>"><img src="<%=dtolist.get(i).getMt_img() %>" 
+								<a href="/single/mt/read.do?mt_no=<%=dtolist.get(i).getMt_no() %>"><img src="<%=dtolist.get(i).getMt_img() %>" 
 								alt="<%=dtolist.get(i).getMt_img() %>"></a>
 								<figcaption><%=dtolist.get(i).getMt_title() %></figcaption>
 							</figure>

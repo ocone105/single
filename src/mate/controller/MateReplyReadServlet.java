@@ -7,16 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class MateJoinServlet
- */
-@WebServlet(name = "mt/join.do", urlPatterns = { "/mt/join.do" })
-public class MateJoinServlet extends HttpServlet {
+@WebServlet(name = "mt/re_read", urlPatterns = { "/mt/re_read.do" })
+public class MateReplyReadServlet extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int mt_no = Integer.parseInt(request.getParameter("mt_no"));
 		
-		String me_id = request.getParameter("me_id");
 	
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

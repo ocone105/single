@@ -13,6 +13,8 @@ import member.dto.MemberDTO;
 import member.service.MemberService;
 import member.service.MemberServiceImpl;
 
+
+
 @WebServlet(name = "idcheck", urlPatterns = { "/idcheck.do" })
 public class IdCheckServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

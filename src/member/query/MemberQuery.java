@@ -1,5 +1,4 @@
 package member.query;
-
 public class MemberQuery {
 	public static final String USER_INSERT
 				="insert into member "

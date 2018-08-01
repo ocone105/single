@@ -13,6 +13,8 @@ public interface FreeCmtDAO {
 	
 	int delete(int fr_cmt_no,Connection con) throws SQLException; // ´ñ±Û »èÁ¦
 	
+	int count(int fr_no, Connection con) throws SQLException; // ´ñ±Û °¹¼ö
+	
 	ArrayList<FreeCmtDTO> getCmtList(int fr_no, Connection con) throws SQLException;	// ´ñ±Û ¸ñ·Ï
 	
 }
