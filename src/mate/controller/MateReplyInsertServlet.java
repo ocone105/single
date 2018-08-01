@@ -1,6 +1,8 @@
 package mate.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +14,7 @@ import mate.dto.MateDTO;
 import mate.service.MateService;
 import mate.service.MateServiceImpl;
 
-@WebServlet(name = "mt_reinsert", urlPatterns = { "/mt_reinsert.do" })
+@WebServlet(name = "mt/re_insert", urlPatterns = { "/mt/re_insert.do" })
 public class MateReplyInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,9 +35,14 @@ public class MateReplyInsertServlet extends HttpServlet {
 		result = service.insert_mt_cmt(dto);
 		if(result>0){
 			
+			System.out.println("입력성공");
 		}else{
-			
+			System.out.println("입력실패");
 		}
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/single/mt_read.do?mt_no="+mt_no);
+		rd.forward(request, response);
+//		response.sendRedirect("/single/mt_read.do?mt_no="+mt_no);
 		
 		
 	}

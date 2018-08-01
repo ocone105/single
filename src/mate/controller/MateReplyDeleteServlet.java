@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "mt_redelete", urlPatterns = { "/mt_redelete.do" })
+@WebServlet(name = "mt/re_delete", urlPatterns = { "/mt/re_delete.do" })
 public class MateReplyDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

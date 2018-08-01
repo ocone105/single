@@ -27,7 +27,7 @@
 			<!-- ################################################################################################ -->
 			<h1>소모임만들기</h1>
 			<hr/>
-			<form action="/single/mt_insert.do" method="post">
+			<form action="/single/mt/insert.do" method="post">
 				<input type="hidden" value="test" name="me_id"/>
 				<table border="1">
 					<tr>

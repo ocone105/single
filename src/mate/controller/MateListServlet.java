@@ -14,7 +14,7 @@ import mate.dto.MateDTO;
 import mate.service.MateService;
 import mate.service.MateServiceImpl;
 
-@WebServlet(name = "mt_list", urlPatterns = { "/mt_list.do" })
+@WebServlet(name = "mt/list", urlPatterns = { "/mt/list.do" })
 public class MateListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

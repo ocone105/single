@@ -162,9 +162,15 @@
 				</ul>
 
 
-				<form action="/single/mt_reinsert.do" method="post">
+				<form action="/single/mt/re_insert.do" method="post">
 					<input type="hidden" name="mt_no" value="<%=dto.getMt_no()%>"/>
-					<input type="hidden" name="me_id" id="id" value="<%=loginUser.getMe_id() %>" size="22">
+					<%
+						if (loginUser != null) {
+					%>
+					<input type="hidden" name="me_id" value="<%=loginUser.getMe_id()%>" />
+					<%
+						}
+					%>
 					<p>
 						<textarea name="mt_cmt_txt" id="comment" cols="25" rows="5"></textarea>
 					</p>

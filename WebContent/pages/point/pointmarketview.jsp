@@ -36,7 +36,7 @@
 					<li>
 						<article>
 							<figure>
-								<a href="/single/PointRead.do?po_no=<%= dtolist.get(i).getPo_no() %>"><img src="/single/images/demo/225x160.gif" alt=""></a>
+								<a href="/single/po/read.do?po_no=<%= dtolist.get(i).getPo_no() %>"><img src="/single/images/demo/225x160.gif" alt=""></a>
 								<figcaption><%= dtolist.get(i).getPo_title() %></figcaption>
 							</figure>
 						</article>

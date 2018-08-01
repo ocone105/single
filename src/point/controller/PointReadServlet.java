@@ -13,7 +13,7 @@ import point.dto.PointDTO;
 import point.service.PointService;
 import point.service.PointServiceImpl;
 
-@WebServlet(name = "PointRead", urlPatterns = { "/PointRead.do" })
+@WebServlet(name = "po/read", urlPatterns = { "/po/read.do" })
 public class PointReadServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

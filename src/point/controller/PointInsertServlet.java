@@ -13,7 +13,7 @@ import point.dto.PointDTO;
 import point.service.PointService;
 import point.service.PointServiceImpl;
 
-@WebServlet(name = "PointInsert", urlPatterns = { "/PointInsert.do" })
+@WebServlet(name = "po/insert", urlPatterns = { "/po/insert.do" })
 public class PointInsertServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

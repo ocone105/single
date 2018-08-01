@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MateJoinServlet
  */
-@WebServlet(name = "mt_join", urlPatterns = { "/mt_join.do" })
+@WebServlet(name = "mt/join.do", urlPatterns = { "/mt/join.do" })
 public class MateJoinServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
