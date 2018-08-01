@@ -6,6 +6,26 @@ update MEMBER set me_state='t' where me_id='user2';
 
 select * from tab;
 
+drop table member;
+drop table bd_list;
+drop table message;
+drop table mate_board;
+drop table mate_cmt;
+drop table fr_board;
+drop table fr_cmt;
+drop table vs_board;
+drop table vs_cmt;
+drop table ma_board;
+drop table ma_cmt;
+drop table ma_join;
+drop table le_board;
+drop table point;
+
+
+
+
+
+
 create table member(
 me_id varchar2(30),
 me_pwd varchar2(30),
@@ -22,7 +42,7 @@ me_points number,
 me_grade varchar2(20),
 me_character varchar2(200),
 me_state varchar2(10),
-me_img varchar2(30),
+me_img varchar2(200),
 me_loc varchar2(200),
 me_black number);
 
@@ -65,7 +85,7 @@ me_id varchar2(30));
 create table fr_board(
 fr_no number,
 fr_title varchar2(100),
-fr_txt varchar2(1000),
+fr_txt varchar2(3000),
 fr_ctg varchar2(30)	,
 fr_date date,
 fr_hits number,	
@@ -75,7 +95,7 @@ me_id varchar2(30));
 
 create table fr_cmt(
 fr_cmt_no number,
-fr_cmt_txt varchar2(500),
+fr_cmt_txt varchar2(1000),
 fr_cmt_date date,
 fr_no number,
 me_id varchar2(30));
@@ -86,7 +106,7 @@ vs_no number,
 vs_title varchar2(100),
 vs_optionA varchar2(100),
 vs_optionB varchar2(100),
-vs_txt varchar2(1000),
+vs_txt varchar2(3000),
 me_id varchar2(30),
 vs_hitsA number,
 vs_hitsB number,
@@ -138,8 +158,6 @@ create table point(
    po_pt number,      
    po_date date,         
    po_state number);
-
-
 
 
 // ±âº»Å° Äõ¸®
@@ -242,11 +260,10 @@ add constraint fk_ma_join_ma_no foreign key(ma_no) references ma_board(ma_no);
 
 // ½ÃÄö½º Ãß°¡
 
-create sequnce fr_seq;
 
-create sequnce fr_cmt_seq;
-
+create sequence fr_seq;
+create sequence fr_cmt_seq;
 create sequence vs_seq;
+create sequence mate_seq;
+create sequence point_seq;
 
-create sequnce mate_seq;
-create sequnce point_seq;
