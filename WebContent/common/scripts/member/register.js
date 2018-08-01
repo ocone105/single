@@ -74,33 +74,9 @@ $(document).ready(function () {
 	         })
 	   });
 });
-
-
-//위치정보
-$(document).ready(function(){
-	$("#BtnJoin").on("click",function(){
-		// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-		if (navigator.geolocation) {
-		    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-		    navigator.geolocation.getCurrentPosition(function(position) {
-		        lat = position.coords.latitude; // 위도
-		        lon = position.coords.longitude; // 경도
-		       	document.getElementById("lat").value = lat;
-		       	document.getElementById("lon").value = lon;
-		       	document.myform.submit();
-		      });
-		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-			   	lat = 33.450701; // 위도
-		       	lon = 126.570667; // 경도
-		    	document.getElementById("lat").value = lat;
-		       	document.getElementById("lon").value = lon;
-		       	document.myform.submit();
-		}
-	});
-});
-
 //아이디 중복확인
 var xhr
+var idInfo
 function IdCheck() {
 	//alert("test");
 	xhr = new XMLHttpRequest();
@@ -112,6 +88,46 @@ function IdCheck() {
 }
 function idCheckMsg() {
 	if(xhr.readyState==4&&xhr.status==200){
-		document.getElementById("idChk").innerHTML = xhr.responseText;
+		if(xhr.responseText==1){
+			document.getElementById("idChk").innerHTML = "사용가능한 아이디입니다.";
+		}else{
+			document.getElementById("idChk").innerHTML = xhr.responseText;
+		}
+		idInfo = xhr.responseText;
 	}
 }
+
+//회원가입 위치정보받기 + 비밀번호일치하지 않으면 회원가입 안됨 + 중복된 아이디도 회원가입안됨
+function join(){
+	if(idInfo==1){
+		if(document.myform.me_pwd.value==document.myform.pwdChk.value){
+			// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+			if (navigator.geolocation) {
+			    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+			    navigator.geolocation.getCurrentPosition(function(position) {
+			        lat = position.coords.latitude; // 위도
+			        lon = position.coords.longitude; // 경도
+			       	document.getElementById("lat").value = lat;
+			       	document.getElementById("lon").value = lon;
+			       	alert("회원가입 완료");
+			    	document.myform.submit();
+			      });
+			} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+				   	lat = 33.450701; // 위도
+			       	lon = 126.570667; // 경도
+			    	document.getElementById("lat").value = lat;
+			       	document.getElementById("lon").value = lon;
+			     	alert("회원가입 완료");
+			    	document.myform.submit();
+			}
+			return false;
+		}else{
+			alert("비밀번호가 일치하지 않습니다.");
+			return false;
+		}
+	}else{
+		alert("이미 존재하는 아이디입니다.");
+		return false;
+	}
+}
+

@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -6,7 +7,6 @@
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>registration</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link href="/single/common/styles/registration/registration.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -22,10 +22,10 @@
 		<div id="container">
 			<div class="page-header">
 				<h1>
-					회원가입 <small>horizontal form</small>
+					회원가입 
 				</h1>
 			</div>
-			<form class="form-horizontal" action="/single/memberinsert.do" method="POST" name="myform" 
+			<form class="form-horizontal" action="/single/memberinsert.do" method="POST" name="myform" onsubmit="return join()"
 			enctype="multipart/form-data">
 				<!-- 회원사진 -->
 				<div class="form-group">
@@ -194,7 +194,7 @@
 
 				<div class="form-group">
 					<div class="col-sm-12 text-center">
-						<button class="btn btn-primary" type="button" id="BtnJoin">회원가입</button>
+						<button class="btn btn-primary" type="submit" id="BtnJoin">회원가입</button>
 						<button class="btn btn-danger" type="reset">가입취소</button>
 					</div>
 				</div>

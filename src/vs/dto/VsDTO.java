@@ -1,87 +1,91 @@
 package vs.dto;
 
+import java.sql.Date;
+
 public class VsDTO {
 	
-	int ch_no;			// 글번호
-	String ch_title;	// 글제목
-	String ch_optionA;	// A 선택
-	String ch_optionB;	// B 선택
-	String ch_txt;		// 글내용
+	int vs_no;			// 글번호
+	String vs_title;	// 글제목
+	String vs_optionA;	// A 선택
+	String vs_optionB;	// B 선택
+	String vs_txt;		// 글내용
 	String me_id;		// 작성자ID
-	int ch_hits;		// 조회수
-	String ch_date;		// 작성일
+	int vs_hitsA;		// A 선택수
+	int vs_hitsB;		// B 선택수
+	Date vs_date;		// 작성일
 	
 	public VsDTO(){}
 
 	// 삽입용
-	public VsDTO(String ch_title, String ch_optionA, String ch_optionB, String ch_txt, String me_id) {
+	public VsDTO(String vs_title, String vs_optionA, String vs_optionB, String vs_txt, String me_id) {
 		super();
-		this.ch_title = ch_title;
-		this.ch_optionA = ch_optionA;
-		this.ch_optionB = ch_optionB;
-		this.ch_txt = ch_txt;
+		this.vs_title = vs_title;
+		this.vs_optionA = vs_optionA;
+		this.vs_optionB = vs_optionB;
+		this.vs_txt = vs_txt;
 		this.me_id = me_id;
 	}
 
 	// 조회용
-	public VsDTO(int ch_no, String ch_title, String ch_optionA, String ch_optionB, String ch_txt, String me_id,
-			int ch_hits, String ch_date) {
+	public VsDTO(int vs_no, String vs_title, String vs_optionA, String vs_optionB, String vs_txt, String me_id,
+			int vs_hitsA, int vs_hitsB, Date vs_date) {
 		super();
-		this.ch_no = ch_no;
-		this.ch_title = ch_title;
-		this.ch_optionA = ch_optionA;
-		this.ch_optionB = ch_optionB;
-		this.ch_txt = ch_txt;
+		this.vs_no = vs_no;
+		this.vs_title = vs_title;
+		this.vs_optionA = vs_optionA;
+		this.vs_optionB = vs_optionB;
+		this.vs_txt = vs_txt;
 		this.me_id = me_id;
-		this.ch_hits = ch_hits;
-		this.ch_date = ch_date;
+		this.vs_hitsA = vs_hitsA;
+		this.vs_hitsB = vs_hitsB;
+		this.vs_date = vs_date;
 	}
 
 	@Override
 	public String toString() {
-		return "VsDTO [ch_no=" + ch_no + ", ch_title=" + ch_title + ", ch_optionA=" + ch_optionA + ", ch_optionB="
-				+ ch_optionB + ", ch_txt=" + ch_txt + ", me_id=" + me_id + ", ch_hits=" + ch_hits + ", ch_date="
-				+ ch_date + "]";
+		return "VsDTO [vs_no=" + vs_no + ", vs_title=" + vs_title + ", vs_optionA=" + vs_optionA + ", vs_optionB="
+				+ vs_optionB + ", vs_txt=" + vs_txt + ", me_id=" + me_id + ", vs_hitsA=" + vs_hitsA + ", vs_hitsB="
+				+ vs_hitsB + ", vs_date=" + vs_date + "]";
 	}
 
-	public int getCh_no() {
-		return ch_no;
+	public int getVs_no() {
+		return vs_no;
 	}
 
-	public void setCh_no(int ch_no) {
-		this.ch_no = ch_no;
+	public void setVs_no(int vs_no) {
+		this.vs_no = vs_no;
 	}
 
-	public String getCh_title() {
-		return ch_title;
+	public String getVs_title() {
+		return vs_title;
 	}
 
-	public void setCh_title(String ch_title) {
-		this.ch_title = ch_title;
+	public void setVs_title(String vs_title) {
+		this.vs_title = vs_title;
 	}
 
-	public String getCh_optionA() {
-		return ch_optionA;
+	public String getVs_optionA() {
+		return vs_optionA;
 	}
 
-	public void setCh_optionA(String ch_optionA) {
-		this.ch_optionA = ch_optionA;
+	public void setVs_optionA(String vs_optionA) {
+		this.vs_optionA = vs_optionA;
 	}
 
-	public String getCh_optionB() {
-		return ch_optionB;
+	public String getVs_optionB() {
+		return vs_optionB;
 	}
 
-	public void setCh_optionB(String ch_optionB) {
-		this.ch_optionB = ch_optionB;
+	public void setVs_optionB(String vs_optionB) {
+		this.vs_optionB = vs_optionB;
 	}
 
-	public String getCh_txt() {
-		return ch_txt;
+	public String getVs_txt() {
+		return vs_txt;
 	}
 
-	public void setCh_txt(String ch_txt) {
-		this.ch_txt = ch_txt;
+	public void setVs_txt(String vs_txt) {
+		this.vs_txt = vs_txt;
 	}
 
 	public String getMe_id() {
@@ -92,22 +96,28 @@ public class VsDTO {
 		this.me_id = me_id;
 	}
 
-	public int getCh_hits() {
-		return ch_hits;
+	public int getVs_hitsA() {
+		return vs_hitsA;
 	}
 
-	public void setCh_hits(int ch_hits) {
-		this.ch_hits = ch_hits;
+	public void setVs_hitsA(int vs_hitsA) {
+		this.vs_hitsA = vs_hitsA;
 	}
 
-	public String getCh_date() {
-		return ch_date;
+	public int getVs_hitsB() {
+		return vs_hitsB;
 	}
 
-	public void setCh_date(String ch_date) {
-		this.ch_date = ch_date;
+	public void setVs_hitsB(int vs_hitsB) {
+		this.vs_hitsB = vs_hitsB;
 	}
-	
-	
+
+	public Date getVs_date() {
+		return vs_date;
+	}
+
+	public void setVs_date(Date vs_date) {
+		this.vs_date = vs_date;
+	}
 
 }

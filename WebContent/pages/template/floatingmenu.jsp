@@ -7,7 +7,6 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/single/common/styles/template/floatingmenu.css" type="text/css" media="all">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 <% MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
@@ -39,6 +38,7 @@
 			<ul>
 				<li><img src="/single/images/demo/imgr.gif" />
 			</ul>
+
 		</div>
 	</div>
 </body>
