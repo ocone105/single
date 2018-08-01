@@ -6,6 +6,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/single/common/styles/template/floatingmenu.css" type="text/css" media="all">
 </head>
 <body>
 <% MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>

@@ -55,7 +55,6 @@ function loginCheck(){
 			<a href="/single/pages/mainview.jsp" id="singleHeader">Singlesingle</a>
 		</div>
 		<nav id="topnav">
-<<<<<<< HEAD
 			<ul class="topnav clear">
 				<li class="active"><a href="/single/pages/mainview.jsp">Home</a></li>
 				<li><a href="/single/mt_list.do">∏ﬁ¿Ã∆Æ</a></li>

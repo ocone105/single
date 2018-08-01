@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 <%@page import="member.dto.MemberDTO"%>
-=======
 <%@page import="java.util.ArrayList"%>
 <%@page import="point.dto.PointDTO"%>
->>>>>>> refs/remotes/origin/khj
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -11,6 +8,10 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/single/common/styles/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="/single/common/styles/mediaqueries.css" type="text/css" media="all">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 <body>
 <%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
