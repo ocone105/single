@@ -19,14 +19,13 @@
 		<div class="container">
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 
-			<form>
-
+			<form action="/single/vs_insert.do" method="POST" name="myform">
 				<div class="row">
 					<div class="col-25">
 						<label for="title">Title</label>
 					</div>
 					<div class="col-75">
-						<input type="text" id="title" name="title" placeholder="力格">
+						<input type="text" id="vs_title" name="vs_title" placeholder="力格">
 					</div>
 				</div>
 
@@ -35,7 +34,7 @@
 						<label for="optionA">A 急琶</label>
 					</div>
 					<div class="col-75">
-						<input type="text" id="optionA" name="optionA" placeholder="A">
+						<input type="text" id="vs_optionA" name="vs_optionA" placeholder="A">
 					</div>
 				</div>
 
@@ -44,35 +43,18 @@
 						<label for="optionB">B 急琶</label>
 					</div>
 					<div class="col-75">
-						<input type="text" id="optionB" name="optionB" placeholder="B">
+						<input type="text" id="vs_optionB" name="vs_optionB" placeholder="B">
 					</div>
 				</div>
-
 
 				<div class="row">
 					<div class="col-25">
 						<label for="lname">Content</label>
 					</div>
 					<div class="col-75">
-						<textarea id="subject" name="subject"
-							placeholder="Write something.." style="height: 200px"></textarea>
+						<textarea id="vs_txt" name="vs_txt" placeholder="Write something.." style="height: 200px"></textarea>
 					</div>
 				</div>
-
-				<!-- ######################################### -->
-				<!-- <div class="row">
-				<div class="col-25">
-					<label for="country">Country</label>
-				</div>
-				<div class="col-75">
-					<select id="country" name="country">
-						<option value="australia">Australia</option>
-						<option value="canada">Canada</option>
-						<option value="usa">USA</option>
-					</select>
-				</div>
-			</div> -->
-				<!-- ######################################### -->
 
 				<div class="row">
 					<input type="submit" value="Submit">

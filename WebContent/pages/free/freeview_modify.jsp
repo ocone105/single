@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@page import="free.dto.FreeDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Single Single</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/single/common/styles/layout.css"
 	type="text/css" media="all">
@@ -19,6 +20,9 @@
 <link rel='stylesheet' id='kboard-editor-media-css'
 	href='/single/common/styles/free/editor.css?ver=5.3.9' type='text/css'
 	media='all' />
+	
+<% FreeDTO post =(FreeDTO) request.getAttribute("post"); %>
+	<link rel="shortcut icon" href="/single/images/favicon.ico">
 <!-- -------------------------------- -->
 
 <script src="/single/common/scripts/jquery.min.js"></script>
@@ -35,7 +39,7 @@
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 
 			<div id="kboard-thumbnail-editor">
-				<form class="kboard-form" method="post" action="#"
+				<form class="kboard-form" method="post" action="/single/fr/update.do"
 					enctype="multipart/form-data"
 					onsubmit="return kboard_editor_execute(this);">
 					<input type="hidden" id="kboard-editor-execute-nonce"
@@ -51,13 +55,15 @@
 						name="member_display" value=""> <input type="hidden"
 						name="date" value=""> <input type="hidden" name="user_id"
 						value="0">
+						
+						<input type="hidden" name="no" value="<%=post.getFr_no()%>">	 
 
 					<div class="kboard-attr-row kboard-attr-title required">
 						<label class="attr-name" for="title"><span
 							class="field-name">제목</span> <span class="attr-required-text">*</span></label>
 						<div class="attr-value">
 							<input type="text" id="title" name="title" class="required"
-								value="공지사항을 읽어주세요.">
+								value="<%=post.getFr_title() %>">
 						</div>
 					</div>
 
@@ -65,8 +71,7 @@
 						<label class="attr-name" for="category1"><span
 							class="field-name">카테고리</span></label>
 						<div class="attr-value">
-							<select id="category1" name="category1" class="">
-								<option value="">카테고리 선택</option>
+							<select id="ctg" name="ctg" class="">
 								<option value="자유">자유</option>
 								<option value="정보">정보</option>
 								<option value="후기">후기</option>
@@ -86,7 +91,7 @@
 									class="wp-editor-container">
 
 									<textarea class="wp-editor-area" style="height: 400px"
-										cols="40" name="kboard_content" id="kboard_content">공지사항을 잘 읽어주세요.</textarea>
+										cols="40" name="txt" id="txt"><%=post.getFr_txt() %></textarea>
 								</div>
 							</div>
 
@@ -95,18 +100,17 @@
 
 					<!-- 첨부파일 시작 -->
 					<div class="kboard-attr-row kboard-attr-attach attach-1">
-						<label class="attr-name" for="kboard-input-file1"><span
-							class="field-name">첨부파일</span></label>
+						<label class="attr-name" for="kboard-input-file1">
+						<span class="field-name">첨부파일</span></label>
 						<div class="attr-value">
-							<input type="file" id="kboard-input-file1"
-								name="kboard_attach_file1">
+							<input type="file" id="attach" name="attach">
 						</div>
 					</div>
 					<!-- 첨부파일 끝 -->
 
 					<div class="kboard-control">
 						<div class="left">
-							<a href="freeview.jsp" class="kboard-thumbnail-button-small">돌아가기</a>
+							<a href="/single/fr/list.do?category=all" class="kboard-thumbnail-button-small">돌아가기</a>
 						</div>
 						<div class="right">
 							<button type="submit" class="kboard-thumbnail-button-small">저장하기</button>
