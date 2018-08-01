@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import member.dto.MemberDTO;
 import member.service.MemberService;
 import member.service.MemberServiceImpl;
-
 @WebServlet(name = "memberinfo", urlPatterns = { "/memberinfo.do" })
 public class MemberInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

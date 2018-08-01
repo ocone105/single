@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "logout", urlPatterns = { "/logout.do" })
 public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("euc-kr");
 		response.setContentType("text/html;charset=euc-kr");
 		response.setHeader("cache-control", "no-cache,no-store");
