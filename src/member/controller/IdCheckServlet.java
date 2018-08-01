@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.dto.MemberDTO;
-import member.service.MemberService;
-import member.service.MemberServiceImpl;
+
 
 @WebServlet(name = "idcheck", urlPatterns = { "/idcheck.do" })
 public class IdCheckServlet extends HttpServlet {
