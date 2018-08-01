@@ -15,9 +15,6 @@
 </head>
 <body>
 <%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
-<%
-	MemberDTO user = (MemberDTO)request.getAttribute("user");
-%>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
@@ -31,14 +28,14 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-10">
-					<h1><%=user.getMe_id() %></h1>
+					<h1><%=loginUser.getMe_id() %></h1>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-3">
 					<!--left col-->
 					<div class="text-center">
-						<img src="/single/upload/<%=user.getMe_img() %>" class="avatar img-circle img-thumbnail">
+						<img src="/single/upload/<%=loginUser.getMe_img() %>" class="avatar img-circle img-thumbnail">
 					</div>
 					<hr/>
 					<br>
@@ -77,7 +74,7 @@
 										<div>
 											<label class="info">성명</label>
 										</div>
-										<p><%=user.getMe_name() %></p>
+										<p><%=loginUser.getMe_name() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -85,7 +82,7 @@
 										<div>
 											<label class="info">생년월일</label>
 										</div>
-										<p><%=user.getMe_birth() %></p>
+										<p><%=loginUser.getMe_birth() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -94,7 +91,7 @@
 										<div>
 											<label class="info">성별</label>
 										</div>
-										<p><%=user.getMe_gender() %></p>
+										<p><%=loginUser.getMe_gender() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -103,7 +100,7 @@
 										<div>
 											<label class="info">전화번호</label>
 										</div>
-										<p><%=user.getMe_phone() %></p>
+										<p><%=loginUser.getMe_phone() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -112,7 +109,7 @@
 										<div>
 											<label class="info">비상연락처</label>
 										</div>
-										<p><%=user.getMe_telnum() %></p>
+										<p><%=loginUser.getMe_telnum() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -121,7 +118,7 @@
 										<div>
 											<label class="info">비상연락설정</label>
 										</div>
-										<p><%=user.getMe_telchk() %></p>
+										<p><%=loginUser.getMe_telchk() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -130,7 +127,7 @@
 										<div>
 											<label class="info">Email</label>
 										</div>
-										<p><%=user.getMe_email() %></p>
+										<p><%=loginUser.getMe_email() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -139,7 +136,7 @@
 										<div>
 											<label class="info">주소</label>
 										</div>
-										<p><%=user.getMe_addr() %></p>
+										<p><%=loginUser.getMe_addr() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -148,7 +145,7 @@
 										<div>
 											<label class="info">포인트</label>
 										</div>
-										<p><%=user.getMe_point() %></p>
+										<p><%=loginUser.getMe_point() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -157,7 +154,7 @@
 										<div>
 											<label class="info">누적포인트</label>
 										</div>
-										<p><%=user.getMe_points() %></p>
+										<p><%=loginUser.getMe_points() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -166,7 +163,7 @@
 										<div>
 											<label class="info">회원등급</label>
 										</div>
-										<p><%=user.getMe_grade() %></p>
+										<p><%=loginUser.getMe_grade() %></p>
 									</div>
 								</div>
 								<div class="form-group">
@@ -175,7 +172,11 @@
 										<div>
 											<label class="info">성향</label>
 										</div>
-										<p><%=user.getMe_character() %> </p>
+										<%if(loginUser.getMe_character()!=null){ %>
+										<p><%=loginUser.getMe_character() %> </p>
+										<%}else{ %>
+										<p> - </p>
+										<%} %>
 									</div>
 								</div>
 								<div class="form-group">
@@ -184,7 +185,7 @@
 										<div>
 											<label class="info">블랙리스트신고횟수</label>
 										</div>
-										<p><%=user.getMe_black() %></p>
+										<p><%=loginUser.getMe_black() %></p>
 									</div>
 								</div>
 							<hr>

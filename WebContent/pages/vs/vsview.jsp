@@ -47,7 +47,6 @@
 			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 			<%} %>
-
 			<a href="/single/pages/vs/vspost.jsp">±Û¾²±â</a> 
 			<%
 				ArrayList<VsDTO> posts = (ArrayList<VsDTO>) request.getAttribute("posts");

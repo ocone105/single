@@ -97,7 +97,7 @@ function idCheckMsg() {
 	}
 }
 
-//회원가입 위치정보받기 + 비밀번호일치하지 않으면 회원가입 안됨
+//회원가입 위치정보받기 + 비밀번호일치하지 않으면 회원가입 안됨 + 중복된 아이디도 회원가입안됨
 function join(){
 	if(idInfo==1){
 		if(document.myform.me_pwd.value==document.myform.pwdChk.value){
@@ -109,6 +109,7 @@ function join(){
 			        lon = position.coords.longitude; // 경도
 			       	document.getElementById("lat").value = lat;
 			       	document.getElementById("lon").value = lon;
+			       	alert("회원가입 완료");
 			    	document.myform.submit();
 			      });
 			} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
@@ -116,6 +117,7 @@ function join(){
 			       	lon = 126.570667; // 경도
 			    	document.getElementById("lat").value = lat;
 			       	document.getElementById("lon").value = lon;
+			     	alert("회원가입 완료");
 			    	document.myform.submit();
 			}
 			return false;
