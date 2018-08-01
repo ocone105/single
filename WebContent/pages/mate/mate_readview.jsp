@@ -163,10 +163,11 @@
 				</ul>
 
 
-				<form action="#" method="post">
-					<input type="hidden" name="id" id="id" value="" size="22">
+				<form action="/single/mt_reinsert.do" method="post">
+					<input type="hidden" name="mt_no" value="<%=dto.getMt_no()%>"/>
+					<input type="hidden" name="me_id" id="id" value="<%=loginUser.getMe_id() %>" size="22">
 					<p>
-						<textarea name="comment" id="comment" cols="25" rows="5"></textarea>
+						<textarea name="mt_cmt_txt" id="comment" cols="25" rows="5"></textarea>
 					</p>
 					<input name="submit" type="submit" id="submit" value="µî·Ï"
 						style="float: right">
