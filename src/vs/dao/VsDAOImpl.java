@@ -10,9 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import vs.dto.VsDTO;
-
 public class VsDAOImpl implements VsDAO {
-
 	@Override
 	public int insert(VsDTO post, Connection con) throws SQLException {	// vs게시글 작성
 		System.out.println("DAO요청");

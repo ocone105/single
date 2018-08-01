@@ -12,7 +12,6 @@ import vs.dao.VsDAOImpl;
 import vs.dto.VsDTO;
 
 public class VsServiceImpl implements VsService {
-
 	@Override
 	public int insert(VsDTO post) {	// vs게시글 작성
 		System.out.println("Service요청");
