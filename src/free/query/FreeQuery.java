@@ -46,6 +46,7 @@ public class FreeQuery {
 }
 
 
+
 /*
 
 create table fr_board(
