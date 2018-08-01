@@ -17,7 +17,7 @@ import member.service.MemberServiceImpl;
 public class IdCheckServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		System.out.println("test");
 		String id = request.getParameter("id");
 
 		MemberService service = new MemberServiceImpl();
@@ -25,9 +25,9 @@ public class IdCheckServlet extends HttpServlet {
 
 		String msg = "";
 		if (user!=null) {
-			msg = "이미 존재하는 아이디입니다";
+			msg = "이미 존재하는 아이디입니다.";
 		} else {
-			msg = "사용가능한 아이디입니다";
+			msg = "1";
 		}
 
 		response.setContentType("text/html;charset=euc-kr");

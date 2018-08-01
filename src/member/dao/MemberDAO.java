@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import member.dto.MemberDTO;
 
+
 public interface MemberDAO {
 	int memberinsert(MemberDTO user, Connection con) throws SQLException;
 	MemberDTO getLoginUser(String id, String pass, Connection con) throws SQLException;

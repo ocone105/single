@@ -10,7 +10,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<!-- https://getbootstrap.com/docs/4.0/components/navbar/#responsive-behaviors -->
 	
-	<link rel="stylesheet" href="/single/common/styles/friends/friendsmenu.css">
+	<!-- <link rel="stylesheet" href="/single/common/styles/friends/friendsmenu.css"> -->
 	
 </head>
 <body>

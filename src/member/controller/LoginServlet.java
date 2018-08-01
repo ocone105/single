@@ -1,6 +1,7 @@
 package member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,29 +22,32 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("euc-kr");
-		
-		String id = request.getParameter("id");
-		String pass = request.getParameter("pass");
-		
+		response.setContentType("text/html;charset=euc-kr");
+		response.setHeader("cache-control", "no-cache,no-store");
+		PrintWriter pw = response.getWriter();
+		/*String id = request.getParameter("id");
+		String pass = request.getParameter("pass");*/
+		String info = request.getParameter("info");
+		String[] str = info.split(",");
+		String id = str[0];
+		String pass = str[1];
 		MemberService service = new MemberServiceImpl();
 		MemberDTO loginUser = service.getLoginUser(id, pass);
 		
-		String url = "";
+		String msg="";
 		if(loginUser!=null){//로그인성공
 			if(loginUser.getMe_state().equals("t")){
 				HttpSession ses = request.getSession();
 				ses.setAttribute("loginUser", loginUser);
+				msg="1";
 			}else if(loginUser.getMe_state().equals("f")){//탈퇴한회원
-				
+				msg = "아이디와비밀번호를 확인해주세요.";
 			}
 			
 		}else{//로그인실패
-			
+			msg = "아이디와비밀번호를 확인해주세요.";
 		}
-		url = "/pages/mainview.jsp";
-		
-		RequestDispatcher rd = request.getRequestDispatcher(url);
-		rd.forward(request, response);
+		pw.println(msg);
 
 	}
 }

@@ -19,24 +19,25 @@
 		$(document).ready(function(){
 			$(".btnA").on("click", function(){
 				vs_no = $(this).attr("id");
-				alert(vs_no);
-				document.getElementById("A").value = vs_no;
-				document.myform.submit();
+				document.getElementById("A"+vs_no).value = "A"+vs_no;
+				document.myformA.submit();
 			});
 			$(".btnB").on("click", function(){
 				vs_no = $(this).attr("id");
-				alert("B"+vs_no);
-				document.getElementById("B").value = vs_no;
-				document.myform.submit();
+				document.getElementById("B"+vs_no).value = "B"+vs_no;
+				document.myformB.submit();
 			});
-			
-			
 		});
-	
+		function test(){
+			alert("test");
+		}
 	</script>
 </head>
 <body>
-<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); 
+String test = "test";
+request.setAttribute("test", test);
+%>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
@@ -47,34 +48,37 @@
 			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 			<%} %>
-
 			<a href="/single/pages/vs/vspost.jsp">글쓰기</a> 
 			<%
 				ArrayList<VsDTO> posts = (ArrayList<VsDTO>) request.getAttribute("posts");
-				System.out.println("게시글" + posts);
-
+				//System.out.println("게시글" + posts);
 				int size = posts.size();
-				for (int i = 0; i < size; i++) {
-					VsDTO post = posts.get(i);
+				
+				if(posts!=null){
+					for (int i = 0; i < size; i++) {
+						VsDTO post = posts.get(i);
 			%>
 			<div id="post">
-				<form action="/single/vs/select.do" id="myform">
 					<div class="row">
 						<h2 style="text-align: center"><%=post.getVs_title()%></h2>
 						<h4 style="text-align: center"><%=post.getVs_txt()%></h4>
 						<div class="vl">
 							<span class="vl-innertext">VS</span>
 						</div>
+						<form action="/single/vs/select.do" id="myformA">
 						<div class="col" style="text-align: center">
 							<button class="btnA" id="<%=post.getVs_no()%>"><%=post.getVs_optionA()%></button>
-							<input type="hidden" name="A" id="A">
+							<input type="hidden" name="A" id="A<%=post.getVs_no()%>">
 						</div>
+						</form>
+						<form action="/single/vs/select.do" id="myformB">
 						<div class="col" style="text-align: center">
 							<button class="btnB" id="<%=post.getVs_no()%>"><%=post.getVs_optionB()%></button>
-							<input type="hidden" name="B" id="B">
+							<input type="hidden" name="B" id="B<%=post.getVs_no()%>">
 						</div>
+						</form>
 					</div>
-				</form>
+					
 				<br> <br>
 				<div id="bar">
 					<jsp:include page="/pages/vs/bar.jsp" />
@@ -84,9 +88,8 @@
 					<a href="/single/pages/vs/vscmt.jsp">댓글보기</a>
 				</div>
 			</div>
-			<%
-				}
-			%>
+			<%}}%>
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 		</div>
 	</div>
 
