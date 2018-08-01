@@ -28,12 +28,22 @@ public class VsReadServlet extends HttpServlet {
 		// 3. 데이터공유
 		request.setAttribute("posts", posts);
 		
+		// ArrayList<Integer> ratingA = new ArrayList<Integer>;
 		for (int i = 0; i < posts.size(); i++) {
-			System.out.println(posts.get(i));
+			// System.out.println(posts.get(i));
+			int vs_hitsA = posts.get(i).getVs_hitsA();
+			int vs_hitsB = posts.get(i).getVs_hitsB();
+			hits_rating(vs_hitsA, vs_hitsB);
 		}
 
 		// 4. 요청재지정
 		RequestDispatcher rd = request.getRequestDispatcher("/pages/vs/vsview.jsp");
 		rd.forward(request, response);
+	}
+	
+	public int hits_rating(int vs_hitsA, int vs_hitsB){
+		int ratingA = 0;
+		
+		return ratingA;
 	}
 }

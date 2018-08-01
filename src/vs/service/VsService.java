@@ -13,5 +13,5 @@ public interface VsService {
 	
 	ArrayList<VsDTO> read();	// vs게시글 목록
 	
-	int update(int vs_no);	// 투표수 업데이트
+	int update(int vs_no, String option);	// 투표수 업데이트
 }
