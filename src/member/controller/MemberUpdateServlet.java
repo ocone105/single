@@ -39,7 +39,7 @@ public class MemberUpdateServlet extends HttpServlet {
 				new DefaultFileRenamePolicy());
 		
 		String me_id = multipart.getParameter("id");
-		String me_pwd = multipart.getParameter("pass");
+		String me_pwd = multipart.getParameter("me_pwd");
 		String me_phone = multipart.getParameter("phone"); 
 		String me_telnum = multipart.getParameter("telnum");
 		String me_telchk = multipart.getParameter("telchk");
