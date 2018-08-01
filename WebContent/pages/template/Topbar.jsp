@@ -36,12 +36,12 @@
 	        <li class="active"><a href="/single/pages/mainview.jsp">Home</a></li>
 	        <li><a href="/single/pages/mate/mate_mainview.jsp">메이트</a></li>
 	        <li><a href="/single/pages/local/localview.jsp">지역행사</a></li>
-	        <li><a href="/single/fr/list.do?action=all">자유게시판</a>
+	        <li><a href="/single/fr/list.do?category=all">자유게시판</a>
 	          <ul>
-	            <li><a href="/single/fr/list.do?action=free">자유</a></li>
-	            <li><a href="/single/fr/list.do?action=tip">정보</a></li>
-	            <li><a href="/single/fr/list.do?action=review">후기</a></li>
-	            <li><a href="/single/fr/list.do?action=recom">추천</a></li>
+	            <li><a href="/single/fr/list.do?category=free">자유</a></li>
+	            <li><a href="/single/fr/list.do?category=tip">정보</a></li>
+	            <li><a href="/single/fr/list.do?category=review">후기</a></li>
+	            <li><a href="/single/fr/list.do?category=recom">추천</a></li>
 	          </ul>
 	        </li>
 	        <li><a href="/single/pages/vs/vsview.jsp">vs게시판</a></li>

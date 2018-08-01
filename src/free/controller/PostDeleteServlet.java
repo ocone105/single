@@ -25,6 +25,6 @@ public class PostDeleteServlet extends HttpServlet {
 		int result = service.delete(no);
 
 		// 요청재지정
-		res.sendRedirect("/single/fr/list.do?action=all");
+		res.sendRedirect("/single/fr/list.do?category=all");
 	}
 }

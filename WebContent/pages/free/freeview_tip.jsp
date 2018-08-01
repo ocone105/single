@@ -43,11 +43,11 @@
 				<!-- 카테고리 시작 -->
  				<div class="kboard-category category-pc">
 					<ul class="kboard-category-list"> 
-						<li><a href="/single/fr/list.do?action=all">전체</a></li>
-						<li><a href="/single/fr/list.do?action=free">자유</a></li>
-						<li class="kboard-category-selected"><a href="/single/fr/list.do?action=tip">정보</a></li>
-						<li><a href="/single/fr/list.do?action=review">후기</a></li>
-						<li><a href="/single/fr/list.do?action=recom">추천</a></li>
+						<li><a href="/single/fr/list.do?category=all">전체</a></li>
+						<li><a href="/single/fr/list.do?category=free">자유</a></li>
+						<li class="kboard-category-selected"><a href="/single/fr/list.do?category=tip">정보</a></li>
+						<li><a href="/single/fr/list.do?category=review">후기</a></li>
+						<li><a href="/single/fr/list.do?category=recom">추천</a></li>
 					</ul>
 				</div>
 				<!-- 카테고리 끝 -->

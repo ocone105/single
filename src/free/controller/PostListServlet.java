@@ -21,29 +21,29 @@ public class PostListServlet extends HttpServlet {
 		//System.out.println("postlist 서블릿 요청 성공");
 		req.setCharacterEncoding("euc-kr");
 		
-		String action = req.getParameter("action");
+		String category = req.getParameter("category");
 		String view="";
 		
 		FreeService service = new FreeServiceImpl();
 		ArrayList<FreeDTO> postlist = null;
 		
-		if(action.equals("free")){
+		if(category.equals("free")){
 			view = "/pages/free/freeview_free.jsp";
 			postlist = service.getCtgList("자유");
 
-		}else if(action.equals("tip")){
+		}else if(category.equals("tip")){
 			view = "/pages/free/freeview_tip.jsp";
 			postlist = service.getCtgList("정보");
 
-		}else if(action.equals("review")){
+		}else if(category.equals("review")){
 			view = "/pages/free/freeview_review.jsp";
 			postlist = service.getCtgList("후기");
 
-		}else if(action.equals("recom")){
+		}else if(category.equals("recom")){
 			view = "/pages/free/freeview_recom.jsp";
 			postlist = service.getCtgList("추천");
 
-		}else if(action.equals("all")){
+		}else if(category.equals("all")){
 			view = "/pages/free/freeview.jsp";
 			postlist = service.getPostList();
 		}

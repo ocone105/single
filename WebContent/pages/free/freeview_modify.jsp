@@ -110,7 +110,7 @@
 
 					<div class="kboard-control">
 						<div class="left">
-							<a href="/single/fr/list.do?action=all" class="kboard-thumbnail-button-small">돌아가기</a>
+							<a href="/single/fr/list.do?category=all" class="kboard-thumbnail-button-small">돌아가기</a>
 						</div>
 						<div class="right">
 							<button type="submit" class="kboard-thumbnail-button-small">저장하기</button>

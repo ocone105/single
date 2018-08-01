@@ -173,135 +173,30 @@ function writeCmt()
 						</div>
 					</div>
 
-					<div class="right">
-						<a href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=modify" class="kboard-thumbnail-button-small">글수정</a> 
-							<a href="/single/fr/delete.do?no=<%=post.getFr_no()%>" class="kboard-thumbnail-button-small"
-							onclick="return confirm('삭제 하시겠습니까?');">글삭제</a>
+					<div class="kboard-control">
+
+						<div class="left">
+							<a href="/single/fr/list.do?category=all"
+								class="kboard-thumbnail-button-small">돌아가기</a>
+						</div>
+						<div class="right">
+							<a
+								href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=modify"
+								class="kboard-thumbnail-button-small">글수정</a> <a
+								href="/single/fr/delete.do?no=<%=post.getFr_no()%>"
+								class="kboard-thumbnail-button-small"
+								onclick="return confirm('삭제 하시겠습니까?');">글삭제</a>
+						</div>
 					</div>
+
 				</div>
 			</div>
 			<br />
 
-			<div id="kboard-thumbnail-list">
-
-				<!-- 카테고리 시작 -->
-				<div class="kboard-category category-pc">
-					<ul class="kboard-category-list">
-						<li class="kboard-category-selected"><a href="freeview.jsp">전체</a></li>
-						<li><a href="freeview_free.jsp">자유</a></li>
-						<li><a href="freeview_tip.jsp">정보</a></li>
-						<li><a href="freeview_review.jsp">후기</a></li>
-						<li><a href="freeview_recom.jsp">추천</a></li>
-					</ul>
-				</div>
-				<!-- 카테고리 끝 -->
-				<!-- 리스트 시작 -->
-				<div class="kboard-list">
-					<table>
-						<thead>
-							<tr>
-								<td class="kboard-list-uid">번호</td>
-								<td class="kboard-list-title">제목</td>
-								<td class="kboard-list-user">작성자</td>
-								<td class="kboard-list-date">작성일</td>
-								<td class="kboard-list-view">조회</td>
-							</tr>
-						</thead>
-						<tbody>
-<!-- 							<tr class="kboard-list-notice">
-								<td class="kboard-list-uid">공지사항</td>
-
-								<td class="kboard-list-title"><a href="freeview_view.jsp">
-										<div class="kboard-thumbnail-cut-strings">
-											공지사항을 읽어주세요. <span class="kboard-comments-count">(1)</span>
-										</div>
-								</a>
-									<div class="kboard-mobile-contents">
-										<span class="contents-item kboard-user">admin</span> <span
-											class="contents-separator kboard-date">|</span> <span
-											class="contents-item kboard-date">2018.07.21</span> <span
-											class="contents-separator kboard-view">|</span> <span
-											class="contents-item kboard-view">조회 26</span>
-									</div></td>
-								<td class="kboard-list-user">admin</td>
-								<td class="kboard-list-date">2018.07.21</td>
-								<td class="kboard-list-view">26</td>
-							</tr> -->
-
-							<tr class="">
-								<td class="kboard-list-uid">1</td>
-
-								<td class="kboard-list-title"><a href="#">
-										<div class="kboard-thumbnail-cut-strings">
-											안녕하세요. <span class="kboard-comments-count"></span>
-										</div>
-								</a>
-									<div class="kboard-mobile-contents">
-										<span class="contents-item kboard-user">blur</span> <span
-											class="contents-separator kboard-date">|</span> <span
-											class="contents-item kboard-date">2018.07.21</span> <span
-											class="contents-separator kboard-view">|</span> <span
-											class="contents-item kboard-view">조회 7</span>
-									</div></td>
-								<td class="kboard-list-user">blur</td>
-								<td class="kboard-list-date">2018.07.21</td>
-								<td class="kboard-list-view">7</td>
-							</tr>
-
-						</tbody>
-					</table>
-				</div>
-				<!-- 리스트 끝 -->
-
-				<!-- 페이징 시작 -->
-				<div class="kboard-pagination">
-					<ul class="kboard-pagination-pages">
-						<li class="active"><a href="#" onclick="return false">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">6</a></li>
-						<li><a href="#">7</a></li>
-						<li><a href="#">8</a></li>
-						<li><a href="#">9</a></li>
-						<li><a href="#">10</a></li>
-						<li class="next-page"><a href="#">→</a></li>
-						<li class="last-page"><a href="#">마지막</a></li>
-					</ul>
-				</div>
-				<!-- 페이징 끝 -->
-
-				<!-- 검색폼 시작 -->
-				<div class="kboard-search">
-					<form id="kboard-search-form-1" method="get" action="#">
-						<input type="hidden" name="mod" value="list">
-						<input type="hidden" name="pageid" value="1"> 
-						<select name="target">
-							<option value="">전체</option>
-							<option value="title">제목</option>
-							<option value="content">내용</option>
-							<option value="member_display">작성자</option>
-						</select> <input type="text" name="keyword" value="">
-						<button type="submit" class="kboard-thumbnail-button-small">검색</button>
-					</form>
-				</div>
-				<!-- 검색폼 끝 -->
-
-				<!-- 버튼 시작 -->
-				<div class="kboard-control">
-					<a href="/single/pages/free/freeview_write.jsp"
-						class="kboard-thumbnail-button-small">글쓰기</a>
-				</div>
-				<!-- 버튼 끝 -->
-
-
-				<!-- ########################################################################################## -->
 			</div>
 			<!-- ################################################################################################ -->
 			<div class="clear"></div>
 		</div>
-	</div>
 	<!-- Copyright -->
 	<div class="wrapper row3">
 		<jsp:include page="/pages/template/Footer.jsp" />
