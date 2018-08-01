@@ -22,23 +22,22 @@ public class SelectServlet extends HttpServlet {
 		
 		String A = request.getParameter("A");
 		String B = request.getParameter("B");
+		String option = "";
 		int vs_no = 0;
-		System.out.println("A"+A);
-		System.out.println("B"+B);
-
+		
 		if(A!=null){
-			vs_no = Integer.parseInt(A);
+			vs_no = Integer.parseInt(A.substring(1));
+			option = "A";
 		} else if(B!=null){ 
-			vs_no = Integer.parseInt(B);
+			vs_no = Integer.parseInt(B.substring(1));
+			option = "B";
 		} else{
-			System.out.println("vs_no 없음");
+			System.out.println("???");
 		}
-		System.out.println(vs_no);
-
-		String option = "A";
+		
 		// 2. 비지니스 메소드 호출
 		VsService service = new VsServiceImpl();
-		// int result = service.update(vs_no, option);
+		int result = service.update(vs_no, option);
 
 		// 3. 데이터공유
 

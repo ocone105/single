@@ -3,12 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/single/common/styles/layout.css" type="text/css" media="all">
-<link rel="stylesheet" href="/single/common/styles/mediaqueries.css" type="text/css" media="all">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Single Single</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="/single/common/styles/layout.css"
 	type="text/css" media="all">
@@ -16,6 +12,7 @@
 	type="text/css" media="all">
 
 <!-- hs 추가 -->
+<link rel="shortcut icon" href="/single/images/favicon.ico">
 
 <link rel='stylesheet' id='kboard-skin-thumbnail-css'
 	href='/single/common/styles/free/thumbnail.css?ver=5.3.9' type='text/css'
@@ -38,38 +35,35 @@
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 
 			<div id="kboard-thumbnail-editor">
-				<form class="kboard-form" method="post" action="#"
+				<form class="kboard-form" method="post" action="/single/fr/insert.do"
 					enctype="multipart/form-data"
 					onsubmit="return kboard_editor_execute(this);">
 					<input type="hidden" id="kboard-editor-execute-nonce"
-						name="kboard-editor-execute-nonce" value="e5e7dad497" /><input
-						type="hidden" name="_wp_http_referer"
-						value="/demo/?mod=editor&amp;pageid=1" /> <input type="hidden"
-						name="action" value="kboard_editor_execute"> <input
-						type="hidden" name="mod" value="editor"> <input
-						type="hidden" name="uid" value=""> <input type="hidden"
-						name="board_id" value="1"> <input type="hidden"
-						name="parent_uid" value=""> <input type="hidden"
-						name="member_uid" value=""> <input type="hidden"
-						name="member_display" value=""> <input type="hidden"
-						name="date" value=""> <input type="hidden" name="user_id"
-						value="0">
+						name="kboard-editor-execute-nonce" value="e5e7dad497" />
+						<input type="hidden" name="_wp_http_referer" value="/demo/?mod=editor&amp;pageid=1" /> 
+						<input type="hidden" name="action" value="kboard_editor_execute"> 
+						<input type="hidden" name="mod" value="editor"> 
+						<input type="hidden" name="uid" value=""> 
+						<input type="hidden" name="board_id" value="1"> 
+						<input type="hidden" name="parent_uid" value=""> 
+						<input type="hidden" name="member_uid" value=""> 
+						<input type="hidden" name="member_display" value=""> 
+						<input type="hidden" name="date" value=""> 
+						<input type="hidden" name="user_id" value="0">
 
 					<div class="kboard-attr-row kboard-attr-title required">
-						<label class="attr-name" for="title"><span
-							class="field-name">제목</span> <span class="attr-required-text">*</span></label>
+						<label class="attr-name" for="title">
+						<span class="field-name">제목</span> <span class="attr-required-text">*</span></label>
 						<div class="attr-value">
-							<input type="text" id="title" name="title" class="required"
-								value="">
+							<input type="text" id="title" name="title" class="required" value="">
 						</div>
 					</div>
 
 					<div class="kboard-attr-row kboard-attr-category1 ">
-						<label class="attr-name" for="category1"><span
-							class="field-name">카테고리</span></label>
+						<label class="attr-name" for="category1">
+						<span class="field-name">카테고리</span></label>
 						<div class="attr-value">
-							<select id="category1" name="category1" class="">
-								<option value="">카테고리 선택</option>
+							<select id="ctg" name="ctg" class="">
 								<option value="자유">자유</option>
 								<option value="정보">정보</option>
 								<option value="후기">후기</option>
@@ -79,8 +73,8 @@
 					</div>
 
 					<div class="kboard-attr-row kboard-attr-content ">
-						<label class="attr-name" for="content"><span
-							class="field-name">내용</span></label>
+						<label class="attr-name" for="content">
+						<span class="field-name">내용</span></label>
 						<div class="kboard-content">
 							<div id="wp-kboard_content-wrap"
 								class="wp-core-ui wp-editor-wrap html-active">
@@ -89,7 +83,7 @@
 									class="wp-editor-container">
 
 									<textarea class="wp-editor-area" style="height: 400px"
-										cols="40" name="kboard_content" id="kboard_content"></textarea>
+										cols="40" name="txt" id="txt"></textarea>
 								</div>
 							</div>
 
@@ -98,11 +92,10 @@
 
 					<!-- 첨부파일 시작 -->
 					<div class="kboard-attr-row kboard-attr-attach attach-1">
-						<label class="attr-name" for="kboard-input-file1"><span
-							class="field-name">첨부파일</span></label>
+						<label class="attr-name" for="kboard-input-file1">
+						<span class="field-name">첨부파일</span></label>
 						<div class="attr-value">
-							<input type="file" id="kboard-input-file1"
-								name="kboard_attach_file1">
+							<input type="file" id="attach" name="attach">
 						</div>
 					</div>
 					<!-- 첨부파일 끝 -->

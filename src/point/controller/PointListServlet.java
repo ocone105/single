@@ -16,7 +16,7 @@ import point.dto.PointDTO;
 import point.service.PointService;
 import point.service.PointServiceImpl;
 
-@WebServlet(name = "PointList", urlPatterns = { "/PointList.do" })
+@WebServlet(name = "po/list", urlPatterns = { "/po/list.do" })
 public class PointListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

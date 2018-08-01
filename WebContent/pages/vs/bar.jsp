@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="/single/common/styles/vs/bar.css">
 </head>
 <body>
-	
+	<%=
+		request.getAttribute("test")
+	%>
 	<figure>
 		<div class="graphic">
 			<div class="row">

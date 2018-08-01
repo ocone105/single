@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import mate.dto.MateCmtDTO;
 import mate.dto.MateDTO;
 import static mate.query.MateQuery.*;
 import static fw.DBUtil.*;
@@ -76,6 +77,50 @@ public class MateDAOImpl implements MateDAO {
 		close(ptmt);
 		return result;
 	}
+
+	
+	
+	//**********************메이트 게시판 댓글**********************************
+	
+	@Override
+	public int insert_mt_cmt(MateCmtDTO dto, Connection con) throws SQLException {
+		int result = 0;
+		PreparedStatement ptmt = con.prepareStatement(MATE_REPLY_INSERT);
+		ptmt.setString(1, dto.getMt_cmt_txt());
+		ptmt.setInt(2, dto.getMt_no());
+		ptmt.setString(3, dto.getMe_id());
+		result = ptmt.executeUpdate();
+		close(ptmt);
+		return result;
+	}
+
+	@Override
+	public ArrayList<MateCmtDTO> List_mt_cmt(int mt_no, Connection con) throws SQLException {
+		ArrayList<MateCmtDTO> dtolist = new ArrayList<MateCmtDTO>();
+		MateCmtDTO dto =  null;
+		PreparedStatement ptmt = con.prepareStatement(MATE_LIST);
+		ptmt.setInt(1, mt_no);
+		ResultSet rs = ptmt.executeQuery();
+		while(rs.next()){
+			dto = new MateCmtDTO(rs.getInt(1), rs.getString(2),
+					rs.getString(3), rs.getInt(4), rs.getString(5));
+			
+			dtolist.add(dto);
+		}
+		return dtolist;
+	}
+
+	@Override
+	public int delete_mt_cmt(int mt_cmt_no, Connection con) throws SQLException {
+		int result = 0;
+		PreparedStatement ptmt = con.prepareStatement(MATE_REPLY_DELETE);
+		ptmt.setInt(1, mt_cmt_no);
+		result = ptmt.executeUpdate();
+		close(ptmt);
+		return result;
+	}
+	
+	
 	
 	
 
