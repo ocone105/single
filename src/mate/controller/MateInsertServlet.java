@@ -40,7 +40,7 @@ public class MateInsertServlet extends HttpServlet {
 		}
 		System.out.println(msg);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/mt_list.do");
+		RequestDispatcher rd = request.getRequestDispatcher("/mt/list.do");
 		rd.forward(request, response);
 	
 		
