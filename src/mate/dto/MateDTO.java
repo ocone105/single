@@ -28,10 +28,9 @@ public class MateDTO {
 */
 	
 
-	
-	
 	public MateDTO(int mt_no, String mt_title, String mt_txt, String mt_date, int mt_hits, String mt_file,
 			String mt_map, String mt_ctg, int mt_cnt, String me_id, String mt_img, String mt_particpant) {
+		super();
 		this.mt_no = mt_no;
 		this.mt_title = mt_title;
 		this.mt_txt = mt_txt;
