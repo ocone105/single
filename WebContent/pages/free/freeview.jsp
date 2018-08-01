@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@page import="free.dto.FreeDTO"%>
@@ -30,7 +31,10 @@
 	<div class="wrapper row2">
 		<div id="container">
 			<!-- 플로팅배너 -->
+			<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<div id="kboard-thumbnail-list">
 
 				<!-- 카테고리 시작 -->
