@@ -1,9 +1,6 @@
 select * from member;
-select * from member where me_id='user1' and me_pass='1234';
+select * from VS_BOARD;
 delete from member;
-
-update MEMBER set me_state='t' where me_id='user2';
-
 select * from tab;
 
 drop table member;
@@ -20,11 +17,6 @@ drop table ma_cmt;
 drop table ma_join;
 drop table le_board;
 drop table point;
-
-
-
-
-
 
 create table member(
 me_id varchar2(30),
@@ -45,7 +37,6 @@ me_state varchar2(10),
 me_img varchar2(200),
 me_loc varchar2(200),
 me_black number);
-
 
 create table bd_list(
 me_id varchar2(30),
@@ -72,7 +63,6 @@ mt_cnt number,
 me_id varchar2(30),
 mt_img varchar2(200),
 mt_participant varchar2(200));
-
 
 create table mate_cmt(	
 mt_cmt_no number,
@@ -257,9 +247,13 @@ add constraint fk_ma_join_ma_no foreign key(ma_no) references ma_board(ma_no);
 
 
 
-
+// 시퀀스 삭제
+drop sequence fr_seq;
+drop sequence fr_cmt_seq;
+drop sequence vs_seq;
+drop sequence mate_seq;
+drop sequence point_seq;
 // 시퀀스 추가
-
 
 create sequence fr_seq;
 create sequence fr_cmt_seq;
