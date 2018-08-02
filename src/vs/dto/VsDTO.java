@@ -1,7 +1,6 @@
 package vs.dto;
 
 import java.sql.Date;
-
 public class VsDTO {
 	
 	int vs_no;			// ±Û¹øÈ£

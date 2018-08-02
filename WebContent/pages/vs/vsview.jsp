@@ -13,6 +13,9 @@
 	<script src="/single/common/scripts/jquery.min.js"></script>
 	<script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" href="/single/common/styles/vs/vsview.css">
 	<script type="text/javascript">
@@ -48,7 +51,6 @@ request.setAttribute("test", test);
 			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 			<%} %>
-
 			<a href="/single/pages/vs/vspost.jsp">글쓰기</a> 
 			<%
 				ArrayList<VsDTO> posts = (ArrayList<VsDTO>) request.getAttribute("posts");
@@ -86,6 +88,10 @@ request.setAttribute("test", test);
 				</div>
 
 				<div class="bottom-container">
+					
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+  <div id="demo" class="collapse">
+					<jsp:include page="/pages/vs/vscmt.jsp" />
 					<a href="/single/pages/vs/vscmt.jsp">댓글보기</a>
 				</div>
 			</div>
@@ -98,5 +104,22 @@ request.setAttribute("test", test);
 	<div class="wrapper row3">
 		<jsp:include page="/pages/template/Footer.jsp" />
 	</div>
+	<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+}
+</script>
+	
 </body>
 </html>

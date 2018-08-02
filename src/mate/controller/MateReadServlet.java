@@ -13,7 +13,7 @@ import mate.dto.MateDTO;
 import mate.service.MateService;
 import mate.service.MateServiceImpl;
 
-@WebServlet(name = "mt_read", urlPatterns = { "/mt_read.do" })
+@WebServlet(name = "mt/read.do", urlPatterns = { "/mt/read.do" })
 public class MateReadServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");	

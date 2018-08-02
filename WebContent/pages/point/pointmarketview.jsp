@@ -8,10 +8,6 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/single/common/styles/layout.css" type="text/css" media="all">
-<link rel="stylesheet" href="/single/common/styles/mediaqueries.css" type="text/css" media="all">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 </head>
 <body>
 <%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
@@ -36,7 +32,7 @@
 					<li>
 						<article>
 							<figure>
-								<a href="/single/PointRead.do?po_no=<%= dtolist.get(i).getPo_no() %>"><img src="/single/images/demo/225x160.gif" alt=""></a>
+								<a href="/single/po/read.do?po_no=<%= dtolist.get(i).getPo_no() %>"><img src="/single/images/demo/225x160.gif" alt=""></a>
 								<figcaption><%= dtolist.get(i).getPo_title() %></figcaption>
 							</figure>
 						</article>

@@ -5,10 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/single/common/styles/layout.css" type="text/css" media="all">
-<link rel="stylesheet" href="/single/common/styles/mediaqueries.css" type="text/css" media="all">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>

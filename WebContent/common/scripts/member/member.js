@@ -40,3 +40,14 @@ $(document).ready(function () {
 	         })
 	   });
 });
+
+
+//비밀번호일치여부 확인
+function update(){
+	if(document.myform.me_pwd.value==document.myform.pwdChk.value){
+		return true;
+	}else{
+		alert("비밀번호가 일치하지 않습니다.");
+		return false;
+	}
+}
