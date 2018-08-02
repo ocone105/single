@@ -133,7 +133,6 @@
 						<input type="hidden" name="mod" value="list"><input
 							type="hidden" name="pageid" value="1"> <select
 							name="target">
-							<option value="">전체</option>
 							<option value="title">제목</option>
 							<option value="content">내용</option>
 							<option value="member_display">작성자</option>

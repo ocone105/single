@@ -43,6 +43,9 @@ public class FreeQuery {
 	
 	public static final String REPORT_USER
 	= "update member set me_black=? where me_id=?"; 		// 게시글 신고
+	
+	public static final String SEARCH
+	= "select fr_no, fr_title, fr_date, fr_hits, me_id from fr_board where fr_title like ? or fr_txt like ? or me_id like ? ";
 }
 
 
