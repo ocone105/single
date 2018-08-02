@@ -1,3 +1,9 @@
+<%@page import="vs.dto.VsDTO"%>
+<%@page import="point.dto.PointDTO"%>
+<%@page import="mate.dto.MateDTO"%>
+<%@page import="free.dto.FreeDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="main.controller.MainBoard"%>
 <%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
@@ -81,6 +87,17 @@
 				</a>
 			</div>
 
+			<% 
+				MainBoard board = new MainBoard();
+				ArrayList<MateDTO> matelist = board.MateList();
+				ArrayList<FreeDTO> freelist = board.FreeList();	
+				ArrayList<VsDTO> vslist = board.VsList();
+				ArrayList<PointDTO> pointlist = board.PointList();
+				int matesize = matelist.size();
+				int freesize = freelist.size();
+				int vssize = vslist.size();
+				int pointsize = pointlist.size();
+			%>
 			<!-- main content -->
 			<hr />
 			<div>
@@ -88,65 +105,59 @@
 					<div class="panel panel-primary" style="border-color: #edeef1;">
 						<div class="panel-footer">메이트</div>
 						<div style="padding-top: 20px; padding-left: 10px">
-							<table>
-								<thead>
-									<tr>
-										<th>게시글</th>
-										<th>날짜</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><a href="#">게시글A</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글B</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글C</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글D</a></td>
-										<td>2000.01.01</td>
-									</tr>
-								</tbody>
-							</table>
+						<%if(matesize==0) {%>
+							<div>등록된 게시물이 존재하지 않습니다.</div>
+						<%}else{ 
+							if(matesize<5){
+								for(int i=0; i<matesize; i++){
+									MateDTO mate = matelist.get(i); %>
+									<div><a>[전체]<%=mate.getMt_title() %></a><%=mate.getMt_date() %></div>
+						<%		}	
+							}
+						  } %>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="panel panel-primary" style="border-color: #edeef1;">
-						<div class="panel-footer">지역행사</div>
+						<div class="panel-footer">자유게시판</div>
 						<div style="padding-top: 20px; padding-left: 10px">
-							<table>
-								<thead>
-									<tr>
-										<th>게시글</th>
-										<th>날짜</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><a href="#">게시글A</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글B</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글C</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글D</a></td>
-										<td>2000.01.01</td>
-									</tr>
-								</tbody>
-							</table>
+						<%if(freesize==0) {%>
+							<div>등록된 게시물이 존재하지 않습니다.</div>
+							<%}else{ 
+							if(freesize<5){
+								for(int i=0; i<freesize; i++){
+									FreeDTO free = freelist.get(i); %>
+									<div><a>[전체]<%=free.getFr_title() %></a><%=free.getFr_date() %></div>
+							<%	}	
+							}
+						  } %>
+						<table>
+							<thead>
+								<tr>
+									<td class="kboard-list-title">제목</td>
+									<td class="kboard-list-date">작성일</td>
+									<td class="kboard-list-view">조회</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+							
+								<%-- <td class="kboard-list-uid"><%=post.getFr_no()%></td>
+
+								<td class="kboard-list-title"><a
+									href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=read">
+										<div class="kboard-thumbnail-cut-strings">
+											<%=post.getFr_title()%>
+											<span class="kboard-comments-count"></span>
+										</div>
+								</a> </td>
+								<td class="kboard-list-user"><%=post.getMe_id()%></td>
+								<td class="kboard-list-date"><%=post.getFr_date()%></td>
+								<td class="kboard-list-view"><%=post.getFr_hits()%></td> --%>
+							</tr>
+							</tbody>
+						 </table>
 						</div>
 					</div>
 				</div>
