@@ -40,20 +40,10 @@
 
 			<div id="kboard-thumbnail-editor">
 				<form class="kboard-form" method="post" action="/single/fr/insert.do"
-					enctype="multipart/form-data"
-					onsubmit="return kboard_editor_execute(this);">
-					<input type="hidden" id="kboard-editor-execute-nonce"
-						name="kboard-editor-execute-nonce" value="e5e7dad497" />
+					enctype="multipart/form-data" onsubmit="return kboard_editor_execute(this);">
 						<input type="hidden" name="_wp_http_referer" value="/demo/?mod=editor&amp;pageid=1" /> 
-						<input type="hidden" name="action" value="kboard_editor_execute"> 
-						<input type="hidden" name="mod" value="editor"> 
-						<input type="hidden" name="uid" value=""> 
-						<input type="hidden" name="board_id" value="1"> 
-						<input type="hidden" name="parent_uid" value=""> 
-						<input type="hidden" name="member_uid" value=""> 
-						<input type="hidden" name="member_display" value=""> 
-						<input type="hidden" name="date" value=""> 
-						<input type="hidden" name="user_id" value="0">
+						
+						<input type="hidden" name="me_id" id="me_id" value="<%=loginUser.getMe_id()%>">
 
 					<div class="kboard-attr-row kboard-attr-title required">
 						<label class="attr-name" for="title">
@@ -106,7 +96,7 @@
 
 					<div class="kboard-control">
 						<div class="left">
-							<a href="freeview.jsp" class="kboard-thumbnail-button-small">돌아가기</a>
+							<a href="/single/fr/list.do?category=all" class="kboard-thumbnail-button-small">돌아가기</a>
 						</div>
 						<div class="right">
 							<button type="submit" class="kboard-thumbnail-button-small">저장하기</button>

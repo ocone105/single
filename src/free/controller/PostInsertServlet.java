@@ -48,7 +48,7 @@ public class PostInsertServlet extends HttpServlet {
 			fr_img = multipart.getFilesystemName(file); 
 		}
 		
-		// String me_id = req.getParameter("id");
+		String me_id = req.getParameter("id");
 
 		// 비지니스 메소드 호출
 		FreeDTO post = new FreeDTO(title, txt, ctg, fr_img);

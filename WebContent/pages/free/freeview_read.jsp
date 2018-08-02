@@ -157,6 +157,7 @@ function writeCmt()
 								</div>
 								
 								<!-- 댓글 입력 폼 시작 -->
+								<%if(loginUser!=null){ %>
 								<form id="write_cmt" method="post" action="/single/fr/cmtinsert.do?no=<%=post.getFr_no()%>"
 									onsubmit="writeCmt()">
 									<input name="postno" type="hidden" value="<%=post.getFr_no()%>">
@@ -171,6 +172,7 @@ function writeCmt()
 										</div>
 									</div>
 								</form>
+								<%} %>
 								<!-- 댓글 입력 폼 끝 -->
 
 							</div>
@@ -178,11 +180,12 @@ function writeCmt()
 					</div>
 
 					<div class="kboard-control">
-
 						<div class="left">
 							<a href="/single/fr/list.do?category=all"
 								class="kboard-thumbnail-button-small">돌아가기</a>
 						</div>
+						<%if(loginUser!=null){ %>
+						
 						<div class="right">
 							<a
 								href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=modify"
@@ -191,6 +194,7 @@ function writeCmt()
 								class="kboard-thumbnail-button-small"
 								onclick="return confirm('삭제 하시겠습니까?');">글삭제</a>
 						</div>
+						<%} %>
 					</div>
 
 				</div>
