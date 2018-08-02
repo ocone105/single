@@ -16,12 +16,10 @@ import mate.service.MateServiceImpl;
 
 @WebServlet(name = "mt/re_insert", urlPatterns = { "/mt/re_insert.do" })
 public class MateReplyInsertServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		
+		request.setCharacterEncoding("euc-kr");	
 		String mt_cmt_txt = request.getParameter("mt_cmt_txt");
 		int mt_no  = Integer.parseInt(request.getParameter("mt_no"));
 		String me_id  = request.getParameter("me_id");
@@ -40,7 +38,7 @@ public class MateReplyInsertServlet extends HttpServlet {
 			System.out.println("입력실패");
 		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/single/mt_read.do?mt_no="+mt_no);
+		RequestDispatcher rd = request.getRequestDispatcher("/mt/read.do?mt_no="+mt_no);
 		rd.forward(request, response);
 //		response.sendRedirect("/single/mt_read.do?mt_no="+mt_no);
 		

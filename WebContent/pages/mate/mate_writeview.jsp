@@ -9,9 +9,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="/single/common/scripts/jquery.min.js"></script>
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
+	<script type="text/javascript">
+	function map(){
+	window.open('/single/pages/mate/mate_mapview.jsp','window','location=no, directories=no, resizable=no,status=no,toolbar=no,menubar=no, width=600,height=500,left=0, top=0, scrollbars=yes');return false
+	}
+	
+	
+	
+	
+	</script>
 </head>
 <body>
-<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
+<% MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); 
+	String me_id = loginUser.getMe_id();
+	String me_loc = loginUser.getMe_loc();
+%>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
@@ -23,8 +35,8 @@
 			<!-- ################################################################################################ -->
 			<h1>소모임만들기</h1>
 			<hr/>
-			<form action="/single/mt/insert.do" method="post">
-				<input type="hidden" value="test" name="me_id"/>
+			<form action="/single/mt/insert.do" method="post" name="myform">
+				<input type="hidden" name="me_id" value="<%=me_id%>"/>
 				<table border="1">
 					<tr>
 						<td>소모임이름</td>
@@ -39,15 +51,14 @@
 						</select></td>
 					</tr>
 					<tr>
-						<td>지역</td>
-						<td><select name="mt_map">
-								<option>서울</option>
-								<option>경기</option>
-						</select> <select>
-								<option>구로구</option>
-								<option>관악구</option>
-								<option>영등포구</option>
-						</select></td>
+						<td>지역</td><!-- 새창열기로 마커로 찍어서 주소등록 -->
+						<td>
+							<a href='#' id="ajaxbtn" onclick="map()">
+							지역선택</a>
+							<span id="result" name="result"></span>
+							
+					 
+						</td>
 					</tr>
 					<tr>
 						<td>인원</td>
