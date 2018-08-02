@@ -40,11 +40,7 @@
 
 			<div id="kboard-thumbnail-editor">
 				<form class="kboard-form" method="post" action="/single/fr/insert.do"
-					enctype="multipart/form-data" onsubmit="return kboard_editor_execute(this);">
-						<input type="hidden" name="_wp_http_referer" value="/demo/?mod=editor&amp;pageid=1" /> 
-						
-						<input type="hidden" name="me_id" id="me_id" value="<%=loginUser.getMe_id()%>">
-
+					enctype="multipart/form-data" >
 					<div class="kboard-attr-row kboard-attr-title required">
 						<label class="attr-name" for="title">
 						<span class="field-name">力格</span> <span class="attr-required-text">*</span></label>
@@ -77,13 +73,13 @@
 									class="wp-editor-container">
 
 									<textarea class="wp-editor-area" style="height: 400px"
-										cols="40" name="txt" id="txt"></textarea>
+										cols="40" name="txt" id="txt"><%=loginUser.getMe_id()%></textarea>
 								</div>
 							</div>
 
 						</div>
 					</div>
-
+						<input type="hidden" name="id" id="id" value="<%=loginUser.getMe_id()%>">
 					<!-- 梅何颇老 矫累 -->
 					<div class="kboard-attr-row kboard-attr-attach attach-1">
 						<label class="attr-name" for="kboard-input-file1">

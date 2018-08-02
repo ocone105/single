@@ -3,7 +3,7 @@ package free.query;
 public class FreeQuery {
 
 	public static final String INSERT_POST 
-	= "insert into fr_board values(fr_seq.nextval, ?, ?, ?, sysdate, 0, ?, 'testid')";	//글 작성 ~ 로그인 전
+	= "insert into fr_board values(fr_seq.nextval, ?, ?, ?, sysdate, 0, ?, ?)";	//글 작성
 	
 	public static final String UPDATE_POST
 	= "update fr_board "
