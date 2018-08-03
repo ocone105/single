@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import vs.dao.VsDAO;
 import vs.dao.VsDAOImpl;
+import vs.dto.VsCmtDTO;
 import vs.dto.VsDTO;
 
 public class VsServiceImpl implements VsService {
@@ -61,5 +62,39 @@ public class VsServiceImpl implements VsService {
 			close(con);
 		}
 		return result;
+	}
+
+	@Override
+	public int insert(VsCmtDTO comment) {	// vs댓글 작성
+		System.out.println("Service요청");
+		int result = 0;
+		Connection con = null;		
+		VsDAO dao = new VsDAOImpl();	
+		try {
+			con = getConnect();
+			result = dao.insert(comment, con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(con);
+		}
+		return result;
+	}
+
+	@Override
+	public ArrayList<VsCmtDTO> read(int vs_no) {	// vs댓글 목록
+		System.out.println("Service요청");
+		ArrayList<VsCmtDTO> comments = null;
+		VsDAO dao = new VsDAOImpl();
+		Connection con = null;
+		try {
+			con = getConnect();
+			comments = dao.read(vs_no, con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(con);
+		}		
+		return comments;
 	}
 }

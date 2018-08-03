@@ -3,15 +3,15 @@ package vs.dto;
 import java.sql.Date;
 public class VsDTO {
 	
-	int vs_no;			// 글번호
-	String vs_title;	// 글제목
-	String vs_optionA;	// A 선택
-	String vs_optionB;	// B 선택
-	String vs_txt;		// 글내용
-	String me_id;		// 작성자ID
-	int vs_hitsA;		// A 선택수
-	int vs_hitsB;		// B 선택수
-	Date vs_date;		// 작성일
+	private int vs_no;			// 글번호
+	private String vs_title;	// 글제목
+	private String vs_optionA;	// A 선택
+	private String vs_optionB;	// B 선택
+	private String vs_txt;		// 글내용
+	private String me_id;		// 작성자ID
+	private int vs_hitsA;		// A 선택수
+	private int vs_hitsB;		// B 선택수
+	private Date vs_date;		// 작성일
 	
 	public VsDTO(){}
 

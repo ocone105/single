@@ -1,4 +1,4 @@
-package vs.controller;
+package friends.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,26 +10,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import vs.dto.VsDTO;
-import vs.service.VsService;
-import vs.service.VsServiceImpl;
+import friends.dto.MsgDTO;
+import friends.service.FriendsService;
+import friends.service.FriendsServiceImpl;
 
-@WebServlet(name = "vs_read", urlPatterns = { "/vs/vs_read.do" })
-public class VsReadServlet extends HttpServlet {
+@WebServlet(name = "msg_read", urlPatterns = { "/msg/msg_read.do" })
+public class MsgReadServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
 		System.out.println("Servlet요청성공");
 
+		String me_id = "ocean";
+		String option = "A";	// 받은 쪽지, 보낸 쪽지 구분
+		
 		// 2. 비지니스 메소드 호출
-		VsService service = new VsServiceImpl();
-		ArrayList<VsDTO> posts = service.read();
-
+		FriendsService service = new FriendsServiceImpl();
+		ArrayList<MsgDTO> msgs = service.readMsg(option, me_id);
+		
 		// 3. 데이터공유
-		request.setAttribute("posts", posts);
+		request.setAttribute("msgs", msgs);
 		
 		// 4. 요청재지정
-		RequestDispatcher rd = request.getRequestDispatcher("/pages/vs/vsview.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/pages/mainview.jsp");
 		rd.forward(request, response);
 	}
 }

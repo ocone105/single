@@ -17,4 +17,9 @@ public class VsQuery {
 	// vs∞‘Ω√±€ ªË¡¶
 	public static final String DELETE_POST = "delete vs_board where vs_no=?";
 
+	// vs¥Ò±€ ª¿‘
+	public static final String INSERT_COMMENT = "insert into vs_cmt values(vs_cmt_seq.nextval, ?, sysdate, ?, ?)";
+	
+	// vs¥Ò±€ ∏Ò∑œ 
+	public static final String READ_COMMENTS = "select * from vs_cmt where vs_no=?";
 }
