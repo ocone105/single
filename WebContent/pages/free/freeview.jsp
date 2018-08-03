@@ -1,15 +1,24 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@page import="free.dto.FreeDTO"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>Single Single</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- free 추가 -->
-<link rel='stylesheet' id='kboard-skin-thumbnail-css' 
-	href='/single/common/styles/free/thumbnail.css?ver=5.3.9' type='text/css'
-	media='all' />
+<link rel='stylesheet' id='kboard-skin-thumbnail-css'
+	href='/single/common/styles/free/thumbnail.css?ver=5.3.9'
+	type='text/css' media='all' />
+<%
+	ArrayList<FreeDTO> postlist = (ArrayList<FreeDTO>) request.getAttribute("postlist");
+	int size = postlist.size();
+%>
+<link rel="shortcut icon" href="/single/images/favicon.ico">
+
 <!-- -------------------------------- -->
 <script src="/single/common/scripts/jquery.min.js"></script>
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
@@ -22,17 +31,20 @@
 	<div class="wrapper row2">
 		<div id="container">
 			<!-- 플로팅배너 -->
+			<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<div id="kboard-thumbnail-list">
 
 				<!-- 카테고리 시작 -->
 				<div class="kboard-category category-pc">
 					<ul class="kboard-category-list">
-						<li class="kboard-category-selected"><a href="freeview.jsp">전체</a></li>
-						<li><a href="freeview_free.jsp">자유</a></li>
-						<li><a href="freeview_tip.jsp">정보</a></li>
-						<li><a href="freeview_review.jsp">후기</a></li>
-						<li><a href="freeview_recom.jsp">추천</a></li>
+						<li class="kboard-category-selected"><a href="/single/fr/list.do?category=all">전체</a></li>
+						<li><a href="/single/fr/list.do?category=free">자유</a></li>
+	         		   <li><a href="/single/fr/list.do?category=tip">정보</a></li>
+	         		   <li><a href="/single/fr/list.do?category=review">후기</a></li>
+	          		   <li><a href="/single/fr/list.do?category=recom">추천</a></li>
 					</ul>
 				</div>
 				<!-- 카테고리 끝 -->
@@ -49,7 +61,11 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="kboard-list-notice">
+							<%
+								for (int i = 0; i < size; i++) {
+									FreeDTO post = postlist.get(i);
+							%>
+							<!-- 							<tr class="kboard-list-notice">
 								<td class="kboard-list-uid">공지사항</td>
 
 								<td class="kboard-list-title"><a href="freeview_view.jsp">
@@ -67,27 +83,25 @@
 								<td class="kboard-list-user">admin</td>
 								<td class="kboard-list-date">2018.07.21</td>
 								<td class="kboard-list-view">26</td>
-							</tr>
+							</tr> -->
 
 							<tr class="">
-								<td class="kboard-list-uid">1</td>
+								<td class="kboard-list-uid"><%=post.getFr_no()%></td>
 
-								<td class="kboard-list-title"><a href="#">
+								<td class="kboard-list-title"><a
+									href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=read">
 										<div class="kboard-thumbnail-cut-strings">
-											안녕하세요. <span class="kboard-comments-count"></span>
+											<%=post.getFr_title()%>
+											<span class="kboard-comments-count"></span>
 										</div>
-								</a>
-									<div class="kboard-mobile-contents">
-										<span class="contents-item kboard-user">blur</span> <span
-											class="contents-separator kboard-date">|</span> <span
-											class="contents-item kboard-date">2018.07.21</span> <span
-											class="contents-separator kboard-view">|</span> <span
-											class="contents-item kboard-view">조회 7</span>
-									</div></td>
-								<td class="kboard-list-user">blur</td>
-								<td class="kboard-list-date">2018.07.21</td>
-								<td class="kboard-list-view">7</td>
+								</a> </td>
+								<td class="kboard-list-user"><%=post.getMe_id()%></td>
+								<td class="kboard-list-date"><%=post.getFr_date()%></td>
+								<td class="kboard-list-view"><%=post.getFr_hits()%></td>
 							</tr>
+							<%
+								}
+							%>
 
 						</tbody>
 					</table>
@@ -131,7 +145,7 @@
 
 				<!-- 버튼 시작 -->
 				<div class="kboard-control">
-					<a href="freeview_write.jsp" class="kboard-thumbnail-button-small">글쓰기</a>
+					<a href="/single/pages/free/freeview_write.jsp" class="kboard-thumbnail-button-small">글쓰기</a>
 				</div>
 				<!-- 버튼 끝 -->
 				<!-- ########################################################################################## -->

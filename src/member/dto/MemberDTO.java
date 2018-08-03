@@ -1,7 +1,6 @@
 package member.dto;
 
 import java.sql.Date;
-
 public class MemberDTO {
 	private String me_id;
 	private String me_pwd;

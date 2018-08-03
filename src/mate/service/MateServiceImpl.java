@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import mate.dao.MateDAO;
 import mate.dao.MateDAOImpl;
+import mate.dto.MateCmtDTO;
 import mate.dto.MateDTO;
 
 public class MateServiceImpl implements MateService {
@@ -76,6 +77,55 @@ public class MateServiceImpl implements MateService {
 			close(con);
 		}
 		
+		return result;
+	}
+
+	//**********************메이트 게시판 댓글**********************************
+	@Override
+	public int insert_mt_cmt(MateCmtDTO dto) {
+		int result = 0;
+		MateDAO dao = new MateDAOImpl();
+		Connection con = getConnect();
+		try {
+			result = dao.insert_mt_cmt(dto, con);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(con);
+		}
+		return result;
+	}
+
+	@Override
+	public ArrayList<MateCmtDTO> List_mt_cmt(int mt_no) {
+		ArrayList<MateCmtDTO> dtolist = null;
+		MateDAO dao = new MateDAOImpl();
+		Connection con = getConnect();
+		try {
+			dtolist = dao.List_mt_cmt(mt_no, con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(con);
+		}
+		
+		return dtolist;
+	}
+
+	@Override
+	public int delete_mt_cmt(int mt_cmt_no) {
+		int result = 0;
+		MateDAO dao = new MateDAOImpl();
+		Connection con = getConnect();
+		try {
+			result = dao.delete_mt_cmt(mt_cmt_no, con);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(con);
+		}
 		return result;
 	}
 	

@@ -10,12 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import vs.dto.VsDTO;
-
 public class VsDAOImpl implements VsDAO {
-
 	@Override
 	public int insert(VsDTO post, Connection con) throws SQLException {	// vs게시글 작성
-		System.out.println("VsDAO요청");
+		System.out.println("DAO요청");
 		int result = 0;
 		PreparedStatement ptmt = con.prepareStatement(INSERT_POST);
 		ptmt.setString(1, post.getVs_title());
@@ -32,7 +30,7 @@ public class VsDAOImpl implements VsDAO {
 
 	@Override
 	public ArrayList<VsDTO> read(Connection con) throws SQLException {	// vs게시글 목록
-		System.out.println("VsDAO요청");
+		System.out.println("DAO요청");
 		ArrayList<VsDTO> posts = new ArrayList<VsDTO>();
 		VsDTO post = null;
 		PreparedStatement ptmt = con.prepareStatement(READ_POSTS);
@@ -47,21 +45,17 @@ public class VsDAOImpl implements VsDAO {
 	}
 
 	@Override
-	public int update(int vs_no, Connection con) throws SQLException {	// 투표수 업데이트
-		System.out.println("VsDAO요청");
+	public int update(int vs_no, String option, Connection con) throws SQLException {	// 투표수 업데이트
+		System.out.println("DAO요청");
 		int result = 0;
-		/*if(column.equals("name")){
+		String sql = "";
+		if(option.equals("A")){
 			sql = UPDATE_OPTA;
-		}else if(column.equals("addr")){
+		}else if(option.equals("B")){
 			sql = UPDATE_OPTB;
-		}*/
-		PreparedStatement ptmt = con.prepareStatement(INSERT_POST);
-/*		ptmt.setString(1, post.getVs_title());
-		ptmt.setString(2, post.getVs_optionA());
-		ptmt.setString(3, post.getVs_optionB());
-		ptmt.setString(4, post.getVs_txt());
-		ptmt.setString(5, post.getMe_id());*/
-		
+		}
+		PreparedStatement ptmt = con.prepareStatement(sql);
+		ptmt.setInt(1, vs_no);
 		result = ptmt.executeUpdate();
 		System.out.println(result);
 		close(ptmt);
