@@ -1,20 +1,17 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>singlesingle</title>
-<meta charset="EUC-KR">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/single/common/styles/main/main.css"
-	media="screen">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="EUC-KR">
+<link rel="stylesheet" href="/single/common/styles/main/main.css" media="screen">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<!-- top -->
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
@@ -35,7 +32,9 @@
 	<div class="wrapper row2">
 		<div id="container">
 			<!-- 플로팅배너 -->
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 				<!-- Wrapper for slides -->
 				<ol class="carousel-indicators">

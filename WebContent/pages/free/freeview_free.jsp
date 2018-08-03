@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@page import="free.dto.FreeDTO"%>
@@ -29,6 +30,7 @@
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<!-- content -->
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
@@ -36,7 +38,9 @@
 	<div class="wrapper row2">
 		<div id="container">
 			<!-- 플로팅배너 -->
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 
 			<div id="kboard-thumbnail-list">
 
@@ -68,26 +72,6 @@
 								for (int i = 0; i < size; i++) {
 									FreeDTO post = postlist.get(i);
 							%>
-							<!-- 							<tr class="kboard-list-notice">
-								<td class="kboard-list-uid">공지사항</td>
-
-								<td class="kboard-list-title"><a href="freeview_view.jsp">
-										<div class="kboard-thumbnail-cut-strings">
-											공지사항을 읽어주세요. <span class="kboard-comments-count">(1)</span>
-										</div>
-								</a>
-									<div class="kboard-mobile-contents">
-										<span class="contents-item kboard-user">admin</span> <span
-											class="contents-separator kboard-date">|</span> <span
-											class="contents-item kboard-date">2018.07.21</span> <span
-											class="contents-separator kboard-view">|</span> <span
-											class="contents-item kboard-view">조회 26</span>
-									</div></td>
-								<td class="kboard-list-user">admin</td>
-								<td class="kboard-list-date">2018.07.21</td>
-								<td class="kboard-list-view">26</td>
-							</tr> -->
-
 							<tr class="">
 								<td class="kboard-list-uid"><%=post.getFr_no()%></td>
 
@@ -136,7 +120,6 @@
 						<input type="hidden" name="mod" value="list"><input
 							type="hidden" name="pageid" value="1"> <select
 							name="target">
-							<option value="">전체</option>
 							<option value="title">제목</option>
 							<option value="content">내용</option>
 							<option value="member_display">작성자</option>
@@ -146,9 +129,11 @@
 				</div>
 				<!-- 검색폼 끝 -->
 				<!-- 버튼 시작 -->
+				<%if(loginUser!=null){ %>
 				<div class="kboard-control">
 					<a href="/single/pages/free/freeview_write.jsp" class="kboard-thumbnail-button-small">글쓰기</a>
 				</div>
+				<%} %>
 				<!-- 버튼 끝 -->
 				<!-- ########################################################################################## -->
 			</div>

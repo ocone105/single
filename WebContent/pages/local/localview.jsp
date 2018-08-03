@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -6,28 +7,23 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/single/common/styles/layout.css"
-	type="text/css" media="all">
-<link rel="stylesheet" href="/single/common/styles/mediaqueries.css"
-	type="text/css" media="all">
-
 <!-- hs 추가 -->
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-<link rel="stylesheet" href="/single/common/styles/local/select.css"
-	type="text/css" media="all">
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<link rel="stylesheet" href="/single/common/styles/local/select.css" type="text/css" media="all">
 <!-- --------------- -->
 <script src="/single/common/scripts/jquery.min.js"></script>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
 	<!-- content -->
 	<div class="wrapper row2">
 		<div id="container">
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<!-- content body -->
 
 			<section id="gallery" class="clear">

@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@page import="free.dto.FreeDTO"%>
@@ -30,7 +31,10 @@
 	<div class="wrapper row2">
 		<div id="container">
 			<!-- 플로팅배너 -->
+			<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<div id="kboard-thumbnail-list">
 
 				<!-- 카테고리 시작 -->
@@ -129,7 +133,6 @@
 						<input type="hidden" name="mod" value="list"><input
 							type="hidden" name="pageid" value="1"> <select
 							name="target">
-							<option value="">전체</option>
 							<option value="title">제목</option>
 							<option value="content">내용</option>
 							<option value="member_display">작성자</option>
@@ -140,9 +143,11 @@
 				<!-- 검색폼 끝 -->
 
 				<!-- 버튼 시작 -->
+							<%if(loginUser!=null){ %>
 				<div class="kboard-control">
 					<a href="/single/pages/free/freeview_write.jsp" class="kboard-thumbnail-button-small">글쓰기</a>
 				</div>
+				<%} %>
 				<!-- 버튼 끝 -->
 				<!-- ########################################################################################## -->
 			</div>

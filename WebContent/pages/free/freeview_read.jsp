@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@page import="free.dto.FreeDTO"%>
@@ -65,7 +66,10 @@ function writeCmt()
 	<div class="wrapper row2">
 		<div id="container">
 			<!-- 플로팅배너 -->
+			<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 
 			<div id="kboard-document">
 				<div id="kboard-thumbnail-document">
@@ -96,7 +100,8 @@ function writeCmt()
 								<% if(post.getFr_img() != null){ %>
 								<img src="/single/pages/free/upload/<%= post.getFr_img() %>"/><br/>
 								<%} %>
-								<%=post.getFr_txt()%></p>
+								<%=post.getFr_txt()%>
+								</p>
 							</div>
 						</div>
 
@@ -153,6 +158,7 @@ function writeCmt()
 								</div>
 								
 								<!-- 댓글 입력 폼 시작 -->
+								<%if(loginUser!=null){ %>
 								<form id="write_cmt" method="post" action="/single/fr/cmtinsert.do?no=<%=post.getFr_no()%>"
 									onsubmit="writeCmt()">
 									<input name="postno" type="hidden" value="<%=post.getFr_no()%>">
@@ -167,6 +173,7 @@ function writeCmt()
 										</div>
 									</div>
 								</form>
+								<%} %>
 								<!-- 댓글 입력 폼 끝 -->
 
 							</div>
@@ -174,18 +181,20 @@ function writeCmt()
 					</div>
 
 					<div class="kboard-control">
-
 						<div class="left">
 							<a href="/single/fr/list.do?category=all"
 								class="kboard-thumbnail-button-small">돌아가기</a>
 						</div>
+						
 						<div class="right">
-							<a
-								href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=modify"
-								class="kboard-thumbnail-button-small">글수정</a> <a
-								href="/single/fr/delete.do?no=<%=post.getFr_no()%>"
+												<%if(loginUser != null && loginUser.getMe_id().equals(post.getMe_id())){ %>
+						
+							<a href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=modify"
+								class="kboard-thumbnail-button-small">글수정</a> 
+							<a href="/single/fr/delete.do?no=<%=post.getFr_no()%>"
 								class="kboard-thumbnail-button-small"
 								onclick="return confirm('삭제 하시겠습니까?');">글삭제</a>
+								<%} %>
 						</div>
 					</div>
 

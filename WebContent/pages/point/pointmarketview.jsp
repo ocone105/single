@@ -1,3 +1,6 @@
+<%@page import="member.dto.MemberDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="point.dto.PointDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -7,118 +10,42 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
 	<!-- content -->
 	<div class="wrapper row2">
 		<div id="container">
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<!-- content body -->
+			<% ArrayList<PointDTO> dtolist = (ArrayList<PointDTO>)request.getAttribute("dtolist"); 
+				int size = dtolist.size();
+			%>
+			
 			<section id="portfolio" class="clear">
 				<ul>
+					<% for(int i=0; i<size; i++){
+						%>
 					<li>
 						<article>
 							<figure>
-								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>Metridice quisasdasd</figcaption>
+								<a href="/single/po/read.do?po_no=<%= dtolist.get(i).getPo_no() %>"><img src="/single/images/demo/225x160.gif" alt=""></a>
+								<figcaption><%= dtolist.get(i).getPo_title() %></figcaption>
 							</figure>
 						</article>
 					</li>
-					<li>
-						<article>
-							<figure>
-								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>Metridiculis conseque quis</figcaption>
-							</figure>
-						</article>
-					</li>
-					<li>
-						<article>
-							<figure>
-								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>Metridiculis conseque quis</figcaption>
-							</figure>
-						</article>
-					</li>
-					<li class="last">
-						<article>
-							<figure>
-								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>Metridiculis conseque quis</figcaption>
-							</figure>
-						</article>
-					</li>
-					<li>
-						<article>
-							<figure>
-								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>Metridiculis conseque quis</figcaption>
-							</figure>
-						</article>
-					</li>
-					<li>
-						<article>
-							<figure>
-								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>Metridiculis conseque quis</figcaption>
-							</figure>
-						</article>
-					</li>
-					<li>
-						<article>
-							<figure>
-								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>Metridiculis conseque quis</figcaption>
-							</figure>
-						</article>
-					</li>
-					<li class="last">
-						<article>
-							<figure>
-								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>Metridiculis conseque quis</figcaption>
-							</figure>
-						</article>
-					</li>
-					<li>
-						<article>
-							<figure>
-								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>Metridiculis conseque quis</figcaption>
-							</figure>
-						</article>
-					</li>
-					<li>
-						<article>
-							<figure>
-								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>Metridiculis conseque quis</figcaption>
-							</figure>
-						</article>
-					</li>
-					<li>
-						<article>
-							<figure>
-								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>Metridiculis conseque quis</figcaption>
-							</figure>
-						</article>
-					</li>
-					<li class="last">
-						<article>
-							<figure>
-								<a href="#"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption>Metridiculis conseque quis</figcaption>
-							</figure>
-						</article>
-					</li>
+		
+					<% }%>
+				
 				</ul>
 			</section>
 			<!-- ####################################################################################################### -->
 			<div>
 				<footer class="more" style="float: right">
-					<a href="pointmarketInputview.jsp">글쓰기 &raquo;</a>
+					<a href="/single/pages/point/pointmarketwriteview.jsp">글쓰기 &raquo;</a>
 				</footer>
 			</div>
 

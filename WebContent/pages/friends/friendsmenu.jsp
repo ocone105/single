@@ -10,11 +10,10 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<!-- https://getbootstrap.com/docs/4.0/components/navbar/#responsive-behaviors -->
 	
-	<link rel="stylesheet" href="/single/common/styles/friends/friendsmenu.css">
+	<!-- <link rel="stylesheet" href="/single/common/styles/friends/friendsmenu.css"> -->
 	
 </head>
 <body>
-
 	<nav class="navbar navbar-expand-lg ">
   		<a class="navbar-brand" href="#">模备包府</a>
   		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -1,3 +1,4 @@
+<%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -6,24 +7,24 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/single/common/styles/layout.css"
-	type="text/css" media="all">
-<link rel="stylesheet" href="/single/common/styles/mediaqueries.css"
-	type="text/css" media="all">
 <script src="/single/common/scripts/jquery.min.js"></script>
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
 </head>
 <body>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
 	<div class="wrapper row2">
 		<div id="container">
+			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
 			<!-- ################################################################################################ -->
 			<h1>소모임만들기</h1>
 			<hr/>
-			<form action="" method="post">
+			<form action="/single/mt/insert.do" method="post">
+				<input type="hidden" value="test" name="me_id"/>
 				<table border="1">
 					<tr>
 						<td>소모임이름</td>
@@ -60,6 +61,10 @@
 					<tr>
 						<td>이미지</td>
 						<td><input type="file" name="mt_img"></td>
+					</tr>
+					<tr>
+						<td>첨부파일</td>
+						<td><input type="file" name="mt_file"></td>
 					</tr>
 					<tr>
 						<td>내용</td>
