@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mate.dto.MateCmtDTO;
+import mate.service.MateService;
+import mate.service.MateServiceImpl;
+ 
 @WebServlet(name = "mt/re_read", urlPatterns = { "/mt/re_read.do" })
 public class MateReplyReadServlet extends HttpServlet {
 
