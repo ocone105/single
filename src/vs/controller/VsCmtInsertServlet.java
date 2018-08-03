@@ -16,7 +16,6 @@ import vs.service.VsServiceImpl;
 
 @WebServlet(name = "vs_cmt_insert", urlPatterns = { "/vs/vs_cmt_insert.do" })
 public class VsCmtInsertServlet extends HttpServlet {
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
 		System.out.println("Servlet요청성공");
