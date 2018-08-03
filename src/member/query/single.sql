@@ -1,5 +1,6 @@
 select * from member;
 select * from VS_BOARD;
+select * from fr_board;
 delete from member;
 select * from tab;
 
