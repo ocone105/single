@@ -8,10 +8,6 @@
 <meta charset="EUC-KR">
 	<title>Insert title here</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/single/common/styles/layout.css" type="text/css" media="all">
-<link rel="stylesheet" href="/single/common/styles/mediaqueries.css" type="text/css" media="all">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	
 	<script src="/single/common/scripts/jquery.min.js"></script>
 	<script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
 </head>
@@ -162,10 +158,17 @@
 				</ul>
 
 
-				<form action="#" method="post">
-					<input type="hidden" name="id" id="id" value="" size="22">
+				<form action="/single/mt/re_insert.do" method="post">
+					<input type="hidden" name="mt_no" value="<%=dto.getMt_no()%>"/>
+					<%
+						if (loginUser != null) {
+					%>
+					<input type="hidden" name="me_id" value="<%=loginUser.getMe_id()%>" />
+					<%
+						}
+					%>
 					<p>
-						<textarea name="comment" id="comment" cols="25" rows="5"></textarea>
+						<textarea name="mt_cmt_txt" id="comment" cols="25" rows="5"></textarea>
 					</p>
 					<input name="submit" type="submit" id="submit" value="등록"
 						style="float: right">

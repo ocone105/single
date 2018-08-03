@@ -14,11 +14,8 @@ import free.service.FreeServiceImpl;
 @WebServlet(name = "fr/delete", urlPatterns = { "/fr/delete.do" })
 public class PostDeleteServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println("서블릿 요청 성공");
 		req.setCharacterEncoding("euc-kr");
 		res.setContentType("text/html;charset=euc-kr");
-		PrintWriter out = res.getWriter();
-		System.out.println("서블릿요청성공");
 
 		// 1. 요청정보 추출
 		int no = Integer.parseInt(req.getParameter("no"));
@@ -27,15 +24,7 @@ public class PostDeleteServlet extends HttpServlet {
 		FreeService service = new FreeServiceImpl();
 		int result = service.delete(no);
 
-		// 3. 응답화면생성
-		String msg = "";
-		if (result < 0) {
-			msg = "삭제실패";
-		} else {
-			msg = result + "개 행 삭제 성공!!";
-		}
-
 		// 요청재지정
-		res.sendRedirect("/single/fr/list.do");
+		res.sendRedirect("/single/fr/list.do?category=all");
 	}
 }

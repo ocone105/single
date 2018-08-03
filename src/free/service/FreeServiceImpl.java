@@ -96,4 +96,20 @@ public class FreeServiceImpl implements FreeService {
 		return postlist;
 	}
 
+	@Override
+	public ArrayList<FreeDTO> getCtgList(String fr_ctg) {
+		ArrayList<FreeDTO> postlist = null;
+		FreeDAO dao = new FreeDAOImpl();
+		Connection con = null;
+		try {
+			con = getConnect();
+			postlist = dao.getCtgList(fr_ctg, con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(con);
+		}
+		return postlist;
+	}
+
 }

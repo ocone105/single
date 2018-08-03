@@ -74,5 +74,11 @@ public class FreeCmtDAOImpl implements FreeCmtDAO{
 
 		return cmtlist;
 	}
+
+	@Override
+	public int count(int fr_no, Connection con) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

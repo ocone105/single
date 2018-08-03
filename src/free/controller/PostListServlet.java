@@ -18,20 +18,41 @@ import free.service.FreeServiceImpl;
 public class PostListServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		System.out.println("postlist 서블릿 요청 성공");
+		//System.out.println("postlist 서블릿 요청 성공");
 		req.setCharacterEncoding("euc-kr");
-
-		// 1.비지니스 메소드 호출
+		
+		String category = req.getParameter("category");
+		String view="";
+		
 		FreeService service = new FreeServiceImpl();
-		ArrayList<FreeDTO> postlist = service.getPostList();
+		ArrayList<FreeDTO> postlist = null;
+		
+		if(category.equals("free")){
+			view = "/pages/free/freeview_free.jsp";
+			postlist = service.getCtgList("자유");
 
-		System.out.println("서블릿" + postlist);
+		}else if(category.equals("tip")){
+			view = "/pages/free/freeview_tip.jsp";
+			postlist = service.getCtgList("정보");
+
+		}else if(category.equals("review")){
+			view = "/pages/free/freeview_review.jsp";
+			postlist = service.getCtgList("후기");
+
+		}else if(category.equals("recom")){
+			view = "/pages/free/freeview_recom.jsp";
+			postlist = service.getCtgList("추천");
+
+		}else if(category.equals("all")){
+			view = "/pages/free/freeview.jsp";
+			postlist = service.getPostList();
+		}
 
 		// 2.데이터공유
 		req.setAttribute("postlist", postlist);
 
 		// 3.요청재지정
-		RequestDispatcher rd = req.getRequestDispatcher("/single/pages/free/freeview.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher(view);	
 		rd.forward(req, res);
 	}
 }
