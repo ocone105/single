@@ -18,6 +18,7 @@
 	<div class="wrapper row2">
 
 		<div class="container" style="width: 50%">
+		
 			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 			<%} %>

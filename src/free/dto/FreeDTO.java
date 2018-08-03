@@ -38,7 +38,7 @@ public class FreeDTO {
 		this.fr_img = fr_img;
 	}
 
-	// 게시글 목록용 (카테고리 필요..?함???)
+	// 게시글 목록용
 	public FreeDTO(int fr_no, String fr_title, Date fr_date, int fr_hits, String me_id) {
 		super();
 		this.fr_no = fr_no;

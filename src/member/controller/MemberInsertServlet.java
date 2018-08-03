@@ -46,6 +46,7 @@ public class MemberInsertServlet extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		
 		String me_gender = multipart.getParameter("me_gender");
 		String me_phone = multipart.getParameter("me_phone");
 		String me_telnum = multipart.getParameter("me_telnum");
