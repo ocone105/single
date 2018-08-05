@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="/single/common/scripts/jquery.min.js"></script>
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
+<script src="/single/common/scripts/mate/map.js"></script>
 </head>
 <body>
 <%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
@@ -63,6 +64,7 @@
 						<a href="/single/mt/read.do?mt_no=<%=dtolist.get(i).getMt_no() %>">
 						<article>
 							<figure>
+								<figcaption><%=dtolist.get(i).getMt_map() %></figcaption>
 							<img src="<%=dtolist.get(i).getMt_img() %>"
 								alt="<%=dtolist.get(i).getMt_img() %>">
 								<figcaption><%=dtolist.get(i).getMt_title() %></figcaption>

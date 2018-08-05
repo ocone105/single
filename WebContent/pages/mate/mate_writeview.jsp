@@ -11,7 +11,7 @@
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
 	<script type="text/javascript">
 	function map(){
-	window.open('/single/pages/mate/mate_mapview.jsp','window','location=no, directories=no, resizable=no,status=no,toolbar=no,menubar=no, width=600,height=500,left=0, top=0, scrollbars=yes');return false
+	window.open('/single/pages/mate/mate_mapview.jsp','mapwindow','location=no, directories=no, resizable=no,status=no,toolbar=no,menubar=no, width=600,height=500,left=0, top=0, scrollbars=yes');
 	}
 	
 	
@@ -55,7 +55,7 @@
 						<td>
 							<a href='#' id="ajaxbtn" onclick="map()">
 							지역선택</a>
-							<span id="result" name="result"></span>
+							<input type="text" name="mt_map" id="result">
 							
 					 
 						</td>
