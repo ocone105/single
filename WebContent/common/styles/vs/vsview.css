@@ -5,6 +5,7 @@
 }
 
 #bar{
+	width: 100%;
 	float: center;
 	margin: 0px auto;
 }

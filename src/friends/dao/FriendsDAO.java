@@ -11,4 +11,6 @@ public interface FriendsDAO {
 	int insertMsg(MsgDTO msg, Connection con) throws SQLException; 	// 메시지 작성
 	
 	ArrayList<MsgDTO> readMsg(String option, String me_id, Connection con) throws SQLException;	// 메시지 목록
+	
+	ArrayList<String> friendsList(String me_id, Connection con) throws SQLException;	// 친구 목록
 }

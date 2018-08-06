@@ -36,6 +36,7 @@
 			});
 		});
 		
+		
 		// ´ñ±Û
 		function showCmt(myvs_no){
 			vs_no = myvs_no;
@@ -48,23 +49,31 @@
 			if(xhr.readyState==4&&xhr.status==200){
 				var myjsonObj = JSON.parse(xhr.responseText);
 				// alert(myjsonObj.cmtlist[0].vs_cmt_txt);
-				var cmtList = document.getElementById("commentsList");
+				var cmtList = document.getElementById("commentsList"+vs_no);
 			    if(cmtList.style.display=="block"){
 			    	cmtList.style.display = "none";
 			    }else{
 			    	cmtList.style.display = "block"; 
 			    }
 			    document.getElementById("cmtNum").innerHTML=myjsonObj.cmtlist.length;
-
+				myjsonObj.cmtlist[0].vs_num;
 			    mydata = "";
 				for(i in myjsonObj.cmtlist){
+					mydata = mydata + "<li class='list-group-item'><div class='row'>";
+					mydata = mydata + "<div class='col-xs-2 col-md-1'>";
+					mydata = mydata + "<img src='/single/images/irene.png' class='img-circle img-responsive' alt='' /></div>";
+					mydata = mydata + "<div class='col-xs-10 col-md-11'><div class='comment-text'>";
 					mydata = mydata + myjsonObj.cmtlist[i].vs_cmt_txt;
+					mydata = mydata + "</div><div class='mic-info'>By: "
+					mydata = mydata + "<a href='#'>"+myjsonObj.cmtlist[i].me_id+"</a> on 2 Jul 2018</div></div></div></li>";
 				}
-				alert(mydata);
-				alert(myjsonObj.cmtlist.length);
+				// alert(mydata);
+				// alert(myjsonObj.cmtlist.length);
+				document.getElementById("cmt"+vs_no).innerHTML = mydata;
 				for (j = 0; j < myjsonObj.cmtlist.length; j++) {
 					
 				}
+				
 			}
 		}
 
@@ -132,9 +141,9 @@
 					</form>
 				</div>
 			
-				<br><br>
+				<br/><br/>
 				
-				<div id="bar" >
+				<div id="bar">
 					<jsp:include page="/pages/vs/bar.jsp" />
 				</div>
 				
@@ -142,9 +151,11 @@
 				<input type="button" class="button" value="´ñ±Û ¾²±â &raquo;" data-toggle="modal" data-target="#CommentModal" />
 				<!-- <a href="/single/pages/vs/vscmt.jsp">´ñ±Û º¸±â &raquo;</a>
 				<a href="#" data-toggle="modal" data-target="#CommentModal">´ñ±Û ¾²±â &raquo;</a> -->
-
+				<br/>
+				<br/>
+				<br/>
 		<%-- ´ñ±Û --%>
-		<div class="row" id="commentsList" style="display:none">
+		<div class="row" id="commentsList<%=post.getVs_no() %>" style="display:none">
 			<div class="panel panel-default widget">
 				<div class="panel-heading">
 					<span class="glyphicon glyphicon-comment"></span>
@@ -153,42 +164,27 @@
 				</div>
 				<div class="panel-body">
 					<ul class="list-group">
-						<%
 							
-						%>
+						<span id="cmt<%=post.getVs_no() %>"></span>
 						<%--´ñ±Û¸ñ·Ï --%>
-						<li class="list-group-item">
+<!-- 						<li class="list-group-item">
 							<div class="row">
 								<div class="col-xs-2 col-md-1">
 									<img src="/single/images/irene.png" class="img-circle img-responsive" alt="" />
 								</div>
 								<div class="col-xs-10 col-md-11">
 									<div class="comment-text">¹¹°¡ ÈûµçÁö ¸»ÇØ¾ßÁÒ</div>
-									<div>
-										<a href="#"></a>
 										<div class="mic-info">
 											By: <a href="#">¹èÁÖÇö</a> on 2 Jul 2018
 										</div>
-									</div>
-									<!-- <div class="action">
-										<button type="button" class="btn btn-primary btn-xs" title="Edit">
-											<span class="glyphicon glyphicon-pencil"></span>
-										</button>
-										<button type="button" class="btn btn-success btn-xs" title="Approved">
-											<span class="glyphicon glyphicon-ok"></span>
-										</button>
-										<button type="button" class="btn btn-danger btn-xs" title="Delete">
-											<span class="glyphicon glyphicon-trash"></span>
-										</button>
-									</div> -->
 								</div>
 							</div>
-						</li>
+						</li> -->
 						
 					</ul>
-					<a href="#" class="btn btn-default btn-sm btn-block" role="button"> 
+					<!-- <a href="#" class="btn btn-default btn-sm btn-block" role="button"> 
 						<span class="glyphicon glyphicon-refresh"></span> More
-					</a>
+					</a> -->
 				</div>
 			</div>
 		</div>

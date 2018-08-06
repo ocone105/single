@@ -10,4 +10,5 @@ public interface FriendsService {
 	
 	ArrayList<MsgDTO> readMsg(String option, String me_id);	// 메시지 목록
 
+	ArrayList<String> friendsList(String me_id);	// 친구 목록
 }

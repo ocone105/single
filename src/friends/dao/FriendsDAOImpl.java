@@ -52,4 +52,26 @@ public class FriendsDAOImpl implements FriendsDAO {
 		close(ptmt);
 		return msgs;
 	}
+
+	@Override
+	public ArrayList<String> friendsList(String me_id, Connection con) throws SQLException {	// 模备 格废
+		System.out.println("DAO夸没");
+		ArrayList<String> friends = new ArrayList<String>();
+		String friend = null;
+		PreparedStatement ptmt = con.prepareStatement(SELECT_FRIENDS);
+		ptmt.setString(1, me_id);
+		ResultSet rs = ptmt.executeQuery();
+		while (rs.next()) {
+			System.out.println(rs.getString(1));
+			System.out.println(rs.getString(2));
+			friend = rs.getString(2);
+			friends.add(friend);
+		}
+		System.out.println(me_id);
+		System.out.println(friend);
+		System.out.println(friends);
+		close(rs);
+		close(ptmt);
+		return friends;
+	}
 }

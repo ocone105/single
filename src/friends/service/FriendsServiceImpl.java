@@ -45,4 +45,20 @@ public class FriendsServiceImpl implements FriendsService {
 		close(con);
 		return msgs;
 	}
+
+	@Override
+	public ArrayList<String> friendsList(String me_id) {	// 模备 格废
+		System.out.println("Service夸没");
+		ArrayList<String> friends = null;
+		FriendsDAO dao = new FriendsDAOImpl();
+		Connection con = null;
+		try{
+			con = getConnect();
+			friends = dao.friendsList(me_id, con);
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		close(con);
+		return friends;
+	}
 }
