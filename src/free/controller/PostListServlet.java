@@ -18,8 +18,8 @@ import free.service.FreeServiceImpl;
 public class PostListServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		//System.out.println("postlist 서블릿 요청 성공");
 		req.setCharacterEncoding("euc-kr");
+		res.setContentType("text/html;charset=euc-kr");
 		
 		String category = req.getParameter("category");
 		String view="";
