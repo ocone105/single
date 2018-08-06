@@ -61,7 +61,6 @@ public class MemberUpdateServlet extends HttpServlet {
 			String file = files.nextElement();
 			me_img = multipart.getFilesystemName(file);
 		}
-
 		MemberService service = new MemberServiceImpl();
 		HttpSession ses = request.getSession();
 		MemberDTO loginUser = (MemberDTO) ses.getAttribute("loginUser");

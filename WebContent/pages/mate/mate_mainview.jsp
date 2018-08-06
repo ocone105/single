@@ -60,13 +60,14 @@
 				<% for(int i = 0; i<size; i++){
 					%>
 					<li>
+						<a href="/single/mt/read.do?mt_no=<%=dtolist.get(i).getMt_no() %>">
 						<article>
 							<figure>
-								<a href="/single/mt/read.do?mt_no=<%=dtolist.get(i).getMt_no() %>"><img src="<%=dtolist.get(i).getMt_img() %>" 
-								alt="<%=dtolist.get(i).getMt_img() %>"></a>
+							<img src="<%=dtolist.get(i).getMt_img() %>"
+								alt="<%=dtolist.get(i).getMt_img() %>">
 								<figcaption><%=dtolist.get(i).getMt_title() %></figcaption>
 							</figure>
-						</article>
+						</article></a>
 					</li>
 						<% }%>
 <!-- 					<li>
