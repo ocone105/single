@@ -62,8 +62,6 @@ public class FriendsDAOImpl implements FriendsDAO {
 		ptmt.setString(1, me_id);
 		ResultSet rs = ptmt.executeQuery();
 		while (rs.next()) {
-			System.out.println(rs.getString(1));
-			System.out.println(rs.getString(2));
 			friend = rs.getString(2);
 			friends.add(friend);
 		}

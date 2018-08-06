@@ -42,4 +42,3 @@ public class VsCmtInsertServlet extends HttpServlet {
 		response.sendRedirect("/single/vs/vs_read.do");
 	}
 }
-
