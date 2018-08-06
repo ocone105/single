@@ -63,8 +63,8 @@ a img{
 					<form name="selArea">
 						<span class="styled-select">
 							<select name="area" id="area" onchange="selectArea(this.form)">
-								<option value="all" selected>지역선택</option>
-								<option value="all">전체</option>
+								<option value="" selected>지역선택</option>
+								<option value="">전체</option>
 								<%for(int i=0; i<localsize; i++){
 								LocalDTO local = locallist.get(i); %>
 								<option value="<%=local.getCode() %>"><%=local.getName() %></option>
@@ -96,15 +96,29 @@ a img{
 					countPage = size/9+1;
 				}%>
 				<ul>
-					<li class="prev"><a href="/single/local/list.do?areaCode=<%=areaCode %>&page=<%=crtpage-1%>">&laquo; Previous</a></li>
-					<% for(int i=1; i<=countPage; i++){
+					<li class="prev">
+					<%if(crtpage==1){ %>
+						&laquo; Previous
+					<%}else{ %>
+					<a href="/single/local/list.do?areaCode=<%=areaCode %>&page=<%=crtpage-1%>">&laquo; Previous</a>
+					<%} %>
+					</li>
+					<%int lastpage = crtpage+9;
+					if(lastpage>countPage){lastpage=countPage;}%>
+					<% for(int i=crtpage; i<=lastpage; i++){
 						if(i==crtpage){%>
 						<li class="current"><strong><%=i %></strong></li>
 						<%}else{%>
 						<li><a href="/single/local/list.do?areaCode=<%=areaCode %>&page=<%=i%>"><%=i %></a></li>
 					<%}} %>
-			<!-- 	<li class="splitter"><strong>&hellip;</strong></li> -->
-					<li class="next"><a href="/single/local/list.do?areaCode=<%=areaCode %>&page=<%=crtpage+1%>">Next &raquo;</a></li>
+					<!-- 	<li class="splitter"><strong>&hellip;</strong></li> -->
+					<li class="next">
+					<%if(crtpage==countPage){ %>
+						Next &raquo;
+					<%}else{ %>
+					<a href="/single/local/list.do?areaCode=<%=areaCode %>&page=<%=crtpage+1%>">Next &raquo;</a>
+					<%} %>
+					</li>
 				</ul>
 			</div>
 

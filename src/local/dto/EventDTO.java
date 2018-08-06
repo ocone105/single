@@ -10,16 +10,13 @@ public class EventDTO {
 	private String mapx;
 	private String mapy;	
 	private String readcount; //조회수
-	private String sigungucode;	//시군구코드
-	private String tel;	//전화번호
 	private String title;	//타이틀
 	
 	public EventDTO() {
 
 	}
 	public EventDTO(String addr1, String areacode, String contentid, String eventenddate, String eventstartdate,
-			String firstimage, String mapx, String mapy, String readcount, String sigungucode,
-			String tel, String title) {
+			String firstimage, String mapx, String mapy, String readcount, String title) {
 		super();
 		this.addr1 = addr1;
 		this.areacode = areacode;
@@ -30,16 +27,13 @@ public class EventDTO {
 		this.mapx = mapx;
 		this.mapy = mapy;
 		this.readcount = readcount;
-		this.sigungucode = sigungucode;
-		this.tel = tel;
 		this.title = title;
 	}
 	@Override
 	public String toString() {
 		return "LocalDTO [addr1=" + addr1 + ", areacode=" + areacode + ", contentid=" + contentid + ", eventenddate="
 				+ eventenddate + ", eventstartdate=" + eventstartdate + ", firstimage=" + firstimage + 
-				", mapx=" + mapx + ", mapy=" + mapy + ", readcount=" + readcount + ", sigungucode="
-				+ sigungucode + ", tel=" + tel + ", title=" + title + "]";
+				", mapx=" + mapx + ", mapy=" + mapy + ", readcount=" + readcount + ", title=" + title + "]";
 	}
 	public String getAddr1() {
 		return addr1;
@@ -94,18 +88,6 @@ public class EventDTO {
 	}
 	public void setReadcount(String readcount) {
 		this.readcount = readcount;
-	}
-	public String getSigungucode() {
-		return sigungucode;
-	}
-	public void setSigungucode(String sigungucode) {
-		this.sigungucode = sigungucode;
-	}
-	public String getTel() {
-		return tel;
-	}
-	public void setTel(String tel) {
-		this.tel = tel;
 	}
 	public String getTitle() {
 		return title;
