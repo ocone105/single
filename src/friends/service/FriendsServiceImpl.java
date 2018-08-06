@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import friends.dao.FriendsDAO;
 import friends.dao.FriendsDAOImpl;
+import friends.dto.BdDTO;
 import friends.dto.MsgDTO;
 
 public class FriendsServiceImpl implements FriendsService {
@@ -44,5 +45,21 @@ public class FriendsServiceImpl implements FriendsService {
 		}
 		close(con);
 		return msgs;
+	}
+
+	@Override
+	public int insertBd(BdDTO bd) {	// 친구 추가
+		int result = 0;
+		Connection con = null;		
+		FriendsDAO dao = new FriendsDAOImpl();	
+		try {
+			con = getConnect();
+			result = dao.insertBd(bd, con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(con);
+		}
+		return result;
 	}
 }

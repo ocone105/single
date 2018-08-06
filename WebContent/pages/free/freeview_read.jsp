@@ -82,21 +82,30 @@
 			%>
 
 			<!-- Modal -->
+			<form action="/single/bd/insert_bd.do" method="post">
 			<div class="modal" id="infoModal" tabindex="-1" role="dialog">
 				<div class="modal-dialog modal-sm">
 					<div class="modal-content">
 						<div class="modal-body">
-							<button type="button" class="btn btn-info" data-dismiss="modal">친구 추가</button>
-							<button type="button" class="btn btn-info" data-dismiss="modal">쪽지 보내기</button>
+									<input name="postno" type="hidden" value="<%=post.getFr_no()%>">
+			<%
+				if (loginUser != null) {
+			%>
+									<input name="id" type="hidden" value="<%=loginUser.getMe_id()%>">
+			<%
+				}
+			%>
+									<input name="bd_id" type="hidden" value="<%=post.getMe_id()%>">
+							<input type="submit" class="btn btn-info" data-dismiss="modal" value="친구 추가">
 						</div>
 						<div class="modal-footer">
-							<button   type="button" class="btn btn-info" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-							
+							<button  type="button" class="btn btn-info" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
 						
 						</div>
 					</div>
 				</div>
 			</div>
+			</form>
 			<!-- ============================== -->
 			
 			<div id="kboard-document">

@@ -3,6 +3,7 @@ package friends.dao;
 import static fw.DBUtil.close;
 import static vs.query.VsQuery.UPDATE_OPTA;
 import static vs.query.VsQuery.UPDATE_OPTB;
+import static free.query.FreeQuery.INSERT_POST;
 import static friends.query.FriendsQuery.*;
 
 import java.sql.Connection;
@@ -11,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import friends.dto.BdDTO;
 import friends.dto.MsgDTO;
 
 public class FriendsDAOImpl implements FriendsDAO {
@@ -51,5 +53,19 @@ public class FriendsDAOImpl implements FriendsDAO {
 		close(rs);
 		close(ptmt);
 		return msgs;
+	}
+
+	@Override
+	public int insertBd(BdDTO bd, Connection con) throws SQLException {	// 친구 추가
+		int result = 0;
+
+		PreparedStatement ptmt = con.prepareStatement(INSERT_BD);
+		ptmt.setString(1, bd.getMe_id());
+		ptmt.setString(2, bd.getBd_id());
+
+		result = ptmt.executeUpdate();
+
+		close(ptmt);
+		return result;
 	}
 }

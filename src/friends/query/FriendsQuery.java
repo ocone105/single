@@ -7,4 +7,7 @@ public class FriendsQuery {
 	// 메시지 목록 
 	public static final String SEND_MSG = "select * from message where sender=?";
 	public static final String RECIEVE_MSG = "select * from message where receiver=?";
+	
+	// 친구 추가
+	public static final String INSERT_BD = "insert into bd_list values(?,?)";
 }
