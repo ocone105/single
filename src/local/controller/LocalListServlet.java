@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,15 +22,22 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import local.dto.EventDTO;
 import local.dto.LocalDTO;
-import local.dto.SigunguDTO;
 @WebServlet(name = "local/list", urlPatterns = { "/local/list.do" })
 public class LocalListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<LocalDTO> locallist = getLocalList();
 		ArrayList<EventDTO> eventlist = getEventList();
-		String url = "";
+		
 		String page = request.getParameter("page");
-		url = "/pages/local/localview.jsp?page="+page;
+		String areaCode = request.getParameter("areaCode");
+		System.out.println(areaCode);
+		
+		String url = "";
+		if(areaCode==null&&page==null){
+			url = "/pages/local/localview.jsp";
+		}else{
+			url = "/pages/local/localview.jsp?areaCode="+areaCode+"&page="+page;
+		}
 		
 		request.setAttribute("locallist", locallist);
 		request.setAttribute("eventlist", eventlist);
@@ -46,8 +52,8 @@ public class LocalListServlet extends HttpServlet {
 		try {
 			XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 			String eventurl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode";
-			String key = "I8D75wKPpAZsS%2By%2FnPRx1lBAn758Wn1C4VkbUAmkbJr7YfuIXv77WgHujBFuM%2FCVZZK7IfCiRdWebdYCf6S7%2Fg%3D%3D";
-			
+			//String key = "I8D75wKPpAZsS%2By%2FnPRx1lBAn758Wn1C4VkbUAmkbJr7YfuIXv77WgHujBFuM%2FCVZZK7IfCiRdWebdYCf6S7%2Fg%3D%3D";
+			String key = "awXAezeT7c3zw%2BPOuXQjQSfoYr%2F9a51vEId%2BOw03z7fw6t9%2FI42xr3raGyNCXcW1LR6Msdmtb7zZFS5jMqydWQ%3D%3D";
 			for (int i = 1; i <= 2; i++) {
 				// 페이지수
 				int pageNo = i;
@@ -100,8 +106,9 @@ public class LocalListServlet extends HttpServlet {
 		try {
 			XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 			String eventurl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival";
-			String key = "I8D75wKPpAZsS%2By%2FnPRx1lBAn758Wn1C4VkbUAmkbJr7YfuIXv77WgHujBFuM%2FCVZZK7IfCiRdWebdYCf6S7%2Fg%3D%3D";
-			
+			//String key = "I8D75wKPpAZsS%2By%2FnPRx1lBAn758Wn1C4VkbUAmkbJr7YfuIXv77WgHujBFuM%2FCVZZK7IfCiRdWebdYCf6S7%2Fg%3D%3D";
+			String key = "awXAezeT7c3zw%2BPOuXQjQSfoYr%2F9a51vEId%2BOw03z7fw6t9%2FI42xr3raGyNCXcW1LR6Msdmtb7zZFS5jMqydWQ%3D%3D";
+			//String key= "Ptrpg9vwh%2BM%2FwcNhdxTTrDESZ72kDCPisr5pgUQ8IoGfQgeJn2Jr3oEsWLfgAOn8l8%2B1VT5%2FwfJ%2B%2BKeyUZ%2FgCA%3D%3D";
 			for (int i = 1; i <= 5; i++) {
 				// 페이지수
 				int pageNo = i;
