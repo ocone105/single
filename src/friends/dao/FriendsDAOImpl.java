@@ -1,8 +1,6 @@
 package friends.dao;
 
 import static fw.DBUtil.close;
-import static vs.query.VsQuery.UPDATE_OPTA;
-import static vs.query.VsQuery.UPDATE_OPTB;
 import static friends.query.FriendsQuery.*;
 
 import java.sql.Connection;
@@ -12,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import friends.dto.MsgDTO;
+import member.dto.MemberDTO;
 
 public class FriendsDAOImpl implements FriendsDAO {
 
@@ -65,11 +64,26 @@ public class FriendsDAOImpl implements FriendsDAO {
 			friend = rs.getString(2);
 			friends.add(friend);
 		}
-		System.out.println(me_id);
-		System.out.println(friend);
-		System.out.println(friends);
 		close(rs);
 		close(ptmt);
 		return friends;
+	}
+
+	@Override
+	public ArrayList<MemberDTO> BckList(Connection con) throws SQLException {	// 블랙리스트 목록
+		System.out.println("DAO요청");
+		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
+		MemberDTO member = null;
+		PreparedStatement ptmt = con.prepareStatement(SELECT_BCKLIST);
+		ResultSet rs = ptmt.executeQuery();
+		while (rs.next()) {
+			member =  new MemberDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getString(6), 
+					rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getInt(12), rs.getString(13), rs.getString(14), 
+					rs.getString(15), rs.getString(16), rs.getString(17), rs.getInt(18));
+			list.add(member);
+		}
+		close(rs);
+		close(ptmt);
+		return list;
 	}
 }

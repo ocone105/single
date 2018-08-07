@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import friends.service.FriendsService;
 import friends.service.FriendsServiceImpl;
+import member.dto.MemberDTO;
+import member.service.MemberService;
+import member.service.MemberServiceImpl;
 
 @WebServlet(name = "friendslist", urlPatterns = { "/friends/list.do" })
 public class FriendsListServlet extends HttpServlet {
@@ -23,22 +26,20 @@ public class FriendsListServlet extends HttpServlet {
 		String me_id = "ocean";
 		
 		FriendsService service = new FriendsServiceImpl();
-		ArrayList<String> friends = service.friendsList(me_id);
-
+		ArrayList<String> friendslist = service.friendsList(me_id);
+		int size = friendslist.size();
+		
+		MemberService memberservice = new MemberServiceImpl();
+		ArrayList<MemberDTO> friends = new ArrayList<MemberDTO>();
+		MemberDTO friend = null;
+		for (int j = 0; j < size; j++) {
+			friend = memberservice.getUserInfo(friendslist.get(j));
+			friends.add(friend);
+		}
+		
 		request.setAttribute("friends", friends);
 		
-		// 4. 요청재지정
-		// RequestDispatcher rd = request.getRequestDispatcher("/pages/vs/vsview.jsp");
-		// rd.forward(request, response);
-	}
-	
-	public static void main(String[] args){
-		String me_id = "ocean";
-		
-		FriendsService service = new FriendsServiceImpl();
-		ArrayList<String> friends = service.friendsList(me_id);
-		System.out.println("아이디 ㅣ "+me_id);
-
-		System.out.println(friends);
+		RequestDispatcher rd = request.getRequestDispatcher("/pages/friends/friendsview.jsp");
+		rd.forward(request, response);
 	}
 }

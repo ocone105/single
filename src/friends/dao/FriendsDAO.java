@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import friends.dto.MsgDTO;
+import member.dto.MemberDTO;
 
 public interface FriendsDAO {
 	
@@ -13,4 +14,6 @@ public interface FriendsDAO {
 	ArrayList<MsgDTO> readMsg(String option, String me_id, Connection con) throws SQLException;	// 메시지 목록
 	
 	ArrayList<String> friendsList(String me_id, Connection con) throws SQLException;	// 친구 목록
+	
+	ArrayList<MemberDTO> BckList(Connection con) throws SQLException;	// 블랙리스트 목록
 }
