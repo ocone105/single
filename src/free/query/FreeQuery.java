@@ -50,6 +50,9 @@ public class FreeQuery {
 	
 	public static final String REPORT_USER
 	= "update member set me_black= me_black+1 where me_id=?"; 		// 게시글 신고
+	
+	public static final String COUNT_POST
+	="select count(*) from fr_board";	// 게시글 카운트
 }
 
 
