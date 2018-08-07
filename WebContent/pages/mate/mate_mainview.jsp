@@ -11,10 +11,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="/single/common/scripts/jquery.min.js"></script>
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
-<<<<<<< HEAD
-<script src="/single/common/scripts/mate/matemap.js"></script>
-=======
-<script src="/single/common/scripts/mate/map.js"></script>
 
 
 
@@ -36,7 +32,6 @@
 				<button class="btn btn-primary" onclick="panTo(<%=loginUser.getMe_loc()%>)">내위치로</button>
 				<a href="/single/pages/mate/mate_writeview.jsp"><button class="btn btn-danger">소모임 만들기</button></a>
 			</div>
-<<<<<<< HEAD
 			
 			<!-- map body -->
 			<div id="map" style="width: 100%; height: 400px;"></div>
@@ -81,7 +76,6 @@
 			<% ArrayList<MateDTO> dtolist = (ArrayList<MateDTO>)request.getAttribute("dtolist");
 				int size = dtolist.size();%>
 
-=======
 			<div id="map"></div>
 			<script type="text/javascript">
 
@@ -92,7 +86,6 @@
 				// 지도의 중심좌표 // 지도의 확대 레벨
 				
 			</script>
->>>>>>> refs/remotes/origin/khj
 			<hr />
 			<!-- content body -->
 
