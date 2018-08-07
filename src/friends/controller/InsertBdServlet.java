@@ -24,8 +24,6 @@ public class InsertBdServlet extends HttpServlet {
 		String bd_id = req.getParameter("bd_id");
 		int no = Integer.parseInt(req.getParameter("postno"));
 
-		System.out.println("친구아이디:"+ bd_id);
-		
 		// 비지니스 메소드 호출
 		BdDTO bd = new BdDTO(me_id, bd_id);
 		FriendsService service = new FriendsServiceImpl();

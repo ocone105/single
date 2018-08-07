@@ -56,6 +56,18 @@
 	int size = cmtlist.size();
 %>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#insert_bd").on("click", function() {
+
+		    var id = $('#id').val();
+		    var bd_id = $('#bd_id').val();
+		    var postno = $('#postno').val();
+
+		    $("#insert_bd_form").submit();
+		});
+	});
+</script>
 <!-- -------------------------------- -->
 
 
@@ -82,32 +94,42 @@
 			%>
 
 			<!-- Modal -->
-			<form action="/single/bd/insert_bd.do" method="post">
+
 			<div class="modal" id="infoModal" tabindex="-1" role="dialog">
 				<div class="modal-dialog modal-sm">
 					<div class="modal-content">
 						<div class="modal-body">
-									<input name="postno" type="hidden" value="<%=post.getFr_no()%>">
-			<%
-				if (loginUser != null) {
-			%>
-									<input name="id" type="hidden" value="<%=loginUser.getMe_id()%>">
-			<%
-				}
-			%>
-									<input name="bd_id" type="hidden" value="<%=post.getMe_id()%>">
-							<input type="submit" class="btn btn-info" data-dismiss="modal" value="친구 추가">
+							<form action="/single/bd/insert_bd.do" method="post"
+								id="insert_bd_form">
+								<input name="postno" type="hidden" value="<%=post.getFr_no()%>" id="postno">
+								<%
+									if (loginUser != null) {
+								%>
+								<input name="id" type="hidden" value="<%=loginUser.getMe_id()%>"
+									id="me_id">
+								<%
+									}
+								%>
+								<input name="bd_id" type="hidden" value="<%=post.getMe_id()%>"
+									id="bd_id">
+								<button type="button" class="btn btn-info" data-dismiss="modal"
+									id="insert_bd">친구추가</button>
+							</form>
+
 						</div>
 						<div class="modal-footer">
-							<button  type="button" class="btn btn-info" aria-label="Close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-						
+							<button type="button" class="btn btn-info" aria-label="Close"
+								data-dismiss="modal">
+								<span aria-hidden="true">&times;</span>
+							</button>
+
 						</div>
 					</div>
 				</div>
 			</div>
-			</form>
+
 			<!-- ============================== -->
-			
+
 			<div id="kboard-document">
 				<div id="kboard-thumbnail-document">
 					<div class="kboard-document-wrap" itemscope
@@ -192,14 +214,14 @@
 
 
 											<div class="comments-list-controller">
-												<%-- <%=if(loginUser != null && loginUser.getMe_id().equals(cmt.getMe_id())){ %> --%>
 												<div class="right">
+												<%if(loginUser != null && loginUser.getMe_id().equals(cmt.getMe_id())){%>
 													<a type="button"
 														href="/single/fr/cmtdelete.do?cmt_no=<%=cmt.getFr_cmt_no()%>&no=<%=post.getFr_no()%>"
 														class="comments-button-action comments-button-delete"
 														onclick="return confirm('삭제 하시겠습니까?');" title="삭제">삭제</a>
+												<%} %>
 												</div>
-												<%-- <%} %> --%>
 											</div>
 										</li>
 									</ul>
