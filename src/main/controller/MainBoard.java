@@ -19,7 +19,6 @@ public class MainBoard {
 	public ArrayList<FreeDTO> FreeList(){
 		FreeService service = new FreeServiceImpl();
 		ArrayList<FreeDTO> freelist = service.getPostList();
-		System.out.println(freelist.get(0).getFr_ctg());
 		return freelist;
 	}
 	
