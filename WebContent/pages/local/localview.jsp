@@ -103,9 +103,24 @@ a img{
 					<a href="/single/local/list.do?areaCode=<%=areaCode %>&page=<%=crtpage-1%>">&laquo; Previous</a>
 					<%} %>
 					</li>
-					<%int lastpage = crtpage+9;
-					if(lastpage>countPage){lastpage=countPage;}%>
-					<% for(int i=crtpage; i<=lastpage; i++){
+					<%int lastpage = 0;
+					int firstpage = 0;
+					if(crtpage-4>=1){
+						firstpage = crtpage-4;
+					}else{
+						firstpage = crtpage;
+					}
+					if(countPage<=10){
+						lastpage = countPage;
+					}else if(crtpage+5<=10){
+						lastpage = 10;
+					}else if(crtpage+5<=countPage){
+						lastpage = crtpage+5;
+					}else{
+						lastpage = countPage;
+					}
+					%>
+					<% for(int i=firstpage; i<=lastpage; i++){
 						if(i==crtpage){%>
 						<li class="current"><strong><%=i %></strong></li>
 						<%}else{%>
