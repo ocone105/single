@@ -18,16 +18,31 @@
     .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
     #info{width: 100%; text-align: center; margin-top: 15px; }
 </style>
+<script src="/single/common/scripts/mate/map.js"></script>
 
 
-
-
-</head>
-<body>
 <% MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); 
 	String me_id = loginUser.getMe_id();
 	String me_loc = loginUser.getMe_loc();
 %>
+<script type="text/javascript">
+	function mapselect(){
+		opener.document.getElementById("result").value = document.getElementById("centerAddr").innerHTML;
+		window.close();
+	}
+	
+
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	mapOption = {
+		center : new daum.maps.LatLng(<%=me_loc%>), level : 3	
+	};
+	// 지도의 중심좌표 // 지도의 확대 레벨
+	
+</script>
+
+</head>
+<body>
+
 <form>
 <div id="content">
 	<div class="map_wrap">
