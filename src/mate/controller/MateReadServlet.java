@@ -27,9 +27,15 @@ public class MateReadServlet extends HttpServlet {
 		System.out.println(dto);
 		request.setAttribute("dto", dto);
 
-		RequestDispatcher rd = request.getRequestDispatcher("/pages/mate/mate_readview.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/mt/re_read.do");
 		rd.forward(request, response);
 		
 	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+	
 
 }

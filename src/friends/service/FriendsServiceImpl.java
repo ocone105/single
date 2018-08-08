@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import friends.dao.FriendsDAO;
 import friends.dao.FriendsDAOImpl;
 import friends.dto.MsgDTO;
+import member.dto.MemberDTO;
 
 public class FriendsServiceImpl implements FriendsService {
 
@@ -44,5 +45,37 @@ public class FriendsServiceImpl implements FriendsService {
 		}
 		close(con);
 		return msgs;
+	}
+
+	@Override
+	public ArrayList<String> friendsList(String me_id) {	// 模备 格废
+		System.out.println("Service夸没");
+		ArrayList<String> friends = null;
+		FriendsDAO dao = new FriendsDAOImpl();
+		Connection con = null;
+		try{
+			con = getConnect();
+			friends = dao.friendsList(me_id, con);
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		close(con);
+		return friends;
+	}
+
+	@Override
+	public ArrayList<MemberDTO> BckList() {		// 喉发府胶飘 格废
+		System.out.println("Service夸没");
+		ArrayList<MemberDTO> list = null;
+		FriendsDAO dao = new FriendsDAOImpl();
+		Connection con = null;
+		try{
+			con = getConnect();
+			list = dao.BckList(con);
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		close(con);
+		return list;
 	}
 }

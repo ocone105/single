@@ -40,7 +40,7 @@ public class MateReplyInsertServlet extends HttpServlet {
 			System.out.println("입력실패");
 		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/single/mt/read.do?mt_no="+mt_no);
+		RequestDispatcher rd = request.getRequestDispatcher("/mt/read.do?mt_no="+mt_no);
 		rd.forward(request, response);
 //		response.sendRedirect("/single/mt_read.do?mt_no="+mt_no);
 		

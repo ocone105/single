@@ -130,12 +130,16 @@
 				<!-- 이메일 -->
 				<div class="form-group">
 					<label class="col-sm-3 control-label">이메일*</label>
-					<div class="col-sm-6">
+					<div class="col-sm-4">
 						<input class="form-control" name="me_email" id="me_email" type="email"
-							placeholder="single@single.com" required>
+							placeholder="single@single.com" required/>
+					</div>
+					<div class="col-sm-2">
+						<input class="btn" type="button" name="emailconfirm_btn" value="인증"
+							onclick="emailcheck(myform.me_email.value)"/>
 					</div>
 				</div>
-
+					
 				<!-- 주소 -->
 				<div class="form-group">
 					<label class="col-sm-3 control-label">주소</label>
@@ -163,34 +167,6 @@
 						</div>
 					</div>
 				</div>
-				
-				<!-- <div class="form-group">
-					<label class="col-sm-3 control-label">휴대폰번호</label>
-					<div class="col-sm-6">
-						<div class="input-group">
-							<input type="tel" class="form-control" id="inputNumber"
-								placeholder="- 없이 입력해 주세요" /> <span class="input-group-btn">
-								<button class="btn btn-success">
-									인증번호 전송<i class="fa fa-mail-forward spaceLeft"></i>
-								</button>
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">인증번호 확인</label>
-					<div class="col-sm-6">
-						<div class="input-group">
-							<input class="form-control" id="inputNumberCheck" type="text"
-								placeholder="인증번호"> <span class="input-group-btn">
-								<button class="btn btn-success" type="button">
-									인증번호 확인<i class="fa fa-edit spaceLeft"></i>
-								</button>
-							</span>
-						</div>
-						<p class="help-block">전송된 인증번호를 입력해주세요.</p>
-					</div>
-				</div> -->
 
 				<div class="form-group">
 					<div class="col-sm-12 text-center">
