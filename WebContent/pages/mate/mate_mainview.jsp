@@ -11,6 +11,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="/single/common/scripts/jquery.min.js"></script>
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
+<script src="/single/common/scripts/mate/map.js"></script>
+
+
+
 </head>
 <body>
 <%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
@@ -35,21 +39,16 @@
 					<a href="/single/pages/mate/mate_writeview.jsp">소모임 만들기 &raquo;</a>
 				</footer>
 			</div>
-			<div id="map" style="width: 100%; height: 400px;"></div>
-			<script type="text/javascript"
-				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e389da52ac8c672d4985eead6dce0c46">
+			<div id="map"></div>
+			<script type="text/javascript">
+
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				mapOption = {
+					center : new daum.maps.LatLng(<%=loginUser.getMe_loc()%>), level : 3	
+				};
+				// 지도의 중심좌표 // 지도의 확대 레벨
 				
 			</script>
-			<script>
-				var container = document.getElementById('map');
-				var options = {
-					center : new daum.maps.LatLng(33.450701, 126.570667),
-					level : 3
-				};
-				var map = new daum.maps.Map(container, options);
-			</script>
-
-
 			<hr />
 			<!-- content body -->
 			<% ArrayList<MateDTO> dtolist = (ArrayList<MateDTO>)request.getAttribute("dtolist");
@@ -63,6 +62,7 @@
 						<a href="/single/mt/read.do?mt_no=<%=dtolist.get(i).getMt_no() %>">
 						<article>
 							<figure>
+								<figcaption><%=dtolist.get(i).getMt_map() %></figcaption>
 							<img src="<%=dtolist.get(i).getMt_img() %>"
 								alt="<%=dtolist.get(i).getMt_img() %>">
 								<figcaption><%=dtolist.get(i).getMt_title() %></figcaption>
