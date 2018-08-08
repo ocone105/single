@@ -62,4 +62,20 @@ public class FriendsServiceImpl implements FriendsService {
 		}
 		return result;
 	}
+
+	@Override
+	public int deleteBd(BdDTO bd) {
+		int result = 0;
+		Connection con = null;		
+		FriendsDAO dao = new FriendsDAOImpl();	
+		try {
+			con = getConnect();
+			result = dao.deleteBd(bd, con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(con);
+		}
+		return result;
+	}
 }

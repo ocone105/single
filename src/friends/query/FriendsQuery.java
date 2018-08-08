@@ -10,4 +10,10 @@ public class FriendsQuery {
 	
 	// 模备 眠啊
 	public static final String INSERT_BD = "insert into bd_list values(?,?)";
+	
+	// 模备 昏力
+	public static final String DELETE_BD = "delete from bd_list where me_id=?, bd_id=?";
+	
+	// 喉发府胶飘 昏力
+	public static final String UPDATE_BLACK = "update member set me_black=0 where me_id=?";
 }

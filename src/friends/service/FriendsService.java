@@ -12,5 +12,7 @@ public interface FriendsService {
 	ArrayList<MsgDTO> readMsg(String option, String me_id);	// 메시지 목록
 	
 	int insertBd(BdDTO bd); // 친구 추가
+	
+	int deleteBd(BdDTO bd); // 친구 삭제
 
 }

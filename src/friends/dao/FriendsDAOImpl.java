@@ -68,4 +68,18 @@ public class FriendsDAOImpl implements FriendsDAO {
 		close(ptmt);
 		return result;
 	}
+
+	@Override
+	public int deleteBd(BdDTO bd, Connection con) throws SQLException {
+		int result = 0;
+
+		PreparedStatement ptmt = con.prepareStatement(DELETE_BD);
+		ptmt.setString(1, bd.getMe_id());
+		ptmt.setString(2, bd.getBd_id());
+
+		result = ptmt.executeUpdate();
+
+		close(ptmt);
+		return result;
+	}
 }

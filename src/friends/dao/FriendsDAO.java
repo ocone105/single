@@ -15,4 +15,6 @@ public interface FriendsDAO {
 
 	int insertBd(BdDTO bd, Connection con) throws SQLException; // 模备 眠啊
 	
+	int deleteBd(BdDTO bd, Connection con) throws SQLException; // 模备 昏力
+	
 }
