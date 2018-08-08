@@ -18,7 +18,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); 
+<%
+	MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); 
 	MainBoard board = new MainBoard();
 	ArrayList<LeDTO> eventlist = board.leList();
 	ArrayList<MateDTO> matelist = board.MateList();
@@ -246,6 +247,7 @@
 			<hr />
 			<div class="clear"></div>
 		</div>
+	</div>
 	</div>
 	<!-- Copyright -->
 	<div class="wrapper row3">
