@@ -26,8 +26,9 @@
 			<jsp:include page="/pages/friends/friendsmenu.jsp"/>
 			
 			<p align="center">Friends List</p>
+			
 			<ul class="w3-ul w3-card-4">
-
+			<%--친구 목록 --%>
 			<%
 				ArrayList<MemberDTO> friends = (ArrayList<MemberDTO>) request.getAttribute("friends");
 				if(friends!=null){
@@ -47,7 +48,7 @@
 				</li>
 			
 			
-<%-- #############################################쪽지 보내기 modal######################################################### --%>
+			<%-- 쪽지 보내기 modal--%>
 			<div class="modal fade" id="MessageModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -57,11 +58,11 @@
 							</button>
 							<h4 class="modal-title" id="myModalLabel">Message</h4>
 						</div>
-						<form action="/single//msg/msg_insert.do" method="POST">
+						<form action="/single/msg/msg_insert.do" method="POST">
 						<div class="modal-body">
 							<div class="input-group">
 								<span class="input-group-addon">@ 받는 사람</span> 
-								<input type="text" class="form-control" placeholder="<%=friends.get(i).getMe_id() %>" name="receiver"/>
+								<input type="text" class="form-control" placeholder="<%=friends.get(i).getMe_id() %>" name="receiver" readonly="readonly"/>
 							</div>
 							<p></p>
 							<div class="input-group">
@@ -84,10 +85,10 @@
 					</div>
 				</div>
 			</div>
-<%-- #############################################쪽지 보내기 modal######################################################### --%>
-
-		<% }}%>
-		</ul>
+			<%--------------%>
+			<% }}%>
+			</ul>
+			
 		</div>
 	</div>
 	
