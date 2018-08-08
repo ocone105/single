@@ -16,7 +16,6 @@ import mate.service.MateServiceImpl;
 
 @WebServlet(name = "mt/list", urlPatterns = { "/mt/list.do" })
 public class MateListServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -31,6 +30,12 @@ public class MateListServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/pages/mate/mate_mainview.jsp");
 		rd.forward(request, response);
 	
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+			doGet(request, response);
+		
 	}
 	
 }
