@@ -25,7 +25,6 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html;charset=euc-kr");
 		response.setHeader("cache-control", "no-cache,no-store");
 		PrintWriter pw = response.getWriter();
-		
 		/*String id = request.getParameter("id");
 		String pass = request.getParameter("pass");*/
 		String info = request.getParameter("info");
