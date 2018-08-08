@@ -98,7 +98,7 @@ public class MateDAOImpl implements MateDAO {
 	public ArrayList<MateCmtDTO> List_mt_cmt(int mt_no, Connection con) throws SQLException {
 		ArrayList<MateCmtDTO> dtolist = new ArrayList<MateCmtDTO>();
 		MateCmtDTO dto =  null;
-		PreparedStatement ptmt = con.prepareStatement(MATE_LIST);
+		PreparedStatement ptmt = con.prepareStatement(MATE_REPLY_READ);
 		ptmt.setInt(1, mt_no);
 		ResultSet rs = ptmt.executeQuery();
 		while(rs.next()){

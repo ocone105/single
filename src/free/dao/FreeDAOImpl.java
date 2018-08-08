@@ -23,7 +23,7 @@ public class FreeDAOImpl implements FreeDAO {
 		ptmt.setString(2, post.getFr_txt());
 		ptmt.setString(3, post.getFr_ctg());
 		ptmt.setString(4, post.getFr_img());
-		
+		ptmt.setString(5, post.getMe_id());
 		result = ptmt.executeUpdate();
 
 		close(ptmt);
@@ -126,5 +126,7 @@ public class FreeDAOImpl implements FreeDAO {
 
 		return postlist;
 	}
+
+
 
 }
