@@ -16,7 +16,6 @@ import member.service.MemberServiceImpl;
 public class MemberWithdrawal extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
-		
 		HttpSession ses = request.getSession();
 		MemberDTO loginUser = (MemberDTO) ses.getAttribute("loginUser");
 		System.out.println(loginUser.getMe_id());
