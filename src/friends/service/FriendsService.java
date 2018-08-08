@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import friends.dto.BdDTO;
 import friends.dto.MsgDTO;
+import member.dto.MemberDTO;
 
 public interface FriendsService {
 	
@@ -15,4 +16,7 @@ public interface FriendsService {
 	
 	int deleteBd(BdDTO bd); // 模备 昏力
 
+	ArrayList<String> friendsList(String me_id);	// 模备 格废
+
+	ArrayList<MemberDTO> BckList();		// 喉发府胶飘 格废
 }

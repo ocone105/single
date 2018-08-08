@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import friends.dto.BdDTO;
 import friends.service.FriendsService;
 import friends.service.FriendsServiceImpl;
-
+ 
 @WebServlet(name = "delete_black", urlPatterns = { "/delete_black.do" })
 public class DeleteBlackServlet extends HttpServlet {
 	

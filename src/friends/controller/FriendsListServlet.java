@@ -10,28 +10,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import friends.dto.MsgDTO;
 import friends.service.FriendsService;
 import friends.service.FriendsServiceImpl;
+import member.dto.MemberDTO;
+import member.service.MemberService;
+import member.service.MemberServiceImpl;
 
-@WebServlet(name = "msg_read", urlPatterns = { "/msg/msg_read.do" })
-public class MsgReadServlet extends HttpServlet {
-	
+@WebServlet(name = "friendslist", urlPatterns = { "/friends/list.do" })
+public class FriendsListServlet extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
 		System.out.println("Servlet요청성공");
 
 		String me_id = "ocean";
-		String option = "A";	// 받은 쪽지, 보낸 쪽지 구분
 		
 		FriendsService service = new FriendsServiceImpl();
-		ArrayList<MsgDTO> msgs = service.readMsg(option, me_id);
+		ArrayList<String> friendslist = service.friendsList(me_id);
+		int size = friendslist.size();
 		
-		System.out.println("메시지"+msgs);
+		MemberService memberservice = new MemberServiceImpl();
+		ArrayList<MemberDTO> friends = new ArrayList<MemberDTO>();
+		MemberDTO friend = null;
+		for (int j = 0; j < size; j++) {
+			friend = memberservice.getUserInfo(friendslist.get(j));
+			friends.add(friend);
+		}
 		
-		request.setAttribute("msgs", msgs);
+		request.setAttribute("friends", friends);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/pages/friends/friendsview_message.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/pages/friends/friendsview.jsp");
 		rd.forward(request, response);
 	}
 }

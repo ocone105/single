@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 import friends.dto.BdDTO;
 import friends.dto.MsgDTO;
-
+import member.dto.MemberDTO;
+ 
 public interface FriendsDAO {
 	
 	int insertMsg(MsgDTO msg, Connection con) throws SQLException; 	// 皋矫瘤 累己
@@ -17,4 +18,8 @@ public interface FriendsDAO {
 	
 	int deleteBd(BdDTO bd, Connection con) throws SQLException; // 模备 昏力
 	
+	
+	ArrayList<String> friendsList(String me_id, Connection con) throws SQLException;	// 模备 格废
+	
+	ArrayList<MemberDTO> BckList(Connection con) throws SQLException;	// 喉发府胶飘 格废
 }

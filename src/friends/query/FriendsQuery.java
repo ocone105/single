@@ -16,4 +16,10 @@ public class FriendsQuery {
 	
 	// 喉发府胶飘 昏力
 	public static final String UPDATE_BLACK = "update member set me_black=0 where me_id=?";
+	// 模备 格废
+	public static final String SELECT_FRIENDS = "select * from bd_list where me_id=?";
+	
+	// 喉发府胶飘 格废
+	public static final String SELECT_BCKLIST = "select * from member where me_black>=10";
+
 }
