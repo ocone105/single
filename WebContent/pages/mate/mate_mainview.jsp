@@ -29,7 +29,7 @@
 			<%} %>
 			
 			<div>
-				<button class="btn btn-primary" onclick="panTo(<%=loginUser.getMe_loc()%>)">내위치로</button>
+				<button class="btn btn-primary" onclick="panTo()">내위치로</button>
 				<a href="/single/pages/mate/mate_writeview.jsp"><button class="btn btn-danger">소모임 만들기</button></a>
 			</div>
 			
@@ -77,15 +77,7 @@
 				int size = dtolist.size();%>
 
 			<div id="map"></div>
-			<script type="text/javascript">
 
-				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-				mapOption = {
-					center : new daum.maps.LatLng(<%=loginUser.getMe_loc()%>), level : 3	
-				};
-				// 지도의 중심좌표 // 지도의 확대 레벨
-				
-			</script>
 			<hr />
 			<!-- content body -->
 
