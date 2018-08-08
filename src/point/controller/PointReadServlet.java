@@ -27,7 +27,7 @@ public class PointReadServlet extends HttpServlet {
 		System.out.println(dto);
 		request.setAttribute("dto", dto);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/pages/point/pointmarketreadview.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/pages/point/pointmarket_read.jsp");
 		rd.forward(request, response);
 	
 	}

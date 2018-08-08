@@ -25,8 +25,6 @@ public class PointDAOImpl implements PointDAO {
 		
 		result=ptmt.executeUpdate();
 		close(ptmt);
-/*		public static final String POINT_INSERT=
-				"insert into point values(market_seq.nextval, ? , ?, ?, sysdate ,?)";*/
 		return result;
 	}
 

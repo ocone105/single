@@ -32,8 +32,11 @@
 					<li>
 						<article>
 							<figure>
-								<a href="/single/po/read.do?po_no=<%= dtolist.get(i).getPo_no() %>"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption><%= dtolist.get(i).getPo_title() %></figcaption>
+								<p><%=dtolist.get(i).getPo_no() %></p>
+								<a href="/single/po/read.do?po_no=<%= dtolist.get(i).getPo_no() %>"><img src="/single/upload/<%=dtolist.get(i).getPo_img() %>" alt=""></a>
+								<figcaption><h4><%= dtolist.get(i).getPo_title() %></h4>
+								필요 포인트: <%=dtolist.get(i).getPo_pt() %>
+								<p>작성일: <%=dtolist.get(i).getPo_date() %></p></figcaption>
 							</figure>
 						</article>
 					</li>
@@ -44,9 +47,11 @@
 			</section>
 			<!-- ####################################################################################################### -->
 			<div>
+				<%if(loginUser!=null)if(loginUser.getMe_id().equals("single")){ %>
 				<footer class="more" style="float: right">
 					<a href="/single/pages/point/pointmarketwriteview.jsp">글쓰기 &raquo;</a>
 				</footer>
+				<%} %>
 			</div>
 
 			<!-- ####################################################################################################### -->
