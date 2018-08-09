@@ -19,16 +19,13 @@ public class DeleteBdServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("euc-kr");
 
-		// 클라이언트의 요청정보 추출
 		String me_id = req.getParameter("id");
 		String bd_id = req.getParameter("bd_id");
 
-		// 비지니스 메소드 호출
 		BdDTO bd = new BdDTO(me_id, bd_id);
 		FriendsService service = new FriendsServiceImpl();
 		int result = service.deleteBd(bd);
 		
-		// 요청재지정
 		//res.sendRedirect("/single/fr/read.do?no="+no+"&action=read");
 	}
 }

@@ -15,7 +15,7 @@ import friends.service.FriendsServiceImpl;
 import member.dto.MemberDTO;
 import member.service.MemberService;
 import member.service.MemberServiceImpl;
-
+// 模备包府
 @WebServlet(name = "friendslist", urlPatterns = { "/friends/list.do" })
 public class FriendsListServlet extends HttpServlet {
 
@@ -23,7 +23,7 @@ public class FriendsListServlet extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");
 		System.out.println("Servlet夸没己傍");
 
-		String me_id = "ocean";
+		String me_id = request.getParameter("me_id");
 		
 		FriendsService service = new FriendsServiceImpl();
 		ArrayList<String> friendslist = service.friendsList(me_id);
@@ -36,9 +36,9 @@ public class FriendsListServlet extends HttpServlet {
 			friend = memberservice.getUserInfo(friendslist.get(j));
 			friends.add(friend);
 		}
-		
+		System.out.println("模备 割疙 : "+friends);
 		request.setAttribute("friends", friends);
-		
+				
 		RequestDispatcher rd = request.getRequestDispatcher("/pages/friends/friendsview.jsp");
 		rd.forward(request, response);
 	}

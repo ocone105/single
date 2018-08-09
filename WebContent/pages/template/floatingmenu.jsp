@@ -20,7 +20,7 @@
 				<li><input id="floatingbtn1" type="button" value="雀盔沥焊"
 					class="btn" onclick="location.href='/single/memberinfo.do?action=READ'">
 					<input id="floatingbtn2" type="button" value="模备包府" class="btn"
-					onclick="location.href='/single/friends/list.do'">
+					onclick="location.href='/single/friends/list.do?me_id=<%=loginUser.getMe_id()%>'">
 				</li>
 			</ul>
 			<ul>

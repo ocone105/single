@@ -30,7 +30,6 @@ insert into vs_board values(vs_seq.nextval, '날마다 새벽 5시에 출근해서 저녁 10�
 
 update vs_board set vs_title='', vs_optionA='', vs_optionB='', vs_txt='' where vs_no='61';
 
-
 select * from VS_BOARD;
 delete from VS_BOARD;
 

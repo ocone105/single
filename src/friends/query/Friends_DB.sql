@@ -18,3 +18,8 @@ bd_id varchar2(30));
 
 insert into bd_list values('ocean', 'mino');
 
+insert into bd_list values('single', 'mino');
+insert into bd_list values('ocean', 'joo');
+
+select * from bd_list;
+select * from member;

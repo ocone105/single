@@ -8,7 +8,7 @@
 <html>
 <head>
 	<meta charset="EUC-KR">
-	<title>Insert title here</title>
+	<title>VS게시판</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/single/common/styles/layout.css" type="text/css" media="all">
 	<link rel="stylesheet" href="/single/common/styles/mediaqueries.css" type="text/css" media="all">
@@ -35,7 +35,6 @@
 				document.myformB.submit();
 			});
 		});
-		
 		
 		// 댓글
 		function showCmt(myvs_no){
@@ -217,8 +216,8 @@
 								</div>
 
 								<div class="modal-footer">
-									<button type="submit" class="btn btn-default" style="float: right; width: 20%">등록</button>
-									<button type="button" class="btn btn-default" data-dismiss="modal" style="float: right; width: 20%">취소</button>
+									<button type="submit" class="button btn-default" style="float: right; width: 20%">등록</button>
+									<button type="button" class="button btn-default" data-dismiss="modal" style="float: right; width: 20%">취소</button>
 								</div>
 							</form>
 						</div>

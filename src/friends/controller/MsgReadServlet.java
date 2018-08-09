@@ -20,9 +20,13 @@ public class MsgReadServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
 		System.out.println("Servlet요청성공");
-
+		
+		String id = request.getParameter("me_id");
+		System.out.println("로그인유저"+id);
+		String option = request.getParameter("option");
+		System.out.println("옵션은?"+option);
 		String me_id = "ocean";
-		String option = "A";	// 받은 쪽지, 보낸 쪽지 구분
+		// String option = "A";	// 받은 쪽지, 보낸 쪽지 구분
 		
 		FriendsService service = new FriendsServiceImpl();
 		ArrayList<MsgDTO> msgs = service.readMsg(option, me_id);

@@ -13,7 +13,7 @@ import friends.service.FriendsServiceImpl;
 import vs.dto.VsDTO;
 import vs.service.VsService;
 import vs.service.VsServiceImpl;
-
+// 쪽지 보내기
 @WebServlet(name = "msg_insert", urlPatterns = { "/msg/msg_insert.do" })
 public class MsgInsertServlet extends HttpServlet {
 	
