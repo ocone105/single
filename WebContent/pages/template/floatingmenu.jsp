@@ -21,6 +21,10 @@
 					class="btn" onclick="location.href='/single/memberinfo.do?action=READ'">
 					<input id="floatingbtn2" type="button" value="模备包府" class="btn"
 					onclick="location.href='/single/friends/list.do'">
+					<%if(loginUser.getMe_id().equals("single")){ %>
+					<input id="floatingbtn2" type="button" value="喉发府胶飘包府" class="btn"
+					onclick="location.href='/single/black/blacklist.do'">
+					<%} %>
 				</li>
 			</ul>
 			<ul>

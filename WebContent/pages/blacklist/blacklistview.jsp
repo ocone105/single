@@ -1,109 +1,102 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="member.dto.MemberDTO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset=EUC-KR" >
+	<meta charset="EUC-KR" >
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-	  <h1>블랙리스트목록</h1>
-	  <p align="center">BlackList</p>
-	  <ul class="w3-ul w3-card-4">
-	  
-	  
-	    <li class="w3-bar">
-	      <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">× 블랙리스트 해제</span>
-	      <img src="../../images/irene.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
-	      <div class="w3-bar-item">
-	        <span class="w3-large">배주현</span> <br>
-	        <span>ID : Joo</span> <br>
-	        <span>신고 횟수 : 2회</span> <br>
-	      	<a href="#" data-toggle="modal" data-target="#BckLstDetailModal">상세정보</a>  
-	      </div>
-	    </li>
-	   
-	    <li class="w3-bar">
-	      <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">× 블랙리스트 해제</span>
-	      <img src="../../images/jun.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
-	      <div class="w3-bar-item">
-	        <span class="w3-large">박서준</span><br>
-	        <span>ID : Jun</span> <br>
-	        <span>신고 횟수 : 13회</span> <br>
-			<a href="#" data-toggle="modal" data-target="#BckLstDetailModal">상세정보</a>  	        
-	      </div>
-	    </li>
-	
-	    <li class="w3-bar">
-	      <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">× 블랙리스트 해제</span>
-	      <img src="../../images/park.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
-	      <div class="w3-bar-item">
-	        <span class="w3-large">박형식</span><br>
-	        <span>ID : Sikk</span> <br>
-	        <span>신고 횟수 : 5회</span> <br>
-			<a href="#" data-toggle="modal" data-target="#BckLstDetailModal">상세정보</a>  
-	      </div>
-	    </li>
-	  </ul>
+<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
+	<!-- top -->
+	<div class="wrapper row1">
+		<jsp:include page="/pages/template/Topbar.jsp" />
 	</div>
 
+	<div class="wrapper row2">
+		<div id="container">
+			<%if(loginUser!=null){ %>
+			<jsp:include page="/pages/template/floatingmenu.jsp" />
+			<%} %>
+			<jsp:include page="/pages/blacklist/blacklistmenu.jsp"/>
+			
+			<p align="center">블랙리스트 관리</p>
+			
+			<ul class="w3-ul w3-card-4">
+			<%--친구 목록 --%>
+			<%
+				ArrayList<MemberDTO> blacklist = (ArrayList<MemberDTO>) request.getAttribute("blacklist");
+				if(blacklist!=null){
+					int size = blacklist.size();	
+					for(int i=0;i<size;i++){
+			%>
+				<li class="w3-bar">
+					<span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
+					<img src="/single/upload/<%=blacklist.get(i).getMe_img() %>" class="w3-bar-item w3-circle w3-hide-small" style="width: 85px">
+					<div class="w3-bar-item">
+						<span class="w3-large"><%=blacklist.get(i).getMe_name() %></span> 
+						<br>
+						<span><%=blacklist.get(i).getMe_addr() %></span> 
+						<br> 
+						<span>신고 횟수:<%=blacklist.get(i).getMe_black() %></span> 
+						<br> 
+						<a href="#" data-toggle="modal" data-target="#MessageModal">쪽지 보내기</a>
+					</div>
+				</li>
+			
+			
+			<%-- 쪽지 보내기 modal--%>
+			<div class="modal fade" id="MessageModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">
+								<span aria-hidden="true">&times; </span><span class="sr-only">Close</span>
+							</button>
+							<h4 class="modal-title" id="myModalLabel">Message</h4>
+						</div>
+						<form action="/single/msg/msg_insert.do" method="POST">
+						<div class="modal-body">
+							<div class="input-group">
+								<span class="input-group-addon">@ 받는 사람</span> 
+								<input type="text" class="form-control" placeholder="<%=blacklist.get(i).getMe_id() %>" name="receiver" readonly="readonly"/>
+							</div>
+							<p></p>
+							<div class="input-group">
+								<span class="input-group-addon">@ 제목</span> 
+								<input type="text" class="form-control" placeholder="제목" name="msg_title" required="required"/>
+							</div>
+							<p></p>
+							<div class="input-group">
+								<span class="input-group-addon">@ 메시지</span>
+								<textarea rows="4" cols="50" class="form-control" placeholder="Message" name="msg_txt" required="required"></textarea>
+								<input type="hidden" name="sender" value="<%=loginUser.getMe_id()%>"/>
+							</div>
+						</div>
 
-
-	<div class="modal fade" id="BckLstDetailModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">
-						<span aria-hidden="true">&times; </span><span class="sr-only">
-							Close</span>
-					</button>
-					<h4 class="modal-title" id="myModalLabel">회원 상세 정보</h4>
-				</div>
-				
-				<div class="modal-body">
-					<div class="input-group">
-						<span class="input-group-addon">ID</span> 
-						<input type="text" class="form-control" placeholder="Joo" />
-					</div>
-					<p></p>
-					<div class="input-group">
-						<span class="input-group-addon">이름</span>
-						<input type="text" class="form-control" placeholder="배주현" />
-					</div>
-					<p></p>
-					<div class="input-group">
-						<span class="input-group-addon">신고횟수</span> 
-						<input type="text" class="form-control" placeholder="2회" />
-					</div>
-					<p></p>
-					<div class="input-group">
-						<span class="input-group-addon">생년월일</span> 
-						<input type="text" class="form-control" placeholder="950112" />
-					</div>
-					<p></p>
-					<div class="input-group">
-						<span class="input-group-addon">전화번호</span>
-						<input type="text" class="form-control" placeholder="010-5654-3212" />
-					</div>
-					<p></p>
-					<div class="input-group">
-						<span class="input-group-addon">선호MATE</span>
-						<input type="text" class="form-control" placeholder="문화" />
+						<div class="modal-footer">
+							<button type="submit" class="button btn-default" style="float: right; width: 20%">등록</button>
+							<button type="button" class="button btn-default" data-dismiss="modal" style="float: right; width: 20%">취소</button>
+						</div>
+						</form>
 					</div>
 				</div>
-				
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default">수정</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-				</div>
-				
 			</div>
+			<%--------------%>
+			<% }}%>
+			</ul>
+			
 		</div>
 	</div>
-		
+	
+	<div class="wrapper row3">
+		<jsp:include page="/pages/template/Footer.jsp" />
+	</div>
+
 </body>
 </html>

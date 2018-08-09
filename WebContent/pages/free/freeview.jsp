@@ -16,12 +16,6 @@
 <%
 	ArrayList<FreeDTO> postlist = (ArrayList<FreeDTO>) request.getAttribute("postlist");
 	int size = postlist.size();
-	
-	String pageNo = request.getParameter("page");
-	int crtpage = 1;
-	if(pageNo!=null){
-		crtpage = Integer.parseInt(pageNo);	//현재 페이지
-	}
 %>
 <link rel="shortcut icon" href="/single/images/favicon.ico">
 
