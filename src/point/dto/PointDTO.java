@@ -8,7 +8,7 @@ public class PointDTO {
 	private String po_txt;
 	private String po_img;
 	private int po_pt;
-	private String po_date;
+	private Date po_date;
 	private int po_state;
 	
 	public PointDTO() {
@@ -33,7 +33,7 @@ public class PointDTO {
 		this.po_state = po_state;
 	}
 
-	public PointDTO(int po_no, String po_title, String po_txt, String po_img, int po_pt, String po_date, int po_state) {
+	public PointDTO(int po_no, String po_title, String po_txt, String po_img, int po_pt, Date po_date, int po_state) {
 		super();
 		this.po_no = po_no;
 		this.po_title = po_title;
@@ -85,11 +85,11 @@ public class PointDTO {
 		this.po_pt = po_pt;
 	}
 
-	public String getPo_date() {
+	public Date getPo_date() {
 		return po_date;
 	}
 
-	public void setPo_date(String po_date) {
+	public void setPo_date(Date po_date) {
 		this.po_date = po_date;
 	}
 

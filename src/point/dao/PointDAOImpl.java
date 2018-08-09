@@ -38,7 +38,7 @@ public class PointDAOImpl implements PointDAO {
 		ResultSet rs = 	ptmt.executeQuery();
 		while(rs.next()){
 			dto =  new PointDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-					rs.getInt(5), rs.getString(6), rs.getInt(7));
+					rs.getInt(5), rs.getDate(6), rs.getInt(7));
 			
 			dtolist.add(dto);
 		}
@@ -55,9 +55,15 @@ public class PointDAOImpl implements PointDAO {
 		ResultSet rs= ptmt.executeQuery();
 		while(rs.next()){
 			dto =  new PointDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-					rs.getInt(5), rs.getString(6), rs.getInt(7));
+					rs.getInt(5), rs.getDate(6), rs.getInt(7));
 		}
 		close(ptmt);
 		return dto;
+	}
+
+	@Override
+	public int po_delete(String po_no, Connection con) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

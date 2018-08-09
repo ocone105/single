@@ -10,5 +10,7 @@ public class PointQuery {
 	public static final String POINT_READ =
 			"select * from point where po_no =? ";
 	
+	public static final String POINT_DELETE
+			="delete from point where po_no=?";
 	
 }

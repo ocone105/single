@@ -21,12 +21,11 @@ public class PointReadServlet extends HttpServlet {
 		
 		int po_no = Integer.parseInt(request.getParameter("po_no"));
 		System.out.println("±Û¹øÈ£"+po_no);
-		PointDTO dto = null;
+		PointDTO prd = null;
 		PointService service = new PointServiceImpl();
-		dto = service.po_read(po_no);
-		System.out.println(dto);
-		request.setAttribute("dto", dto);
+		prd = service.po_read(po_no);
 		
+		request.setAttribute("prd", prd);
 		RequestDispatcher rd = request.getRequestDispatcher("/pages/point/pointmarket_read.jsp");
 		rd.forward(request, response);
 	

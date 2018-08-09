@@ -21,8 +21,8 @@
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 			<%} %>
 			<!-- content body -->
-			<% ArrayList<PointDTO> dtolist = (ArrayList<PointDTO>)request.getAttribute("dtolist"); 
-				int size = dtolist.size();
+			<% ArrayList<PointDTO> prdlist = (ArrayList<PointDTO>)request.getAttribute("prdlist"); 
+				int size = prdlist.size();
 			%>
 			
 			<section id="portfolio" class="clear">
@@ -32,11 +32,11 @@
 					<li>
 						<article>
 							<figure>
-								<p><%=dtolist.get(i).getPo_no() %></p>
-								<a href="/single/po/read.do?po_no=<%= dtolist.get(i).getPo_no() %>"><img src="/single/upload/<%=dtolist.get(i).getPo_img() %>" alt=""></a>
-								<figcaption><h4><%= dtolist.get(i).getPo_title() %></h4>
-								필요 포인트: <%=dtolist.get(i).getPo_pt() %>
-								<p>작성일: <%=dtolist.get(i).getPo_date() %></p></figcaption>
+								<p><%=prdlist.get(i).getPo_no() %></p>
+								<a href="/single/po/read.do?po_no=<%= prdlist.get(i).getPo_no() %>"><img src="/single/upload/<%=prdlist.get(i).getPo_img() %>" alt=""></a>
+								<figcaption><h4><%= prdlist.get(i).getPo_title() %></h4>
+								필요 포인트: <%=prdlist.get(i).getPo_pt() %>
+								<p>작성일: <%=prdlist.get(i).getPo_date() %></p></figcaption>
 							</figure>
 						</article>
 					</li>

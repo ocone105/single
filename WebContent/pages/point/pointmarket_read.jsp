@@ -1,3 +1,4 @@
+<%@page import="point.dto.PointDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@page import="free.dto.FreeDTO"%>
@@ -57,6 +58,7 @@
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
 </head>
 <body>
+<% PointDTO prd = (PointDTO)request.getAttribute("prd"); %>
 	<!-- content -->
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
@@ -78,27 +80,27 @@
 			<div id="kboard-document">
 				<div id="kboard-thumbnail-document">
 					<div class="kboard-document-wrap" itemscope itemtype="http://schema.org/Article">
-						<div class="kboard-title" itemprop="name">타이틀</div>
+						<div class="kboard-title" itemprop="name"><%=prd.getPo_title() %></div>
 						<div class="kboard-detail">
 							<div class="detail-attr detail-writer">
 								<div class="detail-name">작성자</div>
 								<div class="detail-value">
-									single
+									매니저
 								</div>
 							</div>
 							<div class="detail-attr detail-date">
 								<div class="detail-name">필요포인트</div>
-								<div class="detail-value"></div>
+								<div class="detail-value"><%=prd.getPo_pt() %></div>
 							</div>
 							<div class="detail-attr detail-view">
 								<div class="detail-name">작성일</div>
-								<div class="detail-value"></div>
+								<div class="detail-value"><%=prd.getPo_date() %></div>
 							</div>
 						</div>
 						<div class="kboard-content" itemprop="description">
 							<div class="content-view">
 								<p style="text-align: center;">
-									<img src="/single/pages/free/upload/" /><br />
+									<img src="/single/upload/<%=prd.getPo_img() %>" /><br/>
 								</p>
 							</div>
 						</div>
@@ -107,15 +109,14 @@
 
 					<div class="kboard-control">
 						<div class="left">
-							<a href="/single/fr/list.do?category=all"
-								class="kboard-thumbnail-button-small">돌아가기</a>
+							<a href="/single/po/buy.do"
+								class="kboard-thumbnail-button-small">구매하기</a>
 						</div>
 
 						<div class="right">
-							<a
-								href="/single/fr/read.do?
+							<a href="/single/po/update.do?action=READ
 								class="kboard-thumbnail-button-small">글수정</a> <a
-								href="/single/fr/delete.do?"
+								href="/single/po/delete.do?po_no=<%=prd.getPo_no() %>"
 								class="kboard-thumbnail-button-small"
 								onclick="return confirm('삭제 하시겠습니까?');">글삭제</a>
 						</div>
