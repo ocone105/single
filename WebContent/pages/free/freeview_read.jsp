@@ -60,11 +60,11 @@
 	$(document).ready(function() {
 		$("#insert_bd").on("click", function() {
 
-		    var id = $('#id').val();
-		    var bd_id = $('#bd_id').val();
-		    var postno = $('#postno').val();
+			var id = $('#id').val();
+			var bd_id = $('#bd_id').val();
+			var postno = $('#postno').val();
 
-		    $("#insert_bd_form").submit();
+			$("#insert_bd_form").submit();
 		});
 	});
 </script>
@@ -101,7 +101,8 @@
 						<div class="modal-body">
 							<form action="/single/bd/insert_bd.do" method="post"
 								id="insert_bd_form">
-								<input name="postno" type="hidden" value="<%=post.getFr_no()%>" id="postno">
+								<input name="postno" type="hidden" value="<%=post.getFr_no()%>"
+									id="postno">
 								<%
 									if (loginUser != null) {
 								%>
@@ -141,8 +142,13 @@
 							<div class="detail-attr detail-writer">
 								<div class="detail-name">작성자</div>
 								<div class="detail-value">
+									<%
+										if (loginUser != null) {
+									%>
 									<a href="#infoModal" data-toggle="modal"
-										data-target="#infoModal"><%=post.getMe_id()%></a>
+										data-target="#infoModal"> <%
+ 	}
+ %> <%=post.getMe_id()%></a>
 								</div>
 							</div>
 							<div class="detail-attr detail-date">
@@ -206,8 +212,14 @@
 												<img src="/single/upload/<%=cmt.getMe_img()%>" width="24"
 													height="24"
 													class="avatar avatar-24 wp-user-avatar wp-user-avatar-24 photo avatar-default" />
+
+												<%
+													if (loginUser != null) {
+												%>
 												<a href="#infoModal" data-toggle="modal"
-													data-target="#infoModal"><%=cmt.getMe_id()%></a>
+													data-target="#infoModal"> <%
+ 	}
+ %> <%=cmt.getMe_id()%></a>
 											</div>
 											<div class="comments-list-create" itemprop="dateCreated"><%=cmt.getFr_cmt_date()%></div>
 											<div class="comments-list-content" itemprop="description"><%=cmt.getFr_cmt_txt()%></div>
@@ -215,12 +227,16 @@
 
 											<div class="comments-list-controller">
 												<div class="right">
-												<%if(loginUser != null && loginUser.getMe_id().equals(cmt.getMe_id())){%>
+													<%
+														if (loginUser != null && loginUser.getMe_id().equals(cmt.getMe_id())) {
+													%>
 													<a type="button"
 														href="/single/fr/cmtdelete.do?cmt_no=<%=cmt.getFr_cmt_no()%>&no=<%=post.getFr_no()%>"
 														class="comments-button-action comments-button-delete"
 														onclick="return confirm('삭제 하시겠습니까?');" title="삭제">삭제</a>
-												<%} %>
+													<%
+														}
+													%>
 												</div>
 											</div>
 										</li>
