@@ -1,3 +1,10 @@
+<%@page import="local.dto.LeDTO"%>
+<%@page import="vs.dto.VsDTO"%>
+<%@page import="point.dto.PointDTO"%>
+<%@page import="mate.dto.MateDTO"%>
+<%@page import="free.dto.FreeDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="main.controller.MainBoard"%>
 <%@page import="member.dto.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
@@ -11,19 +18,35 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
+<%
+	MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); 
+	MainBoard board = new MainBoard();
+	ArrayList<LeDTO> eventlist = board.leList();
+	ArrayList<MateDTO> matelist = board.MateList();
+	ArrayList<FreeDTO> freelist = board.FreeList();	
+	ArrayList<VsDTO> vslist = board.VsList();
+	ArrayList<PointDTO> pointlist = board.PointList();
+	int eventsize = eventlist.size();
+	int matesize = matelist.size();
+	int freesize = freelist.size();
+	int vssize = vslist.size();
+	int pointsize = pointlist.size();
+			%>
 	<!-- top -->
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
 		<section id="shout" class="clear">
 			<figure>
-				<figcaption>
-					<h1>Single...</h1>
-					<p>메이트....어쩌구저쩌구</p>
-				</figcaption>
 				<div>
 					<img src="/single/images/demo/410x440.gif" alt="">
 				</div>
+					<article class="one_half last">
+						<h2>What People Say About Us</h2>
+							<blockquote>
+							Justoid nonummy laoreet phasellent
+							penatoque in antesque pellus elis eget tincidunt. 
+							</blockquote>
+					</article>
 			</figure>
 		</section>
 	</div>
@@ -43,31 +66,28 @@
 					<li data-target="#myCarousel" data-slide-to="2"></li>
 				</ol>
 				<div class="carousel-inner" role="listbox">
-					<div class="item active">
-						<img src="/single/images/demo/410x440.gif" alt="New York"
-							width="1200" height="700">
-						<div class="carousel-caption">
-							<h3>New York</h3>
-							<p>The atmosphere in New York is lorem ipsum.</p>
+					<%
+						if(eventsize==0){
+							
+						}else{ 
+							for(int i=0; i<eventsize; i++){ 
+						LeDTO event = eventlist.get(i);
+						if(i==0){%>
+						<div class="item active">
+						<%}else{ %>
+						<div class="item">
+						<%} %>
+							<a href="http://korean.visitkorea.or.kr/kor/bz15/where/festival/festival.jsp?cid=<%=event.getLe_cid()%>">
+							<img src="/single/images/main/<%=event.getLe_img() %>" style="width: 1200px; height: 500px;">
+							</a>
+							<div class="carousel-caption">
+								<h3><%=event.getLe_title() %></h3>
+								<p><%=event.getLe_start() %>~<%=event.getLe_end() %></p>
+								<p><%=event.getLe_addr1() %></p>
+								<p><%=event.getLe_addr2() %></p>
+							</div>
 						</div>
-					</div>
-					<div class="item">
-						<img src="/single/images/demo/410x440.gif" alt="Chicago"
-							width="1200" height="700">
-						<div class="carousel-caption">
-							<h3>Chicago</h3>
-							<p>Thank you, Chicago - A night we won't forget.</p>
-						</div>
-					</div>
-					<div class="item">
-						<img src="/single/images/demo/410x440.gif" alt="Los Angeles"
-							width="1200" height="700">
-						<div class="carousel-caption">
-							<h3>LA</h3>
-							<p>Even though the traffic was a mess, we had the best time
-								playing at Venice Beach!</p>
-						</div>
-					</div>
+					<%}} %>
 				</div>
 				<!-- Left and right controls -->
 				<a class="left carousel-control" href="#myCarousel" role="button"
@@ -88,65 +108,69 @@
 					<div class="panel panel-primary" style="border-color: #edeef1;">
 						<div class="panel-footer">메이트</div>
 						<div style="padding-top: 20px; padding-left: 10px">
-							<table>
-								<thead>
+						<table style="border: none;">
+							<thead>
+								<tr>
+									<td class="kboard-list-title">제목</td>
+									<td class="kboard-list-date">작성일</td>
+									<td class="kboard-list-view">조회</td>
+								</tr>
+							</thead>
+							<tbody>
+									<%if(matesize==0) {%>
 									<tr>
-										<th>게시글</th>
-										<th>날짜</th>
+									<td style="border: none;">등록된 게시물이 존재하지 않습니다.</td>
+									<td style="border: none;"></td>
+									<td style="border: none;"></td>
 									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><a href="#">게시글A</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글B</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글C</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글D</a></td>
-										<td>2000.01.01</td>
-									</tr>
-								</tbody>
-							</table>
+									<%}else{ 
+										for(int i=0;i<matesize;i++){
+											MateDTO mate=matelist.get(i);
+											if(i>4){break;}%>
+											<tr>
+											<td style="border: none;"><a href="/single/mt/read.do?mt_no=<%=mate.getMt_no()%>"><%=mate.getMt_title() %></a></td>
+											<td style="border: none;"><%=mate.getMt_date() %></td>
+											<td style="border: none;"><%=mate.getMt_hits() %></td>
+											</tr>
+										<% } 
+									} %>
+							</tbody>
+						 </table>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="panel panel-primary" style="border-color: #edeef1;">
-						<div class="panel-footer">지역행사</div>
+						<div class="panel-footer">자유게시판</div>
 						<div style="padding-top: 20px; padding-left: 10px">
-							<table>
-								<thead>
+						<table style="border: none;">
+							<thead>
+								<tr >
+									<td class="kboard-list-title">제목</td>
+									<td class="kboard-list-date">작성일</td>
+									<td class="kboard-list-view">조회</td>
+								</tr>
+							</thead>
+							<tbody>
+									<%if(freesize==0) {%>
 									<tr>
-										<th>게시글</th>
-										<th>날짜</th>
+									<td style="border: none;">등록된 게시물이 존재하지 않습니다.</td>
+									<td style="border: none;"></td>
+									<td style="border: none;"></td>
 									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><a href="#">게시글A</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글B</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글C</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글D</a></td>
-										<td>2000.01.01</td>
-									</tr>
-								</tbody>
-							</table>
+									<%}else{ 
+										for(int i=0;i<freesize;i++){
+											FreeDTO free=freelist.get(i);
+											if(i>4){break;}%>
+											<tr>
+											<td style="border: none;"><a href="/single/fr/read.do?no=<%=free.getFr_no()%>&action=read">[전체]<%=free.getFr_title() %></a></td>
+											<td style="border: none;"><%=free.getFr_date() %></td>
+											<td style="border: none;"><%=free.getFr_hits() %></td>
+											</tr>
+										<% } 
+									} %>
+							</tbody>
+						 </table>
 						</div>
 					</div>
 				</div>
@@ -154,179 +178,76 @@
 			<div>
 				<div class="col-sm-6">
 					<div class="panel panel-primary" style="border-color: #edeef1;">
-						<div class="panel-footer">자유게시판</div>
+						<div class="panel-footer">VS게시판</div>
 						<div style="padding-top: 20px; padding-left: 10px">
-							<table>
-								<thead>
+						<table style="border: none;">
+							<thead>
+								<tr>
+									<td class="kboard-list-title">제목</td>
+									<td class="kboard-list-date">작성일</td>
+								</tr>
+							</thead>
+							<tbody>
+									<%if(vssize==0) {%>
 									<tr>
-										<th>게시글</th>
-										<th>날짜</th>
+									<td style="border: none;">등록된 게시물이 존재하지 않습니다.</td>
+									<td style="border: none;"></td>
 									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><a href="#">게시글A</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글B</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글C</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글D</a></td>
-										<td>2000.01.01</td>
-									</tr>
-								</tbody>
-							</table>
+									<%}else{ 
+										for(int i=0;i<vssize;i++){
+											VsDTO vs= vslist.get(i);
+											if(i>4){break;}%>
+											<tr>
+											<td style="border: none;"><a href="/single/vs/vs_read.do"><%=vs.getVs_title() %></a></td>
+											<td style="border: none;"><%=vs.getVs_date() %></td>
+											</tr>
+										<% } 
+									} %>
+							</tbody>
+						 </table>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="panel panel-primary" style="border-color: #edeef1;">
-						<div class="panel-footer">vs게시판</div>
+						<div class="panel-footer">포인트마켓</div>
 						<div style="padding-top: 20px; padding-left: 10px">
-							<table>
-								<thead>
+						<table style="border: none;">
+							<thead>
+								<tr>
+									<td class="kboard-list-title">제목</td>
+									<td class="kboard-list-date">작성일</td>
+									<td class="kboard-list-date">포인트</td>
+								</tr>
+							</thead>
+							<tbody>
+									<%if(pointsize==0) {%>
 									<tr>
-										<th>게시글</th>
-										<th>날짜</th>
+									<td style="border: none;">등록된 게시물이 존재하지 않습니다.</td>
+									<td style="border: none;"></td>
+									<td style="border: none;"></td>
 									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><a href="#">게시글A</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글B</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글C</a></td>
-										<td>2000.01.01</td>
-									</tr>
-									<tr>
-										<td><a href="#">게시글D</a></td>
-										<td>2000.01.01</td>
-									</tr>
-								</tbody>
-							</table>
+									<%}else{ 
+										for(int i=0;i<pointsize;i++){
+											PointDTO point= pointlist.get(i);
+											if(i>4){break;}%>
+											<tr>
+											<td style="border: none;"><a href="/single/po/read.do?po_no=<%=point.getPo_no()%>"><%=point.getPo_title() %></a></td>
+											<td style="border: none;"><%=point.getPo_date() %></td>
+											<td style="border: none;"><%=point.getPo_pt() %></td>
+											</tr>
+										<% } 
+									} %>
+							</tbody>
+						 </table>
 						</div>
 					</div>
 				</div>
 			</div>
 			<hr />
-
-			<div id="homepage">
-				<section id="latest_work" class="clear">
-					<article class="one_third first">
-						<a href="#"><img src="../images/demo/300x180.gif" alt=""></a>
-						<h2>Latest Project 1</h2>
-						<p>Nullamlacus dui ipsum conseque loborttis non euisque morbi
-							penas dapibulum orna.</p>
-						<footer class="more">
-							<a href="#">Read More &raquo;</a>
-						</footer>
-					</article>
-					<article class="one_third">
-						<a href="#"><img src="../images/demo/300x180.gif" alt=""></a>
-						<h2>Latest Project 2</h2>
-						<p>Nullamlacus dui ipsum conseque loborttis non euisque morbi
-							penas dapibulum orna.</p>
-						<footer class="more">
-							<a href="#">Read More &raquo;</a>
-						</footer>
-					</article>
-					<article class="one_third last">
-						<a href="#"><img src="../images/demo/300x180.gif" alt=""></a>
-						<h2>Latest Project 3</h2>
-						<p>Nullamlacus dui ipsum conseque loborttis non euisque morbi
-							penas dapibulum orna.</p>
-						<footer class="more">
-							<a href="#">Read More &raquo;</a>
-						</footer>
-					</article>
-				</section>
-				<!-- Introduction -->
-				<section id="intro" class="clear">
-					<article class="one_half">
-						<h2>Meet The Team</h2>
-						<ul>
-							<li>
-								<figure class="clear">
-									<div class="imgl">
-										<img src="../images/demo/150x150.gif" alt="">
-									</div>
-									<figcaption>
-										<p class="name">
-											<strong>Persons Name Here</strong>
-										</p>
-										<p>Sednulla nam nibh a nibh eu urna facinia mauris tibulus
-											sit urna. Vitaerisus lobortis proin elit et curabituris elit
-											estibulum.</p>
-										<footer class="more">
-											<a href="#">Read More &raquo;</a>
-										</footer>
-									</figcaption>
-								</figure>
-							</li>
-							<li class="last">
-								<figure class="clear">
-									<div class="imgl">
-										<img src="../images/demo/150x150.gif" alt="">
-									</div>
-									<figcaption>
-										<p class="name">
-											<strong>Persons Name Here</strong>
-										</p>
-										<p>Sednulla nam nibh a nibh eu urna facinia mauris tibulus
-											sit urna. Vitaerisus lobortis proin elit et curabituris elit
-											estibulum.</p>
-										<footer class="more">
-											<a href="#">Read More &raquo;</a>
-										</footer>
-									</figcaption>
-								</figure>
-							</li>
-						</ul>
-					</article>
-					<article class="one_half last">
-						<h2>What People Say About Us</h2>
-						<ul class="testimonials">
-							<li>
-								<p class="name">
-									<strong>Client Name</strong> - CEO
-								</p>
-								<blockquote>Justoid nonummy laoreet phasellent
-									penatoque in antesque pellus elis eget tincidunt. Nequatdui
-									laorem justo a non tellus laoreet tincidunt ut vel velit.
-									Idenim semper pellente velis felit ac nullam pretium morbi
-									lacus cursus iacus orci. Dignis simmorbi rhoncus sed netus
-									ligula conseque netus nulla.</blockquote>
-							</li>
-							<li class="last">
-								<p class="name">
-									<strong>Client Name</strong> - CEO
-								</p>
-								<blockquote>Justoid nonummy laoreet phasellent
-									penatoque in antesque pellus elis eget tincidunt. Nequatdui
-									laorem justo a non tellus laoreet tincidunt ut vel velit.
-									Idenim semper pellente velis felit ac nullam pretium morbi
-									lacus cursus iacus orci. Dignis simmorbi rhoncus sed netus
-									ligula conseque netus nulla.</blockquote>
-							</li>
-						</ul>
-					</article>
-				</section>
-				<!-- / Intro -->
-			</div>
-			<!-- ################################################################################################ -->
 			<div class="clear"></div>
 		</div>
+	</div>
 	</div>
 	<!-- Copyright -->
 	<div class="wrapper row3">

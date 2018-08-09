@@ -1,11 +1,5 @@
 @CHARSET "EUC-KR";
 
-<!--´ñ±Û¸ñ·Ï-->
-
-body {
-	padding-top: 30px;
-}
-
 .widget .panel-body {
 	padding: 0px;
 }
@@ -18,7 +12,7 @@ body {
 	display: inline
 }
 
-.widget .label-info {
+.widget .label-default {
 	float: right;
 }
 

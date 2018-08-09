@@ -32,7 +32,6 @@ public class PostUpdateServlet extends HttpServlet {
 
 		ServletContext context = getServletContext();
 		realpath = context.getRealPath(saveFolder);
-		System.out.println("realpath: "+realpath);
 	
 		MultipartRequest multipart 
 		= new MultipartRequest(req, realpath, size, encType, new DefaultFileRenamePolicy());

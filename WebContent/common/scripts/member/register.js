@@ -41,6 +41,13 @@ $(document).ready(function(){
 			document.getElementById("pwMsg").innerHTML = "비밀번호가 일치하지 않습니다. 다시 확인해 주세요.";
 		}
 	});
+	$("#me_pwd").on("keyup",function(){
+		if((myform.me_pwd.value)==(myform.pwdChk.value)){
+			document.getElementById("pwMsg").innerHTML = "비밀번호가 일치합니다";
+		}else{
+			document.getElementById("pwMsg").innerHTML = "비밀번호가 일치하지 않습니다. 다시 확인해 주세요.";
+		}
+	});
 });
 
 //전화번호 자동하이픈
@@ -97,30 +104,67 @@ function idCheckMsg() {
 	}
 }
 
-//회원가입 위치정보받기 + 비밀번호일치하지 않으면 회원가입 안됨 + 중복된 아이디도 회원가입안됨
+//이메일 유효성검사 및 창 띄우기
+function emailcheck(me_email) {
+	// 유효성 검사
+	if (!myform.me_email.value) {
+		alert("이메일을 확인해주세요");
+		myform.me_email.focus();
+		return;
+	}
+	// 인증을 위해 새창으로 이동
+	var url = "/single/pages/member/emailCheck.jsp?me_email=" + me_email;
+	open(url, "emailwindow", "statusbar=no, scrollbar=no, menubar=no, width=400, height=200");
+}
+
+//이메일인증
+function confirmemail(emailconfirm_value, authNum){
+    // 입력한 값이 없거나, 인증코드가 일치하지 않을 경우
+	if(!emailconfirm_value || emailconfirm_value != authNum){
+		alert("인증번호가 일치하지않습니다.");
+		emailconfirm_value="";
+		self.close();
+    // 인증코드가 일치하는 경우
+	}else if(emailconfirm_value==authNum){
+		alert("인증되었습니다.");
+		emailconfirm_value="";
+		opener.setOk(1);
+		self.close();
+	}
+}
+myok=0;
+function setOk(ok){
+ myok = ok;
+}
+//회원가입 위치정보받기 + 비밀번호일치하지 않으면 회원가입 안됨 + 중복된 아이디도 회원가입안됨 + 이메일인증해야함.
 function join(){
 	if(idInfo==1){
 		if(document.myform.me_pwd.value==document.myform.pwdChk.value){
-			// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
-			if (navigator.geolocation) {
-			    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-			    navigator.geolocation.getCurrentPosition(function(position) {
-			        lat = position.coords.latitude; // 위도
-			        lon = position.coords.longitude; // 경도
-			       	document.getElementById("lat").value = lat;
-			       	document.getElementById("lon").value = lon;
-			       	alert("회원가입 완료");
-			    	document.myform.submit();
-			      });
-			} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-				   	lat = 33.450701; // 위도
-			       	lon = 126.570667; // 경도
-			    	document.getElementById("lat").value = lat;
-			       	document.getElementById("lon").value = lon;
-			     	alert("회원가입 완료");
-			    	document.myform.submit();
+			if(myok==1){
+				// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+				if (navigator.geolocation) {
+				    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+				    navigator.geolocation.getCurrentPosition(function(position) {
+				        lat = position.coords.latitude; // 위도
+				        lon = position.coords.longitude; // 경도
+				       	document.getElementById("lat").value = lat;
+				       	document.getElementById("lon").value = lon;
+				       	alert("회원가입 완료");
+				    	document.myform.submit();
+				      });
+				} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+					   	lat = 33.450701; // 위도
+				       	lon = 126.570667; // 경도
+				    	document.getElementById("lat").value = lat;
+				       	document.getElementById("lon").value = lon;
+				     	alert("회원가입 완료");
+				    	document.myform.submit();
+				}
+				return false;
+			}else{
+				alert("이메일인증을 완료해주세요");
+				return false;
 			}
-			return false;
 		}else{
 			alert("비밀번호가 일치하지 않습니다.");
 			return false;
@@ -130,4 +174,6 @@ function join(){
 		return false;
 	}
 }
+
+
 

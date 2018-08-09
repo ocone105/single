@@ -20,7 +20,6 @@ import free.service.FreeServiceImpl;
 @WebServlet(name = "fr/insert", urlPatterns = { "/fr/insert.do" })
 public class PostInsertServlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		//System.out.println("서블릿 요청 성공");
 		req.setCharacterEncoding("euc-kr");
 
 		// 파일 업로드 
@@ -31,16 +30,15 @@ public class PostInsertServlet extends HttpServlet {
 
 		ServletContext context = getServletContext();
 		realpath = context.getRealPath(saveFolder);
-		System.out.println("realpath: "+realpath);
 	
 		MultipartRequest multipart 
 		= new MultipartRequest(req, realpath, size, encType, new DefaultFileRenamePolicy());
 
 		// 클라이언트의 요청정보 추출
+		String me_id = multipart.getParameter("id");
 		String title = multipart.getParameter("title");
 		String txt = multipart.getParameter("txt");
 		String ctg = multipart.getParameter("ctg");
-
 		String fr_img = "";
 		Enumeration<String> files = multipart.getFileNames();
 		while(files.hasMoreElements()){ 
@@ -48,10 +46,8 @@ public class PostInsertServlet extends HttpServlet {
 			fr_img = multipart.getFilesystemName(file); 
 		}
 		
-		// String me_id = req.getParameter("id");
-
 		// 비지니스 메소드 호출
-		FreeDTO post = new FreeDTO(title, txt, ctg, fr_img);
+		FreeDTO post = new FreeDTO(title, txt, ctg, fr_img, me_id);
 		FreeService service = new FreeServiceImpl();
 		int result = service.insert(post);
 

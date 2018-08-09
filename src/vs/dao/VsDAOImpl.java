@@ -9,8 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import vs.dto.VsCmtDTO;
 import vs.dto.VsDTO;
 public class VsDAOImpl implements VsDAO {
+	
 	@Override
 	public int insert(VsDTO post, Connection con) throws SQLException {	// vs게시글 작성
 		System.out.println("DAO요청");
@@ -60,5 +62,37 @@ public class VsDAOImpl implements VsDAO {
 		System.out.println(result);
 		close(ptmt);
 		return result;
+	}
+
+	@Override
+	public int insert(VsCmtDTO comment, Connection con) throws SQLException {	// vs댓글 작성
+		System.out.println("DAO요청");
+		int result = 0;
+		PreparedStatement ptmt = con.prepareStatement(INSERT_COMMENT);
+		ptmt.setString(1, comment.getVs_cmt_txt());
+		ptmt.setInt(2, comment.getVs_no());
+		ptmt.setString(3, comment.getMe_id());
+		
+		result = ptmt.executeUpdate();
+		System.out.println(result);
+		close(ptmt);
+		return result;
+	}
+
+	@Override
+	public ArrayList<VsCmtDTO> read(int vs_no, Connection con) throws SQLException {	// vs댓글 목록
+		System.out.println("DAO요청");
+		ArrayList<VsCmtDTO> comments = new ArrayList<VsCmtDTO>();
+		VsCmtDTO comment = null;
+		PreparedStatement ptmt = con.prepareStatement(READ_COMMENTS);
+		ptmt.setInt(1, vs_no);
+		ResultSet rs = ptmt.executeQuery();
+		while (rs.next()) {
+			comment = new VsCmtDTO(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getInt(4), rs.getString(5));
+			comments.add(comment);
+		}
+		close(rs);
+		close(ptmt);
+		return comments;
 	}
 }
