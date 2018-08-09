@@ -63,7 +63,15 @@ public class PointDAOImpl implements PointDAO {
 
 	@Override
 	public int po_delete(String po_no, Connection con) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = 0;
+		PreparedStatement ptmt = null;
+		
+		ptmt = con.prepareStatement(POINT_DELETE);
+		ptmt.setString(1, po_no);
+		
+		result=ptmt.executeUpdate();
+		
+		close(ptmt);
+		return result;
 	}
 }

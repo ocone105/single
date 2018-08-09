@@ -8,5 +8,6 @@ public interface PointService {
 	int po_insert(PointDTO dto);
 	ArrayList<PointDTO> po_list();
 	PointDTO po_read(int po_no);
+	int po_delete(String po_no);
 
 }

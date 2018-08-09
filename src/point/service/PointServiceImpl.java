@@ -59,4 +59,20 @@ public class PointServiceImpl implements PointService{
 		return dto;
 	}
 
+	@Override
+	public int po_delete(String po_no) {
+		int result = 0;
+		PointDAO dao = new PointDAOImpl();
+		Connection con = null;
+		try {
+			con = getConnect();
+			result = dao.po_delete(po_no, con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(con);
+		}
+		return result;
+	}
+
 }
