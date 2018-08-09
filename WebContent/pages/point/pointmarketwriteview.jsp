@@ -37,8 +37,8 @@
 					</tr>
 					<tr>
 						<td>공개여부</td>
-						<td>공개<input type="radio" name="po_state" value="1" />비공개<input
-							type="radio" name="po_state" value="2" /></td>
+						<td>공개<input type="radio" name="po_state" value="1" checked/>
+						비공개<input type="radio" name="po_state" value="2" /></td>
 					</tr>
 					<tr>
 						<td>이미지</td>

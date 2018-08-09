@@ -22,6 +22,6 @@ public class PointDeleteServlet extends HttpServlet {
 		
 		int result = service.po_delete(po_no);
 	
-		response.sendRedirect("/single/list.do");
+		response.sendRedirect("/single/po/list.do");
 	}
 }
