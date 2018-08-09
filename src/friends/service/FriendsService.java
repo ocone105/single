@@ -18,5 +18,7 @@ public interface FriendsService {
 
 	ArrayList<String> friendsList(String me_id);	// 模备 格废
 
-	ArrayList<MemberDTO> BckList();		// 喉发府胶飘 格废
+	ArrayList<MemberDTO> BckList(); // 喉发府胶飘 格废
+	
+	int deleteBlack(String me_id); // 喉发府胶飘 昏力
 }

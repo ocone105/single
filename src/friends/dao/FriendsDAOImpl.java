@@ -99,7 +99,6 @@ public class FriendsDAOImpl implements FriendsDAO {
 
 	@Override
 	public ArrayList<MemberDTO> BckList(Connection con) throws SQLException {	// 블랙리스트 목록
-		System.out.println("DAO요청");
 		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
 		MemberDTO member = null;
 		PreparedStatement ptmt = con.prepareStatement(SELECT_BCKLIST);
@@ -113,5 +112,18 @@ public class FriendsDAOImpl implements FriendsDAO {
 		close(rs);
 		close(ptmt);
 		return list;
+	}
+
+	@Override
+	public int deleteBlack(String me_id, Connection con) throws SQLException {
+		int result = 0;
+
+		PreparedStatement ptmt = con.prepareStatement(UPDATE_BLACK);
+		ptmt.setString(1, me_id);
+
+		result = ptmt.executeUpdate();
+		
+		close(ptmt);
+		return result;
 	}
 }

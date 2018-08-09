@@ -110,4 +110,20 @@ public class FriendsServiceImpl implements FriendsService {
 		close(con);
 		return list;
 	}
+
+	@Override
+	public int deleteBlack(String me_id) {
+		int result = 0;
+		Connection con = null;		
+		FriendsDAO dao = new FriendsDAOImpl();	
+		try {
+			con = getConnect();
+			result = dao.deleteBlack(me_id, con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(con);
+		}
+		return result;
+	}
 }

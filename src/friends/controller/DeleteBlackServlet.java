@@ -13,7 +13,7 @@ import friends.dto.BdDTO;
 import friends.service.FriendsService;
 import friends.service.FriendsServiceImpl;
  
-@WebServlet(name = "delete_black", urlPatterns = { "/delete_black.do" })
+@WebServlet(name = "black/delete", urlPatterns = { "/black/delete.do" })
 public class DeleteBlackServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -23,11 +23,10 @@ public class DeleteBlackServlet extends HttpServlet {
 		String me_id = req.getParameter("id");
 
 		// 비지니스 메소드 호출
-		//BdDTO bd = new BdDTO(me_id, bd_id);
-		//FriendsService service = new FriendsServiceImpl();
-		//int result = service.deleteBd(bd);
+		FriendsService service = new FriendsServiceImpl();
+		int result = service.deleteBlack(me_id);
 		
 		// 요청재지정
-		//res.sendRedirect("/single/fr/read.do?no="+no+"&action=read");
+		res.sendRedirect("/single/black/blacklist.do");
 	}
 }

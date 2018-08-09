@@ -22,4 +22,6 @@ public interface FriendsDAO {
 	ArrayList<String> friendsList(String me_id, Connection con) throws SQLException;	// 模备 格废
 	
 	ArrayList<MemberDTO> BckList(Connection con) throws SQLException;	// 喉发府胶飘 格废
+	
+	int deleteBlack(String me_id, Connection con) throws SQLException; // 喉发府胶飘 昏力
 }

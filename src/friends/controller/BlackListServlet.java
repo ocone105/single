@@ -19,7 +19,7 @@ import member.dto.MemberDTO;
 import member.service.MemberService;
 import member.service.MemberServiceImpl;
 
-@WebServlet(name = "blacklist", urlPatterns = { "/black/blacklist.do" })
+@WebServlet(name = "black/blacklist", urlPatterns = { "/black/blacklist.do" })
 public class BlackListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
