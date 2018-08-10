@@ -58,7 +58,7 @@ public class FreeQuery {
 	="update member set me_points= me_points+? where me_id=?";	// 누적 포인트 적립
 	
 	public static final String ADD_POINT
-	="update member set me_points= me_points+? where me_id=?";	// 가용 포인트 적립
+	="update member set me_point= me_point+? where me_id=?";	// 가용 포인트 적립
 	
 	
 }
