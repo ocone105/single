@@ -7,17 +7,21 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="/single/common/scripts/jquery.min.js"></script>
-<script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="/single/common/scripts/jquery.min.js"></script>
+	<script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
 	<script type="text/javascript">
 	function map(){
-	window.open('/single/pages/mate/mate_mapview.jsp','window','location=no, directories=no, resizable=no,status=no,toolbar=no,menubar=no, width=600,height=500,left=0, top=0, scrollbars=yes');return false
+		window.open('/single/pages/mate/mate_mapview.jsp','mapwindow','location=no, directories=no, resizable=no,status=no,toolbar=no,menubar=no, width=600,height=500,left=0, top=0, scrollbars=yes');
 	}
 	
-	
-	
-	
 	</script>
+	
+	<style>
+	btndiv{width: 100%; text-align: center; margin: 0 auto;}
+	
+	</style>
 </head>
 <body>
 <% MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); 
@@ -55,7 +59,7 @@
 						<td>
 							<a href='#' id="ajaxbtn" onclick="map()">
 							지역선택</a>
-							<span id="result" name="result"></span>
+							<input type="text" name="mt_map" id="result">
 							
 					 
 						</td>
@@ -82,13 +86,11 @@
 						<td><textarea name="mt_txt" cols="100" rows="8"></textarea></td>
 					</tr>
 				</table>
-				<footer class="more">
-					<a href="#">취소</a>
-				</footer>
-					<input type="submit" value="등록" />
+				<div id="btndiv">
+					<button type="button" class="btn btn-danger" onclick="history.back()">취소</button>
+					<button type="button" class="btn btn-danger">등록</button>
+				</div>	
 			</form>
-			<!-- content body -->
-
 
 			<!-- ################################################################################################ -->
 			<div class="clear"></div>
