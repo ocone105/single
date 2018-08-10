@@ -36,10 +36,11 @@
 					for(int i=0;i<size;i++){
 			%>
 				<li class="w3-bar">
-					<span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">¡¿</span>
+					<a type="button" href="/single/black/delete.do?id=<%=blacklist.get(i).getMe_id() %>" onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">¡¿</a>
 					<img src="/single/upload/<%=blacklist.get(i).getMe_img() %>" class="w3-bar-item w3-circle w3-hide-small" style="width: 85px">
 					<div class="w3-bar-item">
-						<span class="w3-large"><%=blacklist.get(i).getMe_name() %></span> 
+						<span class="w3-large"><%=blacklist.get(i).getMe_name() %>  / </span> 
+						<span class="w3-large"><%=blacklist.get(i).getMe_id()%></span> 
 						<br>
 						<span><%=blacklist.get(i).getMe_addr() %></span> 
 						<br> 

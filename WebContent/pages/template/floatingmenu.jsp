@@ -15,6 +15,7 @@
 			<ul>
 				<li><img id="profile" class="img-circle"
 					src="/single/upload/<%=loginUser.getMe_img() %>" /></li>
+					<li><%=loginUser.getMe_id()%>님</li>
 			</ul>
 			<ul>
 				<li><input id="floatingbtn1" type="button" value="회원정보"
@@ -22,13 +23,14 @@
 					<input id="floatingbtn2" type="button" value="친구관리" class="btn"
 					onclick="location.href='/single/friends/list.do'">
 					<%if(loginUser.getMe_id().equals("single")){ %>
-					<input id="floatingbtn2" type="button" value="블랙리스트관리" class="btn"
+					<input id="floatingbtn2" type="button" value="블랙리스트" class="btn"
 					onclick="location.href='/single/black/blacklist.do'">
 					<%} %>
 				</li>
 			</ul>
 			<ul>
-				<li>포인트: <%=loginUser.getMe_point() %></li>
+				<li>누적포인트: <%=loginUser.getMe_points()%></li>
+				<li>가용포인트: <%=loginUser.getMe_point() %></li>
 				<li>등급:	<%=loginUser.getMe_grade() %></li>
 			</ul>
 
@@ -40,7 +42,14 @@
 			</ul>
 
 			<ul>
-				<li><img src="/single/images/demo/imgr.gif" />
+				<li>
+				<%if(loginUser.getMe_points()<100){ %>
+				<img src="/single/images/01.jpg" />
+				<%}else if(loginUser.getMe_points()<500){ %>
+				<img src="/single/images/02.jpg" />
+				<%}else{ %>
+				<img src="/single/images/03.jpg" />
+				<%}%>				
 			</ul>
 
 		</div>
