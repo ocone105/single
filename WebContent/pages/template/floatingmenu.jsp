@@ -43,13 +43,15 @@
 
 			<ul>
 				<li>
-				<%if(loginUser.getMe_points()<100){ %>
+				<%if(loginUser.getMe_points()<100 && loginUser.getMe_black()<10 ){ %>
 				<img src="/single/images/01.jpg" />
-				<%}else if(loginUser.getMe_points()<500){ %>
+				<%}else if(loginUser.getMe_points()<500 && loginUser.getMe_black()<10 ){ %>
 				<img src="/single/images/02.jpg" />
-				<%}else{ %>
+				<%}else if(loginUser.getMe_points()>=500 && loginUser.getMe_black()<10 ){ %>
 				<img src="/single/images/03.jpg" />
-				<%}%>				
+				<%}else if(loginUser.getMe_black()>=10){%>		
+				<img src="/single/images/block.png" />
+				<%} %>
 			</ul>
 
 		</div>

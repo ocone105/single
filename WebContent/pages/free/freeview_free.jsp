@@ -148,7 +148,7 @@
 				</div>
 				<!-- 검색폼 끝 -->
 				<!-- 버튼 시작 -->
-				<%if(loginUser!=null){ %>
+				<%if(loginUser!=null  && loginUser.getMe_black()<10){ %>
 				<div class="kboard-control">
 					<a href="/single/pages/free/freeview_write.jsp" class="kboard-thumbnail-button-small">글쓰기</a>
 				</div>

@@ -280,7 +280,7 @@
 
 						<div class="right">
 							<%
-								if (loginUser != null && loginUser.getMe_id().equals(post.getMe_id())) {
+								if (loginUser != null && loginUser.getMe_id().equals(post.getMe_id())  && loginUser.getMe_black()<10) {
 							%>
 							<a
 								href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=modify"
