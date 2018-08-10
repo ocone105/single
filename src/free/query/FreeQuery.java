@@ -54,8 +54,12 @@ public class FreeQuery {
 	public static final String COUNT_POST
 	="select count(*) from fr_board";	// 게시글 카운트
 	
+	public static final String ADD_POINTS
+	="update member set me_points= me_points+? where me_id=?";	// 누적 포인트 적립
+	
 	public static final String ADD_POINT
-	="update member set me_points= me_points+? where me_id=?";
+	="update member set me_points= me_points+? where me_id=?";	// 가용 포인트 적립
+	
 	
 }
 

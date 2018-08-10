@@ -20,6 +20,7 @@ public class FreeDAOImpl implements FreeDAO {
 
 		PreparedStatement ptmt = con.prepareStatement(INSERT_POST);
 		PreparedStatement ptmt2 = con.prepareStatement(ADD_POINT);
+		PreparedStatement ptmt3 = con.prepareStatement(ADD_POINTS);	
 		
 		ptmt.setString(1, post.getFr_title());
 		ptmt.setString(2, post.getFr_txt());
@@ -30,11 +31,16 @@ public class FreeDAOImpl implements FreeDAO {
 		ptmt2.setInt(1, 10);
 		ptmt2.setString(2, post.getMe_id());
 		
+		ptmt3.setInt(1, 10);
+		ptmt3.setString(2, post.getMe_id());
+		
+		result = ptmt3.executeUpdate();
 		result = ptmt2.executeUpdate();
 		result = ptmt.executeUpdate();
 
 		close(ptmt);
 		close(ptmt2);
+		close(ptmt3);		
 		return result;
 	}
 
