@@ -18,7 +18,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<%
+	<%
 	MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); 
 	MainBoard board = new MainBoard();
 	ArrayList<LeDTO> eventlist = board.leList();
@@ -31,7 +31,7 @@
 	int freesize = freelist.size();
 	int vssize = vslist.size();
 	int pointsize = pointlist.size();
-			%>
+	%>
 	<!-- top -->
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />

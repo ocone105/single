@@ -13,22 +13,19 @@ import point.dto.PointDTO;
 import point.service.PointService;
 import point.service.PointServiceImpl;
 
-@WebServlet(name = "po/read", urlPatterns = { "/po/read.do" })
-public class PointReadServlet extends HttpServlet {
 
+@WebServlet(name = "po/updateread", urlPatterns = { "/po/updateread.do" })
+public class PointUpdateReadServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
 		
 		int po_no = Integer.parseInt(request.getParameter("po_no"));
-		String msg = request.getParameter("msg");
-		PointDTO prd = null;
 		PointService service = new PointServiceImpl();
-		prd = service.po_read(po_no);
+		PointDTO prd = service.po_read(po_no);
 		
 		request.setAttribute("prd", prd);
-		request.setAttribute("msg", msg);
-		RequestDispatcher rd = request.getRequestDispatcher("/pages/point/pointmarket_read.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/pages/point/pointmarket_update.jsp");
 		rd.forward(request, response);
-	
 	}
+
 }
