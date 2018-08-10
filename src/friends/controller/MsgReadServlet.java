@@ -29,7 +29,7 @@ public class MsgReadServlet extends HttpServlet {
 		
 		request.setAttribute("msgs", msgs);
 		request.setAttribute("option", option);
-		
+		System.out.println("메시지들 : "+msgs);
 		RequestDispatcher rd = request.getRequestDispatcher("/pages/friends/friendsview_message.jsp");
 		rd.forward(request, response);
 	}

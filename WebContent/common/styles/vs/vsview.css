@@ -4,7 +4,7 @@
 	box-sizing: border-box;
 }
 
-#bar{
+.bar{
 	width: 100%;
 	float: center;
 	margin: 0px auto;

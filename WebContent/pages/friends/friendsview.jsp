@@ -26,9 +26,6 @@
     	float: right;
     	margin: 5px;
 	}
-	li.list-group-item:hover {
-			background-color: rgba(86, 61, 124, .1);
-	}
   	</style>
 </head>
 <body>

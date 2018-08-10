@@ -9,7 +9,7 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>\
 </head>
 <body>
 	<%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
@@ -29,64 +29,98 @@
 			
 			<%
 				String option = (String) request.getParameter("option");
+				ArrayList<MsgDTO> msgs = (ArrayList<MsgDTO>) request.getAttribute("msgs");
+				int size = msgs.size();	
+			%>
+			
+			<%--보낸쪽지--%>
+			<%
 				if(option.equals("send")){
-					
-				}
 			%>
 			<div class="panel panel-default widget">
 				<div class="panel-heading">
 					<span class="glyphicon glyphicon-comment"></span> &nbsp;&nbsp;
-					Message
-					<span class="label label-default" id="cmtNum" style="float: right;">0</span>
+					Send Message
+					<span class="label label-default" id="cmtNum" style="float: right;"><%=size %></span>
 				</div>
 				<%
-				ArrayList<MsgDTO> msgs = (ArrayList<MsgDTO>) request.getAttribute("msgs");
-				if(msgs!=null){
-					int size = msgs.size();	
-					for(int i=0;i<size;i++){
+					if(msgs!=null){
+						for(int i=0;i<size;i++){
 				%>
-								<div class="panel-body">
-					<ul class="list-group">
-						<li class="w3-bar"><span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
-					<img src="/single/upload/<%=loginUser.getMe_img() %>" class="col-sm-4 img-circle" style="width: 70px;height: 55px">
-					<div class="w3-bar-item">
-						<span class="w3-large"><%=loginUser.getMe_name()%></span> <%=loginUser.getMe_id() %><br>
-						<span><%=loginUser.getMe_addr()%></span> <br> 
-						<a href="#" data-toggle="modal" data-target="#MessageModal<%=loginUser.getMe_id() %>">쪽지	보내기</a>
-					</div>
-				</li>
-					</ul>
-
-				</div>
-				
 				<div class="panel-body">
-					<ul>
-						<li class="list-group-item">
-							<a href>
-							<div class="col-md-2">
-								<%=msgs.get(i).getSender() %>
+					<ul class="list-group">
+						<li class="w3-bar list-group-item">
+						<form action="/single/msg/msg_delete.do">
+							<div class="w3-bar-item">
+								<span class="w3-large"><%=msgs.get(i).getReceiver() %></span> 
+								<a href="#"><%=msgs.get(i).getMsg_title() %></a>
+								<span><%=msgs.get(i).getMsg_txt() %></span> 
 							</div>
-							</a>
-							<div class="col-md-5">
-								<a href><%=msgs.get(i).getMsg_title() %></a>
-								<a ref="/single/msg/msg_read.do?msg_no=<%= msgs.get(i).getMsg_no()%>&option=A">
-							</div>
-							<div>
-								<%=msgs.get(i).getMsg_txt() %>
-							</div>
+							<span class="action" style="float: right;">
+								<button type="button" class="btn btn-primary btn-xs" title="Edit">
+									<span class="glyphicon glyphicon-pencil">&nbsp;답장</span>
+								</button>
+								<button type="submit" class="btn btn-danger btn-xs" title="Delete" >
+									<span class="glyphicon glyphicon-trash">&nbsp;삭제</span>
+								</button>
+								<input type="hidden" name="msg_no" value="<%=msgs.get(i).getMsg_no()%>" />
+								<input type="hidden" name="option" value="send" />
+							</span>
+						</form>
 						</li>
 					</ul>
-				</div>
-				
 
+				</div>
 				<%
 					}}
 				%>
 			</div>
+			<%} %>
 			
-		<%} %>
+			<%--받은쪽지--%>
+			<%
+				if(option.equals("receive")){
+			%>
+			<div class="panel panel-default widget">
+				<div class="panel-heading">
+					<span class="glyphicon glyphicon-comment"></span> &nbsp;&nbsp; 
+					Receive Message 
+					<span class="label label-default" id="cmtNum" style="float: right;"><%=size%></span>
+				</div>
+				<%
+					if(msgs!=null){
+						for(int i=0;i<size;i++){
+				%>
+				<div class="panel-body">
+					<ul class="list-group">
+						<li class="w3-bar list-group-item">
+						<form action="/single/msg/msg_delete.do">
+							<div class="w3-bar-item">
+								<span class="w3-large"><%=msgs.get(i).getMsg_title() %></span> 
+							</div>
+							<div class="w3-bar-item">
+								<a href><span><%=msgs.get(i).getMsg_txt() %></span></a>
+							</div>
+							<div class="action" style="float: right;">
+								<button type="button" class="btn btn-primary btn-xs" title="Edit">
+									<span class="glyphicon glyphicon-pencil">&nbsp;답장</span>
+								</button>
+								<button type="submit" class="btn btn-danger btn-xs" title="Delete" >
+									<span class="glyphicon glyphicon-trash">&nbsp;삭제</span>
+								</button>
+								<input type="hidden" name="msg_no" value="<%=msgs.get(i).getMsg_no()%>" />
+								<input type="hidden" name="option" value="receive" />
+							</div>
+						</form>
+						</li>
+					</ul>
+
+				</div>
+				<%}} %>
+			</div>
+			<%}} %>
+			</div>
 		</div>
-	</div>
 	
 	<div class="wrapper row3">
 		<jsp:include page="/pages/template/Footer.jsp" />

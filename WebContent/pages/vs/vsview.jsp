@@ -21,18 +21,35 @@
 	<link rel="stylesheet" href="/single/common/styles/vs/vsview.css">
 	<link rel="stylesheet" href="/single/common/styles/vs/vscmt.css">
 	<script type="text/javascript">
-		
 		// 양자택일 투표수  
 		$(document).ready(function(){
 			$(".btnA").on("click", function(){
 				vs_no = $(this).attr("id");
-				document.getElementById("A"+vs_no).value = "A"+vs_no;
-				document.myformA.submit();
+				state = document.getElementById("state").value;
+				if(document.getElementById("loginUser").value==""){
+					alert("로그인 해주세요.");
+					return false;
+				}else{
+					if(state=="already"){
+						alert("투표는 1번만 가능합니다.");						
+					}
+					document.getElementById("A"+vs_no).value = "A"+vs_no;
+					document.myformA.submit();
+				}
 			});
 			$(".btnB").on("click", function(){
 				vs_no = $(this).attr("id");
-				document.getElementById("B"+vs_no).value = "B"+vs_no;
-				document.myformB.submit();
+				state = document.getElementById("state").value;
+				if(document.getElementById("loginUser").value==""){
+					alert("로그인 해주세요.");
+					return false;
+				}else{
+					if(state=="already"){
+						alert("투표는 1번만 가능합니다.");							
+					}
+					document.getElementById("B"+vs_no).value = "B"+vs_no;
+					document.myformB.submit();
+				}
 			});
 		});
 		
@@ -97,9 +114,9 @@
 			 
 			<%
 				ArrayList<VsDTO> posts = (ArrayList<VsDTO>) request.getAttribute("posts");
-				//System.out.println("게시글" + posts);
+				String voteState = (String) request.getAttribute("state");
+				System.out.println("vateState"+voteState);
 				int size = posts.size();
-				
 				int cntA;
 				int cntB;
 				float ratingA;
@@ -130,29 +147,31 @@
 					<div class="col" style="text-align: center">
 						<button class="btnA" id="<%=post.getVs_no()%>"><%=post.getVs_optionA()%></button>
 						<input type="hidden" name="A" id="A<%=post.getVs_no()%>">
+						<input type="hidden" name="loginUser" id="loginUser" 
+							<%if(loginUser!=null){ %>value="<%=loginUser.getMe_id()%>"<%} %>/>
+						<input type="hidden" name="state" id="state" value="<%=voteState%>">
 					</div>
 					</form>
 					<form action="/single/vs/select.do" id="myformB">
 					<div class="col" style="text-align: center">
 						<button class="btnB" id="<%=post.getVs_no()%>"><%=post.getVs_optionB()%></button>
 						<input type="hidden" name="B" id="B<%=post.getVs_no()%>">
+						<input type="hidden" name="loginUser" id="loginUser" 
+							<%if(loginUser!=null){ %>value="<%=loginUser.getMe_id()%>"<%} %>/>
+						<input type="hidden" name="state" id="state" value="<%=voteState%>">
 					</div>
 					</form>
-				</div>
-			
+			</div>
 				<br/><br/>
 				
-				<div id="bar">
+				<div class="bar">
 					<jsp:include page="/pages/vs/bar.jsp" />
 				</div>
 				
 				<input type="button" class="button" value="댓글 보기  &raquo;" onclick="showCmt('<%=post.getVs_no()%>')" id="show"/>
 				<input type="button" class="button" value="댓글 쓰기 &raquo;" data-toggle="modal" data-target="#CommentModal" />
-				<!-- <a href="/single/pages/vs/vscmt.jsp">댓글 보기 &raquo;</a>
-				<a href="#" data-toggle="modal" data-target="#CommentModal">댓글 쓰기 &raquo;</a> -->
-				<br/>
-				<br/>
-				<br/>
+				<br/><br/><br/>
+		
 		<%-- 댓글 --%>
 		<div class="row" id="commentsList<%=post.getVs_no() %>" style="display:none">
 			<div class="panel panel-default widget">
@@ -163,34 +182,10 @@
 				</div>
 				<div class="panel-body">
 					<ul class="list-group">
-							
 						<span id="cmt<%=post.getVs_no() %>"></span>
-						<%--댓글목록 --%>
-<!-- 						<li class="list-group-item">
-							<div class="row">
-								<div class="col-xs-2 col-md-1">
-									<img src="/single/images/irene.png" class="img-circle img-responsive" alt="" />
-								</div>
-								<div class="col-xs-10 col-md-11">
-									<div class="comment-text">뭐가 힘든지 말해야죠</div>
-										<div class="mic-info">
-											By: <a href="#">배주현</a> on 2 Jul 2018
-										</div>
-								</div>
-							</div>
-						</li> -->
-						
 					</ul>
-					<!-- <a href="#" class="btn btn-default btn-sm btn-block" role="button"> 
-						<span class="glyphicon glyphicon-refresh"></span> More
-					</a> -->
 				</div>
 			</div>
-		</div>
-		
-		
-	
-		
 				<%-- #############################################댓글 작성 modal######################################################### --%>
 				<div class="modal fade" id="CommentModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
@@ -224,10 +219,9 @@
 					</div>
 				</div>
 				<%-- ################################################################################################################## --%>
-
 			</div>	
+			</div>
 			<%}}%>
-			
 		</div>
 	</div>
 	
