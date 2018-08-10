@@ -8,6 +8,8 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<style type="text/css">
+</style>
 </head>
 <body>
 <%MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); %>
@@ -21,32 +23,37 @@
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 			<%} %>
 			<!-- content body -->
-			<% ArrayList<PointDTO> dtolist = (ArrayList<PointDTO>)request.getAttribute("dtolist"); 
-				int size = dtolist.size();
+			<% ArrayList<PointDTO> prdlist = (ArrayList<PointDTO>)request.getAttribute("prdlist"); 
+				int size = prdlist.size();
 			%>
 			
 			<section id="portfolio" class="clear">
-				<ul>
-					<% for(int i=0; i<size; i++){
+			<% for(int i=0; i<size; i++){
 						%>
+				<ul>
 					<li>
 						<article>
 							<figure>
-								<a href="/single/po/read.do?po_no=<%= dtolist.get(i).getPo_no() %>"><img src="/single/images/demo/225x160.gif" alt=""></a>
-								<figcaption><%= dtolist.get(i).getPo_title() %></figcaption>
+								<p><%=prdlist.get(i).getPo_no() %></p>
+								<a href="/single/po/read.do?po_no=<%= prdlist.get(i).getPo_no() %>">
+								<img src="/single/upload/<%=prdlist.get(i).getPo_img() %>" alt="" 
+								style="width: 220px; height: 150px;"></a>
+								<figcaption><h4><%= prdlist.get(i).getPo_title() %></h4>
+								필요 포인트: <%=prdlist.get(i).getPo_pt() %>
+								<p>작성일: <%=prdlist.get(i).getPo_date() %></p></figcaption>
 							</figure>
 						</article>
 					</li>
-		
-					<% }%>
-				
 				</ul>
+				<% }%>
 			</section>
 			<!-- ####################################################################################################### -->
 			<div>
+				<%if(loginUser!=null)if(loginUser.getMe_id().equals("single")){ %>
 				<footer class="more" style="float: right">
 					<a href="/single/pages/point/pointmarketwriteview.jsp">글쓰기 &raquo;</a>
 				</footer>
+				<%} %>
 			</div>
 
 			<!-- ####################################################################################################### -->
