@@ -14,5 +14,7 @@ public interface FreeService {
 	ArrayList<FreeDTO> getCtgList(String fr_ctg); 
 	int report(String me_id);
 	ArrayList<FreeDTO> search(String column, String search);
+	
+	int count();
 
 }

@@ -236,4 +236,20 @@ public class FreeDAOImpl implements FreeDAO {
 		return postlist;
 	}
 
+	@Override
+	public int count(Connection con) throws SQLException {
+		int result = 0;
+
+		PreparedStatement ptmt = con.prepareStatement(COUNT_POST);
+		ResultSet rs = ptmt.executeQuery();
+		
+		if (rs.next()) {
+			result = rs.getInt(1);
+		}
+		
+		close(rs);
+		close(ptmt);
+		return result;
+	}
+
 }

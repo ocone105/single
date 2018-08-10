@@ -145,4 +145,20 @@ public class FreeServiceImpl implements FreeService {
 		return postlist;
 	}
 
+	@Override
+	public int count() {
+		int result = 0;
+		FreeDAO dao = new FreeDAOImpl();
+		Connection con = null;
+		try {
+			con = getConnect();
+			result = dao.count(con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(con);
+		}
+		return result;
+	}
+
 }

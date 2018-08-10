@@ -24,5 +24,7 @@ public interface FreeDAO {
 	int report(String me_id, Connection con) throws SQLException; // 유저 신고
 	
 	ArrayList<FreeDTO> search(String column, String search, Connection con) throws SQLException;	// 게시글 검색
+	
+	int count(Connection con) throws SQLException; // 게시글 갯수
 
 }
