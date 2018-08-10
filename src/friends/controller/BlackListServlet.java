@@ -23,7 +23,7 @@ import member.service.MemberServiceImpl;
 public class BlackListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
-
+ 
 		FriendsService service = new FriendsServiceImpl();
 		ArrayList<MemberDTO> blacklist = service.BckList();
 		
