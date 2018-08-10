@@ -14,9 +14,10 @@
 <body>
 	<footer id="copyright" class="clear">
 		<p class="fl_left">
-			Copyright &copy; 2018 - All Rights Reserved - ICT 융합보안 3기 Team SingleSingle</a>
+			Copyright &copy; 2018 - All Rights Reserved - ICT 융합보안 3기 Team SingleSingle
 		</p>
 		<p class="fl_right">
+			문의: <a href="mailto:singlemgr1@gmail.com"> singlemgr1@gmail.com </a> 
 		</p>
 	</footer>
 </body>

@@ -7,11 +7,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import free.dao.FreeCmtDAO;
-import free.dao.FreeCmtDAOImpl;
 import free.dao.FreeDAO;
 import free.dao.FreeDAOImpl;
-import free.dto.FreeCmtDTO;
 import free.dto.FreeDTO;
 
 public class FreeServiceImpl implements FreeService {
@@ -113,15 +110,15 @@ public class FreeServiceImpl implements FreeService {
 	}
 
 	@Override
-	public int report(String me_id) {
+	public int report(String report_id, String me_id) {
 		int result = 0;
 		FreeDAO dao = new FreeDAOImpl();
 		Connection con = null;
 		try {
 			con = getConnect();
-			result = dao.report(me_id, con);
+			result = dao.report(report_id, me_id, con);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			
 		} finally {
 			close(con);
 		}

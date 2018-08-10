@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -173,14 +174,20 @@ public class FreeDAOImpl implements FreeDAO {
 	}
 
 	@Override
-	public int report(String me_id, Connection con) throws SQLException {
+	public int report(String report_id, String me_id, Connection con) throws SQLException {
 		int result = 0;
 
 		PreparedStatement ptmt = con.prepareStatement(REPORT_USER);
-		ptmt.setString(1, me_id);
+		ptmt.setString(1, report_id);
 
+		PreparedStatement ptmt2 = con.prepareStatement(REPORT_USER2);
+		ptmt2.setString(1, me_id);
+		ptmt2.setString(2, report_id);
+		
+		result = ptmt2.executeUpdate();
 		result = ptmt.executeUpdate();
-
+		
+		close(ptmt2);
 		close(ptmt);
 		return result;
 	}
