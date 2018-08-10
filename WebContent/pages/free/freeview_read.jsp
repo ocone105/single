@@ -143,12 +143,10 @@
 								<div class="detail-name">ÀÛ¼ºÀÚ</div>
 								<div class="detail-value">
 									<%
-										if (loginUser != null) {
+										if (loginUser != null && !loginUser.getMe_id().equals(post.getMe_id())) {
 									%>
 									<a href="#infoModal" data-toggle="modal"
-										data-target="#infoModal"> <%
- 	}
- %> <%=post.getMe_id()%></a>
+										data-target="#infoModal"> <%}%> <%=post.getMe_id()%></a>
 								</div>
 							</div>
 							<div class="detail-attr detail-date">
@@ -214,12 +212,10 @@
 													class="avatar avatar-24 wp-user-avatar wp-user-avatar-24 photo avatar-default" />
 
 												<%
-													if (loginUser != null) {
+													if (loginUser != null && !loginUser.getMe_id().equals(cmt.getMe_id())) {
 												%>
 												<a href="#infoModal" data-toggle="modal"
-													data-target="#infoModal"> <%
- 	}
- %> <%=cmt.getMe_id()%></a>
+													data-target="#infoModal"> <%}%> <%=cmt.getMe_id()%></a>
 											</div>
 											<div class="comments-list-create" itemprop="dateCreated"><%=cmt.getFr_cmt_date()%></div>
 											<div class="comments-list-content" itemprop="description"><%=cmt.getFr_cmt_txt()%></div>
