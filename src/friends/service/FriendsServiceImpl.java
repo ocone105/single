@@ -57,7 +57,6 @@ public class FriendsServiceImpl implements FriendsService {
 			con = getConnect();
 			result = dao.insertBd(bd, con);
 		} catch (SQLException e) {
-			e.printStackTrace();
 		}finally{
 			close(con);
 		}
