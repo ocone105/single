@@ -16,18 +16,7 @@
   		<div class="collapse navbar-collapse" id="navbarSupportedContent">
     		<ul class="navbar-nav mr-auto">
 		      	<li class="nav-item active">
-		        	<a class="nav-link" href="/single/black/blacklist.do">블랙리스트목록</a>
-		      	</li>
-		      	<li class="nav-item dropdown">
-		        	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		          		쪽지
-		        	</a>
-		        	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		          		<a class="dropdown-item" href="#">받은 쪽지</a>
-		          		<a class="dropdown-item" href="#">보낸 쪽지</a>
-		          		<div class="dropdown-divider"></div>
-		          		<a class="dropdown-item" href="#">쪽지 관리</a>
-		        	</div>
+		        	<a class="nav-link" href="/single/black/blacklist.do">전체목록</a>
 		      	</li>
 		    </ul>
 		    <br>

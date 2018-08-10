@@ -31,7 +31,6 @@
 			<ul>
 				<li>누적포인트: <%=loginUser.getMe_points()%></li>
 				<li>가용포인트: <%=loginUser.getMe_point() %></li>
-				<li>등급:	<%=loginUser.getMe_grade() %></li>
 			</ul>
 
 			<!-- 소모임 -->

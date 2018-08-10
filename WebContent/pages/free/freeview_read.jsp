@@ -175,12 +175,14 @@
 
 						<div class="kboard-document-action">
 
+							<%if(!post.getMe_id().equals("single") && loginUser != null){ %>
 							<div class="right">
 								<a
 									href="/single/fr/report.do?id=<%=post.getMe_id()%>&no=<%=post.getFr_no()%>"
 									class="kboard-button-action kboard-button-print"
 									onclick="return confirm('신고 하시겠습니까?');">신고</a>
 							</div>
+							<%} %>
 						</div>
 
 					</div>
