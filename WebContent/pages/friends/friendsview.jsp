@@ -26,10 +26,13 @@
     	float: right;
     	margin: 5px;
 	}
+	li.list-group-item:hover {
+			background-color: rgba(86, 61, 124, .1);
+	}
   	</style>
 </head>
 <body>
-	<%
+	<% 
 		MemberDTO loginUser = (MemberDTO) session.getAttribute("loginUser");
 	%>
 	<!-- top -->
@@ -40,6 +43,7 @@
 		<div id="container">
 			<%
 				if (loginUser != null) {
+					ArrayList<MemberDTO> friends = (ArrayList<MemberDTO>) request.getAttribute("friends");
 			%>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
 
@@ -48,23 +52,22 @@
 			<ul class="w3-ul w3-card-2">
 				<%--친구 목록 --%>
 				<%
-					ArrayList<MemberDTO> friends = (ArrayList<MemberDTO>) request.getAttribute("friends");
 						if (friends != null) {
 							int size = friends.size();
+							MemberDTO friend=null;
 							for (int i=0; i<size; i++) {
-								System.out.println("cldfkj"+friends);
-								System.out.println("cldfkj"+size);
+								friend = friends.get(i);
 				%>
-				<li class="w3-bar"><span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
-					<img src="/single/upload/<%=friends.get(i).getMe_img()%>" class="col-sm-4 img-circle" style="width: 100px;height: 85px">
+				<li class="w3-bar list-group-item"><span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
+					<img src="/single/upload/<%=friend.getMe_img() %>" class="col-sm-4 img-circle" style="width: 100px;height: 85px">
 					<div class="w3-bar-item">
-						<span class="w3-large"><%=friends.get(i).getMe_name()%></span> <%=friends.get(i).getMe_id() %><br>
-						<span><%=friends.get(i).getMe_addr()%></span> <br> 
-						<a href="#" data-toggle="modal" data-target="#MessageModal">쪽지	보내기</a>
+						<span class="w3-large"><%=friend.getMe_name()%></span> <%=friend.getMe_id() %><br>
+						<span><%=friend.getMe_addr()%></span> <br> 
+						<a href="#" data-toggle="modal" data-target="#MessageModal<%=friend.getMe_id() %>">쪽지	보내기</a>
 					</div>
 				</li>
 				<%-- 쪽지 보내기--%>
-				<div class="modal fade" id="MessageModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
+				<div class="modal fade" id="MessageModal<%=friend.getMe_id() %>" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -77,7 +80,8 @@
 								<div class="modal-body">
 									<div class="input-group">
 										<span class="input-group-addon">@ 받는 사람</span> 
-										<input type="text" class="form-control" placeholder="<%=friends.get(i).getMe_id()%>" name="receiver" readonly="readonly" />
+										<input type="text" class="form-control" placeholder="<%=friend.getMe_id()%>" readonly="readonly" />
+										<input type="hidden" name="receiver" value="<%=friend.getMe_id()%>"/>
 									</div>
 									<p></p>
 									<div class="input-group">

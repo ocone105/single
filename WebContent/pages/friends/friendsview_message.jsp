@@ -22,16 +22,22 @@
 		<div id="container">
 			<%if(loginUser!=null){ %>
 			<jsp:include page="/pages/template/floatingmenu.jsp" />
-			<%} %>
+			
 			<jsp:include page="/pages/friends/friendsmenu.jsp"/>
 			
 			<p align="center">Message List</p>
-
+			
+			<%
+				String option = (String) request.getParameter("option");
+				if(option.equals("send")){
+					
+				}
+			%>
 			<div class="panel panel-default widget">
 				<div class="panel-heading">
-					<span class="glyphicon glyphicon-comment"></span>
-					<h3 class="panel-title">Comments</h3>
-					<span class="label label-default" id="cmtNum">0</span>
+					<span class="glyphicon glyphicon-comment"></span> &nbsp;&nbsp;
+					Message
+					<span class="label label-default" id="cmtNum" style="float: right;">0</span>
 				</div>
 				<%
 				ArrayList<MsgDTO> msgs = (ArrayList<MsgDTO>) request.getAttribute("msgs");
@@ -39,6 +45,20 @@
 					int size = msgs.size();	
 					for(int i=0;i<size;i++){
 				%>
+								<div class="panel-body">
+					<ul class="list-group">
+						<li class="w3-bar"><span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
+					<img src="/single/upload/<%=loginUser.getMe_img() %>" class="col-sm-4 img-circle" style="width: 70px;height: 55px">
+					<div class="w3-bar-item">
+						<span class="w3-large"><%=loginUser.getMe_name()%></span> <%=loginUser.getMe_id() %><br>
+						<span><%=loginUser.getMe_addr()%></span> <br> 
+						<a href="#" data-toggle="modal" data-target="#MessageModal<%=loginUser.getMe_id() %>">쪽지	보내기</a>
+					</div>
+				</li>
+					</ul>
+
+				</div>
+				
 				<div class="panel-body">
 					<ul>
 						<li class="list-group-item">
@@ -57,45 +77,14 @@
 						</li>
 					</ul>
 				</div>
-					<%}} %>
+				
+
+				<%
+					}}
+				%>
 			</div>
 			
-			
-
-			<%-- 댓글 --%>
-			<!-- <div class="row" id="messagesList" style="width: 100%">
-				<div class="panel panel-default widget">
-					<div class="panel-heading">
-						<span class="glyphicon glyphicon-envelope"></span>
-						<h3 class="panel-title">Message</h3>
-						<span class="label label-default" id="cmtNum">0</span>
-					</div>
-					<div class="panel-body">
-						<ul class="list-group">
-								
-							<span id="cmt"></span>
-	 						<li class="list-group-item">
-								<div class="row">
-									<div class="col-xs-2 col-md-1">
-										<img src="/single/images/irene.png" class="img-circle img-responsive" alt="" />
-									</div>
-									<div class="col-xs-10 col-md-11">
-										<div class="comment-text">뭐가 힘든지 말해야죠</div>
-											<div class="mic-info">
-												By: <a href="#">배주현</a> on 2 Jul 2018
-											</div>
-									</div>
-								</div>
-							</li> 
-							
-						</ul>
-						<a href="#" class="btn btn-default btn-sm btn-block" role="button"> 
-							<span class="glyphicon glyphicon-refresh"></span> More
-						</a>
-					</div>
-				</div>
-			</div>			 -->
-		
+		<%} %>
 		</div>
 	</div>
 	

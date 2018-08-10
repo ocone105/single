@@ -1,6 +1,7 @@
 package friends.query;
 
 public class FriendsQuery {
+	
 	// 메시지 삽입
 	public static final String INSERT_MSG = "insert into message values(msg_seq.nextval, ?, ?, ?, ?, sysdate)";
 

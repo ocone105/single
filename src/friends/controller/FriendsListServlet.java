@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import friends.service.FriendsService;
 import friends.service.FriendsServiceImpl;
@@ -25,18 +26,24 @@ public class FriendsListServlet extends HttpServlet {
 
 		String me_id = request.getParameter("me_id");
 		
+		if(me_id==null){
+			HttpSession ses = request.getSession(false);
+			MemberDTO loginUser = (MemberDTO) ses.getAttribute("loginUser");
+			me_id=loginUser.getMe_id();
+		}
 		FriendsService service = new FriendsServiceImpl();
 		ArrayList<String> friendslist = service.friendsList(me_id);
 		int size = friendslist.size();
-		
+
 		MemberService memberservice = new MemberServiceImpl();
 		ArrayList<MemberDTO> friends = new ArrayList<MemberDTO>();
-		MemberDTO friend = null;
-		for (int j = 0; j < size; j++) {
-			friend = memberservice.getUserInfo(friendslist.get(j));
+		MemberDTO friend = new MemberDTO();
+		
+		for (int i = 0; i < size; i++) {
+			friend = memberservice.getUserInfo(friendslist.get(i));
 			friends.add(friend);
 		}
-		System.out.println("친구 몇명 : "+friends);
+
 		request.setAttribute("friends", friends);
 				
 		RequestDispatcher rd = request.getRequestDispatcher("/pages/friends/friendsview.jsp");

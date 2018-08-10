@@ -36,9 +36,9 @@ public class FriendsDAOImpl implements FriendsDAO {
 		ArrayList<MsgDTO> msgs = new ArrayList<MsgDTO>();
 		MsgDTO msg = null;
 		String sql = "";
-		if(option.equals("A")){
+		if(option.equals("send")){
 			sql = SEND_MSG;
-		}else if(option.equals("B")){
+		}else if(option.equals("receive")){
 			sql = RECIEVE_MSG;
 		}
 		PreparedStatement ptmt = con.prepareStatement(sql);

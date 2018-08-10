@@ -39,8 +39,6 @@ public class MsgInsertServlet extends HttpServlet {
 		}
 		System.out.println(message);
 		
-		request.setAttribute("msg", msg);
-		
 		response.sendRedirect("/single/friends/list.do");
 	}
 }
