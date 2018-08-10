@@ -64,6 +64,24 @@
 							<%
 								for (int i = 0; i < size; i++) {
 									FreeDTO post = postlist.get(i);
+									if(post.getMe_id().equals("single")){
+							%>
+
+							<tr class="kboard-list-notice">
+								<td class="kboard-list-uid"><%=post.getFr_no()%></td>
+								<td class="kboard-list-title"><a href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=read">
+										<div class="kboard-thumbnail-cut-strings">
+											<span class="admin"> <%=post.getFr_title()%> </span><span class="kboard-comments-count">(<%=post.getCmtcount()%>)</span>
+										</div>
+								</a>
+								</td>
+								<td class="kboard-list-user">°ü¸®ÀÚ</td>
+								<td class="kboard-list-date"><%=post.getFr_date()%></td>
+								<td class="kboard-list-view"><%=post.getFr_hits()%></td>
+							</tr>
+
+							<%
+								} else {
 							%>
 
 							<tr class="">
@@ -73,14 +91,16 @@
 									href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=read">
 										<div class="kboard-thumbnail-cut-strings">
 											<%=post.getFr_title()%>
-											<span class="kboard-comments-count">(<%=post.getCmtcount()%>)</span>
+											<span class="kboard-comments-count">(<%=post.getCmtcount()%>)
+											</span>
 										</div>
-								</a> </td>
+								</a></td>
 								<td class="kboard-list-user"><%=post.getMe_id()%></td>
 								<td class="kboard-list-date"><%=post.getFr_date()%></td>
 								<td class="kboard-list-view"><%=post.getFr_hits()%></td>
 							</tr>
 							<%
+								}
 								}
 							%>
 
