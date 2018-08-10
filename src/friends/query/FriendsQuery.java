@@ -22,5 +22,8 @@ public class FriendsQuery {
 	
 	// 블랙리스트 삭제
 	public static final String UPDATE_BLACK = "update member set me_black=0 where me_id=?";
+	
+	// 블랙리스트 검색
+	public static final String SEARCH_BLACK = "select * from member where me_black>=10 and me_id like ? or me_name like ?";
 
 }

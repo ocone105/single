@@ -32,7 +32,7 @@
 		    </ul>
 		    <br>
 		    <br>		    
-		   	<form>
+		   	<form method="get" action="/single/black/search.do">
   				<input type="text" name="search" placeholder="name"/>
   				<button class="btn">Search</button>
 			</form>

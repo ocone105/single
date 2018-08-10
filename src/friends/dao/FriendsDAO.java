@@ -18,10 +18,12 @@ public interface FriendsDAO {
 	
 	int deleteBd(BdDTO bd, Connection con) throws SQLException; // 模备 昏力
 	
-	
 	ArrayList<String> friendsList(String me_id, Connection con) throws SQLException;	// 模备 格废
 	
 	ArrayList<MemberDTO> BckList(Connection con) throws SQLException;	// 喉发府胶飘 格废
 	
 	int deleteBlack(String me_id, Connection con) throws SQLException; // 喉发府胶飘 昏力
+	
+	ArrayList<MemberDTO> search(String search, Connection con) throws SQLException;	// 喉发府胶飘 八祸
+	
 }

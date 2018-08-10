@@ -1,6 +1,10 @@
 package friends.dao;
 
 import static fw.DBUtil.close;
+import static free.query.FreeQuery.SEARCH_ALL;
+import static free.query.FreeQuery.SEARCH_TITLE;
+import static free.query.FreeQuery.SEARCH_TXT;
+import static free.query.FreeQuery.SEARCH_WRITER;
 import static friends.query.FriendsQuery.*;
 
 import java.sql.Connection;
@@ -9,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import free.dto.FreeDTO;
 import friends.dto.BdDTO;
 import friends.dto.MsgDTO;
 import member.dto.MemberDTO;
@@ -125,5 +130,27 @@ public class FriendsDAOImpl implements FriendsDAO {
 		
 		close(ptmt);
 		return result;
+	}
+
+	@Override
+	public ArrayList<MemberDTO> search(String search, Connection con) throws SQLException { // 블랙리스트 검색
+		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
+		MemberDTO member = null;
+
+		PreparedStatement ptmt = con.prepareStatement(SEARCH_BLACK);
+		ptmt.setString(1, "%" + search + "%");
+		ptmt.setString(2, "%" + search + "%");
+		
+		ResultSet rs = ptmt.executeQuery();
+		while (rs.next()) {
+			member =  new MemberDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getString(6), 
+					rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getInt(11), rs.getInt(12), rs.getString(13), rs.getString(14), 
+					rs.getString(15), rs.getString(16), rs.getString(17), rs.getInt(18));
+			list.add(member);
+		}
+		
+		close(rs);
+		close(ptmt);
+		return list;
 	}
 }

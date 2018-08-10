@@ -97,7 +97,6 @@ public class FriendsServiceImpl implements FriendsService {
 
 	@Override
 	public ArrayList<MemberDTO> BckList() {		// 블랙리스트 목록
-		System.out.println("Service요청");
 		ArrayList<MemberDTO> list = null;
 		FriendsDAO dao = new FriendsDAOImpl();
 		Connection con = null;
@@ -125,5 +124,20 @@ public class FriendsServiceImpl implements FriendsService {
 			close(con);
 		}
 		return result;
+	}
+
+	@Override
+	public ArrayList<MemberDTO> search(String search) {
+		ArrayList<MemberDTO> list = null;
+		FriendsDAO dao = new FriendsDAOImpl();
+		Connection con = null;
+		try{
+			con = getConnect();
+			list = dao.search(search, con);
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		close(con);
+		return list;
 	}
 }

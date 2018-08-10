@@ -44,8 +44,6 @@
 						<br>
 						<span><%=blacklist.get(i).getMe_addr() %></span> 
 						<br> 
-						<span>신고 횟수:<%=blacklist.get(i).getMe_black() %></span> 
-						<br> 
 						<a href="#" data-toggle="modal" data-target="#MessageModal">쪽지 보내기</a>
 					</div>
 				</li>

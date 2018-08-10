@@ -21,4 +21,7 @@ public interface FriendsService {
 	ArrayList<MemberDTO> BckList(); // 블랙리스트 목록
 	
 	int deleteBlack(String me_id); // 블랙리스트 삭제
+	
+	ArrayList<MemberDTO> search(String search); // 블랙리스트 검색
+	
 }

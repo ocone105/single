@@ -12,7 +12,7 @@ import friends.service.FriendsService;
 import friends.service.FriendsServiceImpl;
 
 @WebServlet(name = "black/delete", urlPatterns = { "/black/delete.do" })
-public class DeleteBlackServlet extends HttpServlet {
+public class BlackDeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("euc-kr");
 
