@@ -47,6 +47,23 @@ public class FriendsServiceImpl implements FriendsService {
 		close(con);
 		return msgs;
 	}
+	
+	@Override
+	public int deleteMsg(String msg_no) {	// 메시지 삭제
+		int result = 0;
+		Connection con = null;		
+		FriendsDAO dao = new FriendsDAOImpl();	
+		try {
+			con = getConnect();
+			result = dao.deleteMsg(msg_no, con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(con);
+		}
+		return result;
+
+	}
 
 	@Override
 	public int insertBd(BdDTO bd) {	// 친구 추가
@@ -57,7 +74,6 @@ public class FriendsServiceImpl implements FriendsService {
 			con = getConnect();
 			result = dao.insertBd(bd, con);
 		} catch (SQLException e) {
-			e.printStackTrace();
 		}finally{
 			close(con);
 		}
@@ -65,7 +81,7 @@ public class FriendsServiceImpl implements FriendsService {
 	}
 
 	@Override
-	public int deleteBd(BdDTO bd) {
+	public int deleteBd(BdDTO bd) {	// 친구 삭제
 		int result = 0;
 		Connection con = null;		
 		FriendsDAO dao = new FriendsDAOImpl();	
@@ -97,13 +113,43 @@ public class FriendsServiceImpl implements FriendsService {
 
 	@Override
 	public ArrayList<MemberDTO> BckList() {		// 블랙리스트 목록
-		System.out.println("Service요청");
 		ArrayList<MemberDTO> list = null;
 		FriendsDAO dao = new FriendsDAOImpl();
 		Connection con = null;
 		try{
 			con = getConnect();
 			list = dao.BckList(con);
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		close(con);
+		return list;
+	}
+
+	@Override
+	public int deleteBlack(String me_id) {
+		int result = 0;
+		Connection con = null;		
+		FriendsDAO dao = new FriendsDAOImpl();	
+		try {
+			con = getConnect();
+			result = dao.deleteBlack(me_id, con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(con);
+		}
+		return result;
+	}
+
+	@Override
+	public ArrayList<MemberDTO> search(String search) {
+		ArrayList<MemberDTO> list = null;
+		FriendsDAO dao = new FriendsDAOImpl();
+		Connection con = null;
+		try{
+			con = getConnect();
+			list = dao.search(search, con);
 		} catch (SQLException e){
 			e.printStackTrace();
 		}

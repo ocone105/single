@@ -163,7 +163,19 @@
 										<div>
 											<label class="info">회원등급</label>
 										</div>
-										<p><%=loginUser.getMe_grade() %></p>
+										<p>
+										<%if(loginUser.getMe_points()<100){%>
+										준회원
+										<%}else if(loginUser.getMe_points()<500){%>
+										정회원
+										<%}else if(loginUser.getMe_points()>=500){%>
+										우수회원
+										<%}else if(loginUser.getMe_black()>=10){%>
+										블랙리스트
+										<%}else if(loginUser.getMe_id().equals("single")){ %>
+										관리자
+										<%} %>
+										</p>
 									</div>
 								</div>
 								<div class="form-group">
