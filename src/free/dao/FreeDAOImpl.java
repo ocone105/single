@@ -19,15 +19,22 @@ public class FreeDAOImpl implements FreeDAO {
 		int result = 0;
 
 		PreparedStatement ptmt = con.prepareStatement(INSERT_POST);
+		PreparedStatement ptmt2 = con.prepareStatement(ADD_POINT);
+		
 		ptmt.setString(1, post.getFr_title());
 		ptmt.setString(2, post.getFr_txt());
 		ptmt.setString(3, post.getFr_ctg());
 		ptmt.setString(4, post.getFr_img());
 		ptmt.setString(5, post.getMe_id());
 
+		ptmt2.setInt(1, 10);
+		ptmt2.setString(2, post.getMe_id());
+		
+		result = ptmt2.executeUpdate();
 		result = ptmt.executeUpdate();
 
 		close(ptmt);
+		close(ptmt2);
 		return result;
 	}
 
