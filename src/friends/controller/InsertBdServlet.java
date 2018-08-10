@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import friends.dto.BdDTO;
 import friends.service.FriendsService;
 import friends.service.FriendsServiceImpl;
-
+ 
 @WebServlet(name = "insert_bd", urlPatterns = { "/bd/insert_bd.do" })
 public class InsertBdServlet extends HttpServlet {
 	

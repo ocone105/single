@@ -14,6 +14,16 @@ public class FriendsQuery {
 	// 模备 昏力
 	public static final String DELETE_BD = "delete from bd_list where me_id=?, bd_id=?";
 	
+	// 模备 格废
+	public static final String SELECT_FRIENDS = "select * from bd_list where me_id=?";
+	
+	// 喉发府胶飘 格废
+	public static final String SELECT_BCKLIST = "select * from member where me_black>=10";
+	
 	// 喉发府胶飘 昏力
 	public static final String UPDATE_BLACK = "update member set me_black=0 where me_id=?";
+	
+	// 喉发府胶飘 八祸
+	public static final String SEARCH_BLACK = "select * from member where me_black>=10 and me_id like ? or me_name like ?";
+
 }

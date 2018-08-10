@@ -16,12 +16,6 @@
 <%
 	ArrayList<FreeDTO> postlist = (ArrayList<FreeDTO>) request.getAttribute("postlist");
 	int size = postlist.size();
-	
-	String pageNo = request.getParameter("page");
-	int crtpage = 1;
-	if(pageNo!=null){
-		crtpage = Integer.parseInt(pageNo);	//현재 페이지
-	}
 %>
 <link rel="shortcut icon" href="/single/images/favicon.ico">
 
@@ -70,6 +64,24 @@
 							<%
 								for (int i = 0; i < size; i++) {
 									FreeDTO post = postlist.get(i);
+									if(post.getMe_id().equals("single")){
+							%>
+
+							<tr class="kboard-list-notice">
+								<td class="kboard-list-uid"><%=post.getFr_no()%></td>
+								<td class="kboard-list-title"><a href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=read">
+										<div class="kboard-thumbnail-cut-strings">
+											<span class="admin"> <%=post.getFr_title()%> </span><span class="kboard-comments-count">(<%=post.getCmtcount()%>)</span>
+										</div>
+								</a>
+								</td>
+								<td class="kboard-list-user">관리자</td>
+								<td class="kboard-list-date"><%=post.getFr_date()%></td>
+								<td class="kboard-list-view"><%=post.getFr_hits()%></td>
+							</tr>
+
+							<%
+								} else {
 							%>
 
 							<tr class="">
@@ -79,14 +91,16 @@
 									href="/single/fr/read.do?no=<%=post.getFr_no()%>&action=read">
 										<div class="kboard-thumbnail-cut-strings">
 											<%=post.getFr_title()%>
-											<span class="kboard-comments-count">(<%=post.getCmtcount()%>)</span>
+											<span class="kboard-comments-count">(<%=post.getCmtcount()%>)
+											</span>
 										</div>
-								</a> </td>
+								</a></td>
 								<td class="kboard-list-user"><%=post.getMe_id()%></td>
 								<td class="kboard-list-date"><%=post.getFr_date()%></td>
 								<td class="kboard-list-view"><%=post.getFr_hits()%></td>
 							</tr>
 							<%
+								}
 								}
 							%>
 
@@ -129,7 +143,7 @@
 				<!-- 검색폼 끝 -->
 
 				<!-- 버튼 시작 -->
-							<%if(loginUser!=null){ %>
+							<%if(loginUser!=null && loginUser.getMe_black()<10){ %>
 				<div class="kboard-control">
 					<a href="/single/pages/free/freeview_write.jsp" class="kboard-thumbnail-button-small">글쓰기</a>
 				</div>

@@ -5,7 +5,9 @@
 <html>
 <head>
 	<% String addr=""; %>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e389da52ac8c672d4985eead6dce0c46&libraries=services"></script>
     <meta charset="utf-8">
     <title>좌표로 주소를 얻어내기</title>
     <style>
@@ -14,37 +16,57 @@
     .hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
     #centerAddr {display:block;margin-top:2px;font-weight: normal;}
     .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+    #info{width: 100%; text-align: center; margin-top: 15px; }
 </style>
-<script type="text/javascript">
-	function select(){
-		alert("dd");
-		opener.document.myform.result.value = document.getElementById('centerAddr').value;
-		window.close();
-	}
-</script>
+<script src="/single/common/scripts/mate/map.js"></script>
 
-</head>
-<body>
+
 <% MemberDTO loginUser = (MemberDTO)session.getAttribute("loginUser"); 
 	String me_id = loginUser.getMe_id();
 	String me_loc = loginUser.getMe_loc();
 %>
-<form method="post" action="">
+<script type="text/javascript">
+	function mapselect(){
+		opener.document.getElementById("result").value = document.getElementById("centerAddr").innerHTML;
+		window.close();
+	}
+	
+
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	mapOption = {
+		center : new daum.maps.LatLng(<%=me_loc%>), level : 3	
+	};
+	// 지도의 중심좌표 // 지도의 확대 레벨
+	
+</script>
+
+</head>
+<body>
+
+<form>
 <div id="content">
-        <span class="title">지도중심기준 행정동 주소정보</span>
+	<div class="map_wrap">
+	    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+	
+	</div>
+	<div id="info">
+        <span class="title">주소정보</span>
         <span id="centerAddr"></span>
+        <div style="height: 30px;">
+        </div>
+        <button type="button" onclick="mapselect()" class="btn btn-danger">선택</button>
+	</div>	
 </div>
-		<input type="hidden" id="result"/>
-		<input type="button" value="선택" onclick="select()">
 </form>
-<div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+</body>
 
-</div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e389da52ac8c672d4985eead6dce0c46&libraries=services"></script>
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+<script type="text/javascript">
+	function mapselect(){
+		opener.document.getElementById("result").value = document.getElementById("centerAddr").innerHTML;
+		window.close();
+	}
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new daum.maps.LatLng(<%=me_loc%>), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
@@ -117,7 +139,8 @@ function displayCenterInfo(result, status) {
         }
     }    
 }
+	
 </script>
-</body>
+
 </html>
 
