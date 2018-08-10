@@ -21,9 +21,6 @@
 		MemberDTO loginUser = (MemberDTO) session.getAttribute("loginUser");
 		String msg = (String)request.getAttribute("msg");
 	%>
-	<div id="logoheader">
-		<img src="/single/images/logo.png" id="logo" />
-	</div>
 	<form name="loginform">
 		<div id="loginheader">
 			<%
@@ -46,8 +43,9 @@
 	</form>
 	<br/>
 	<header id="header">
-		<div id="hgroup">
-			<a href="/single/pages/mainview.jsp" id="singleHeader">Singlesingle</a>
+		<div id="singleHeader">
+		<a href="/single/pages/mainview.jsp"> <img  src="/single/images/logo2.png"/></a>
+			<!-- <a href="/single/pages/mainview.jsp" id="singleHeader">Singlesingle</a> -->
 		</div>
 		<nav id="topnav">
 			<ul class="topnav clear">

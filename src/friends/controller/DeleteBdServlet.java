@@ -13,7 +13,7 @@ import friends.dto.BdDTO;
 import friends.service.FriendsService;
 import friends.service.FriendsServiceImpl;
 
-@WebServlet(name = "delete_bd", urlPatterns = { "/bd/delete_bd.do" })
+@WebServlet(name = "friends/delete", urlPatterns = { "/friends/delete.do" })
 public class DeleteBdServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

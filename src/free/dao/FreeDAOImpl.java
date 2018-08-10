@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -19,15 +20,28 @@ public class FreeDAOImpl implements FreeDAO {
 		int result = 0;
 
 		PreparedStatement ptmt = con.prepareStatement(INSERT_POST);
+		PreparedStatement ptmt2 = con.prepareStatement(ADD_POINT);
+		PreparedStatement ptmt3 = con.prepareStatement(ADD_POINTS);	
+		
 		ptmt.setString(1, post.getFr_title());
 		ptmt.setString(2, post.getFr_txt());
 		ptmt.setString(3, post.getFr_ctg());
 		ptmt.setString(4, post.getFr_img());
 		ptmt.setString(5, post.getMe_id());
 
+		ptmt2.setInt(1, 10);
+		ptmt2.setString(2, post.getMe_id());
+		
+		ptmt3.setInt(1, 10);
+		ptmt3.setString(2, post.getMe_id());
+		
+		result = ptmt3.executeUpdate();
+		result = ptmt2.executeUpdate();
 		result = ptmt.executeUpdate();
 
 		close(ptmt);
+		close(ptmt2);
+		close(ptmt3);		
 		return result;
 	}
 
@@ -160,14 +174,20 @@ public class FreeDAOImpl implements FreeDAO {
 	}
 
 	@Override
-	public int report(String me_id, Connection con) throws SQLException {
+	public int report(String report_id, String me_id, Connection con) throws SQLException {
 		int result = 0;
 
 		PreparedStatement ptmt = con.prepareStatement(REPORT_USER);
-		ptmt.setString(1, me_id);
+		ptmt.setString(1, report_id);
 
+		PreparedStatement ptmt2 = con.prepareStatement(REPORT_USER2);
+		ptmt2.setString(1, me_id);
+		ptmt2.setString(2, report_id);
+		
+		result = ptmt2.executeUpdate();
 		result = ptmt.executeUpdate();
-
+		
+		close(ptmt2);
 		close(ptmt);
 		return result;
 	}
@@ -221,6 +241,22 @@ public class FreeDAOImpl implements FreeDAO {
 		close(rs);
 		close(ptmt);
 		return postlist;
+	}
+
+	@Override
+	public int count(Connection con) throws SQLException {
+		int result = 0;
+
+		PreparedStatement ptmt = con.prepareStatement(COUNT_POST);
+		ResultSet rs = ptmt.executeQuery();
+		
+		if (rs.next()) {
+			result = rs.getInt(1);
+		}
+		
+		close(rs);
+		close(ptmt);
+		return result;
 	}
 
 }

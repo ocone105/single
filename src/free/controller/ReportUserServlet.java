@@ -18,14 +18,19 @@ public class ReportUserServlet extends HttpServlet {
 		res.setContentType("text/html;charset=euc-kr");
 
 		// 1. 요청정보 추출
-		String me_id = req.getParameter("id");
+		String report_id = req.getParameter("report_id");
+		String me_id = req.getParameter("me_id");
 		int no = Integer.parseInt(req.getParameter("no"));
 
 		// 2. 비지니스 메소드 호출
 		FreeService service = new FreeServiceImpl();
-		int result = service.report(me_id);
-
-		// 요청재지정
+		int result = service.report(report_id, me_id);
+		
+		// 3. 요청재지정
+		if(result>=1){
 		res.sendRedirect("/single/fr/read.do?no="+no+"&action=read");
+		}else{
+		res.sendRedirect("/single/fr/read.do?no="+no+"&action=read");
+		}
 	}
 }
