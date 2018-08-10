@@ -3,8 +3,11 @@
 	font-family: °íµñ;
 }
 #singleHeader{
-	font-size: 45pt;
-	font-weight: bold;
+	width: 30%;
+	height: 30%;
+	margin:auto;
+/* 	font-size: 45pt;
+	font-weight: bold; */
 }
 #loginbtn, #joinbtn, #logoutbtn {
 	background-color: transparent;

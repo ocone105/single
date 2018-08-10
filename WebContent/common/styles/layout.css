@@ -55,7 +55,7 @@ address, article, aside, figcaption, figure, footer, header, nav, section{displa
 div.wrapper{}
 .row1, .row1 a, .row2, .row4, .row5{color:#666666; background-color:#FFFFFF;}
 .row2 a, .row4 a, .row5 a{color:#EC4D48; background-color:#FFFFFF;}
-.row1{border-top:5px solid #EC4D48; border-bottom:10px solid #DDDDDD;}
+.row1{border-top:5px solid #ffc74f; border-bottom:10px solid #DDDDDD;}
 .row2{border-top:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC;}
 .row3{border-top:10px solid #DDDDDD;}
 .row3, .row3 a{color:#919191; background-color:#1F1F1F;}
