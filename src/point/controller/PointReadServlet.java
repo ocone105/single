@@ -20,13 +20,14 @@ public class PointReadServlet extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");
 		
 		int po_no = Integer.parseInt(request.getParameter("po_no"));
-		String msg = request.getParameter("msg");
+		String state = request.getParameter("state");
+		System.out.println(state);
 		PointDTO prd = null;
 		PointService service = new PointServiceImpl();
 		prd = service.po_read(po_no);
 		
 		request.setAttribute("prd", prd);
-		request.setAttribute("msg", msg);
+		request.setAttribute("state", state);
 		RequestDispatcher rd = request.getRequestDispatcher("/pages/point/pointmarket_read.jsp");
 		rd.forward(request, response);
 	

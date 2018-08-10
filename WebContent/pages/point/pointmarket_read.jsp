@@ -49,13 +49,18 @@ $(document).ready(function(){
 		 	if(userid==""){
 				alert("로그인해주세요");
 			}else{
-				//그냥 ajax로
 				location.href="/single/po/buy.do?userid="+userid+"&po_no="+po_no;
 			} 
 	});
 });
 window.onload = function(){
-	alert($("#state").val());
+	if($("#state").val()==0){
+		alert("포인트가 부족합니다.");
+		document.getElementById("#state").value = "";
+	}else if($("#state").val()==1){
+		alert("구매가 완료되었습니다.");
+		document.getElementById("#state").value = "";
+	}
 }
 </script>
 <!-- -------------------------------- -->
@@ -65,8 +70,11 @@ window.onload = function(){
 <body>
 <% 
 	PointDTO prd = (PointDTO)request.getAttribute("prd"); 
+	String state = (String)request.getAttribute("state");
+	if(state!=null){
+		System.out.println(state);
+	}
 %>
-
 	<!-- content -->
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
@@ -82,9 +90,7 @@ window.onload = function(){
 			<%
 				}
 			%> 
-
 			<!-- ============================== -->
-
 			<div id="kboard-document">
 				<div id="kboard-thumbnail-document">
 					<div class="kboard-document-wrap" itemscope itemtype="http://schema.org/Article">
@@ -125,6 +131,7 @@ window.onload = function(){
 					<div class="kboard-control">
 						<div class="left">
 						<input type="button" id="buyBtn" value="구매하기"/> 
+						<input type="hidden" id="state" value="<%=state%>"/>
 						</div>
 						<%if(loginUser!=null && loginUser.getMe_id().equals("single")){ %>
 						<div class="right">

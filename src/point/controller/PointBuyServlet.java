@@ -2,7 +2,6 @@ package point.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.ProcessBuilder.Redirect;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,9 +22,9 @@ import point.service.PointServiceImpl;
 public class PointBuyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
+		
 		response.setContentType("text/html;charset=euc-kr");
 		
-		PrintWriter pw = response.getWriter();
 		String id = request.getParameter("userid");
 		int po_no = Integer.parseInt(request.getParameter("po_no"));
 	
@@ -34,10 +33,13 @@ public class PointBuyServlet extends HttpServlet {
 		
 		PointService service2 = new PointServiceImpl();
 		PointDTO prdInfo = service2.po_read(po_no);
+	
+		System.out.println(userInfo.getMe_point());
+		System.out.println(prdInfo.getPo_pt());
 		
-		String msg = "";
+		String state = "";
 		if(userInfo.getMe_point()<prdInfo.getPo_pt()){	//유저의 포인트가 적을때
-			msg = "0";
+			state = "0";
 		}else{
 			int me_point = userInfo.getMe_point()-prdInfo.getPo_pt();
 			int result = service2.buy_update(me_point, id, po_no);
@@ -53,13 +55,10 @@ public class PointBuyServlet extends HttpServlet {
 				int result2  = service2.po_state_update(2, po_no);
 			}
 			
-			msg = "1";
+			state = "1";
 		}
-		
-		request.setAttribute("msg", msg);
-		request.setAttribute("po_no", po_no);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/po/read.do");
+
+		RequestDispatcher rd = request.getRequestDispatcher("/po/read.do?po_no="+po_no+"&state="+state);
 		rd.forward(request, response);
 	}
 }
