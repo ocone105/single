@@ -40,6 +40,8 @@ me_img varchar2(200),
 me_loc varchar2(200),
 me_black number);
 
+update member set me_point=5000 where me_id='single';
+
 create table bd_list(
 me_id varchar2(30),
 bd_id varchar2(30));
@@ -161,7 +163,8 @@ create table point(
    po_img varchar2(200),
    po_pt number,      
    po_date date,         
-   po_state number);
+   po_state number,
+   po_count number);
 
 
 // ±âº»Å° Äõ¸®

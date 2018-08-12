@@ -42,23 +42,39 @@
 }
 </style>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#insert_bd").on("click", function() {
-
-		    var id = $('#id').val();
-		    var bd_id = $('#bd_id').val();
-		    var postno = $('#postno').val();
-
-		    $("#insert_bd_form").submit();
-		});
+$(document).ready(function(){
+	$("#buyBtn").on("click", function(){
+			var userid = $("#userid").val();
+			var po_no = $("#po_no").val();
+		 	if(userid==""){
+				alert("로그인해주세요");
+			}else{
+				location.href="/single/po/buy.do?userid="+userid+"&po_no="+po_no;
+			} 
 	});
+});
+window.onload = function(){
+	if($("#state").val()==0){
+		alert("포인트가 부족합니다.");
+		document.getElementById("#state").value = "";
+	}else if($("#state").val()==1){
+		alert("구매가 완료되었습니다.");
+		document.getElementById("#state").value = "";
+	}
+}
 </script>
 <!-- -------------------------------- -->
 <script src="/single/common/scripts/jquery.min.js"></script>
 <script src="/single/common/scripts/jquery-mobilemenu.min.js"></script>
 </head>
 <body>
-<% PointDTO prd = (PointDTO)request.getAttribute("prd"); %>
+<% 
+	PointDTO prd = (PointDTO)request.getAttribute("prd"); 
+	String state = (String)request.getAttribute("state");
+	if(state!=null){
+		System.out.println(state);
+	}
+%>
 	<!-- content -->
 	<div class="wrapper row1">
 		<jsp:include page="/pages/template/Topbar.jsp" />
@@ -74,9 +90,7 @@
 			<%
 				}
 			%> 
-
 			<!-- ============================== -->
-
 			<div id="kboard-document">
 				<div id="kboard-thumbnail-document">
 					<div class="kboard-document-wrap" itemscope itemtype="http://schema.org/Article">
@@ -84,6 +98,8 @@
 						<div class="kboard-detail">
 							<div class="detail-attr detail-writer">
 								<div class="detail-name">작성자</div>
+								<input type="hidden" id="userid" <%if(loginUser!=null){ %>value="<%=loginUser.getMe_id()%>"<%} %>/> 
+								<input type="hidden" id="po_no" value="<%=prd.getPo_no()%>"/>
 								<div class="detail-value">
 									매니저
 								</div>
@@ -91,6 +107,10 @@
 							<div class="detail-attr detail-date">
 								<div class="detail-name">필요포인트</div>
 								<div class="detail-value"><%=prd.getPo_pt() %></div>
+							</div>
+							<div class="detail-attr detail-date">
+								<div class="detail-name">수량</div>
+								<div class="detail-value"><%=prd.getPo_count() %></div>
 							</div>
 							<div class="detail-attr detail-view">
 								<div class="detail-name">작성일</div>
@@ -100,7 +120,8 @@
 						<div class="kboard-content" itemprop="description">
 							<div class="content-view">
 								<p style="text-align: center;">
-									<img src="/single/upload/<%=prd.getPo_img() %>" /><br/>
+									<img src="/single/upload/<%=prd.getPo_img() %>" style="width: 500px;"/><br/>
+									<%=prd.getPo_txt() %>
 								</p>
 							</div>
 						</div>
@@ -109,19 +130,17 @@
 
 					<div class="kboard-control">
 						<div class="left">
-							<a href="/single/po/buy.do"
-								class="kboard-thumbnail-button-small">구매하기</a>
+						<input type="button" id="buyBtn" value="구매하기"/> 
+						<input type="hidden" id="state" value="<%=state%>"/>
 						</div>
-
+						<%if(loginUser!=null && loginUser.getMe_id().equals("single")){ %>
 						<div class="right">
-							<a href="/single/po/update.do?action=READ
-								class="kboard-thumbnail-button-small">글수정</a> <a
-								href="/single/po/delete.do?po_no=<%=prd.getPo_no() %>"
-								class="kboard-thumbnail-button-small"
-								onclick="return confirm('삭제 하시겠습니까?');">글삭제</a>
+							<a href="/single/po/updateread.do?po_no=<%=prd.getPo_no() %>">글수정</a>
+							<a href="/single/po/delete.do?po_no=<%=prd.getPo_no() %>"
+							onclick="return confirm('삭제 하시겠습니까?');">글삭제</a>
 						</div>
+						<%} %>
 					</div>
-
 				</div>
 			</div>
 			<br />

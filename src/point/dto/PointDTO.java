@@ -10,30 +10,13 @@ public class PointDTO {
 	private int po_pt;
 	private Date po_date;
 	private int po_state;
+	private int po_count;
 	
 	public PointDTO() {
 		super();
 	}
-
-	public PointDTO(String po_title, String po_txt, int po_pt, int po_state) {
-		super();
-		this.po_title = po_title;
-		this.po_txt = po_txt;
-		this.po_pt = po_pt;
-		this.po_state = po_state;
-	}
-	
-
-	public PointDTO(String po_title, String po_txt, String po_img, int po_pt, int po_state) {
-		super();
-		this.po_title = po_title;
-		this.po_txt = po_txt;
-		this.po_img = po_img;
-		this.po_pt = po_pt;
-		this.po_state = po_state;
-	}
-
-	public PointDTO(int po_no, String po_title, String po_txt, String po_img, int po_pt, Date po_date, int po_state) {
+	//조회용
+	public PointDTO(int po_no, String po_title, String po_txt, String po_img, int po_pt, Date po_date, int po_state, int po_count) {
 		super();
 		this.po_no = po_no;
 		this.po_title = po_title;
@@ -42,8 +25,32 @@ public class PointDTO {
 		this.po_pt = po_pt;
 		this.po_date = po_date;
 		this.po_state = po_state;
+		this.po_count = po_count;
+	}
+	
+	//insert용
+	public PointDTO(String po_title, String po_txt, String po_img, int po_pt, int po_state, int po_count) {
+		super();
+		this.po_title = po_title;
+		this.po_txt = po_txt;
+		this.po_img = po_img;
+		this.po_pt = po_pt;
+		this.po_state = po_state;
+		this.po_count = po_count;
 	}
 
+	//update용
+	public PointDTO(int po_no, String po_title, String po_txt, String po_img, int po_pt, int po_state, int po_count) {
+		super();
+		this.po_no = po_no;
+		this.po_title = po_title;
+		this.po_txt = po_txt;
+		this.po_img = po_img;
+		this.po_pt = po_pt;
+		this.po_state = po_state;
+		this.po_count = po_count;
+	}
+	
 	public int getPo_no() {
 		return po_no;
 	}
@@ -99,6 +106,15 @@ public class PointDTO {
 
 	public void setPo_state(int po_state) {
 		this.po_state = po_state;
+	}
+
+	
+	public int getPo_count() {
+		return po_count;
+	}
+
+	public void setPo_count(int po_count) {
+		this.po_count = po_count;
 	}
 
 	@Override

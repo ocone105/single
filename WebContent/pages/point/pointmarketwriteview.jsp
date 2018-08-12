@@ -31,8 +31,13 @@
 						</td>
 					</tr>
 					<tr>
-						<td>소비포인트</td>
+						<td>필요포인트</td>
 						<td><input type="text" name="po_pt" size="10" value="">
+						</td>
+					</tr>
+					<tr>
+						<td>수량</td>
+						<td><input type="text" name="po_count" size="10" value="">
 						</td>
 					</tr>
 					<tr>
@@ -42,7 +47,10 @@
 					</tr>
 					<tr>
 						<td>이미지</td>
-						<td><input type="file" name="po_img"></td>
+						<td><img src="" id="po_img" style="width: 245px; height: 150px; border-style: solid;"> 
+						<br/>
+						<input type="file" name="po_img" onchange="document.getElementById('po_img').src = window.URL.createObjectURL(this.files[0])"
+							accept="upload/*"></td>
 					</tr>
 					<tr>
 						<td>내용</td>
