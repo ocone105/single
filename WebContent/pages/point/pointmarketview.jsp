@@ -8,9 +8,6 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<style type="text/css">
-
-</style>
 </head>
 <body>
 <%
