@@ -64,6 +64,7 @@
 						<a href="#" data-toggle="modal" data-target="#MessageModal<%=friend.getMe_id() %>">쪽지	보내기</a>
 					</div>
 				</li>
+				
 				<%-- 쪽지 보내기--%>
 				<div class="modal fade" id="MessageModal<%=friend.getMe_id() %>" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
 					<div class="modal-dialog">

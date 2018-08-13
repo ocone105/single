@@ -58,9 +58,9 @@
 								<%=msgs.get(i).getMsg_txt() %>
 							</div>
 							<div class="action" style="float: right;">
-								<button type="button" class="btn btn-primary btn-xs" title="Edit">
+								<!-- <button type="button" class="btn btn-primary btn-xs" title="Edit">
 									<span class="glyphicon glyphicon-pencil">&nbsp;답장</span>
-								</button>
+								</button> -->
 								<button type="submit" class="btn btn-danger btn-xs" title="Delete" >
 									<span class="glyphicon glyphicon-trash">&nbsp;삭제</span>
 								</button>
@@ -103,9 +103,9 @@
 								<span><%=msgs.get(i).getMsg_txt() %></span></a>
 							</div>
 							<div class="action" style="float: right;">
-								<button type="button" class="btn btn-primary btn-xs" title="Edit">
+								<!-- <button type="button" class="btn btn-primary btn-xs" title="Edit">
 									<span class="glyphicon glyphicon-pencil">&nbsp;답장</span>
-								</button>
+								</button> -->
 								<button type="submit" class="btn btn-danger btn-xs" title="Delete" >
 									<span class="glyphicon glyphicon-trash">&nbsp;삭제</span>
 								</button>
