@@ -32,10 +32,10 @@
 		totalPage = prdNum/9 + 1;
 	}
 	int firstPage = 1; // 첫페이지
-	if(totalPage-5<pageNo){
-		firstPage = totalPage-9;
-	}else if(pageNo<=5){
+	if(pageNo<=5){
 		firstPage = 1;
+	}else if(totalPage-5<pageNo){
+		firstPage = totalPage-9;
 	}else{
 		firstPage = pageNo - 5;
 	}
