@@ -47,16 +47,28 @@ public class FreeCmtDAOImpl implements FreeCmtDAO{
 	@Override
 	public int insert(FreeCmtDTO cmt, Connection con) throws SQLException {
 		int result = 0;
-		//System.out.println("´ñ±Û µî·Ï dao: " + cmt);
 
 		PreparedStatement ptmt = con.prepareStatement(INSERT_CMT);
+		PreparedStatement ptmt2 = con.prepareStatement(ADD_POINT);
+		PreparedStatement ptmt3 = con.prepareStatement(ADD_POINTS);
+
 		ptmt.setString(1, cmt.getFr_cmt_txt());
 		ptmt.setInt(2, cmt.getFr_no());
 		ptmt.setString(3, cmt.getMe_id());
 
+		ptmt2.setInt(1, 3);
+		ptmt2.setString(2, cmt.getMe_id());
+
+		ptmt3.setInt(1, 3);
+		ptmt3.setString(2, cmt.getMe_id());
+		
+		result = ptmt3.executeUpdate();
+		result = ptmt2.executeUpdate();
 		result = ptmt.executeUpdate();
 		
 		close(ptmt);
+		close(ptmt2);
+		close(ptmt3);		
 		return result;
 	}
 	
