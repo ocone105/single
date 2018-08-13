@@ -25,13 +25,12 @@ public class PointListServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("euc-kr");
 		
-		ArrayList<PointDTO> dtolist = null;
+		ArrayList<PointDTO> prdlist = null;
 		
 		PointService service = new PointServiceImpl();
-		dtolist = service.po_list();
+		prdlist = service.po_list();
 		
-		System.out.println("포인트마켓리스트");
-		request.setAttribute("dtolist", dtolist);
+		request.setAttribute("prdlist", prdlist);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/pages/point/pointmarketview.jsp");
 		rd.forward(request, response);
